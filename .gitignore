@@ -30,3 +30,4 @@ config/environments/*.local.yml
 .framgia-ci-reports
 /.framgia-ci-reports/*
 .framgia-ci-result.temp.yml
+/node_modules/

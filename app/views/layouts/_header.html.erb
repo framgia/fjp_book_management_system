@@ -1,0 +1,71 @@
+<nav class="navbar navbar-fixed-top pmd-navbar pmd-z-depth navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="pmd-ripple-effect navbar-toggle pmd-navbar-toggle" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <img src="http://www.reviewcompany.vn/public/media/uploads/company/logo/2014-08-21/b8bf8789-7367-4452-9ae5-022136c37396.png"
+          class="logo-dark" height="85" alt="Framgia logo"
+          title="Framgia logo"/>
+      <% end %>
+    </div>
+
+    <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse pmd-navbar-sidebar">
+      <div class="pmd-navbar-right-icon pull-right">
+        <a class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect search-toggle"
+           href="javascript:void(0);">
+          <i class="material-icons md-light pmd-sm pmd-svg-icon ic_search">
+            <svg viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+            <g>
+              <path d="M29.646,27.896l-4.405-4.437c1.03-1.374,1.656-3.124,1.656-4.999c0-4.655-3.781-8.436-8.437-8.436
+		c-4.654,0-8.436,3.78-8.436,8.436c0,4.654,3.781,8.436,8.436,8.436c1.875,0,3.625-0.625,4.999-1.656l4.405,4.406
+		c0.5,0.499,1.281,0.499,1.781,0C30.146,29.178,30.146,28.365,29.646,27.896z M18.461,24.396c-3.28,0-5.936-2.655-5.936-5.936
+		c0-3.281,2.655-5.936,5.936-5.936s5.937,2.655,5.937,5.936C24.397,21.741,21.741,24.396,18.461,24.396z"/>
+            </g>
+          </svg>
+          <svg viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+            <g>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M24,22.222L22.222,24L16,17.777L9.777,24L8,22.222L14.223,16
+      L8,9.777L9.777,8L16,14.223L22.222,8L24,9.777L17.777,16L24,22.222z"/>
+            </g>
+          </svg>
+          </i>
+        </a>
+        <form class="search-form" method="get" id="searchform" action="/">
+          <div class="form-group">
+            <input class="form-control" type="text" size="put_a_size_here"
+              name="s" id="s" title="" placeholder="Search"/>
+          </div>
+        </form>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="pmd-ripple-effect" href="#">Link
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li><a class="pmd-ripple-effect" href="#">Link</a></li>
+        <li class="dropdown pmd-dropdown">
+          <a data-toggle="dropdown" class="pmd-ripple-effect dropdown-toggle"
+             data-sidebar="true" href="#">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="pmd-ripple-effect" href="#">Action</a></li>
+            <li><a class="pmd-ripple-effect" href="#">Another action</a></li>
+            <li><a class="pmd-ripple-effect" href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a class="pmd-ripple-effect" href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li>
+              <a class="pmd-ripple-effect" href="#">One more separated link</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="pmd-sidebar-overlay"></div>
+</nav>
