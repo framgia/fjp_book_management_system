@@ -1,4 +1,4 @@
-User.create! email: "le.tat.tung@framgia.com",
+User.create! email: "letattungtb@gmail.com",
   password: "tung123", password_confirmation: "tung123"
 User.create! email: "le.vinh.thien@framgia.com",
   password: "thien123", password_confirmation: "thien123"

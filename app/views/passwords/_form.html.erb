@@ -1,0 +1,19 @@
+<%= form_for :user, url: password_path, html: {method: :patch} do |f| %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :reset_password_token %>
+  <div class="field">
+    <%= f.label :password, t("password.update.new_pass") %><br />
+    <%= f.password_field :password, autofocus: true, autocomplete: "off",
+      class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, t("password.update.confirmation_pass") %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off",
+      class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t("password.update.title"), class: "btn btn-block btn-primary" %>
+  </div>
+<% end %>

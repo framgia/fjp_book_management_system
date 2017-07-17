@@ -1,0 +1,28 @@
+<div class="password">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4 jumbotron">
+        <div class="flash" align="left">
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-success ltt-flash "><%= message %></div>
+          <% end %>
+        </div>
+        <h2 class="text-center"><%= t "password.update.title" %></h2>
+          <%= form_for @user, url: passwords_path,
+            html: {method: :post} do |f| %>
+            <div class="field">
+              <%= f.label :email, t("password.create.mail") %><br />
+              <%= f.email_field :email, autofocus: true,
+                class: "form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit t "password.create.submit",
+                class: "btn btn-block btn-primary" %>
+            </div>
+          <% end %>
+          <%= render "passwords/links" %>
+      </div>
+    </div>
+  </div>
+</div>
