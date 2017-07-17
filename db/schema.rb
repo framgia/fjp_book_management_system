@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714045207) do
+ActiveRecord::Schema.define(version: 20170715094651) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer "admin_id", null: false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20170714045207) do
   create_table "author_books", force: :cascade do |t|
     t.integer "author_id", null: false
     t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,12 +75,12 @@ ActiveRecord::Schema.define(version: 20170714045207) do
   create_table "books", force: :cascade do |t|
     t.integer "publisher_id", null: false
     t.integer "language_id", null: false
-    t.string "isbn_10", null: false
-    t.string "isbn_13", null: false
+    t.string "isbn", null: false
     t.integer "series_id"
     t.string "dimension"
     t.integer "pages"
     t.string "weight"
+    t.string "title", null: false
     t.datetime "public_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170714045207) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer "parent_id", null: false
+    t.integer "parent_id"
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
@@ -102,6 +109,14 @@ ActiveRecord::Schema.define(version: 20170714045207) do
     t.integer "user_id", null: false
     t.string "content"
     t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebooks", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.string "format", null: false
+    t.string "link", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -125,7 +140,7 @@ ActiveRecord::Schema.define(version: 20170714045207) do
     t.integer "target_id", null: false
     t.string "target_type", null: false
     t.string "url", null: false
-    t.integer "type"
+    t.integer "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -165,9 +180,9 @@ ActiveRecord::Schema.define(version: 20170714045207) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "request_type", null: false
+    t.integer "request_type", default: 0, null: false
     t.string "link"
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.text "content"
     t.integer "admin_approve_id"
     t.datetime "created_at", null: false
@@ -188,6 +203,15 @@ ActiveRecord::Schema.define(version: 20170714045207) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "suggest_books", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "receiver_id", null: false
+    t.integer "book_id", null: false
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
@@ -203,13 +227,20 @@ ActiveRecord::Schema.define(version: 20170714045207) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "password"
-    t.integer "status"
-    t.integer "role"
-    t.string "name"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "votes", force: :cascade do |t|
