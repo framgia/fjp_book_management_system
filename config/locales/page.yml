@@ -1,0 +1,20 @@
+ja:
+  password:
+    user_not_found: "ユーザーは存在じゃない"
+    reset_mail: "これはパスワードをリセットするメールです。"
+    edit:
+      fail: "失敗した。"
+    update:
+      title: "パスワードを編集"
+      confirmation_pass: "確認のパスワード"
+      send_mail: "パスワードを編集するために、リンクの後をクリックしてください。"
+      new_pass: "新しいパスワード"
+      success: "成功しました。"
+      fail: "失敗した。"
+    create:
+      mail: "メール"
+      check_mail: "メールを送りました。メールをチェックしてください。"
+      submit: "メールにフォームを送ってください"
+  login:
+    title: "ログイン"
+  forgot_password: "パスワードを忘れちゃった？"
