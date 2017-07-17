@@ -2,3 +2,61 @@ en:
   company: "Framgia Japan"
   app_name: "Book Management System"
   slogan: "We Make IT Awesome"
+  flash:
+    author:
+      find_fail: Author not found!
+      create_success: Created author successfullly!
+      update_success: Updated author successfully!
+      destroy_success: Deleted author successfully!
+      destroy_fail: Failed. Something's wrong.
+  admin:
+    link: " > "
+    book_manage: Book manage
+    author_manage: Author manage
+    authors:
+      index:
+        page_title: Author manage
+        link1: Author manage
+      edit:
+        page_title: Edit author
+        link1: Author manage
+        link2: Edit author
+      new:
+        page_title: Create author
+        link1: Author manage
+        link2: Create author
+      author:
+        add_author: Add author
+        search: Search
+        input_keyword: Search for author name or description
+        name: Name
+        description: Description
+        id: Id
+        option: Option
+      form:
+        name: Name
+        description: Description
+        books: "Book by "
+        image: Image link
+      show:
+        page_title: Author information
+        link1: Author manage
+        link2: Author information
+        quick: Quick edit
+        id: Id
+        title: Title
+        categories: Categories
+        publisher: Publisher
+        pages: Pages
+        weight: Weight
+        dimension: Dimension
+        isbn: ISBN
+        series: Series
+        language: Language
+        public_date: Public date
+        option: Option
+  button:
+    delete_warning: Are you sure?
+    clear: Clear form
+    delete: Delete
+    edit: Edit

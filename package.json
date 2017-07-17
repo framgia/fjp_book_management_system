@@ -2,6 +2,7 @@
   "name": "fjp_book_management_system",
   "private": true,
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "propellerkit": "^1.1.0"
   }
 }

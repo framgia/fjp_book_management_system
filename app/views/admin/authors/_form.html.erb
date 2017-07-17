@@ -1,0 +1,36 @@
+<div class="pmd-card pmd-z-depth pmd-card-custom-form col-xs-12 author-form">
+  <div class="pmd-card-body">
+    <%= form_for [:admin, author] do |f| %>
+      <%= f.label :name, t(".name"), class:"label2" %>
+      <%= f.text_field :name, class: "form-control" %><br>
+      <%= f.label :description, t(".description"), class:"form-label" %>
+      <%= f.text_area :description, class: "form-control" %><br>
+      <%= f.label :images, t(".image"), class:"form-label" %>
+      <%= f.fields_for :images do |p| %>
+        <div class="field">
+          <%= p.file_field :url, multiple: true, name: "images[url][]" %>
+        </div>
+      <% end %><br>
+      <%= f.label :books, t(".books"), class:"form-label" %>
+      <div class="col-xs-12">
+        <% books.each do |book| %>
+          <div class="col-xs-6 col-sm-6 choose">
+            <%= check_box_tag "author[book_ids][]", book.id, author.books.include?(book) %>
+            <%= label_tag :book_ids, book.title %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-12 text-center">
+        <% if author.new_record? %>
+          <%= f.submit class: "btn btn-primary" %>
+          <%= f.submit t("button.clear"), type: :reset,
+            class: "btn btn-danger" %>
+        <% else %>
+          <%= f.submit class: "btn btn-success" %>
+          <%= f.submit t("button.clear"), type: :reset,
+            class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

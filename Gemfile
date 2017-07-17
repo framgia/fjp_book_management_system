@@ -21,9 +21,8 @@ gem "kaminari"
 gem "will_paginate"
 gem "jquery-rails"
 gem "jquery-ui-rails"
-gem "best_in_place"
 gem "carrierwave"
-gem "byebug"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

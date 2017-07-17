@@ -1,0 +1,17 @@
+<ol class="breadcrumb text-left">
+  <li class="active">
+    <%= link_to t(".link1"), admin_authors_path %><%= t "admin.link" %>
+    <%= link_to t(".link2"), edit_admin_author_path(@author) %>
+  </li>
+</ol>
+<h1 class="section-title text-center" id="services">
+  <span><%= t ".page_title" %></span>
+</h1>
+<div class="col-xs-12">
+  <% flash.each do |key, value| %>
+    <div class="flash-message <%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
+  <%= render "form", author: @author, books: @books %>
+</div>
