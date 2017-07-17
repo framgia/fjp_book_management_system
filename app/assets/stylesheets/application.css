@@ -12,6 +12,6 @@
  *
  *= require bootstrap/dist/css/bootstrap.min
  *= require propellerkit/dist/css/propeller.min
- *= require_tree .
+ *= require_tree ./users
  *= require_self
  */

@@ -1,0 +1,43 @@
+<aside class="pmd-sidebar sidebar-default pmd-sidebar-slide-push pmd-sidebar-left
+  pmd-sidebar-open bg-fill-darkblue sidebar-with-icons" role="navigation">
+  <ul class="nav pmd-sidebar-nav text-left">
+    <!-- User info -->
+    <li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
+      <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media"
+        data-sidebar="true" aria-expandedhref="javascript:void(0);">
+        <div class="media-left">
+          <img src="http://propeller.in/templates/admin-dashboard/themes/images/user-icon.png"
+            alt="Administrator">
+        </div>
+        <div class="media-body media-middle">Administrator</div>
+        <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </li><!-- End user info -->
+
+    <li>
+      <%= link_to admin_root_path, class: "pmd-ripple-effect active" do %>
+        <i class="material-icons media-left pmd-sm">dashboard</i>
+        <span class="media-body">Dashboard</span>
+      <% end %>
+    </li>
+
+    <li class="dropdown pmd-dropdown">
+      <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media"
+        data-sidebar="true" href="javascript:void(0);">
+        <i class="material-icons media-left pmd-sm">swap_calls</i>
+        <span class="media-body">Third Party Elements</span>
+        <div class="media-right media-bottom"><i class="dic-more-vert dic"></i></div>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="custom-scroll.html">Custom Scrollbar</a></li>
+        <li><a href="datetimepicker.html">Datetimepicker</a></li>
+        <li><a href="range-slider.html">Range Slider</a></li>
+        <li><a href="select2.html">Select2</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</aside>
