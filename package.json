@@ -1,5 +1,7 @@
 {
   "name": "fjp_book_management_system",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "propellerkit": "^1.1.0"
+  }
 }
