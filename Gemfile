@@ -18,6 +18,11 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara", "~> 2.13"
   gem "selenium-webdriver"
+  gem "rspec-rails"
+  gem "database_cleaner"
+  gem "factory_girl_rails"
+  gem "faker"
+  gem "rails-controller-testing"
 end
 
 group :development do
@@ -28,3 +33,20 @@ group :development do
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :test do
+  gem "rspec-collection_matchers"
+  gem "shoulda-matchers"
+  gem "database_cleaner"
+  gem "rubocop", require: false
+  gem "rubocop-checkstyle_formatter", require: false
+  gem "scss_lint", require: false
+  gem "scss_lint_reporter_checkstyle", require: false
+  gem "rails_best_practices"
+  gem "brakeman", require: false
+  gem "bundler-audit"
+  gem "reek"
+  gem "simplecov", require: false
+  gem "rspec-activemodel-mocks"
+  gem "cucumber-rails", require: false
+end

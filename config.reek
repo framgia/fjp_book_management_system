@@ -1,0 +1,12 @@
+IrresponsibleModule:
+  enabled: false
+UncommunicativeVariableName:
+  enabled: false
+TooManyStatements:
+  enabled: false
+FeatureEnvy:
+  enabled: false
+InstanceVariableAssumption:
+  enabled: false
+UtilityFunction:
+  enabled: false
