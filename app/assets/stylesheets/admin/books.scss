@@ -1,0 +1,177 @@
+@import "colors";
+@import "users/colors";
+
+.book-image {
+  background: $white;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+  padding: 10px 3px;
+  width: 100%;
+}
+
+.book-image-others {
+  height: 100px;
+  padding: 5px;
+  width: 80px;
+}
+
+.book-form {
+  background-color: $white;
+  border-radius: 7px;
+  margin-bottom: 200px;
+  padding: 10px 20px 30px;
+  position: absolute;
+
+  h1 {
+    margin: 10px 0 0;
+  }
+
+  h4 {
+    margin: 0 0 20px;
+  }
+
+  label {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+    margin: 0 5px;
+  }
+
+  select,
+  textarea,
+  [type="text"],
+  [type="number"] {
+    background: $white;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    padding: 5px;
+    width: 100%;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    background-color: $white;
+  }
+
+  textarea {
+    height: 150px;
+    width: 100%;
+  }
+
+  select {
+    option {
+      padding: 5px;
+    }
+  }
+
+  [type="submit"],
+  [type="reset"] {
+    border: 0;
+    border-radius: 5px;
+    color: $white;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0 0 5px;
+    padding: 10px;
+  }
+
+  .add-book:hover {
+    background: $color-royal-blue-approx !important;
+  }
+
+  [type="submit"]:active {
+    box-shadow: inset 0 1px 3px;
+  }
+
+  input:required,
+  textarea:required {
+    box-shadow: none;
+  }
+
+  .required {
+    color: $color-cararra-approx;
+    font-weight: bold;
+  }
+
+  .chosen-container {
+    margin-bottom: 20px;
+
+    [type="text"],
+    span {
+      margin: 5px !important;
+    }
+  }
+
+  i {
+    color: $color-royal-blue-approx;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}
+
+.add-button {
+  display: none;
+}
+
+.book-table {
+  .btn-danger {
+    background-color: $blog-title;
+    margin-top: 5px;
+  }
+
+  .button-book {
+    text-align: center;
+  }
+
+  .input-book {
+    width: 30% !important;
+  }
+}
+
+.pmd-content {
+  margin-bottom: 200px;
+}
+
+.book-info {
+  font-size: 16px;
+
+  td {
+    padding-right: 20px;
+  }
+
+  .text-uppercase {
+    font-size: 18px;
+    padding: 8px 10px 10px 20px;
+  }
+
+  .btn {
+    border-radius: 8px;
+    margin-right: 5px;
+  }
+}
+
+.author-info {
+  font-size: 16px;
+
+  .label-size {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+}
+
+.author-show {
+  .btn {
+    border-radius: 8px;
+    margin-bottom: 5px;
+  }
+
+  .btn-danger {
+    background-color: $blog-title;
+  }
+}

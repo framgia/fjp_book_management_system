@@ -1,16 +1,16 @@
 class Book < ApplicationRecord
-  belongs_to :publisher
+  belongs_to :publisher, optional: true
   belongs_to :series, optional: true
-  belongs_to :language
+  belongs_to :language, optional: true
 
   has_many :images, as: :target
   has_many :suggest_books
   has_many :rates
   has_many :borrows
-  has_many :book_items
+  has_many :book_items, dependent: :destroy
   has_many :author_books
   has_many :book_tags
-  has_many :ebooks
+  has_many :ebooks, dependent: :destroy
   has_many :book_categories
   has_many :comments, as: :target
   has_many :blog_books
@@ -19,6 +19,12 @@ class Book < ApplicationRecord
   has_many :blogs, through: :blog_books
   has_many :tags, through: :book_tags
   has_and_belongs_to_many :tags, join_table: :book_tags
+
+  accepts_nested_attributes_for :publisher
+  accepts_nested_attributes_for :series
+  accepts_nested_attributes_for :images
+
+  validates :title, presence: true
 
   def find_same_author_book
     AuthorBook.where(author_id: self.authors).pluck :book_id

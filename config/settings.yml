@@ -10,6 +10,8 @@ admin:
   categories:
     index:
       categories_per_page: 6
+  book:
+    book_limit: 9
 explorer:
   categories:
     limit: 18

@@ -1,4 +1,4 @@
-class Supports::Author
+class Supports::AdminAuthor
   def initialize arg
     @params = arg
   end
