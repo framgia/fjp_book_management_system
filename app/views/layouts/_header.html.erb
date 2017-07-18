@@ -9,8 +9,8 @@
       </button>
       <%= link_to root_path, class: "navbar-brand" do %>
         <img src="http://www.reviewcompany.vn/public/media/uploads/company/logo/2014-08-21/b8bf8789-7367-4452-9ae5-022136c37396.png"
-          class="logo-dark" height="85" alt="Framgia logo"
-          title="Framgia logo"/>
+          class="logo-dark" height="85" alt="<%= t "app_name" %>"
+          title="<%= t "app_name" %>"/>
       <% end %>
     </div>
 
@@ -38,20 +38,29 @@
         <form class="search-form" method="get" id="searchform" action="/">
           <div class="form-group">
             <input class="form-control" type="text" size="put_a_size_here"
-              name="s" id="s" title="" placeholder="Search"/>
+              name="s" id="s" title="<%= t "layouts.header.search" %>"
+              placeholder="<%= t "layouts.header.what_are_you_looking_for" %>"/>
           </div>
         </form>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a class="pmd-ripple-effect" href="#">Link
+          <a class="pmd-ripple-effect" href="#">
+            <%= t "layouts.header.books" %>
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li><a class="pmd-ripple-effect" href="#">Link</a></li>
+        <li>
+          <a class="pmd-ripple-effect" href="#">
+            <%= t "layouts.header.blog" %>
+          </a>
+        </li>
         <li class="dropdown pmd-dropdown">
           <a data-toggle="dropdown" class="pmd-ripple-effect dropdown-toggle"
-             data-sidebar="true" href="#">Dropdown <span class="caret"></span></a>
+             data-sidebar="true" href="#">
+            <%= t "layouts.header.account" %>
+            <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu">
             <li><a class="pmd-ripple-effect" href="#">Action</a></li>
             <li><a class="pmd-ripple-effect" href="#">Another action</a></li>
@@ -60,7 +69,9 @@
             <li><a class="pmd-ripple-effect" href="#">Separated link</a></li>
             <li class="divider"></li>
             <li>
-              <a class="pmd-ripple-effect" href="#">One more separated link</a>
+              <a class="pmd-ripple-effect" href="#">
+                <%= t "layouts.header.logout" %>
+              </a>
             </li>
           </ul>
         </li>
