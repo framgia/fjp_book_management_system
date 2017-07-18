@@ -13,14 +13,18 @@
         <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="login.html">Logout</a></li>
+        <li><a href="login.html"><%= t "layouts.sidebar.edit_profile" %></a></li>
+        <li>
+          <%= link_to t("layouts.sidebar.logout"), destroy_user_session_path,
+            method: :delete%>
+        </li>
       </ul>
     </li><!-- End user info -->
 
     <li>
       <%= link_to admin_root_path, class: "pmd-ripple-effect active" do %>
         <i class="material-icons media-left pmd-sm">dashboard</i>
-        <span class="media-body">Dashboard</span>
+        <span class="media-body"><%= t "layouts.sidebar.dashboard" %></span>
       <% end %>
     </li>
 

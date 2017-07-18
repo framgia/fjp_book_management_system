@@ -1,0 +1,23 @@
+en:
+  layouts:
+    header:
+      books: "Books"
+      blog: "Blog"
+      account: "Account"
+      profile: "Profile"
+      login: "Login"
+      logout: "Logout"
+      search: "Search"
+      what_are_you_looking_for: "What are you looking for?"
+      notifications: "Notifications"
+    footer:
+      about_us: "About us"
+      blog: "Blog"
+      faq: "Faq's"
+      contact_us: "Contact us"
+      sitemap: "Site Map"
+      copyright: "All rights reserved"
+    sidebar:
+      dashboard: "Dashboard"
+      logout: "Logout"
+      edit_profile: "Edit Profile"
