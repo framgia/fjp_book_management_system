@@ -1,0 +1,150 @@
+@import "admin/colors";
+
+.pmd-sidebar {
+  background-color: $color-big-stone-approx;
+  min-width: 64px;
+  transform: translate3d(0, 0, 0);
+  width: 64px;
+
+  .pmd-sidebar-nav {
+    li {
+
+      a {
+        background-color: transparent;
+        color: $color-pumice-approx;
+        font-family: $font-0;
+        font-size: 15px;
+        padding: 18px 20px 16px;
+        transition: all .5s ease;
+
+        i {
+          min-width: 44px;
+          text-align: center;
+        }
+      }
+
+      &.entity-drop a {
+        background: $color-outer-space-approx;
+      }
+
+      .dropdown-menu li a {
+        background-color: transparent;
+        padding-bottom: 10px;
+        padding-left: 65px;
+        padding-top: 10px;
+
+        &:hover {
+          color: $white;
+          opacity: 1;
+        }
+
+        &:focus {
+          color: $white;
+          opacity: 1;
+        }
+
+        &.active {
+          color: $white;
+          opacity: 1;
+        }
+      }
+    }
+
+    .dropdown-menu {
+      background: $color-big-stone-approx;
+      padding: 10px 0;
+
+      li a {
+        padding-bottom: 15px;
+        padding-left: 24px;
+        padding-top: 15px;
+      }
+    }
+
+    a i svg {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  &.pmd-sidebar-open {
+    min-width: 274px;
+    width: 274px;
+  }
+
+  .dropdown-menu > li > a {
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus {
+      color: $white;
+    }
+
+    &.active {
+      color: $white;
+    }
+  }
+}
+
+.pmd-content {
+  margin-left: 64px;
+}
+
+.pmd-sidebar-left .nav > li {
+  > a {
+    &:hover {
+      background-color: $color-big-stone-approx;
+      color: $white;
+    }
+  }
+
+  &:focus {
+    background-color: $color-big-stone-approx;
+    color: $white;
+  }
+
+  &:active {
+    background-color: $color-big-stone-approx;
+    color: $white;
+  }
+
+  &.active {
+    background-color: $color-big-stone-approx;
+    color: $white;
+  }
+
+  &.pmd-user-info > a {
+    border-bottom: solid 1px $color-big-stone-approx;
+    color: $white;
+    font-size: 16px;
+    padding-left: 12px;
+
+    &:hover {
+      background: $color-big-stone-approx;
+    }
+
+    &:focus {
+      background: $color-big-stone-approx;
+    }
+
+    &:active {
+      background: $color-big-stone-approx;
+    }
+
+    &.active {
+      background: $color-big-stone-approx;
+    }
+  }
+}
+
+.pmd-sidebar-slide-push.pmd-sidebar-open {
+  &.pmd-content {
+    margin-left: 274px;
+  }
+
+  &.wrapper .constructor {
+    margin-left: 274px;
+  }
+}

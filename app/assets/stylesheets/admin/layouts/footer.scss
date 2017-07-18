@@ -1,0 +1,169 @@
+@import "admin/colors";
+
+%extend-1 {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.admin-footer {
+  background: $white none repeat scroll 0 0;
+  border-top: 1px solid $black-10;
+  margin-top: -70px;
+  padding-bottom: 14px;
+  padding-top: 17px;
+  position: relative;
+  transition: all .5s cubic-bezier(.55, 0, .1, 1) 0s;
+  z-index: 1;
+}
+
+.pmd-sidebar {
+  ~ .admin-footer {
+    padding-left: 64px;
+  }
+
+  &.pmd-sidebar-open ~ .admin-footer {
+    padding-left: 290px;
+  }
+}
+
+.copyright-text {
+  color: $color-trout-approx;
+  font-size: 14px;
+  padding-top: 8px;
+
+  a:hover {
+    color: $color-royal-blue-approx;
+  }
+}
+
+.admin-footer {
+  a {
+    color: $color-trout-approx;
+    display: inline-block;
+
+    &:hover {
+      color: $color-trout-approx;
+
+      svg path {
+        fill: $color-trout-approx;
+      }
+    }
+
+    &:focus svg path {
+      fill: $color-trout-approx;
+    }
+  }
+
+  .pmd-card-subtitle-text {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0;
+    opacity: 1;
+  }
+
+  .media-left {
+    padding-left: 0;
+    padding-right: 10px;
+
+    svg {
+      margin-top: 4px;
+    }
+  }
+
+  .list-inline {
+    line-height: 1.2;
+  }
+
+  .download-now {
+    max-width: 240px;
+    padding: 0 15px;
+
+    a > div {
+      @extend %extend-1;
+
+      svg {
+        @extend %extend-1;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .for-support {
+    max-width: 240px;
+    padding: 0 15px;
+
+    a > div {
+      @extend %extend-1;
+
+      svg {
+        @extend %extend-1;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
+
+    li {
+      text-align: left;
+    }
+  }
+
+  .pmd-card-title-text a {
+    color: $white;
+  }
+}
+
+@media(max-width: 767px) {
+  .admin-footer {
+
+    margin-top: -190px;
+
+    .media-left {
+      display: block;
+    }
+
+    a {
+      text-align: left;
+    }
+
+    .download-now {
+      float: none;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .for-support {
+      float: none;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .list-inline > li {
+      display: block;
+      padding: 8px 0;
+    }
+  }
+
+  .copyright-text {
+    text-align: center;
+  }
+
+  .pmd-sidebar ~ .admin-footer {
+    padding-left: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(0, 40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

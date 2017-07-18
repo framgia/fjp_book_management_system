@@ -2,8 +2,7 @@ scss_files:
   - 'app/assets/stylesheets/**'
 exclude:
   - 'app/assets/stylesheets/application.css'
-  - 'app/assets/stylesheets/animate.css'
-  - 'app/assets/stylesheets/jquery.timepicker.css'
+  - 'app/assets/stylesheets/admin.css'
   - 'vendor/assets/**'
 linters:
   ImportantRule:
