@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170715094651) do
+ActiveRecord::Schema.define(version: 20170718020258) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer "admin_id", null: false
@@ -84,6 +84,9 @@ ActiveRecord::Schema.define(version: 20170715094651) do
     t.datetime "public_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rate"
+    t.integer "rate_count"
+    t.text "description"
   end
 
   create_table "borrows", force: :cascade do |t|
@@ -108,7 +111,6 @@ ActiveRecord::Schema.define(version: 20170715094651) do
     t.integer "parent_id"
     t.integer "user_id", null: false
     t.string "content"
-    t.integer "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -140,7 +142,6 @@ ActiveRecord::Schema.define(version: 20170715094651) do
     t.integer "target_id", null: false
     t.string "target_type", null: false
     t.string "url", null: false
-    t.integer "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

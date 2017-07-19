@@ -1,0 +1,31 @@
+<div class="book-center book-part">
+  <p class="book-title"><%= book.title %></p>
+  <p class="book-author">
+    <% book.authors.each_with_index do |a, index| %>
+      <% if index == book.authors.count - 1 %>
+        <%= a.name %>
+      <% else %>
+        <%= a.name %>,
+      <% end %>
+    <% end %>
+  </p>
+  <div>
+    <% (1..(load_rate book.rate).first).each do |s| %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% end  %>
+    <% (1..(load_rate book.rate).second).each do |s| %>
+      <i class="fa fa-star-half-o" aria-hidden="true"></i>
+    <% end  %>
+    <% (1..(load_rate book.rate).last).each do |s| %>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+    <% end  %>
+  </div>
+  <p><%= t "books.show.series" %> <%= book.series.title %></p>
+  <%= t "books.show.tag" %>
+  <% book.tags.each do |t| %>
+    <div class="tag"><%= t.title %></div>
+  <% end %>
+  <p class="description">
+    <%= book.description %>
+  </p>
+</div>

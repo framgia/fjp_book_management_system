@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row book-top">
+    <div class="col-sm-3">
+      <%= render "book_left", book: @book %>
+    </div>
+    <div class="col-sm-6">
+      <%= render "book_center", book: @book %>
+    </div>
+    <div class="col-sm-3">
+      <%= render "book_right", book: @book %>
+    </div>
+  </div>
+  <div class="row social-field">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#comment">
+        <%= t "books.show.comment" %></a></li>
+      <li><a data-toggle="tab" href="#blog">
+        <%= t "books.show.blog" %>
+      </a></li>
+    </ul>
+    <%= render "social", book: @book %>
+  </div>
+  <div class="row">
+    <%= render "related_book", book: @book %>
+  </div>
+</div>
