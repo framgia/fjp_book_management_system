@@ -1,0 +1,16 @@
+<div class="relate-book">
+  <p class="book-title relate-title">Related Book</p>
+  <div class="relate-book-cont">
+    <div class="owl-carousel owl-theme">
+      <% book.find_related_book.each do |b| %>
+        <div class="item-book pmd-z-depth-2">
+          <div class="img-container">
+          <img src="<%= b.images.first.url %>">
+          <span><%= b.title %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

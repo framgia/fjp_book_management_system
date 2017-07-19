@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :find_book
+
   def show
   end
 

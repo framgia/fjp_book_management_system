@@ -1,7 +1,7 @@
 /*
  *= require bootstrap/dist/css/bootstrap.min
  *= require propellerkit/dist/css/propeller.min
- *= require_tree ./admin
  *= require_self
  *= require font-awesome
+ *= require_tree ./admin
  */

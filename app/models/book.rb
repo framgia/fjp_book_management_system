@@ -19,4 +19,12 @@ class Book < ApplicationRecord
   has_many :blogs, through: :blog_books
 
   has_and_belongs_to_many :tags, join_table: :book_tags
+
+  def find_same_author_book
+    AuthorBook.where(author_id: self.authors).pluck :book_id
+  end
+
+  def find_related_book
+    Book.where(id: self.find_same_author_book).or Book.where series_id: self.series_id
+  end
 end
