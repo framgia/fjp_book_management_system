@@ -8,8 +8,8 @@ class Supports::AdminUsers
   end
 
   def users_search
-    search.result.page(@params[:param][:page]).
-      per_page Settings.admin.users.index.users_per_page
+    search.result.page(@params[:param][:page])
+      .per Settings.admin.users.index.users_per_page
   end
 
   def search

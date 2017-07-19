@@ -1,0 +1,25 @@
+<%= form_with url: search_index_path, method: :get, local: true do |f| %>
+  <div class="col-sm-9">
+    <div class="form-group">
+      <input type="text" id="regular1" class="form-control" name="query"
+        placeholder="<%= t "search.index.search_hint" %>">
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <button class="btn btn-block btn-primary pmd-ripple-effect">
+      <i class="material-icons small">search</i>
+      <%= t "search.index.search" %>
+    </button>
+  </div>
+  <div class="col-sm-9"></div>
+  <div class="col-sm-3 text-right">
+    <% if books.present? %>
+      <span class="pull-right">
+        <%= t "search.index.all" %>: <b><%= books.total_count %></b>
+      </span>
+    <% end %>
+  </div>
+  <div class="col-sm-12">
+    <hr>
+  </div>
+<% end %>

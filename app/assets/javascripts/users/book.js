@@ -1,19 +1,19 @@
 $(document).ready(function(){
-    $('#datepicker-start').datetimepicker({
-      minDate: new Date()
-    });
+  $('#datepicker-start').datetimepicker({
+    minDate: new Date()
+  });
 
-    $('#datepicker-end').datetimepicker({
-      minDate: new Date(),
-      useCurrent: false
-    });
+  $('#datepicker-end').datetimepicker({
+    minDate: new Date(),
+    useCurrent: false
+  });
 
-    $('#datepicker-start').on('dp.change', function(e) {
-      $('#datepicker-end').data('DateTimePicker').minDate(e.date);
-    });
-    $('#datepicker-end').on('dp.change', function(e) {
-      $('#datepicker-start').data('DateTimePicker').maxDate(e.date);
-    });
+  $('#datepicker-start').on('dp.change', function(e) {
+    $('#datepicker-end').data('DateTimePicker').minDate(e.date);
+  });
+  $('#datepicker-end').on('dp.change', function(e) {
+    $('#datepicker-start').data('DateTimePicker').maxDate(e.date);
+  });
 
   $(document).on('click','.btn-toggle-reply', function(){
     var id = $(this).parent().attr('data');

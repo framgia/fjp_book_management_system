@@ -18,11 +18,11 @@ gem "devise"
 gem "font-awesome-sass"
 gem "ransack"
 gem "kaminari"
-gem "will_paginate"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "carrierwave"
 gem "font-awesome-rails"
+gem "bootstrap-kaminari-views"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
