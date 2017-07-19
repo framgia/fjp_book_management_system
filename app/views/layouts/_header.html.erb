@@ -16,6 +16,12 @@
 
     <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse pmd-navbar-sidebar">
       <div class="pmd-navbar-right-icon pull-right">
+        <a class="btn btn-primary pmd-ripple-effect login center-block" href="#">
+          <i class="material-icons small">lock</i>
+          <%= t "layouts.header.login" %>
+        </a>
+      </div>
+      <div class="pmd-navbar-right-icon pull-right">
         <a class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect search-toggle"
            href="javascript:void(0);">
           <i class="material-icons md-light pmd-sm pmd-svg-icon ic_search">
@@ -35,13 +41,21 @@
           </svg>
           </i>
         </a>
-        <form class="search-form" method="get" id="searchform" action="/">
+        <form class="search-form" method="get" id="searchform"
+          action="<%= search_index_path %>">
           <div class="form-group">
             <input class="form-control" type="text" size="put_a_size_here"
-              name="s" id="s" title="<%= t "layouts.header.search" %>"
-              placeholder="<%= t "layouts.header.what_are_you_looking_for" %>"/>
+              name="query" id="search" title="<%= t "layouts.header.search" %>"
+              placeholder="<%= t "layouts.header.what_are_you_looking_for" %>"
+              autocomplete="off"/>
+          </div>
+          <div class="autocomplete pmd-z-depth-1" id="autocomplete">
+          </div>
+          <div id="searching" class="hidden">
+            <h3 class="text-center"><%= t "layouts.header.searching" %>..</h3>
           </div>
         </form>
+
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -57,7 +71,7 @@
         </li>
         <li class="dropdown pmd-dropdown">
           <a data-toggle="dropdown" class="pmd-ripple-effect dropdown-toggle"
-             data-sidebar="true" href="#">
+             data-sidebar="true" href="#" data-turbolinks="false">
             <%= t "layouts.header.account" %>
             <span class="caret"></span>
           </a>
