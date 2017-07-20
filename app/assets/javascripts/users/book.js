@@ -1,4 +1,6 @@
-$(document).ready(function(){
+/* global SimpleMDE */
+
+$(document).ready(function () {
   $('#datepicker-start').datetimepicker({
     minDate: new Date()
   });
@@ -8,19 +10,19 @@ $(document).ready(function(){
     useCurrent: false
   });
 
-  $('#datepicker-start').on('dp.change', function(e) {
+  $('#datepicker-start').on('dp.change', function (e) {
     $('#datepicker-end').data('DateTimePicker').minDate(e.date);
   });
-  $('#datepicker-end').on('dp.change', function(e) {
+  $('#datepicker-end').on('dp.change', function (e) {
     $('#datepicker-start').data('DateTimePicker').maxDate(e.date);
   });
 
-  $(document).on('click','.btn-toggle-reply', function(){
+  $(document).on('click', '.btn-toggle-reply', function () {
     var id = $(this).parent().attr('data');
     $(this).addClass('hide');
     $(this).siblings().removeClass('hide');
-    $('.child-comment-field'+id).toggleClass('hide');
-    $('.btn-toggle-reply'+id).toggleClass('hide');
+    $('.child-comment-field' + id).toggleClass('hide');
+    $('.btn-toggle-reply' + id).toggleClass('hide');
   });
 
   $('.owl-carousel').owlCarousel();
@@ -60,5 +62,42 @@ $(document).ready(function(){
         }
       });
     }
+  });
+
+  var editors = {};
+
+  var editorOptions = {
+    element: $('#cmt-0')[0],
+    status: false,
+    toolbar: false,
+    forceSync: true,
+    spellChecker: false
+  };
+
+  editors['comment-0'] = new SimpleMDE(editorOptions);
+
+  $('li.load-html').click(function(){
+    var id = $(this).attr('data');
+    $('#preview-' + id).html(editors['comment-' + id]
+      .options.previewRender(editors['comment-' + id].value()));
+  });
+
+  $('.fa-reply').click(function () {
+    var id = $(this).attr('data');
+
+    if(editors['comment-' + id] === undefined){
+      editorOptions.element = $('#comment-' + id)[0];
+      editors['comment-' + id] = new SimpleMDE(editorOptions);
+    }
+
+    setTimeout(function(){
+      $('.reply-' + id).removeClass('hidden');
+    }, 200);
+  });
+
+  $('.btn-cancel').click(function (e) {
+    e.preventDefault();
+    var id = $(this).attr('data');
+    $('.reply-' + id).addClass('hidden');
   });
 });

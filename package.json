@@ -5,6 +5,7 @@
     "bootstrap": "^3.3.7",
     "moment": "^2.18.1",
     "owl.carousel": "^2.2.0",
-    "propellerkit": "^1.1.0"
+    "propellerkit": "^1.1.0",
+    "simplemde": "^1.11.2"
   }
 }

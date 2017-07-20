@@ -18,4 +18,5 @@
 //= require propellerkit/dist/js/propeller.min
 //= require propellerkit/components/datetimepicker/js/bootstrap-datetimepicker
 //= require owl.carousel/dist/owl.carousel.min
+//= require simplemde/dist/simplemde.min
 //= require_tree ./users
