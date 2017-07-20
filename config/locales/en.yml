@@ -60,3 +60,15 @@ en:
     clear: Clear form
     delete: Delete
     edit: Edit
+  books:
+    show:
+      comment: "Comment"
+      blog: "Blog"
+      ago: "ago"
+      start_date: "Start Date"
+      end_date: "End Date"
+      quantity: "Quantity"
+      send_req: "Send request"
+      borrow: "Borrow this book?"
+      tag: "Tag:"
+      series: "Series:"

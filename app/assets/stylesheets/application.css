@@ -12,6 +12,10 @@
  *
  *= require bootstrap/dist/css/bootstrap.min
  *= require propellerkit/dist/css/propeller.min
+ *= require propellerkit/components/datetimepicker/css/bootstrap-datetimepicker
+ *= require propellerkit/components/datetimepicker/css/pmd-datetimepicker
+ *= require owl.carousel/dist/assets/owl.carousel.min
+ *= require font-awesome
  *= require_tree ./users
  *= require_self
  */

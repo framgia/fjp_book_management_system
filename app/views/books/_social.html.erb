@@ -1,0 +1,114 @@
+<div class="tab-content">
+  <div id="comment" class="tab-pane fade in active">
+    <div class="tab-row">
+      <% book.comments.each do |c| %>
+        <% if c.parent_id == 0 %>
+          <div class="comment-box">
+            <div class="cmt-parent">
+              <div class="social-rate">
+                <% if c.votes %> <%= c.votes.count %>
+                <% else %> 0
+                <% end %>
+                <i class="fa fa-heart" aria-hidden="true"></i>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-1 user-avatar">
+                    <img src="" alt="">
+                  </div>
+                  <div class="col-sm-11">
+                    <div class="comment-head">
+                      <%= link_to c.user.email, "#user_show" %>
+                      <span class="time-ago" title="<%= c.created_at %>">
+                        <%= time_ago_in_words c.created_at %> <%= t "books.show.ago" %>
+                      </span>
+                    </div>
+                    <div class="comment-content">
+                      <p><%= c.content %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% if c.has_child? %>
+                <div class="toggle-reply" data="<%= c.id %>">
+                  <i class="btn-toggle-reply fa fa-angle-down"
+                     aria-hidden="true"></i>
+                  <i class="btn-toggle-reply fa fa-angle-up hide"
+                     aria-hidden="true"></i>
+                </div>
+              <% end %>
+            </div>
+            <div class="child-comment-field<%= c.id %> hide">
+              <% c.load_children.each do |cm| %>
+                <div class="comment-box">
+                  <div class="cmt-child">
+                    <div class="social-rate">
+                      <% if cm.votes %> <%= cm.votes.count %>
+                      <% else %> 0
+                      <% end %>
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    </div>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-sm-1 user-avatar">
+                          <img src="" alt="">
+                        </div>
+                        <div class="col-sm-11">
+                          <div class="comment-head">
+                            <%= link_to cm.user.email, "#user_show" %>
+                            <span class="time-ago" title="<%= cm.created_at %>">
+                              <%= time_ago_in_words cm.created_at %> <%= t "books.show.ago" %>
+                            </span>
+                          </div>
+                          <div class="comment-content">
+                            <p><%= cm.content %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="blog" class="tab-pane fade">
+    <div class="tab-row">
+      <% book.blogs.each do |b| %>
+        <div class="blog-box">
+          <div class="blog-head">
+            <p><%= link_to b.user.email, "#" %>
+              <span class="time-ago" title="<%= b.created_at %>">
+                <%= time_ago_in_words b.created_at %> <%= t "books.show.ago" %>
+              </span>
+            </p>
+            <span class="blog-title">
+              <%= link_to b.title, "" %>
+            </span>
+            <div class="blog-title-left">
+              <% if b.votes %> <%= b.votes.count %>
+              <% else %> 0
+              <% end %>
+              <i class="fa fa-heart" aria-hidden="true"></i>
+
+              <% if b.comments %> <%= b.comments.count %>
+              <% else %> 0
+              <% end %>
+              <i class="fa fa-comment" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="blog-description">
+            <p>
+              <%= b.description %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
