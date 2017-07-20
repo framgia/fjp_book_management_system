@@ -14,5 +14,6 @@ class Book < ApplicationRecord
   has_many :book_categories
   has_many :comments, as: :target
   has_many :blog_books
-  has_many :authors, through: :author_books
+  has_many :authors, through: :author_books, dependent: :destroy
+  has_many :categories, through: :book_categories, dependent: :destroy
 end

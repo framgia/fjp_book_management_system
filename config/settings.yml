@@ -2,6 +2,11 @@ search:
   autocomplete:
     limit: 10
 admin:
+<<<<<<< e16e026b2fba45220c39f45ade9ca89e1cdbf4a9
   users:
     index:
       users_per_page: 6
+=======
+  author:
+    per_page: 15
+>>>>>>> 126944 - Admin manage authors

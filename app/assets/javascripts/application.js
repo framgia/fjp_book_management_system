@@ -17,6 +17,9 @@
 //= require propellerkit/dist/js/propeller.min
 //= require_tree ./users
 //= require_tree ./admin
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
 
 $(document).on('click', '.save-user', function() {
   alert("dmm")

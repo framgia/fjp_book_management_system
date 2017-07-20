@@ -1,0 +1,44 @@
+<div class="modal-dialog">
+  <div class="modal-content" id="content">
+    <h1><%= t "admin.authors.edit.link2" %></h1>
+    <ul class="errors"></ul>
+    <hr>
+    <%= form_for [:admin, author] do |f| %>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="text-center">
+              <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+              <%= f.fields_for :images do |p| %>
+                <div class="field">
+                  <%= p.file_field :url, multiple: true, name: "images[url][]" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-xs-9 personal-info">
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Name:</label>
+                <div class="col-lg-8">
+                  <%= f.text_field :name, class:"form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Description:</label>
+                <div class="col-lg-8">
+                  <%= f.text_area :description, class:"form-control" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit class: "btn btn-success", id:" btn-edit" %>
+        <%= f.submit t("button.clear"), type: :reset, class:"btn btn-danger" %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    <% end %>
+  </div>
+</div>

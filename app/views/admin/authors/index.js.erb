@@ -1,0 +1,2 @@
+$('#author').html('<%= j render "author", authors: @authors %>');
+$('#pagination').html('<%= j paginate(@authors.authors_search, remote: true).to_s %>');
