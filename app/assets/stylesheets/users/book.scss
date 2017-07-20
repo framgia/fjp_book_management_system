@@ -6,7 +6,7 @@
 
 .frame {
   background: $frame;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
   padding: 20px 10px;
 }
 
@@ -35,7 +35,7 @@
 .tag {
   background: $aqua;
   border-radius: 5px;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
   color: $white;
   display: inline;
   padding: 2px 5px;
@@ -66,22 +66,25 @@
 }
 
 .tab-row {
-  background: $white;
+  background: $background-book;
   border-radius: 2px;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
   margin: 0 -10px;
   padding: 20px !important;
 }
 
 .social-field {
-  padding: 10px 60px;
+  margin: 20px;
+  padding: 20px 30px;
+  background: $frame-inverse;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
 }
 
 .cmt-parent {
   background: $white;
   border-left: 2px solid $header;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
+  box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
   margin-bottom: .5px;
+  margin-top: 8px;
   padding: 5px;
   position: relative;
 
@@ -100,10 +103,8 @@
 .cmt-child {
   background: $white;
   border-left: 2px solid $header;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
-  margin-bottom: 1px;
-  margin-left: 50px;
-  margin-right: 20px;
+  box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
+  margin: 3px 20px 1px 50px;
   padding: 5px;
 
   .user-avatar {
@@ -122,7 +123,7 @@
 
 .blog-box {
   border-left: 2px solid $header;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
   margin-bottom: .5px;
   padding: 10px 20px;
   position: relative;
@@ -171,7 +172,7 @@
 .toggle-reply {
   border-radius: 50%;
   bottom: 6%;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
   padding: 0 5px;
   position: absolute;
   right: 1%;
@@ -237,15 +238,70 @@
 
 .book-part {
   background: $white;
-  box-shadow: 0 1px 3px $shadow1, 0 1px 2px $shadow2;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
   padding: 20px;
+}
+
+.book-borrow {
+
+  .btn-send-req {
+    background: $aqua;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+  }
 }
 
 .book-top {
-  background: $background-book;
+  margin: 20px;
+  background: $frame-inverse;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
   padding: 20px;
 }
 
+.relate-book {
+  margin: 30px;
+  padding: 5px 20px 15px;
+  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+  background: $relate-book;
+}
+
 .relate-title {
-  padding: 20px 50px;
+  padding: 0 10px;
+  margin: 0;
+}
+
+.relate-book-cont {
+  padding-top: 10px;
+}
+
+.item-book {
+  background: $white;
+
+  span {
+    margin-top :5px;
+    font-size: .8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-height: 1em;
+    max-height: 2em;
+  }
+}
+
+.owl-item {
+  margin: 0 10px;
+  height: 250px;
+  width: 150px !important;
+}
+
+.img-container {
+  padding: 5px 10px;
+
+  img {
+    width: 100%;
+    height: 200px;
+    border: 1px black;
+    margin-right: 0;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+  }
 }

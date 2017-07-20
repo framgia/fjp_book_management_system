@@ -13,53 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery/dist/jquery.min
+//= require moment/min/moment.min
 //= require bootstrap/dist/js/bootstrap.min
 //= require propellerkit/dist/js/propeller.min
+//= require propellerkit/components/datetimepicker/js/bootstrap-datetimepicker
+//= require owl.carousel/dist/owl.carousel.min
 //= require_tree ./users
-//= require_tree ./admin
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui
-
-$(document).on('click', '.save-user', function() {
-  alert("dmm")
-  var userId = $(this).data('id');
-  var idEmailTextField = '#text-field-mail-' + userId;
-
-  var newEmail = $(idEmailTextField).val();
-  var url = '/admin/user/' + userId;
-
-  $.ajax({
-    type:'PATCH',
-    url: url,
-    data: {
-      user: {
-        id: userId,
-        email: newEmail
-      }
-    }
-  }).success(function(){
-    $('#users-list-view').load(document.URL + ' #users-list');
-  });
-});
-
-$(document).on('click', '.delete-user', function() {
-  var userId = $(this).data('id');
-  var idEmailTextField = '#text-field-mail-' + userId;
-
-  var newEmail = $(idEmailTextField).val();
-  var url = '/admin/user/' + userId;
-
-  $.ajax({
-    type:'DELETE',
-    url: url,
-    data: {
-      user: {
-        id: userId,
-        email: newEmail
-      }
-    }
-  }).success(function(){
-    $('#users-list-view').load(document.URL + ' #users-list');
-  });
-});

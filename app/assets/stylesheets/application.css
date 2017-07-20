@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_self
  *= require bootstrap/dist/css/bootstrap.min
  *= require propellerkit/dist/css/propeller.min
  *= require propellerkit/components/datetimepicker/css/bootstrap-datetimepicker
@@ -17,5 +18,4 @@
  *= require owl.carousel/dist/assets/owl.carousel.min
  *= require font-awesome
  *= require_tree ./users
- *= require_self
  */
