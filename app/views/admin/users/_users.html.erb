@@ -1,0 +1,78 @@
+<div class="row">
+  <%= search_form_for [:admin, data.search], remote: true, method: :get do |f| %>
+    <div class="input-group input-group-lg col-sm-12">
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal"
+          data-target="#modal-new-user">
+          <%= t "admin.users.index.add_new_user" %></button>
+        <div class="modal fade" id="modal-new-user"
+          role="dialog">
+          <div class="modal-dialog user-modal-dialog">
+            <%= render "user_modal", user: new_user %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-10 text-right form-group">
+        <%= f.text_field :email_cont, class: "input-text-search",
+          placeholder: t("admin.users.index.input_text_search"),
+          id: "searchinput" %>
+        <%= f.submit  "search", class: "btn btn-info" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2" id="number-users-view">
+        <div id="number-users">
+          <p><%= t "admin.users.index.number_user" %><%= data.users.count %></p>
+        </div>
+      </div>
+      <div class="apple-pagination">
+        <div class="page_info" id="pagination">
+          <%= paginate data.users_search, remote: true %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view"
+      id="users-list-view">
+      <div class="table-responsive" id="users-list">
+        <table cellspacing="0" cellpadding="0"
+          class="table" id="table-bootstrap">
+          <tbody>
+          <tr>
+            <th>
+              <%= sort_link data.search, :id, t(".id"),
+                {}, {remote: true, method: :get} %>
+            </th>
+            <th>
+              <%= sort_link data.search, :name, t(".name"),
+                {}, {remote: true, method: :get} %>
+            </th>
+            <th>
+              <%= sort_link data.search, :email, t(".email"),
+                {}, {remote: true, method: :get} %>
+            </th>
+          </tr>
+          <% if data.users_search.any? %>
+            <% data.users_search.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= link_to "user.name", "#",
+                  data: {toggle: "modal", target: "#modal-edit-user-#{user.id}"}%>
+                  <div class="modal fade" id="modal-edit-user-<%= user.id %>"
+                    role="dialog">
+                    <div class="modal-dialog user-modal-dialog">
+                      <%= render "user_modal", user: user %>
+                    </div>
+                  </div>
+                </td>
+                <td><%= user.email %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>

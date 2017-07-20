@@ -1,0 +1,90 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <% if user.id.blank? %>
+      <h4 class="modal-title"><%= t "admin.users.index.create_new_user" %></h4>
+    <% else %>
+      <h4 class="modal-title">
+        <%= t "admin.users.index.edit_user_infomation" %></h4>
+    <% end %>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="/assets/avata_default.jpg" class="avatar img-circle"
+            alt="avatar">
+          <h6><%= t "admin.users.index.upload_new_avata" %></h6>
+          <input type="file" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-9 personal-info">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">
+              <%= t "admin.users.index.name" %></label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="Name Demo">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">
+              <%= t "admin.users.index.divison" %></label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="Div 1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">
+              <%= t "admin.users.index.email" %></label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text"
+                id= <%= "text-field-mail-#{user.id}" %>
+                value= <%= user.email %>>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">
+              <%= t "admin.users.index.user_name" %></label>
+            <div class="col-md-8">
+              <input class="form-control" type="text" value="phuc.ld95">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">
+              <%= t "admin.users.index.password" %></label>
+            <div class="col-md-8">
+              <input class="form-control" type="password"
+                id= <%= "text-field-password-#{user.id}" %>>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">
+              <%= t "admin.users.index.confirm_password" %></label>
+            <div class="col-md-8">
+              <input class="form-control" type="password"
+                id= <%= "text-field-password-confirm-#{user.id}" %>>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <% if user.id.blank? %>
+      <button type="button" class="btn btn-success create-user"
+        data-dismiss="modal">
+        <%= t "admin.users.index.create" %>
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-danger delete-user"
+        data-dismiss="modal" data-id="<%= user.id %>">
+        <%= t "admin.users.index.delete" %>
+      </button>
+      <button type="button" class="btn btn-success save-user"
+        data-dismiss="modal" data-id="<%= user.id %>">
+        <%= t "admin.users.index.save" %>
+      </button>
+    <% end %>
+  </div>
+</div>

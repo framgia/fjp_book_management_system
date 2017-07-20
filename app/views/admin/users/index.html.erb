@@ -1,0 +1,17 @@
+<ol class="breadcrumb text-left">
+  <li>
+    <%= link_to t("layouts.sidebar.dashboard" ),
+      admin_root_path, method: :get%>
+  </li>
+  <li class="active"><%= t "admin.users.index.users_management" %></li>
+</ol>
+<h1 class="section-title" id="services">
+  <span><%= t "admin.users.index.users_management" %></span>
+</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="search-form" id="users">
+      <%= render "users", data: @data, new_user: @user %>
+    </div>
+  </div>
+</div>
