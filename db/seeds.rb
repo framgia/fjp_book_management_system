@@ -11,6 +11,11 @@ User.create! email: "pham.huu.duc@framgia.com",
 User.create! email: "tran.thi.dieu.linh@framgia.com",
   password: "linh123", password_confirmation: "linh123"
 
+for i in 0..100
+  User.create! email: "le.dinh.phuc" + i.to_s + "@framgia.com",
+    password: "phuc123", password_confirmation: "phuc123"
+end
+
 Publisher.create!([
   {name: "AlphaBook", description: "Vietnam's publisher"},
   {name: "Nha Nam", description: "Vietnam's publisher"},

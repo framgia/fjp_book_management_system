@@ -1,0 +1,32 @@
+en:
+  admin:
+    users:
+      create:
+        success: "Create user success!"
+        something_wrong: "Create user fail, has something wrong!"
+      update:
+        success: "Edit user updated!"
+        something_wrong: "Edit user fail, has something wrong!"
+      destroy:
+        success: "Delete user success!"
+        something_wrong: "Delete user fail, has something wrong!"
+      update:
+        create: "Create"
+      index:
+        not_exist: "User not exist!"
+        users_management: "Users Management"
+        create_new_user: "Create new user"
+        edit_user_infomation: "Edit user infomation"
+        upload_new_avata: "Upload new avata."
+        name: "Name:"
+        divison: "Division:"
+        email: "Email:"
+        user_name: "Username:"
+        password: "New password:"
+        confirm_password: "Confirm new password:"
+        create: "Create"
+        delete: "Delete"
+        save: "Save"
+        add_new_user: "Add new user"
+        input_text_search: "Input key word"
+        number_user: "Number of users: "

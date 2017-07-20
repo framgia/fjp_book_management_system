@@ -15,7 +15,15 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "config"
 gem "devise"
+gem "font-awesome-sass"
 gem "ransack"
+gem "kaminari"
+gem "will_paginate"
+gem "jquery-rails"
+gem "jquery-ui-rails"
+gem "best_in_place"
+gem "carrierwave"
+gem "byebug"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

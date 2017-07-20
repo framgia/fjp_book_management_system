@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root "static_pages#show", page: "dashboard"
     get "/pages/:page" => "static_pages#show"
+    resources :users
   end
 end

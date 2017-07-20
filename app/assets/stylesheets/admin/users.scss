@@ -1,0 +1,65 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "colors";
+
+.main-content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.avatar {
+  width: 100%;
+}
+
+body .user-modal-dialog {
+  width: 750px;
+}
+
+.input-text-search {
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 6px 20px;
+  width: 50%;
+}
+
+.pagination {
+  margin: 0 !important;
+}
+
+.apple-pagination {
+  cursor: default;
+  text-align: center;
+
+  a,
+  span {
+    padding: 0 2px;
+  }
+
+  .disabled {
+    color: $dark-silver;
+  }
+
+  .current {
+    background-color: $color-big-stone-approx;
+    border-radius: 1em;
+    color: $white;
+    display: inline-block;
+    font-style: normal;
+    font-weight: bold;
+    height: 2em;
+    padding-top: 5px;
+    width: 2em;
+  }
+
+  a {
+    color: $cornflower-blue;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+}

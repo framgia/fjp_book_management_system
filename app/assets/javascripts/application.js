@@ -16,3 +16,47 @@
 //= require bootstrap/dist/js/bootstrap.min
 //= require propellerkit/dist/js/propeller.min
 //= require_tree ./users
+//= require_tree ./admin
+
+$(document).on('click', '.save-user', function() {
+  alert("dmm")
+  var userId = $(this).data('id');
+  var idEmailTextField = '#text-field-mail-' + userId;
+
+  var newEmail = $(idEmailTextField).val();
+  var url = '/admin/user/' + userId;
+
+  $.ajax({
+    type:'PATCH',
+    url: url,
+    data: {
+      user: {
+        id: userId,
+        email: newEmail
+      }
+    }
+  }).success(function(){
+    $('#users-list-view').load(document.URL + ' #users-list');
+  });
+});
+
+$(document).on('click', '.delete-user', function() {
+  var userId = $(this).data('id');
+  var idEmailTextField = '#text-field-mail-' + userId;
+
+  var newEmail = $(idEmailTextField).val();
+  var url = '/admin/user/' + userId;
+
+  $.ajax({
+    type:'DELETE',
+    url: url,
+    data: {
+      user: {
+        id: userId,
+        email: newEmail
+      }
+    }
+  }).success(function(){
+    $('#users-list-view').load(document.URL + ' #users-list');
+  });
+});
