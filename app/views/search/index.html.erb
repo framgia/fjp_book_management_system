@@ -1,3 +1,20 @@
-<div class="container">
-
+<div class="container" id="search-controller">
+  <div class="row">
+    <div class="col-sm-9 left-block">
+      <div class="row">
+        <%= render "search/search_form", books: @books %>
+        <% if @books.count > 0 %>
+          <%= render "search/books", books: @books %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <% if @suggest_tags.present? %>
+        <h3 class="text-uppercase heading-block">
+          <%= t "search.index.tag_suggestions" %>
+        </h3>
+        <%= render "search/tag_suggestions", suggest_tags: @suggest_tags %>
+      <% end %>
+    </div>
+  </div>
 </div>

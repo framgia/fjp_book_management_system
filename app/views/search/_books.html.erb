@@ -1,0 +1,33 @@
+<% books.each do |book| %>
+  <div class="col-sm-12">
+    <h2><%= book.title %></h2>
+    <% if book.authors.present? %>
+      <h4>
+        <%= t "search.index.authors" %>:
+        <% book.authors.each do |author| %>
+          <%= link_to author.name, "#" %>
+          <%= author != book.authors.last ? ", " : nil %>
+        <% end %>
+      </h4>
+    <% end %>
+    <% if book.series.present? %>
+      <h4>
+        <%= t "search.index.in_series" %>:
+        <%= link_to book.series.title, "#" %>
+      </h4>
+    <% end %>
+    <% if book.categories.present? %>
+      <h4>
+        <%= t "search.index.categories" %>:
+        <% book.categories.each do |category| %>
+          <%= link_to category.title, "#" %>
+          <%= category != book.categories.last ? ", " : nil %>
+        <% end %>
+      </h4>
+    <% end %>
+    <hr>
+  </div>
+<% end %>
+<div class="col-sm-12">
+  <%= paginate books, theme: "twitter-bootstrap-3" %>
+</div>

@@ -1,8 +1,8 @@
 @import "users/colors";
 
 .wrapper {
-  padding-top: 92px;
   background: $frame;
+  padding-top: 92px;
 }
 
 .navbar {
@@ -24,6 +24,10 @@
   .container {
     border-bottom: 1px solid $navbar-border-container;
     padding: 8px 0;
+  }
+
+  .btn-user {
+    margin-top: 14px;
   }
 
   .autocomplete {
@@ -495,6 +499,10 @@
   }
 
   .pmd-navbar {
+    .btn-user {
+      margin-top: 5px;
+    }
+
     .pmd-navbar-right-icon {
       margin: 0;
     }
@@ -574,6 +582,12 @@
 }
 
 @media screen and (max-width: 768px) {
+  .pmd-user-info {
+    .btn-user {
+      background-color: transparent !important;
+    }
+  }
+
   .pmd-navbar-sidebar {
     .pmd-navbar-right-icon:first-child {
       padding: 15px 30px 5px;

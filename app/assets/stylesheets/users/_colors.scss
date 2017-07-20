@@ -29,7 +29,6 @@ $black: #000;
 $color-swiss-coffee-approx: #d9d6d6;
 $color-stack-approx: #8f8f8f;
 $color-gallery-approx: #ededed;
-$frame: rgba(240, 240, 240, .91);
 $background-book: rgba(246, 246, 246, .89);
 $frame-start: #fdfbfb;
 $frame-end:#ebedee;
@@ -39,8 +38,8 @@ $relate-book-start: #f3e7e9;
 $relate-book-mid: #e3eeff;
 $relate-book: linear-gradient(to top, $relate-book-start 0%,
   $relate-book-mid 99%, $relate-book-mid 100%);
-$send-req-start: #7DE2FC;
-$send-req-end: #B9B6E5;
+$send-req-start: #7de2fc;
+$send-req-end: #b9b6e5;
 $send-req: linear-gradient(35deg, $send-req-start 0%, $send-req-end 100%);
 $background-book: rgb(249, 249, 249);
 $shadow1: rgba(0, 0, 0, .12);

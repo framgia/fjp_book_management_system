@@ -9,7 +9,7 @@ class Supports::Author
 
   def authors_search
     search.result.page(@params[:param][:page])
-      .per_page Settings.admin.author.per_page
+      .per Settings.admin.author.per_page
   end
 
   def search

@@ -1,0 +1,10 @@
+en:
+  search:
+    index:
+      search_hint: "Input your keywords ex: tag name, category, book name.."
+      search: "Search"
+      authors: "Authors"
+      categories: "Categories"
+      in_series: "Series"
+      all: "All"
+      tag_suggestions: "Tag Suggestions"
