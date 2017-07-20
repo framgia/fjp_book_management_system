@@ -20,12 +20,11 @@
       <i class="fa fa-star-o" aria-hidden="true"></i>
     <% end  %>
   </div>
-  <p><%= t "books.show.series" %> <%= book.series.title %></p>
-  <%= t "books.show.tag" %>
-  <% book.tags.each do |t| %>
-    <div class="tag"><%= t.title %></div>
-  <% end %>
-  <p class="description">
-    <%= book.description %>
-  </p>
+  <p class="book-info-row"><span><%= t "books.show.series" %></span> <%= book.series.title %></p>
+  <div class="book-info-row">
+    <span><%= t "books.show.tag" %></span>
+    <% book.tags.each do |t| %>
+      <div class="tag"><%= t.title %></div>
+    <% end %>
+  </div>
 </div>

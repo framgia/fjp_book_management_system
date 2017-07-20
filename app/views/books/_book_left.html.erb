@@ -1,8 +1,11 @@
 <div class="book-image-cont book-part">
   <img src="<%= book.images.first.url %>" class="book-image">
   <div class="image-others">
-    <% book.images.each do |i| %>
-      <img src="<%= i.url %>" class="book-image-others">
-    <% end %>
+    <div class="owl-carousel owl-theme">
+      <% book.images.each do |i| %>
+        <img src="<%= i.url %>" class="book-image-others"
+          id="image-other<%= i.id %>">
+      <% end %>
+    </div>
   </div>
 </div>

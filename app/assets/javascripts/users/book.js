@@ -24,4 +24,10 @@ $(document).ready(function(){
   });
 
   $('.owl-carousel').owlCarousel();
+
+  $(document).on('click','.book-image-others',function(){
+    $(this).attr('id');
+    var url = $(this).attr('src');
+    $('.book-image').attr('src', url);
+  });
 });
