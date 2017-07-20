@@ -1,0 +1,20 @@
+en:
+  admin:
+    categories:
+      create:
+        success: "Create new category suscess!"
+        something_wrong: "Create new category fail, has something wrong!"
+      update:
+        success: "Update category suscess!"
+        something_wrong: "Update category fail, has something wrong!"
+      destroy:
+        success: "Delete category suscess!"
+        something_wrong: "Delete category fail, has something wrong!"
+      index:
+        not_exist: "Category not exit."
+        add_new_category: "Add new category"
+        number_categories: "Number categories: "
+        id: "ID"
+        title: "Title"
+        parent_category: "Parent category"
+        input_text_search: "Input text search."

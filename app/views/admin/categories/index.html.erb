@@ -1,0 +1,17 @@
+<ol class="breadcrumb text-left">
+  <li>
+    <%= link_to t("layouts.sidebar.dashboard" ),
+      admin_root_path, method: :get%>
+  </li>
+  <li class="active"><%=  %></li>
+</ol>
+<h1 class="section-title" id="services">
+  <span><%= %></span>
+</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="search-form" id="categories">
+      <%= render "categories", data: @data, new_category: @category%>
+    </div>
+  </div>
+</div>

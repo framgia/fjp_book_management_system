@@ -1,0 +1,87 @@
+<div class="row">
+  <%= search_form_for [:admin, data.search], remote: true, method: :get do |f| %>
+    <div class="input-group input-group-lg col-sm-12">
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal"
+          data-target="#modal-new-category">
+          <%= t "admin.categories.index.add_new_category" %></button>
+        <div class="modal fade" id="modal-new-category"
+          role="dialog">
+          <div class="modal-dialog user-modal-dialog">
+            <%= render "category_modal", category: new_category,
+              books: data.books %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-10 text-right form-group">
+        <%= f.text_field :title_cont, class: "input-text-search",
+          placeholder: t("admin.categories.index.input_text_search"),
+          id: "searchinput" %>
+        <%= f.submit  "search", class: "btn btn-info" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2" id="number-categories-view">
+        <div id="number-categories">
+          <p><%= t "admin.categories.index.number_categories" %>
+            <%= data.categories.count %></p>
+        </div>
+      </div>
+      <div class="page_info" id="pagination">
+        <%= paginate data.categories_search, remote: true,
+          theme: "twitter-bootstrap-3" %>
+      </div>
+    </div>
+    <br>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" id="categories-list-view">
+      <div class="table-responsive" id="categories-list">
+        <table cellspacing="0" cellpadding="0"
+          class="table" id="table-bootstrap">
+          <tbody>
+          <tr>
+            <th>
+              <%= sort_link data.search, :id, t("admin.categories.index.id"),
+                {}, {remote: true, method: :get} %>
+            </th>
+            <th>
+              <%= sort_link data.search,
+                :title, t("admin.categories.index.title"),
+                {}, {remote: true, method: :get} %>
+            </th>
+            <th>
+              <%= sort_link data.search, :parent_id,
+                t("admin.categories.index.parent_category"),
+                {}, {remote: true, method: :get} %>
+            </th>
+          </tr>
+          <% if data.categories_search.any? %>
+            <% data.categories_search.each do |category| %>
+              <tr>
+                <td><%= category.id %></td>
+                <td><%= link_to category.title , "#",
+                  data: {toggle: "modal",
+                  target: "#modal-edit-category-#{category.id}"}%>
+                  <div class="modal fade"
+                    id="modal-edit-category-<%= category.id %>"
+                    role="dialog">
+                    <div class="modal-dialog category-modal-dialog">
+                      <%= render "category_modal", category: category,
+                        books: data.books %>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <% unless category.parent_id.blank? %>
+                      <%= data.find_category(category.parent_id) %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>

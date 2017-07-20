@@ -25,10 +25,8 @@
           <p><%= t "admin.users.index.number_user" %><%= data.users.count %></p>
         </div>
       </div>
-      <div class="apple-pagination">
-        <div class="page_info" id="pagination">
-          <%= paginate data.users_search, remote: true %>
-        </div>
+      <div class="page_info" id="pagination">
+        <%= paginate data.users_search, remote: true, theme: "twitter-bootstrap-3" %>
       </div>
     </div>
     <br>
