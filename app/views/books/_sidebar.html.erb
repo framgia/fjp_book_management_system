@@ -1,0 +1,69 @@
+<div class="menu-list-book">
+  <h2><%= link_to t("user.book.all"), books_path, remote: true %></h2>
+  <div class="dropdown pmd-dropdown">
+    <a class="dropdown-toggle media pmd-ripple-effect default-open"
+      id="hide" data-toggle="collapse" data-target="#categories" data-sidebar="true"
+      aria-expanded="false" href="javascript:void(0);">
+      <span class="media-body media-left">
+        <%= t "user.book.categories"%>
+      </span>
+    </a>
+    <ul class="collapse" id="categories">
+      <% categories.each do |category| %>
+        <li>
+          <%= link_to books_path(category_id: category.id),
+            class: "pmd-ripple-effect", remote: true do %>
+            <%= category.title %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="dropdown pmd-dropdown">
+    <a class="dropdown-toggle media pmd-ripple-effect default-open"
+      id="hide" data-toggle="collapse" data-target="#authors" data-sidebar="true"
+      aria-expanded="false" href="javascript:void(0);">
+      <span class="media-body media-left">
+        <%= t "user.book.authors"%>
+      </span>
+    </a>
+    <ul class="collapse" id="authors">
+      <% authors.each do |author| %>
+        <li>
+          <%= link_to books_path(author_id: author.id),
+            class: "pmd-ripple-effect", remote: true do %>
+            <%= author.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="dropdown pmd-dropdown">
+    <a class="dropdown-toggle media pmd-ripple-effect default-open"
+      id="hide" data-toggle="collapse" data-target="#publishers" data-sidebar="true"
+      aria-expanded="false" href="javascript:void(0);">
+      <span class="media-left">
+        <%= t "user.book.publishers"%>
+      </span>
+    </a>
+    <ul class="collapse" id="publishers">
+      <% publishers.each do |publisher| %>
+        <li>
+          <%= link_to books_path(publisher_id: publisher.id),
+            class: "pmd-ripple-effect", remote: true do %>
+            <%= publisher.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="dropdown pmd-dropdown">
+    <a class="dropdown-toggle media pmd-ripple-effect default-open"
+      id="hide" data-toggle="collapse" data-target="#most_popular" data-sidebar="true"
+      aria-expanded="false" href="javascript:void(0);">
+      <span class="media-left">
+        <%= t "user.book.most_popular"%>
+      </span>
+    </a>
+  </div>
+</div>

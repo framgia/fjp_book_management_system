@@ -530,3 +530,17 @@ BookTag.create!([
   {book_id: 8, tag_id: 3},
   {book_id: 9, tag_id: 4},
   {book_id: 10, tag_id: 5}])
+
+Book.all.each do |book|
+  rate = 0
+  rate_count = 0
+
+  User.all.shuffle.sample(rand(0..15)).each do |user|
+    score = rand 1..5
+    rate_count += 1
+    rate += score
+    book.rates.create! user: user, score: score
+  end
+  rate /= rate_count if rate_count > 0
+  book.update_attributes rate: rate, rate_count: rate_count
+end

@@ -99,6 +99,13 @@ en:
         need_current_pass: "(we need your current password to confirm your changes)"
         change_pass: "Change password"
         repeat_pass: "Repeat password"
+    book:
+        all: "All books"
+        title: "Title"
+        categories: "Categories"
+        authors: "Authors"
+        publishers: "Publishers"
+        most_popular: "Most popular"
   borrows:
     create:
       flash:

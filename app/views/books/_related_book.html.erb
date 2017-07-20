@@ -6,7 +6,11 @@
         <%= link_to book_path(b) do %>
           <div class="item-book pmd-z-depth-2" data-url="<%= b.id %>">
             <div class="img-container">
-            <img src="<%= b.images.first.url %>">
+              <% if book.images.any? %>
+                <img src="<%= book.images.first.url %>">
+              <% else %>
+                <%= image_tag "/assets/book.png" %>
+              <% end %>
             <span><%= b.title %></span>
             </div>
           </div>
@@ -15,4 +19,3 @@
     </div>
   </div>
 </div>
-
