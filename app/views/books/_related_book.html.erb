@@ -3,12 +3,14 @@
   <div class="relate-book-cont">
     <div class="owl-carousel owl-theme">
       <% book.find_related_book.each do |b| %>
-        <div class="item-book pmd-z-depth-2">
-          <div class="img-container">
-          <img src="<%= b.images.first.url %>">
-          <span><%= b.title %></span>
+        <%= link_to book_path(b) do %>
+          <div class="item-book pmd-z-depth-2" data-url="<%= b.id %>">
+            <div class="img-container">
+            <img src="<%= b.images.first.url %>">
+            <span><%= b.title %></span>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

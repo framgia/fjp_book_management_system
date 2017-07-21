@@ -19,13 +19,18 @@
     <% (1..(load_rate book.rate).last).each do |s| %>
       <i class="fa fa-star-o" aria-hidden="true"></i>
     <% end  %>
+    <%= book.rate_count %> rated
   </div>
-  <p><%= t "books.show.series" %> <%= book.series.title %></p>
-  <%= t "books.show.tag" %>
-  <% book.tags.each do |t| %>
-    <div class="tag"><%= t.title %></div>
-  <% end %>
-  <p class="description">
-    <%= book.description %>
-  </p>
+  <p class="book-info-row"><span><%= t "books.show.series" %></span> <%= book.series.title %></p>
+  <div class="book-info-row">
+    <span><%= t "books.show.tag" %></span>
+    <% book.tags.each do |t| %>
+      <div class="tag"><%= t.title %></div>
+    <% end %>
+  </div>
+  <p class="book-info-row"><span><%= t "books.show.isbn" %></span> <%= book.isbn %></p>
+  <p class="book-info-row"><span><%= t "books.show.language" %></span> <%= book.language.full_name %></p>
+  <p class="book-info-row"><span><%= t "books.show.pages" %></span> <%= book.pages %></p>
+  <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.publisher.name %></p>
+  <p class="book-info-row"><span><%= t "books.show.public_date" %></span> <%= book.public_date %></p>
 </div>

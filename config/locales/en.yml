@@ -72,6 +72,13 @@ en:
       borrow: "Borrow this book?"
       tag: "Tag:"
       series: "Series:"
+      description: "Description"
+      isbn: "ISBN:"
+      language: "Language:"
+      pages: "Number of pages:"
+      publisher: "Published by:"
+      public_date: "Published at:"
+      weight: "Weight:"
   user:
     edit:
       save: "Save"
@@ -92,3 +99,8 @@ en:
         need_current_pass: "(we need your current password to confirm your changes)"
         change_pass: "Change password"
         repeat_pass: "Repeat password"
+  borrows:
+    create:
+      flash:
+        fail_create: "Can't create request"
+        pending: "You already has a pending request for this book"
