@@ -1,0 +1,4 @@
+$('#categories').html('<%= j render "categories", data: @data,
+  new_category: @category%>');
+$('#pagination').html('<%= j paginate(@data.categories_search,
+  remote: true, theme: "twitter-bootstrap-3").to_s%>');

@@ -18,7 +18,6 @@ class Admin
     end
 
     def update
-      find_user
       if @user.update_attributes update_user_params
         flash[:success] = t "admin.users.update.success"
       else

@@ -1,0 +1,56 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <% if category.id.blank? %>
+      <h4 class="modal-title"><%= t "admin.users.index.create_new_user" %></h4>
+    <% else %>
+      <h4 class="modal-title">
+        <%= t "admin.users.index.edit_user_infomation" %></h4>
+    <% end %>
+  </div>
+  <div class="modal-body">
+    <div class="pmd-card pmd-z-depth pmd-card-custom-form col-xs-12">
+      <div class="pmd-card-body">
+        <%= form_for [:admin, category] do |f| %>
+          <%= f.label :title, "title", class:"label2"%>
+          <%= f.text_field :title, class: "form-control",
+            id: "text-field-category-title-#{category.id}"%><br>
+          <%= f.label :parent_id, "Category parent id", class:"label2"%>
+          <%= f.text_field :parent_id, class: "form-control",
+            id: "text-field-category-parent-#{category.id}"%><br>
+          <%= f.label :description, "description", class:"form-label" %>
+          <%= f.text_area :description, class: "form-control",
+            id: "text-field-category-description-#{category.id}"%><br>
+          <%= f.label :books, t(".books"), class:"form-label" %>
+          <div class="col-xs-12">
+            <% books.each do |book| %>
+              <div class="col-xs-6 col-sm-6 choose">
+                <%= check_box_tag "category[book_ids][]", book.id,
+                  category.books.include?(book),
+                  class: "books-checked-at-category-#{category.id}" %>
+                <%= label_tag :book_ids, book.title %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <% if category.id.blank? %>
+      <button type="button" class="btn btn-success create-category"
+        data-dismiss="modal">
+        <%= t "admin.users.index.create" %>
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-danger delete-category"
+        data-dismiss="modal" data-id="<%= category.id %>">
+        <%= t "admin.users.index.delete" %>
+      </button>
+      <button type="button" class="btn btn-success save-category"
+        data-dismiss="modal" data-id="<%= category.id %>">
+        <%= t "admin.users.index.save" %>
+      </button>
+    <% end %>
+  </div>
+</div>

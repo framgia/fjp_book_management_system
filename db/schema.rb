@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20170720093630) do
   create_table "borrows", force: :cascade do |t|
     t.integer "book_id", null: false
     t.integer "user_id", null: false
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "time_start"
