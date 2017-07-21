@@ -1,0 +1,28 @@
+<div tabindex="-1" class="modal fade" id="send-req-success-modal" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <div class="media-body media-middle">
+          <h3 class="pmd-card-title-text text-center h2-text">Borrow request has been sent</h3>
+        </div>
+      </div>
+      <div class="pmd-modal-media row">
+        <img class="col-sm-5 col-sm-offset-1 modal-book-img" height="350px"
+          src="<%= book.images.first.url %>">
+        <div class="col-sm-5 modal-borrow-info">
+          <h3><%= book.title %></h3>
+          <h4><%= t "books.show.isbn" %> <%= book.isbn %></h4>
+          <h4><%= t "books.show.language" %> <%= book.language.full_name %></h4>
+          <h4><%= t "books.show.weight" %> <%= book.weight %></h4>
+          <h4><%= t "books.show.pages" %> <%= book.pages %></h4>
+          <h4><%= t "books.show.publisher" %> <%= book.publisher.name %></h4>
+          <h4><%= t "books.show.public_date" %> <%= book.public_date %></h4>
+          <p class="message">Our admin will contact you as soon as  possible. Thank you</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="book-borrow book-part">
-  <p class="book-title"><%= t "books.show.borrow" %></p>
+  <p class="borrow-title"><%= t "books.show.borrow" %></p>
   <div class="frame">
     <div class="row">
       <div class="col-sm-12">
@@ -23,5 +23,6 @@
         <%= t "books.show.send_req" %>
       </div>
     </div>
+    <div class="hidden current-book-id" id="<%= book.id %>"></div>
   </div>
 </div>

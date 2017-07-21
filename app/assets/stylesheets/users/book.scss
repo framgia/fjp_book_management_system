@@ -1,303 +1,356 @@
 @import "colors";
 
-.frame {
-  background: $frame;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  padding: 20px 10px;
-}
-
-.book-image {
-  width: 100%;
-}
-
-.book-title {
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.book-author {
-  color: $blog-title;
-  font-size: 1.5em;
-  font-style: italic;
-}
-
-.fa-star,
-.fa-star-half-o,
-.fa-star-o {
-  color: $star;
-  font-size: 1.5em !important;
-}
-
-.tag {
-  background: $aqua;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  color: $white;
-  display: inline;
-  padding: 2px 5px;
-}
-
-.description {
-  max-height: 200px;
-  overflow-y: scroll;
-}
-
-.dp-inline {
-  display: inline-block;
-}
-
-.nav-tabs li {
-  text-transform: uppercase;
-}
-
-.active {
-  a {
-    background: $white;
-    opacity: 1 !important;
+.book-show {
+  .book-info-row {
+    margin-bottom: 10px;
 
     span {
-      color: $blog-title;
+      font-weight: bold;
     }
   }
-}
 
-.tab-row {
-  background: $background-book;
-  border-radius: 2px;
-  margin: 0 -10px;
-  padding: 20px !important;
-}
-
-.social-field {
-  background: $frame-inverse;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  margin: 20px;
-  padding: 20px 30px;
-}
-
-.cmt-parent {
-  background: $white;
-  border-left: 2px solid $header;
-  box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
-  margin-bottom: .5px;
-  margin-top: 8px;
-  padding: 5px;
-  position: relative;
-
-  .fa-angle-up,
-  .fa-angle-down {
-    font-size: 1.5em;
+  .frame {
+    background: $reply-toggle;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    padding: 20px 10px;
   }
 
-  .user-avatar {
-    background: $color-stack-approx;
-    height: 60px;
-    width: 60px;
+  .book-image {
+    background: $white;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    height: 350px;
+    padding: 3px;
+    width: 100%;
   }
-}
 
-.cmt-child {
-  background: $white;
-  border-left: 2px solid $header;
-  box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
-  margin: 3px 20px 1px 50px;
-  padding: 5px;
-
-  .user-avatar {
-    background: $color-stack-approx;
-    height: 40px;
-    width: 40px;
+  .book-title {
+    font-size: 2.5em;
   }
-}
 
-.cmt-parent,
-.cmt-child {
-  em {
+  .borrow-title {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .book-author {
     color: $blog-title;
-  }
-}
-
-.blog-box {
-  border-left: 2px solid $header;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  margin-bottom: .5px;
-  padding: 10px 20px;
-  position: relative;
-
-  .blog-title {
     font-size: 1.5em;
-    margin: 0;
+    font-style: italic;
+  }
 
+  .fa-star,
+  .fa-star-half-o,
+  .fa-star-o {
+    color: $star;
+    font-size: 1.5em !important;
+  }
+
+  .tag {
+    background: $aqua;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    color: $white;
+    display: inline;
+    padding: 2px 5px;
+  }
+
+  .description {
+    margin: 20px 0;
+  }
+
+  .dp-inline {
+    display: inline-block;
+  }
+
+  .nav-tabs li {
+    text-transform: uppercase;
+  }
+
+  .active {
     a {
+      background: $white;
+      opacity: 1 !important;
+
+      span {
+        color: $blog-title;
+      }
+    }
+  }
+
+  .tab-row {
+    background: $background-book;
+    border-radius: 2px;
+    margin: 0 -10px;
+    padding: 20px !important;
+  }
+
+  .social-field {
+    background: $frame-inverse;
+    box-shadow: 0 1px 3px $shadow1, 0 2px 4px $shadow2;
+    margin: 20px;
+    padding: 20px 30px;
+  }
+
+  .cmt-parent {
+    background: $white;
+    border-left: 2px solid $header;
+    box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
+    margin-bottom: .5px;
+    margin-top: 8px;
+    padding: 5px;
+    position: relative;
+
+    .fa-angle-up,
+    .fa-angle-down {
+      font-size: 1.5em;
+    }
+
+    .user-avatar {
+      background: $color-stack-approx;
+      height: 60px;
+      width: 60px;
+    }
+
+    .container {
+      width: 100%;
+    }
+  }
+
+  .cmt-child {
+    background: $white;
+    border-left: 2px solid $header;
+    box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
+    margin: 3px 20px 1px 50px;
+    padding: 5px;
+
+    .user-avatar {
+      background: $color-stack-approx;
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .cmt-parent,
+  .cmt-child {
+    em {
       color: $blog-title;
     }
   }
 
-  .blog-description {
-    font-style: italic;
-    margin: 0;
+  .blog-box {
+    border-left: 2px solid $header;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    margin-bottom: .5px;
+    padding: 10px 20px;
+    position: relative;
 
+    .blog-title {
+      font-size: 1.5em;
+      margin: 0;
+
+      a {
+        color: $blog-title;
+      }
+    }
+
+    .blog-description {
+      font-style: italic;
+      margin: 0;
+
+      p {
+        max-height: 40px;
+        overflow-y: hidden;
+        width: 90%;
+      }
+    }
+
+    .blog-head {
+      position: relative;
+
+      p {
+        margin: 0;
+      }
+
+      .blog-title-left {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+
+  .show-more {
+    position: absolute;
+    right: 2%;
+    top: 10%;
+  }
+
+  .toggle-reply {
+    border-radius: 50%;
+    bottom: 6%;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    padding: 0 5px;
+    position: absolute;
+    right: 1%;
+  }
+
+  .hidden-div {
+    transform: scale(.5, .5);
+    transition: ease .25s;
+  }
+
+  .btn-toggle-reply {
+    background: transparent;
+  }
+
+  .toggle-reply:hover {
+    background: $reply-toggle;
+  }
+
+  .toggle-reply:active {
+    background: $reply-toggled;
+    box-shadow: 0 2px 4px $shadow1, 0 2px 4px $shadow2;
+  }
+
+  .time-ago {
+    color: $time-ago;
+  }
+
+  .comment-head {
+    position: relative;
+  }
+
+  .social-rate {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+  }
+
+  .comment-content {
     p {
-      max-height: 40px;
-      overflow-y: hidden;
+      margin-bottom: 0;
       width: 90%;
     }
   }
 
-  .blog-head {
+  .cmt-child {
     position: relative;
 
-    p {
-      margin: 0;
-    }
-
-    .blog-title-left {
-      position: absolute;
-      right: 0;
-      top: 0;
+    .comment-content {
+      font-size: .8em;
     }
   }
-}
 
-.show-more {
-  position: absolute;
-  right: 2%;
-  top: 10%;
-}
+  .image-others {
+    height: 90px;
+    margin-top: 15px;
 
-.toggle-reply {
-  border-radius: 50%;
-  bottom: 6%;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  padding: 0 5px;
-  position: absolute;
-  right: 1%;
-}
+    .book-image-others {
+      border: 1px solid $frame-end;
+      height: 80px;
+      padding: 5px;
+      width: 60px;
+    }
 
-.hidden-div {
-  transform: scale(.5, .5);
-  transition: ease .25s;
-}
-
-.btn-toggle-reply {
-  background: transparent;
-}
-
-.toggle-reply:hover {
-  background: $reply-toggle;
-}
-
-.toggle-reply:active {
-  background: $reply-toggled;
-  box-shadow: 0 2px 4px $shadow1, 0 2px 4px $shadow2;
-}
-
-.time-ago {
-  color: $time-ago;
-}
-
-.comment-head {
-  position: relative;
-}
-
-.social-rate {
-  position: absolute;
-  right: 1%;
-  top: 1%;
-}
-
-.comment-content {
-  p {
-    margin-bottom: 0;
-    width: 90%;
+    owl-item {
+      height: 80px;
+      width: 60px;
+    }
   }
-}
 
-.cmt-child {
-  position: relative;
-
-  .comment-content {
-    font-size: .8em;
+  .book-part {
+    margin-top: 20px;
   }
-}
 
-.image-others {
-  height: 70px;
-  overflow-y: scroll;
-
-  .book-image-others {
-    height: 60px;
-    padding: 5px;
-    width: 60px;
+  .book-borrow {
+    .btn-send-req {
+      background: $aqua;
+      box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    }
   }
-}
 
-.book-part {
-  background: $white;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  padding: 20px;
-}
+  .book-top {
+    background: transparent;
+    margin-top: -13px;
+    padding: 20px;
+  }
 
-.book-borrow {
-
-  .btn-send-req {
-    background: $aqua;
+  .relate-book {
+    background: $relate-book;
     box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    margin: 30px;
+    padding: 5px 20px 15px;
+
+    .owl-item {
+      height: 250px;
+      margin: 0 10px;
+      width: 150px !important;
+    }
   }
-}
 
-.book-top {
-  background: $frame-inverse;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  margin: 20px;
-  padding: 20px;
-}
-
-.relate-book {
-  background: $relate-book;
-  box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-  margin: 30px;
-  padding: 5px 20px 15px;
-}
-
-.relate-title {
-  margin: 0;
-  padding: 0 10px;
-}
-
-.relate-book-cont {
-  padding-top: 10px;
-}
-
-.item-book {
-  background: $white;
-
-  span {
-    display: -webkit-box;
-    font-size: .8em;
-    -webkit-line-clamp: 2;
-    line-height: 1em;
-    margin-top: 5px;
-    max-height: 2em;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .relate-title {
+    margin: 0;
+    padding: 0 10px;
   }
-}
 
-.owl-item {
-  height: 250px;
-  margin: 0 10px;
-  width: 150px !important;
-}
+  .relate-book-cont {
+    padding-top: 10px;
+  }
 
-.img-container {
-  padding: 5px 10px;
+  .item-book {
+    background: $white;
 
-  img {
-    border: 1px $black;
+    span {
+      display: -webkit-box;
+      font-size: .8em;
+      -webkit-line-clamp: 2;
+      line-height: 1em;
+      margin-top: 5px;
+      max-height: 2em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .img-container {
+    padding: 5px 10px;
+
+    img {
+      border: 1px $black;
+      box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+      height: 200px;
+      margin-right: 0;
+      width: 100%;
+    }
+  }
+
+  .modal-book-img {
+    background: $white;
+    border-radius: 2px;
     box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-    height: 200px;
-    margin-right: 0;
-    width: 100%;
+    padding: 2px;
+  }
+
+  .h2-text {
+    font-size: 2em;
+  }
+
+  .modal-borrow-info {
+    border: 1px solid $frame;
+    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+    height: 350px;
+    padding: 0 5px 0 25px;
+
+    h3 {
+      font-size: 1.5em;
+      font-weight: bolder;
+      margin-top: 5px;
+    }
+  }
+
+  .message {
+    font-size: 1em;
+    font-style: italic;
   }
 }

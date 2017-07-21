@@ -20,4 +20,5 @@ Rails.application.routes.draw do
     end
   end
   resources :books
+  resources :borrows, only: :create
 end

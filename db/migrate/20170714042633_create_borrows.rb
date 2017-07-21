@@ -3,7 +3,7 @@ class CreateBorrows < ActiveRecord::Migration[5.1]
     create_table :borrows do |t|
       t.integer :book_id, null: false
       t.integer :user_id, null: false
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end
