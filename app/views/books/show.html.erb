@@ -31,13 +31,15 @@
 
   <div class="modal-send-req-result">
   </div>
-  <div class="row" id="comments">
-    <div class="col-sm-12">
-      <h2 class="text-uppercase">
-        <%= t "books.show.comments", book: @book %>
-      </h2>
+  <div class="container">
+    <div class="row" id="comments">
+      <div class="col-sm-12">
+        <h2 class="text-uppercase">
+          <%= t "books.show.comments", book: @book %>
+        </h2>
+      </div>
+      <%= render "books/comment_form", book: @book %>
+      <%= render "books/comments", book: @book %>
     </div>
-    <%= render "books/comment_form", book: @book %>
-    <%= render "books/comments", book: @book %>
   </div>
 </div>

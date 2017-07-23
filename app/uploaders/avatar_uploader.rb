@@ -1,5 +1,6 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+
   storage :file
 
   def store_dir
@@ -7,7 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg png)
   end
 
   def default_url
@@ -20,5 +21,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   version :thum40 do
     process resize_to_fill: [40, 40]
+  end
+
+  def filename
+    "avatar-#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) || model
+      .instance_variable_set(var, SecureRandom.uuid)
   end
 end

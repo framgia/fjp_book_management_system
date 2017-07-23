@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   belongs_to :publisher
-  belongs_to :series
+  belongs_to :series, optional: true
   belongs_to :language
 
   has_many :images, as: :target
