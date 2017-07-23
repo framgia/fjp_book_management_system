@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration[5.1]
       t.integer :publisher_id, null: false
       t.integer :language_id, null: false
       t.string :isbn, null: false
-      t.integer :series_id
+      t.integer :series_id, null: true
       t.string :dimension
       t.integer :pages
       t.string :weight

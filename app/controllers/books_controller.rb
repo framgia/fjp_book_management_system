@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   include ApplicationHelper
+
   before_action only: :show do
     find_book params[:id]
   end

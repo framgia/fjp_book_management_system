@@ -6,12 +6,12 @@
       </h4>
     </a>
     <% books.each do |book| %>
-      <a href="#" class="list-group-item btn-block">
+      <%= link_to book, class: "list-group-item btn-block" do %>
         <h4 class="list-group-item-heading"><%= book.title %></h4>
         <p class="list-group-item-text">
           <%= time_ago_in_words book.created_at %>
         </p>
-      </a>
+      <% end %>
     <% end %>
   <% end %>
   <% if tags.count > 0 %>
