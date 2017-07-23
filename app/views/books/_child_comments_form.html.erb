@@ -1,0 +1,35 @@
+<div class="col-sm-12">
+  <div class="col-sm-12 comment reply reply-<%= comment.id %> hidden pmd-z-depth comment-input">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active">
+        <a href="" data-target="#write-<%= comment.id %>" role="tab" data-toggle="tab">
+          <%= t "books.show.write" %>
+        </a>
+      </li>
+      <li class="load-html" data="<%= comment.id %>">
+        <a data-target="#preview-<%= comment.id %>" role="tab" data-toggle="tab">
+          <%= t "books.show.preview" %>
+        </a>
+      </li>
+    </ul>
+    <%= form_with model: book.comments.new, url: book_comments_path(book),
+      local: true do |f| %>
+      <div class="tab-content">
+        <div class="active tab-pane fade in" id="write-<%= comment.id %>">
+          <%= f.text_area :content, id: "comment-#{comment.id}" %>
+          <%= f.hidden_field :parent_id, value: comment.id%>
+        </div>
+        <div class="tab-pane fade pmd-z-depth preview" id="preview-<%= comment.id %>">
+          <p><%= t "books.show.no_content_preview" %></p>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-primary pmd-ripple-effect pull-right">
+        <%= t "books.show.comment" %>
+      </button>
+      <button class="btn btn-sm btn-danger pmd-ripple-effect pull-right
+        btn-padding btn-cancel" data="<%= comment.id %>">
+        <%= t "books.show.cancel" %>
+      </button>
+    <% end %>
+  </div>
+</div>

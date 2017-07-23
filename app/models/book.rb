@@ -28,4 +28,8 @@ class Book < ApplicationRecord
     Book.where(id: self.find_same_author_book)
       .or Book.where series_id: self.series_id
   end
+
+  def parent_comments
+    comments.where(parent_id: 0).order id: :desc
+  end
 end

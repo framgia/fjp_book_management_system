@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
   has_many :votes, as: :target
 
   def load_children
-    Comment.where parent_id: self.id
+    Comment.where(parent_id: self.id).order id: :asc
   end
 
   def has_child?

@@ -17,5 +17,6 @@
  *= require propellerkit/components/datetimepicker/css/pmd-datetimepicker
  *= require owl.carousel/dist/assets/owl.carousel.min
  *= require font-awesome
+ *= require simplemde/dist/simplemde.min
  *= require_tree ./users
  */

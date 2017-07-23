@@ -1,0 +1,9 @@
+en:
+  books:
+    show:
+      comments: "Comments"
+      comment: "Comment"
+      cancel: "Cancel"
+      no_content_preview: "No content preview"
+      write: "Write"
+      preview: "Preview"

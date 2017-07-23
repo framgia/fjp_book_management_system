@@ -1,0 +1,37 @@
+<div class="col-sm-12 comment-child">
+  <hr>
+  <% child_comments.each do |comment| %>
+    <div class="col-sm-12 comment pmd-z-depth">
+      <div class="row">
+        <div class="col-sm-12 comment-header">
+          <a href="#" class="avatar">
+            <img src="<%= comment.user.avatar.thum40.url %>"
+              alt="<%= comment.user.name %>">
+          </a>
+          <div class="meta">
+            <div class="author">
+              <a href="#"><%= comment.user.name %></a>
+              <small><%= comment.user.email %></small>
+              <span class="pull-right">
+              <%= time_ago_in_words comment.created_at %> <%= t "books.show.ago" %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 comment-body">
+          <%= markdown(comment.content).html_safe %>
+        </div>
+        <div class="col-sm-12 comment-footer">
+          <div class="vote">
+            <i class="fa fa-fw fa-chevron-up pmd-ripple-effect"></i>
+            <%= comment.votes.count %>
+            <i class="fa fa-fw fa-chevron-down pmd-ripple-effect"></i>
+            <% if current_user && comment.user.id == current_user.id %>
+              | <i class="fa fa-fw fa-trash pmd-ripple-effect"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

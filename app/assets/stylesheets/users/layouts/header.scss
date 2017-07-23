@@ -2,7 +2,7 @@
 
 .wrapper {
   background: $frame;
-  padding-top: 92px;
+  padding-top: 80px;
 }
 
 .navbar {
@@ -11,6 +11,7 @@
   border-left: 0;
   border-right: 0;
   border-top: 3px solid $navbar-border-top;
+  height: 80px;
   left: 0;
   position: absolute;
   right: 0;
@@ -18,7 +19,7 @@
   z-index: 1000;
 
   .login {
-    margin-top: 26px;
+    margin-top: 20px;
   }
 
   .container {
@@ -31,7 +32,7 @@
   }
 
   .btn-user {
-    margin-top: 14px;
+    margin-top: 6px;
   }
 
   .autocomplete {
@@ -58,6 +59,10 @@
 
 .pmd-navbar .navbar-brand {
   position: relative;
+
+  img {
+    height: 65px;
+  }
 }
 
 .search-form {
@@ -77,7 +82,7 @@
     color: $navbar-form-control-color;
     font-size: 16px;
     height: auto;
-    padding: 12px 24px;
+    padding: 5px 24px;
 
     &:focus {
       color: $navbar-form-control-focus;
@@ -122,7 +127,7 @@
 
 .pmd-navbar {
   .navbar-nav {
-    margin: 14px 0;
+    margin: 7px 0;
   }
 
   .navbar-collapse {
@@ -130,7 +135,7 @@
   }
 
   &.navbar .btn.pmd-btn-fab {
-    margin: 26px 0;
+    margin: 20px 0;
     position: relative;
     z-index: 10;
   }
@@ -499,7 +504,7 @@
   }
 
   .navbar .search-form {
-    top: 12px;
+    top: 18px;
   }
 
   .pmd-navbar {
@@ -512,17 +517,12 @@
     }
 
     .navbar-nav {
-      margin: 4px 0;
+      margin: 6px 0;
     }
 
     &.navbar .btn.pmd-btn-fab,
     .btn.login {
       margin: 16px 0;
-    }
-
-    .navbar-brand > img {
-      max-width: none;
-      width: 160px;
     }
   }
 
@@ -555,7 +555,7 @@
   }
 
   .navbar .search-form {
-    top: 15px;
+    top: 22px;
   }
 
   .pmd-navbar {
@@ -570,11 +570,6 @@
     &.navbar .btn.pmd-btn-fab,
     .btn.login {
       margin: 20px 0;
-    }
-
-    .navbar-brand > img {
-      max-width: none;
-      width: 220px;
     }
 
     .navbar-nav > li > a {
