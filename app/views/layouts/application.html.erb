@@ -18,5 +18,8 @@
     </div>
     <%= render "layouts/footer" %>
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <% if File.exist? Rails.root.join("app/assets/javascripts/users", params[:controller] + ".js") %>
+      <%= javascript_include_tag ("users/" + params[:controller]), "data-turbolinks-track": "reload" %>
+    <% end %>
   </body>
 </html>
