@@ -83,10 +83,10 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a class="pmd-ripple-effect" href="#" data-turbolinks="false">
+          <%= link_to explorer_index_url, class: "pmd-ripple-effect" do %>
             <%= t "layouts.header.books" %>
             <span class="sr-only">(current)</span>
-          </a>
+          <% end %>
         </li>
         <li>
           <a class="pmd-ripple-effect" href="#" data-turbolinks="false">

@@ -1,0 +1,7 @@
+en:
+  explorer:
+    index:
+      categories: "Categories"
+      tags: "Tags"
+      see_all: "See all"
+      books: "Book(s)"

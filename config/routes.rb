@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resource :comments, only: [:create]
   end
 
-  resources :categories
+  resources :categories, only: [:index, :show]
   resources :borrows, only: :create
+
+  resources :explorer, only: :index
 end
