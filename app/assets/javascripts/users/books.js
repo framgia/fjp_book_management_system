@@ -1,5 +1,10 @@
 /* global SimpleMDE */
 
+//= require simplemde/dist/simplemde.min
+//= require propellerkit/components/datetimepicker/js/bootstrap-datetimepicker
+//= require_self
+
+
 $(document).ready(function () {
   $('#datepicker-start').datetimepicker({
     minDate: new Date()
