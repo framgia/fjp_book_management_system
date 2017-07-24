@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "static_pages#show", page: "dashboard"
     get "/pages/:page" => "static_pages#show"
-
-    resources :users
-
+    resources :users, except: [:show, :edit]
     resources :authors do
       resources :books
     end
@@ -18,9 +16,7 @@ Rails.application.routes.draw do
     resources :books do
       resources :book_items
     end
-
-    resources :categories
-
+    resources :categories, except: [:show, :edit]
     resources :publishers do
       resources :books
     end

@@ -24,15 +24,16 @@
             <label class="col-lg-3 control-label">
               <%= t "admin.users.index.name" %></label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="Name Demo">
+              <input class="form-control" type="text" value="<%= user.name %>">
             </div>
             <div class="clearfix"></div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">
-              <%= t "admin.users.index.divison" %></label>
+              <%= t "admin.users.index.staff_code" %></label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="Div 1">
+              <input class="form-control" type="text"
+                value=<%= user.staff_code %>>
             </div>
           </div>
           <div class="form-group">
@@ -46,9 +47,9 @@
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">
-              <%= t "admin.users.index.user_name" %></label>
+              <%= t "admin.users.index.role" %></label>
             <div class="col-md-8">
-              <input class="form-control" type="text" value="phuc.ld95">
+              <input class="form-control" type="text" value=<%= user.role %>>
             </div>
           </div>
           <div class="form-group">
