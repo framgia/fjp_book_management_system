@@ -83,10 +83,8 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a class="pmd-ripple-effect" href="#" data-turbolinks="false">
-            <%= t "layouts.header.books" %>
-            <span class="sr-only">(current)</span>
-          </a>
+          <%= link_to t("layouts.header.books"), books_path,
+            class: "pmd-ripple-effect" %>
         </li>
         <li>
           <a class="pmd-ripple-effect" href="#" data-turbolinks="false">

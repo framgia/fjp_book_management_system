@@ -1,0 +1,32 @@
+<div class="row">
+  <% books.each do |book| %>
+    <div class="col-sm-6 col-sm-4 col-md-3 col-log-3 index-list-book-content">
+      <div class="simple-book-box">
+        <%= link_to book do %>
+          <% if book.images.any? %>
+            <%= image_tag book.images.first.url, class:"book-image-others index-book-photo",
+              alt: book.title %>
+          <% else %>
+            <%= image_tag "/assets/book.png",
+              class:"book-image-others index-book-photo", alt: book.title %>
+          <% end %>
+        <% end %>
+        <p class="index-book-author">
+          <%= link_to truncate(book.title, length: Settings.user.books.book_title_length), book %>
+        </p>
+        <div>
+          <% (1..(load_rate book.rate).first).each do |s| %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end  %>
+          <% (1..(load_rate book.rate).second).each do |s| %>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <% end  %>
+          <% (1..(load_rate book.rate).last).each do |s| %>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          <% end  %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= paginate books, remote: true %>

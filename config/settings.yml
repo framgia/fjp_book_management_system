@@ -10,3 +10,7 @@ admin:
   categories:
     index:
       categories_per_page: 6
+user:
+  books:
+    per_page: 8
+    book_title_length: 30

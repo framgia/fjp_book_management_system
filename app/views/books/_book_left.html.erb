@@ -1,5 +1,9 @@
 <div class="book-image-cont book-part">
-  <img src="<%= book.images.first.url %>" class="book-image">
+  <% if book.images.any? %>
+    <img src="<%= book.images.first.url %>" class="book-image">
+  <% else %>
+    <%= image_tag "/assets/book.png", class: "book-image" %>
+  <% end %>
   <div class="image-others">
     <div class="owl-carousel owl-theme">
       <% book.images.each do |i| %>

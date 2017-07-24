@@ -20,6 +20,22 @@ class Book < ApplicationRecord
   has_many :tags, through: :book_tags
   has_and_belongs_to_many :tags, join_table: :book_tags
 
+  in_category = lambda do |category_id = nil|
+    return unless category_id
+    joins(:book_categories).where book_categories: {category_id: category_id}
+  end
+  by_author = lambda do |author_id = nil|
+    return unless author_id
+    joins(:author_books).where author_books: {author_id: author_id}
+  end
+  by_publisher = lambda do |publisher_id = nil|
+    return unless publisher_id
+    where publisher_id: publisher_id
+  end
+  scope :in_category, in_category
+  scope :by_author, by_author
+  scope :by_publisher, by_publisher
+
   def find_same_author_book
     AuthorBook.where(author_id: self.authors).pluck :book_id
   end
