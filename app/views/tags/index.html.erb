@@ -1,0 +1,18 @@
+<% provide :title, t("tags.index.explorer_tags") %>
+
+<div class="container-fluid header-block">
+  <h1 class="text-capitalize"><%= t "tags.index.explorer_tags" %></h1>
+</div>
+<div class="container" id="tags-show">
+  <div class="row">
+    <div class="col-sm-12 tags">
+      <% @tags.each do |tag| %>
+        <%= link_to tag do %>
+          <div class="pmd-chip pmd-chip-no-icon">
+            <%= tag.title %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

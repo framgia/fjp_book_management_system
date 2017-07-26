@@ -26,6 +26,7 @@ gem "carrierwave", "~> 1.0"
 gem "mini_magick", "3.8.0"
 gem "redcarpet"
 gem "chosen-rails"
+gem "rails_param"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -43,8 +44,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
 end
-
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
   gem "rspec-collection_matchers"

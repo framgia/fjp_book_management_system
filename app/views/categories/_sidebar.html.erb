@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-sm-12">
-    <h2 class="text-uppercase"><%= t "explorer.index.categories" %></h2>
+    <h2 class="text-uppercase"><%= t "explorer.index.categories" %>
+      <%= link_to t("explorer.index.see_all"), categories_path,
+        class: "pull-right text-capitalize" %>
+    </h2>
   </div>
   <div class="col-sm-12 side-menu">
     <div class="side-menu-container">
