@@ -1,0 +1,41 @@
+en:
+  requests:
+    request:
+      choose_status: Select status
+      input_search: Search by content
+      search: Search
+      link: Link book
+      content: Content
+      message: More information
+      type: Type
+      status: Status
+      created_at: Create at
+      option: Option
+      approved: Approved
+      cancel: cancel
+      pending: Pending
+      reject: Reject
+      no_request: You haven't any created requests yet.
+      new_request: Create request
+      confirm_cancel: "Are you sure you want to cancel this?"
+      choose_type: Select type
+      read_more: read more
+      show_more: more
+      show_less: less
+    index:
+      title: All your requests
+      create: Send your request
+      request_title: Request
+      content_placeholder: Please input more information
+      cancel_success: Canceled success
+      cancel_success_message: Your request has been cancelled.
+      cancel_failed: Canceled failed
+      cancel_failed_message: Something went wrong!
+      request_success: "Success!"
+      request_success_content: The request has been sent successfully.
+      request_success_message: Thank you for your suggestions. Our admin will contact you as soon as possible.
+  flash:
+    requests:
+      create_success: Successfully send request!
+      update_success: Successfully cancel request!
+      update_failed: Something wrong!

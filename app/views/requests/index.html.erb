@@ -1,0 +1,36 @@
+<% provide :title, t("requests.index.title") %>
+
+<div class="container-fluid header-block">
+  <h1 class="text-capitalize"><%= t ".title" %></h1>
+</div>
+<div class="container request-new">
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="request-book">
+        <%= render "request", request: @request, support: @support %>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="success" class="hidden success">
+  <div class="sweet-alert">
+    <div class="icon error animateErrorIcon">
+      <span class="x-mark animateXMark">
+        <div class="cancel-success">&#10004;</div>
+      </span>
+    </div>
+    <h2><%= t ".cancel_success" %></h2>
+    <p><%= t ".cancel_success_message" %></p>
+  </div>
+</div>
+<div id="failure" class="hidden failure">
+  <div class="sweet-alert">
+    <div class="icon error animateErrorIcon">
+      <span class="x-mark animateXMark">
+        <div class="cancel-failed">×</div>
+      </span>
+    </div>
+    <h2><%= t ".cancel_failed" %></h2>
+    <p><%= t ".cancel_failed_message" %></p>
+  </div>
+</div>

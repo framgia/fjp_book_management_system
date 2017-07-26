@@ -7,4 +7,6 @@ class User < ApplicationRecord
     :validatable, :registerable
 
   mount_uploader :avatar, AvatarUploader
+
+  has_many :requests
 end

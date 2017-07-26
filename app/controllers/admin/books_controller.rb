@@ -12,7 +12,7 @@ class Admin
 
     def new
       @book = Book.new
-      @book.build_language
+      @book.build_series
       @book.build_publisher
       @images = @book.images.build
     end
