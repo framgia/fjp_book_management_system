@@ -1,7 +1,7 @@
 en:
   layouts:
     header:
-      books: "Books"
+      books: "Books Explorer"
       blog: "Blog"
       account: "Account"
       profile: "My Profile"

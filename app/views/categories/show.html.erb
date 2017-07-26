@@ -1,0 +1,30 @@
+<% provide :title, @category.title %>
+<div class="container-fluid header-block">
+  <h2><%= t "categories.show.category" %> </h2>
+  <h1 class="text-capitalize"><%= @category.title %></h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <%= render "categories/sidebar", categories: @categories%>
+    </div>
+    <div class="col-sm-9 tab-style-1-content">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2><%= t "categories.show.collection" %></h2>
+        </div>
+      </div>
+      <div class="row">
+        <% @books.each do |book| %>
+          <%= render "categories/book", book: book %>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <hr>
+          <%= paginate @books, theme: "twitter-bootstrap-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

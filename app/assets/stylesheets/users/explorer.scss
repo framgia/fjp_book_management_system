@@ -1,0 +1,27 @@
+@import "users/colors";
+
+.explorer {
+  padding-bottom: 50px;
+  padding-top: 50px;
+
+  .item {
+    margin: 10px 0;
+
+    .box {
+      align-items: center;
+      background-color: $comment-gray;
+      border-radius: 3px;
+      display: flex;
+      height: 100px;
+      justify-content: center;
+      width: 100px;
+    }
+  }
+
+  .tags {
+    > a {
+      display: inline-block;
+      margin: 5px;
+    }
+  }
+}

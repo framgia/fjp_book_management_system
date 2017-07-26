@@ -1,0 +1,50 @@
+<div class="container explorer">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-uppercase">
+        <%= t "explorer.index.categories" %>
+        <%= link_to t("explorer.index.see_all"),
+          categories_path, class: "text-lowercase pull-right" %>
+      </h1>
+      <hr>
+    </div>
+    <div class="row">
+      <% @categories.each do |category| %>
+        <div class="col-sm-4 item">
+          <div class="row">
+            <div class="col-sm-4">
+              <%= link_to category do %>
+                <div class="box pmd-z-depth">
+                  <span class="text-center"><%= category.title %></span>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-sm-8">
+              <h3><%= link_to category.title, category  %></h3>
+              <h4>
+                <%= category.child_categories.present? ? category
+                  .total_books : category.books.size %> <%= t "explorer.index.books" %>
+              </h4>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-uppercase"><%= t "explorer.index.tags" %></h1>
+      <hr>
+    </div>
+    <div class="row tags">
+      <% @tags.each do |tag| %>
+        <a href="#">
+          <div class="pmd-chip pmd-chip-no-icon">
+            <%= tag.title %>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -10,3 +10,15 @@ admin:
   categories:
     index:
       categories_per_page: 6
+explorer:
+  categories:
+    limit: 18
+  tags:
+    limit: 50
+categories:
+  category:
+    limit: 9
+truncate:
+  book:
+    title: 45
+    desc: 30

@@ -1,0 +1,47 @@
+<div class="col-sm-4">
+  <div class="box-outer">
+    <div class="box">
+      <div class="frame">
+        <div class="caption">
+          <a href="#">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </a>
+          <a href="#" rel="nofollow" class="">
+            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+          </a>
+          <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+        </div>
+        <div class="img-frame">
+          <a href="#">
+            <% if book.images.first.present? %>
+              <img src="<%= book.images.first.url.thumb.url %>" class="img-responsive"
+                alt="<%= book.title %>">
+            <% else %>
+              <img src="<%= asset_path "default-book.png" %>" class="img-responsive"
+                alt="<%= book.title %>">
+            <% end %>
+          </a>
+        </div>
+      </div>
+      <div class="text-column">
+        <span>
+          <% book.categories.each do |category| %>
+            <%= link_to category.title, category %>
+            <%= category != book.categories.last ? ", " : nil %>
+          <% end %>
+        </span>
+        <h3>
+          <%= link_to book.title.truncate(Settings.truncate.book.title), book %>
+        </h3>
+        <em><%= book.description.truncate Settings.truncate.book.desc %></em>
+        <div class="review-start">
+          <div class="rating_stars">
+            <div class="rating_down">
+              <div class="rating_up" style="width:100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
