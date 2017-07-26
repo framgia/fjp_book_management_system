@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :find_category, only: :show
   before_action :load_categories, only: [:index, :show]
+
   def index
   end
 

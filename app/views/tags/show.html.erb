@@ -1,0 +1,43 @@
+<% provide :title, @tag.title %>
+<div class="container-fluid header-block">
+  <h2><%= t "tags.show.tag" %> </h2>
+  <h1 class="text-capitalize"><%= @tag.title %></h1>
+</div>
+<div class="container" id="tags-show">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="text-uppercase"><%= t "search.index.tag_suggestions" %></h2>
+        </div>
+        <div class="col-sm-12 tags">
+          <% @tags.each do |tag| %>
+            <%= link_to tag do %>
+              <div class="pmd-chip pmd-chip-no-icon">
+                <%= tag.title %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 tab-style-1-content">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2><%= t "categories.show.collection" %></h2>
+        </div>
+      </div>
+      <div class="row">
+        <% @books.each do |book| %>
+          <%= render "categories/book", book: book %>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <hr>
+          <%= paginate @books, theme: "twitter-bootstrap-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

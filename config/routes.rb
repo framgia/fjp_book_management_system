@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   resources :borrows, only: :create
 
   resources :explorer, only: :index
+  resources :tags, only: [:index, :show]
 end
