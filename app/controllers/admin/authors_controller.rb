@@ -4,7 +4,7 @@ class Admin
     before_action :load_books, only: [:new, :edit]
 
     def index
-      @authors = Supports::Author.new author: Author.all, param: params
+      @authors = Supports::AdminAuthor.new author: Author.all, param: params
     end
 
     def show; end
@@ -17,9 +17,7 @@ class Admin
     def create
       @author = Author.new author_params
       if @author.save
-        params[:images]["url"].each do |a|
-          @images = @author.images.create!(url: a)
-        end
+        save_images if params[:images]
         flash[:success] = t "flash.author.create_success"
         redirect_to admin_author_path @author
       else
@@ -32,6 +30,7 @@ class Admin
     end
 
     def update
+      update_images if params[:images]
       if @author.update_attributes author_params
         flash[:success] = t "flash.author.update_success"
         redirect_to admin_author_path @author
@@ -60,6 +59,22 @@ class Admin
       unless @author
         flash[:danger] = t "flash.author.find_fail"
         redirect_to admin_authors_path
+      end
+    end
+
+    def save_images
+      params[:images]["url"].each do |image|
+        @images = @author.images.create!(url: image)
+      end
+    end
+
+    def update_images
+      author_images = @author.images
+      author_images.each(&:destroy)
+      if author_images.present?
+        params[:images]["url"].each do |image|
+          @images = author_images.create!(url: image)
+        end
       end
     end
 

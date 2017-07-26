@@ -1,0 +1,69 @@
+<div class="book-form pmd-card pmd-z-depth pmd-card-custom-form col-xs-12">
+	<div class="pmd-card-body">
+	  <%= form_for [:admin, book] do |f| %>
+	    <%= f.label :title, class:"form-label" %>
+	    <%= f.text_field :title, class:"form-control" %>
+			<div class="col-xs-4">
+		    <%= f.label :pages, class:"form-label" %>
+		    <%= f.number_field :pages, class:"form-control", min: 1 %>
+			</div>
+			<div class="col-xs-4">
+		    <%= f.label :weight, class:"form-label" %>
+		    <%= f.text_field :weight, class:"form-control" %>
+			</div>
+			<div class="col-xs-4">
+		    <%= f.label :dimension, class:"form-label" %>
+		    <%= f.text_field :dimension, class:"form-control" %>
+			</div>
+	    <%= f.label :isbn, class:"form-label" %>
+	    <%= f.text_field :isbn, class:"form-control" %>
+	    <%= f.label :categories %><br/>
+	    <%= f.collection_select :category_ids, supports.categories, :id, :title,
+	      {}, {multiple: true, size: 1, class:"chosen-select form-control",
+	      data: {placeholder: t(".choose_categories")}} %>
+	    <%= f.label :publisher %>
+	    <i id="add-publisher" class="fa fa-plus-square pull-right">
+	      <%= t ".add_new" %>
+	    </i>
+	    <%= f.select :publisher_id, supports.publishers, {prompt:t(".choose_publisher")},
+	      {class: "form-control", id:"hide-select1"} %>
+	    <%= f.fields_for :publisher do |p| %>
+	      <%= p.text_field :name, class:"form-control add-button",
+	        id:"new-publisher", placeholder:t(".new_publisher") %>
+	    <% end %>
+	    <%= f.label :language %>
+	    <%= f.select :language_id, supports.languages, {prompt:t(".choose_language")},
+	      {class: "form-control", id:"hide-select2"} %>
+	    <%= f.label :series %>
+	    <i id="add-series" class="fa fa-plus-square pull-right">
+	      <%= t ".add_new" %>
+	    </i>
+	    <%= f.select :series_id, supports.series, {prompt:t(".choose_series")},
+	      {class:"form-control", id:"hide-select3"} %>
+	    <%= f.fields_for :series do |s| %>
+	      <%= s.text_field :title, class:"form-control add-button",
+	        id:"new-series", placeholder:t(".new_series") %>
+	    <% end %>
+	    <%= f.label :authors %><br/>
+	    <%= f.collection_select :author_ids, supports.authors, :id, :name,
+	      {}, {multiple: true, size: 1, class:"chosen-select2 form-control",
+	      data: {placeholder: t(".choose_authors")}} %>
+	    <%= f.label :images %><br/>
+	    <%= f.fields_for :images do |p| %>
+	      <div class="field">
+	        <%= p.file_field :url, multiple: true, name: "images[url][]" %>
+	      </div>
+	    <% end %>
+	    <br>
+	    <div class="text-center">
+	      <% if book.new_record? %>
+	        <%= f.submit class: "btn btn-info add-book" %>
+	        <%= f.submit t("button.clear"), type: :reset, class:"btn btn-danger" %>
+	      <% else %>
+	        <%= f.submit class:"btn btn-success"%>
+	        <%= f.submit t("button.clear"), type: :reset, class:"btn btn-danger" %>
+	      <% end %>
+	    </div>
+	  <% end %>
+	</div>
+</div>

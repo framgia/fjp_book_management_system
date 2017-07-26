@@ -1,0 +1,15 @@
+<ol class="breadcrumb text-left">
+  <li class="active">
+    <%= link_to t(".link1"), admin_books_path %><%= t "admin.link" %>
+    <%= link_to @book.title, admin_book_path(@book) %><%= t "admin.link" %>
+    <%= link_to t(".link2"), edit_admin_book_path(@book) %>
+  </li>
+</ol>
+<h1 class="section-title text-center" id="services">
+  <span><%= t ".page_title" %></span>
+</h1>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <%= render "form", book: @book, supports: @supports %>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="row">
+  <%= search_form_for [:admin, books.search],
+    remote: true, method: :get do |f| %>
+    <div class="input-group input-group-lg col-sm-12">
+      <div class="col-sm-2">
+        <%= link_to t(".add_book"), new_admin_book_path,
+          class: "btn btn-primary" %>
+      </div>
+      <div class="col-sm-10 text-right">
+        <%= f.text_field :title_cont, class: "input-text-search",
+          placeholder: t(".input_keyword") %>
+        <%= f.submit t(".search"), class: "btn btn-info" %>
+      </div>
+    </div><br>
+    <div id="pagination" class="text-center">
+      <%= paginate books.books_search, remote: true,
+        theme: "twitter-bootstrap-3" %>
+    </div><br>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view" >
+      <div class="table-responsive">
+        <table class="table table-striped table-hover book-table" id="table-bootstrap">
+          <tbody>
+            <tr>
+              <th>
+                <%= sort_link books.search, :id, t(".id"),
+                  {}, {remote: true, method: :get} %>
+              </th>
+              <th><%= t ".cover" %></th>
+              <th>
+                <%= sort_link books.search, :title, t(".title"),
+                  {}, {remote: true, method: :get} %>
+              </th>
+              <th><%= t ".isbn" %></th>
+              <th><%= t ".publisher" %></th>
+              <th><%= t ".author" %></th>
+              <th><%= t ".categories" %></th>
+              <th><%= t ".option" %></th>
+            </tr>
+            <% if books.books_search.any? %>
+              <% books.books_search.each do |book| %>
+                <tr>
+                  <td><%= book.id %></td>
+                  <td>
+                    <img src="<%= book.images.first.try(:url).try(:thumb).try(:url) %>"
+                      class="book-image-others">
+                  </td>
+                  <td><%= link_to book.title, admin_book_path(book) %></td>
+                  <td><%= book.isbn %></td>
+                  <td>
+                    <%= book.publisher.try :name %>
+                  </td>
+                  <td>
+                    <% book.authors.each do |author| %>
+                      <%= link_to_if author.present?, author.name,
+                        admin_author_path(author) %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% book.categories.each do |cate| %>
+                      <%= link_to_if cate.present?, cate.title,
+                        admin_category_path(cate) %>
+                    <% end %>
+                  </td>
+                  <td class="button-book">
+                    <%= link_to edit_admin_book_path(book), class:"btn btn-primary" do %>
+                      <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to admin_book_path(book), class:"btn btn-danger",
+                      method: :delete, data: {confirm: t("button.delete_warning")} do %>
+                      <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>

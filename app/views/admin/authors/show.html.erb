@@ -5,27 +5,25 @@
       <%= link_to t(".link2"), admin_author_path(@author) %>
     </li>
   </ol>
-  <h1 class="section-title text-center" id="services">
+  <h1 class="section-title" id="services">
     <span><%= t ".page_title" %></span>
   </h1>
-  <% flash.each do |key, value| %>
-    <div class="flash-message <%= key %>">
-      <%= value %>
-    </div>
-  <% end %>
-  <div class="col-md-12">
-    <div class="pmd-card pmd-z-depth pmd-card-custom-form col-md-12">
+  <div>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-form col-xs-12 author-info">
       <div class="pmd-card-body">
         <div class="row">
           <div data-provides="fileinput" class="fileinput fileinput-new col-lg-3">
             <div data-trigger="fileinput"
               class="fileinput-preview thumbnail img-circle img-responsive">
-              <% @author.images.each do |image| %>
-                <% unless @author.images.first %>
-                  <%= image_tag image.url %>
-                <% end %>
-                <%= image_tag image.url %>
-              <% end %>
+              <img src="<%= @author.images.first.try :url %>" class="book-image">
+              <div class="image-others">
+                <div class="owl-carousel owl-theme">
+                  <% @author.images.each do |i| %>
+                    <img src="<%= i.try :url %>" class="book-image-others"
+                      id="image-other<%= i.id %>">
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-lg-9 custom-col-9">
@@ -33,7 +31,9 @@
               <form class="form-horizontal">
                 <fieldset>
                   <div class="form-group prousername pmd-textfield">
-                    <label class="control-label col-sm-3"><%= t ".id" %></label>
+                    <label class="control-label col-sm-3 label-size">
+                      <%= t ".id" %>
+                    </label>
                     <div class="col-sm-9">
                       <p class="form-control-static">
                         <strong><%= @author.id %></strong>
@@ -41,7 +41,7 @@
                     </div>
                   </div>
                   <div class="form-group pmd-textfield">
-                    <label class="col-sm-3 control-label" for="u_fname">
+                    <label class="col-sm-3 control-label label-size">
                       <%= t "admin.authors.author.name" %>
                     </label>
                     <div class="col-sm-9">
@@ -51,7 +51,7 @@
                     </div>
                   </div>
                   <div class="form-group pmd-textfield">
-                    <label class="col-sm-3 control-label" for="u_fname">
+                    <label class="col-sm-3 control-label label-size">
                       <%= t "admin.authors.author.description" %>
                     </label>
                     <div class="col-sm-9">
@@ -64,8 +64,7 @@
                     <div class="col-sm-10 col-sm-offset-2">
                       <%= link_to t(".quick"), edit_admin_author_path(@author),
                         remote: true, class:"quick-edit btn btn-success pmd-ripple-effect" %>
-                      <div id="myModal" class="modal fade" role="dialog" aria-hidden="true">
-                      </div>
+                      <div id="myModal" class="modal fade" role="dialog" aria-hidden="true"></div>
                       <%= link_to t("button.edit"), edit_admin_author_path(@author),
                         class: "btn btn-primary pmd-ripple-effect"%>
                       <%= link_to t("button.delete"), admin_author_path(@author),
@@ -95,31 +94,34 @@
             </tr>
             <% @author.books.each do |book| %>
               <tr>
-                <td><%= book.id %></td>
+                <td><%= book.try :id %></td>
                 <td colspan="2">
-                  <%= link_to book.title, admin_book_path(book) %>
+                  <%= link_to_if book.present?, book.title, admin_book_path(book) %>
                 </td>
                 <td>
                   <% book.categories.each do |cate| %>
                     <% unless book.categories.last %>
-                      <%= link_to cate.name, admin_category_path(cate) %>
+                      <%= link_to cate.title, admin_category_path(cate) %>
                     <% end %>
-                    <%= link_to cate.name, admin_category_path(cate) %>,
+                    <%= link_to cate.title, admin_category_path(cate) %>,
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to book.publisher.name, admin_publisher_path(book.publisher) %>
+                  <%= link_to_if book.publisher.present?, book.publisher.name,
+                    admin_publisher_path(book.publisher) %>
                 </td>
                 <td><%= book.isbn %></td>
-                <td><%= book.series.title %></td>
-                <td><%= book.language.full_name %></td>
+                <td><%= book.series.try :title %></td>
+                <td><%= book.language.try :full_name %></td>
                 <td>
-                  <%= link_to edit_admin_book_path(book) do %>
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  <%= link_to edit_admin_book_path(book),
+                    class: "btn btn-primary" do %>
+                    <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
                   <% end %>
                   <%= link_to admin_author_book_path(@author.id, book.id),
+                    class: "btn btn-danger",
                     method: :delete, data: {confirm: t("button.delete_warning")} do %>
-                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
                   <% end %>
                 </td>
               </tr>
