@@ -10,6 +10,11 @@
       <div class="col-sm-9">
         <ul>
           <li><a href="#"><%= t "blog.dashboard.index.newest" %></a></li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to t("blog.posts.index.my_blog"), blog_posts_path %>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="col-sm-3">
