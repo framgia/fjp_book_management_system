@@ -89,9 +89,10 @@
           <% end %>
         </li>
         <li>
-          <a class="pmd-ripple-effect" href="#" data-turbolinks="false">
+          <%= link_to blog_root_path, class: "pmd-ripple-effect" do %>
             <%= t "layouts.header.blog" %>
-          </a>
+            <span class="sr-only">(current)</span>
+          <% end %>
         </li>
       </ul>
     </div>
