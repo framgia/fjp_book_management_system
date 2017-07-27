@@ -1,0 +1,15 @@
+en:
+  blog:
+    dashboard:
+      index:
+        blog: "Blog"
+        explore: "Explore"
+        newest: "Newest"
+        create_post: "Create Post"
+    posts:
+      create:
+        auto_gen: "Post created at: %{time}"
+        updated_at: "Updated at"
+        tag_book_you_want: "Tag book you want"
+        publish_now: "Publish Now"
+        save_draft: "Save Draft"

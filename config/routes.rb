@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books do
+  resources :books, only: [:index, :show] do
     resource :comments, only: [:create]
   end
 
@@ -31,4 +31,9 @@ Rails.application.routes.draw do
 
   resources :explorer, only: :index
   resources :tags, only: [:index, :show]
+
+  namespace :blog do
+    root "dashboard#index"
+    resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]
+  end
 end

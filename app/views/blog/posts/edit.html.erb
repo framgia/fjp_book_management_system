@@ -1,0 +1,51 @@
+<style>
+  .CodeMirror-fullscreen {
+    top: 80px;
+  }
+</style>
+<div class="container edit-blog">
+  <div class="row">
+    <div class="col-sm-12">
+      <%= form_with model: @blog,url: blog_post_path, method: :patch do |f| %>
+        <br>
+        <div class="form-group pmd-textfield form-group-lg">
+          <label for="regular1" class="control-label">
+            <%= t "blog.posts.create.updated_at" %>
+            <%= time_ago_in_words @blog.updated_at %> <%= t "books.show.ago" %>
+            <span class="badge text-uppercase badge-success">
+              <%= @blog.status %>
+            </span>
+          </label>
+          <%= f.text_field :title, class: "form-control input-group-lg" %>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="form-group pmd-textfield pmd-textfield-floating-label">
+              <label><%= t "blog.posts.create.tag_book_you_want" %></label>
+              <%= f.select :book_ids, @blog.books.map{|b| [b.title, b.id]},
+                {selected: @blog.books.pluck(:id)},
+                {class: "tags-form form-control pmd-select2-tags", multiple: true} %>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <br>
+            <button class="btn btn-primary pmd-btn-raised pull-right btn-lg btn-publish">
+              <%= t "blog.posts.create.publish_now" %>
+            </button>
+            <button class="btn btn-default pmd-btn-raised pull-right btn-lg btn-draft">
+              <%= t "blog.posts.create.save_draft" %>
+            </button>
+            <%= f.hidden_field :status, class: "status" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <br><br>
+            <%= f.text_area :content, id: "editor" %>
+          </div>
+        </div>
+    <% end %>
+    </div>
+  </div>
+</div>

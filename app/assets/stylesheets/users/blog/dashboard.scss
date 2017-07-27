@@ -1,0 +1,53 @@
+@import "users/colors";
+
+.dashboard-header {
+  background-color: $bg-dashboard-header;
+  margin-top: -20px;
+
+  .btn-create {
+    margin-top: 13px;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      float: left;
+      height: 60px;
+      line-height: 65px;
+      padding-right: 30px;
+
+      a {
+        color: $white;
+        font-size: 16px;
+        font-weight: bolder;
+        text-transform: uppercase;
+        transition: .25s;
+      }
+    }
+
+    li:hover {
+      a {
+        border-bottom: 2px solid $white;
+      }
+    }
+  }
+}
+
+.blog-post {
+  padding-top: 25px;
+
+  .avatar {
+    align-items: center;
+    display: flex;
+
+    img {
+      border-radius: 100%;
+      margin: 10px auto;
+    }
+  }
+
+  hr {
+    margin-top: 5px;
+  }
+}

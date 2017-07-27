@@ -1,0 +1,66 @@
+<% provide :title, t("blog.dashboard.index.blog") %>
+
+<div class="container-fluid header-block">
+  <h2><%= t "blog.dashboard.index.explore" %> </h2>
+  <h1 class="text-capitalize"><%= t "blog.dashboard.index.blog" %></h1>
+</div>
+<div class="container-fluid dashboard-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <ul>
+          <li><a href="#"><%= t "blog.dashboard.index.newest" %></a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <% if user_signed_in? %>
+          <%= form_with model: Blog.new, url: blog_posts_path, local: true do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <button class="btn btn-primary pmd-btn-raised pmd-ripple-effect btn-create" type="submit">
+              <i class="fa fa-fw fa-pencil"></i>
+              <%= t "blog.dashboard.index.create_post" %>
+            </button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+      </div>
+      <% @posts.each do |post| %>
+        <div class="row blog-post">
+          <div class="col-sm-1 avatar">
+            <img src="<%= post.user.avatar.thum40 %>" alt="" class="img-responsive">
+          </div>
+          <div class="col-sm-11">
+            <div class="post-header">
+              <h4>
+                <%= link_to post.user.email, "#" %>
+                <small><%= time_ago_in_words post.created_at %></small>
+              </h4>
+            </div>
+            <div class="post-body">
+              <%= link_to post.title, blog_post_path(post) %>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <hr>
+          </div>
+        </div>
+      <% end %>
+      <div class="col-sm-12">
+        <%= paginate @posts, theme: "twitter-bootstrap-3" %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <h3>Hot Author</h3>
+    </div>
+  </div>
+</div>
