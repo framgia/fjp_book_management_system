@@ -34,16 +34,20 @@
   <hr>
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="text-uppercase"><%= t "explorer.index.tags" %></h1>
+      <h1 class="text-uppercase">
+        <%= t "explorer.index.tags" %>
+        <%= link_to t("explorer.index.see_all"),
+          tags_path, class: "text-lowercase pull-right" %>
+      </h1>
       <hr>
     </div>
     <div class="row tags">
       <% @tags.each do |tag| %>
-        <a href="#">
+        <%= link_to tag do %>
           <div class="pmd-chip pmd-chip-no-icon">
             <%= tag.title %>
           </div>
-        </a>
+        <% end %>
       <% end %>
     </div>
   </div>

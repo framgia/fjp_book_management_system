@@ -2,3 +2,5 @@ en:
   tags:
     show:
       tag: "Tag"
+    index:
+      explorer_tags: "Explorer All Tags"

@@ -10,7 +10,7 @@ $( '.search-toggle' ).click(function() {
   else{
     $(this).addClass('active');
     $('.search-form').addClass('open');
-    $('.navbar-nav').addClass('hide');
+    $('.navbar-right').addClass('hide');
   }
 });
 

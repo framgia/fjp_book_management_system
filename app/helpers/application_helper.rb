@@ -26,4 +26,10 @@ module ApplicationHelper
     Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
       .render content
   end
+
+  def books_sort_params
+    [[(t "categories.show.created_at"), "created_at"],
+     [(t "categories.show.title"), "title"],
+     [(t "categories.show.public_date"), "public_date"]]
+  end
 end

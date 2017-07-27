@@ -1,7 +1,9 @@
-<% provide :title, @category.title %>
+<% provide :title, t("categories.index.all_categories") %>
+
 <div class="container-fluid header-block">
-  <h2><%= t "categories.show.category" %> </h2>
-  <h1 class="text-capitalize"><%= @category.title %></h1>
+  <h1 class="text-capitalize">
+    <%= t "categories.index.all_categories" %>
+  </h1>
 </div>
 <div class="container">
   <div class="row">
@@ -16,7 +18,7 @@
               <h2><%= t "categories.show.collection" %></h2>
             </div>
             <div class="col-sm-3">
-              <%= form_with url: category_path(@category), method: :get,
+              <%= form_with url: categories_path, method: :get,
                 local: true, id: "form" do |f| %>
                 <%= f.select :sort, books_sort_params,
                   {selected: params[:sort]}, {class: "form-control", id: "sort"} %>
