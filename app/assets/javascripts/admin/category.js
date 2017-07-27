@@ -33,7 +33,6 @@ $(document).on('click', '.save-category', function() {
   });
 });
 
-
 $(document).on('click', '.delete-category', function() {
   var categoryId = $(this).data('id');
   var url = '/admin/categories/' + categoryId;
