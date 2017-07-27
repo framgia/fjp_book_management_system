@@ -1,0 +1,68 @@
+<% provide :title, t("blog.posts.index.my_blog") %>
+
+<div class="container-fluid header-block">
+  <h2><%= t "blog.dashboard.index.explore" %> </h2>
+  <h1 class="text-capitalize"><%= t "blog.posts.index.my_blog" %></h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="<%= tab_active params, "published" %>">
+          <%= link_to t("blog.posts.index.published"), blog_posts_path %>
+        </li>
+        <li class="<%= tab_active params, "draft" %>">
+          <%= link_to t("blog.posts.index.draft"), blog_posts_path(status: :draft) %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-3">
+      <%= render "new_post_form" %>
+    </div>
+    <div class="col-sm-12">
+
+      <div class="row">
+        <div class="col-sm-12">
+        </div>
+        <div class="col-sm-9">
+          <% @posts.each do |post| %>
+            <div class="row blog-post">
+              <div class="col-sm-1 avatar">
+                <img src="<%= post.user.avatar.thum40 %>" alt="" class="img-responsive">
+              </div>
+              <div class="col-sm-9">
+                <div class="post-header">
+                  <h4>
+                    <%= link_to post.user.email, "#" %>
+                    <small><%= time_ago_in_words post.created_at %></small>
+                  </h4>
+                </div>
+                <div class="post-body">
+                  <%= link_to post.title, blog_post_path(post) %>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <%= link_to edit_blog_post_path(post), "data-turbolinks": false,
+                  class: "btn btn-primary btn-sm btn-block" do %>
+                  <i class="fa fa-fw fa-cog"></i>
+                  <%= t "button.edit" %>
+                <% end %>
+                <%= link_to blog_post_path(post), confirm: t("blog.posts.index.are_you_sure"),
+                  class: "btn btn-danger btn-sm btn-block", method: :delete do %>
+                  <i class="fa fa-fw fa-trash"></i>
+                  <%= t "button.delete" %>
+                <% end %>
+              </div>
+              <div class="col-sm-12">
+                <hr>
+              </div>
+            </div>
+          <% end %>
+          <div class="col-sm-12">
+            <%= paginate @posts, theme: "twitter-bootstrap-3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,13 +8,17 @@
 
 
 $(document).ready(function() {
-  var editorOptions = {
-    element: $('textarea')[0],
-    forceSync: true,
-    spellChecker: false
-  };
+  var element = $('textarea');
 
-  new SimpleMDE(editorOptions);
+  if(element.length > 0){
+    var editorOptions = {
+      element: element[0],
+      forceSync: true,
+      spellChecker: false
+    };
+
+    new SimpleMDE(editorOptions);
+  }
 
   $('.tags-form').select2({
     tags: true,

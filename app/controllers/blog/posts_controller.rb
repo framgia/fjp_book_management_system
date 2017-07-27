@@ -1,5 +1,14 @@
 class Blog::PostsController < ApplicationController
-  before_action :find_blog, only: [:edit, :update, :destroy]
+  before_action :find_blog, only: [:show, :edit, :update, :destroy]
+
+  def index
+    param! :status, String,
+      in: %w(draft published),
+      transform: :downcase, default: "published"
+
+    @posts = Blog.where(status: params[:status]).page(params[:page])
+      .per Settings.blog.dashboard.limit
+  end
 
   def create
     blog = Blog.new blog_params
@@ -16,13 +25,18 @@ class Blog::PostsController < ApplicationController
 
   def update
     if @blog.update_attributes(blog_params)
-      redirect_to blog_root_path
+      redirect_to blog_posts_path
     else
       redirect_to edit_blog_post_path @blog
     end
   end
 
   def destroy
+    if @blog.destroy
+      redirect_to blog_posts_path
+    else
+      redirect_to blog_root_path
+    end
   end
 
   private

@@ -7,9 +7,17 @@ en:
         newest: "Newest"
         create_post: "Create Post"
     posts:
+      index:
+        my_blog: "My Blog"
+        draft: "Draft"
+        published: "Published"
+        are_you_sure: "Are you sure?"
       create:
         auto_gen: "Post created at: %{time}"
         updated_at: "Updated at"
         tag_book_you_want: "Tag book you want"
         publish_now: "Publish Now"
         save_draft: "Save Draft"
+      show:
+        blog: "Blog"
+        bloger: "Bloger"
