@@ -1,19 +1,26 @@
 User.create! email: "le.tat.tung@framgia.com",
-  password: "tung123", password_confirmation: "tung123"
+  password: "tung123", password_confirmation: "tung123",
+  role: "user", name: "Le Tat Tung", staff_code: "20132900"
 User.create! email: "le.vinh.thien@framgia.com",
-  password: "thien123", password_confirmation: "thien123"
+  password: "thien123", password_confirmation: "thien123",
+  role: "user", name: "Le Vinh Thien", staff_code: "20132901"
 User.create! email: "le.dinh.phuc@framgia.com",
-  password: "phuc123", password_confirmation: "phuc123"
+  password: "phuc123", password_confirmation: "phuc123",
+  role: "admin", name: "Le Dinh Phuc", staff_code: "20132902"
 User.create! email: "vu.thu.hien@framgia.com",
-  password: "hien123", password_confirmation: "hien123"
+  password: "hien123", password_confirmation: "hien123",
+  role: "admin", name: "Vu Thu Hien", staff_code: "20132903"
 User.create! email: "pham.huu.duc@framgia.com",
-  password: "duc123", password_confirmation: "duc123"
+  password: "duc123", password_confirmation: "duc123",
+  role: "user", name: "Pham Huu Duc", staff_code: "20132904"
 User.create! email: "tran.thi.dieu.linh@framgia.com",
-  password: "linh123", password_confirmation: "linh123"
+  password: "linh123", password_confirmation: "linh123",
+  role: "user", name: "Tran Thi Dieu Linh", staff_code: "20132905"
 
 for i in 0..100
   User.create! email: "le.dinh.phuc" + i.to_s + "@framgia.com",
-    password: "phuc123", password_confirmation: "phuc123"
+    password: "phuc123", password_confirmation: "phuc123",
+    role: "user", name: "Le Dinh Phuc " + i.to_s, staff_code: "20132979" + i.to_s
 end
 
 Publisher.create!([

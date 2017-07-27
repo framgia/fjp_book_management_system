@@ -49,12 +49,20 @@
               <%= sort_link data.search, :email, t(".email"),
                 {}, {remote: true, method: :get} %>
             </th>
+            <th>
+              <%= sort_link data.search, :staff_code, t(".staff_code"),
+                {}, {remote: true, method: :get} %>
+            </th>
+            <th>
+              <%= sort_link data.search, :role, t(".roll"),
+                {}, {remote: true, method: :get} %>
+            </th>
           </tr>
           <% if data.users_search.any? %>
             <% data.users_search.each do |user| %>
               <tr>
                 <td><%= user.id %></td>
-                <td><%= link_to "user.name", "#",
+                <td><%= link_to user.name, "#",
                   data: {toggle: "modal", target: "#modal-edit-user-#{user.id}"}%>
                   <div class="modal fade" id="modal-edit-user-<%= user.id %>"
                     role="dialog">
@@ -64,6 +72,8 @@
                   </div>
                 </td>
                 <td><%= user.email %></td>
+                <td><%= user.staff_code %></td>
+                <td><%= user.role %></td>
               </tr>
             <% end %>
           <% end %>
