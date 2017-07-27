@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-sm-12 tags">
       <% @tags.each do |tag| %>
-        <%= link_to tag do %>
+        <%= link_to tag, "data-turbolinks": false do %>
           <div class="pmd-chip pmd-chip-no-icon">
             <%= tag.title %>
           </div>
