@@ -104,3 +104,16 @@ en:
       flash:
         fail_create: "Can't create request"
         pending: "You already has a pending request for this book"
+  sessions:
+    new:
+      title: "Log in"
+      remember: "Remember me on this computer"
+      newuser: "New user"
+      danger: "Invalid email/password combinaion"
+      email_field: "Email address"
+      password_field: "Password"
+  passwords:
+    new:
+      title: "Forgot your password?"
+      email_field: "Email address"
+      send_mail: "Send me reset password instructions"
