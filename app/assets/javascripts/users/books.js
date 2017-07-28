@@ -1,6 +1,7 @@
 /* global SimpleMDE */
 
 //= require simplemde/dist/simplemde.min
+//= require select2/dist/js/select2.min
 //= require propellerkit/components/datetimepicker/js/bootstrap-datetimepicker
 //= require_self
 
@@ -164,4 +165,38 @@ $(document).ready(function () {
     }
   };
   $('[data-toggle="popover"]').popover(options);
+  $('.suggest-book-select').select2({
+    tags: true,
+    theme: 'bootstrap'
+  });
+});
+
+$(document).on('click', '.btn-suggest-book', function() {
+  $('.suggest-book-modal').modal();
+});
+
+$(document).on('click', '.btn-send-suggest-book', function() {
+  var re_id = $('#suggest_receiver').val();
+  var con = $('.suggest-book-content').val();
+  var book_id = $(this).attr('data-book-id');
+  var link = '/books/'+book_id+'/suggest_books';
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'POST',
+    url: link,
+    data: {
+      suggest_book: {
+        receiver_id: re_id,
+        content: con
+      }
+    },
+    success: function(e) {
+      $('.modal-suggest-result').append(e);
+      $('.suggest-book-modal').modal('hide');
+      $('#suggest-book-success-modal').modal();
+    }
+  });
 });

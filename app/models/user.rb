@@ -9,4 +9,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :requests
+
+  def load_suggest_book_to_users
+    User.where.not(id: self.id).order id: :asc
+  end
 end

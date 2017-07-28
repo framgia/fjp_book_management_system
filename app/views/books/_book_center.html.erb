@@ -58,11 +58,16 @@
     </div>
   </div>
 
-  <% if book.pdf_ebooks.present?  %>
-    <div class="row book-btn-row">
+  <div class="row book-btn-row">
+    <% if book.pdf_ebooks.present?  %>
       <%= link_to t("books.show.watch_online"), read_online_path(id: book.id),
         "data-turbolinks": "false",
         class: "btn-primary col-sm-4 btn-book-info pmd-z-depth-1" %>
+        <div class="col-sm-1"></div>
+    <% end %>
+    <div class="btn-primary col-sm-5 btn-book-info pmd-z-depth-1
+      btn-suggest-book">
+      <%= t "books.suggest_book.suggest" %>
     </div>
-  <% end %>
+  </div>
 </div>

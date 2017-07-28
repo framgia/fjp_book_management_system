@@ -27,6 +27,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @suggest_book = SuggestBook.new
+    @users = current_user.load_suggest_book_to_users
   end
 
   private

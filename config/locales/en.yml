@@ -80,7 +80,20 @@ en:
       public_date: "Published at:"
       weight: "Weight:"
       watch_online: "Watch Online"
-
+    suggest_book:
+      suggest: "Suggest this book ?"
+      title: "Suggest book"
+      success_title: "Book successfully suggested!"
+      sender: "Sender: "
+      receiver: "Receiver: "
+      message: "Message: "
+      semicolon: "; "
+      thanks: "Thank you for sharing this book with everyone."
+      receiver_you_want: "Receiver choose you want"
+      success: "Suggest book success!"
+      fail: "Suggest book fail!"
+      send: "Send"
+      cancel: "Cancel"
   user:
     edit:
       save: "Save"
