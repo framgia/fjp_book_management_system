@@ -11,7 +11,6 @@ class StaticPagesController < ApplicationController
       recent_blog: Blog.recent_blog(setting.recent_blog),
       top_author: Author.top_author,
       top_rate_book: Book.top_rated_book(setting.top_rate_book)
-
     if valid_page?
       render "static_pages/#{params[:page]}"
     else

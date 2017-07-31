@@ -206,3 +206,5 @@ Lint/AmbiguousBlockAssociation:
   Enabled: false
 Layout/SpaceInsideBlockBraces:
   Enabled: false
+Layout/BlockEndNewline:
+  Enabled: false

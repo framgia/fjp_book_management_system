@@ -1,6 +1,4 @@
 class BorrowsController < ApplicationController
-  include ApplicationHelper
-
   def create
     borrow = Borrow.new
 
