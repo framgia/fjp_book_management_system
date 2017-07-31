@@ -19,10 +19,20 @@
       </div>
     </div>
     <div class="row">
-      <div class="btn btn-lg text-center btn-primary col-sm-10 col-sm-offset-1
-        btn-send-req">
-        <%= t "books.show.send_req" %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="btn btn-lg text-center btn-primary col-sm-10 col-sm-offset-1
+          btn-send-req" id="btn-send-req">
+          <%= t "books.show.send_req" %>
+        </div>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <div class="btn btn-lg text-center btn-primary col-sm-10 col-sm-offset-1
+            btn-send-req unsigned">
+            <%= t(".login") %>
+          </div>
+        <% end %>
+      <% end %>
+
     </div>
     <div class="hidden current-book-id" id="<%= book.id %>"></div>
   </div>
