@@ -27,3 +27,14 @@ truncate:
 blog:
   dashboard:
     limit: 10
+user:
+  home:
+    new_book: 10
+    popular_book: 10
+    recent_blog: 10
+    top_author: 10
+    top_rate_book: 10
+    truncate:
+      item_book_title: 40
+      book_description: 550
+      author_description: 250

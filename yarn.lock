@@ -10,6 +10,10 @@ bootstrap@^3.0.0, bootstrap@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
+bxslider@^4.2.11:
+  version "4.2.11"
+  resolved "https://registry.yarnpkg.com/bxslider/-/bxslider-4.2.11.tgz#1cd3cd76ee40fc1918af9d228de591fb638d85a5"
+
 codemirror-spell-checker@*:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/codemirror-spell-checker/-/codemirror-spell-checker-1.1.2.tgz#1c660f9089483ccb5113b9ba9ca19c3f4993371e"
@@ -17,8 +21,8 @@ codemirror-spell-checker@*:
     typo-js "*"
 
 codemirror@*:
-  version "5.27.4"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.27.4.tgz#0e817c839bfea9959dd16cd48ae14acc0e43c3b6"
+  version "5.28.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.28.0.tgz#2978d9280d671351a4f5737d06bbd681a0fd6f83"
 
 jquery-mousewheel@~3.1.13:
   version "3.1.13"

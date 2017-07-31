@@ -1,12 +1,17 @@
 <div class="tab-content">
   <div id="comment" class="tab-pane fade in active">
-    <div class="tab-row"></div>
+    <div class="tab-row">
+      <div class="row" id="comments">
+        <%= render "books/comment_form", book: book %>
+        <%= render "books/comments", book: book %>
+      </div>
+    </div>
   </div>
 
   <div id="blog" class="tab-pane fade">
     <div class="tab-row">
       <% book.blogs.each do |b| %>
-        <div class="blog-box">
+        <div class="blog-box pmd-z-depth">
           <div class="blog-head">
             <p><%= link_to b.user.email, "#" %>
               <span class="time-ago" title="<%= b.created_at %>">
