@@ -1,10 +1,18 @@
+<% provide :title, t("explorer.index.discover") %>
+
+<div class="container-fluid header-block">
+  <h1 class="text-capitalize">
+    <%= t "explorer.index.discover" %>
+  </h1>
+</div>
 <div class="container explorer">
   <div class="row">
     <div class="col-sm-12">
       <h1 class="text-uppercase">
         <%= t "explorer.index.categories" %>
         <%= link_to t("explorer.index.see_all"),
-          categories_path, class: "text-lowercase pull-right" %>
+          categories_path, class: "text-lowercase pull-right",
+          "data-turbolinks": false %>
       </h1>
       <hr>
     </div>
@@ -13,14 +21,14 @@
         <div class="col-sm-4 item">
           <div class="row">
             <div class="col-sm-4">
-              <%= link_to category do %>
+              <%= link_to category, "data-turbolinks": false do %>
                 <div class="box pmd-z-depth">
                   <span class="text-center"><%= category.title %></span>
                 </div>
               <% end %>
             </div>
             <div class="col-sm-8">
-              <h3><%= link_to category.title, category  %></h3>
+              <h3><%= link_to category.title, category, "data-turbolinks": false  %></h3>
               <h4>
                 <%= category.child_categories.present? ? category
                   .total_books : category.books.size %> <%= t "explorer.index.books" %>
@@ -37,13 +45,13 @@
       <h1 class="text-uppercase">
         <%= t "explorer.index.tags" %>
         <%= link_to t("explorer.index.see_all"),
-          tags_path, class: "text-lowercase pull-right" %>
+          tags_path, class: "text-lowercase pull-right", "data-turbolinks": false %>
       </h1>
       <hr>
     </div>
     <div class="row tags">
       <% @tags.each do |tag| %>
-        <%= link_to tag do %>
+        <%= link_to tag, "data-turbolinks": false do %>
           <div class="pmd-chip pmd-chip-no-icon">
             <%= tag.title %>
           </div>

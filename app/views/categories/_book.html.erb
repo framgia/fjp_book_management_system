@@ -26,12 +26,13 @@
       <div class="text-column">
         <span>
           <% book.categories.each do |category| %>
-            <%= link_to category.title, category %>
+            <%= link_to category.title, category, "data-turbolinks": false %>
             <%= category != book.categories.last ? ", " : nil %>
           <% end %>
         </span>
         <h3>
-          <%= link_to book.title.truncate(Settings.truncate.book.title), book %>
+          <%= link_to book.title.truncate(Settings.truncate.book.title), book,
+            "data-turbolinks": false %>
         </h3>
         <em><%= book.description.truncate Settings.truncate.book.desc %></em>
         <div class="review-start">

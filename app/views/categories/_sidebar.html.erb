@@ -11,7 +11,8 @@
         <% categories.each do |category| %>
           <% if category.child_categories.present? %>
             <li class="panel panel-default" id="dropdown">
-              <a data-toggle="collapse" href="#dropdown-lvl<%= category.id %>">
+              <a data-toggle="collapse" href="#dropdown-lvl<%= category.id %>"
+                data-turbolinks="false">
                 <%= category.title %>
                 <span class="badge"><%= category.total_books %></span>
                 <i class="caret"></i>
@@ -21,7 +22,7 @@
                   <ul class="nav navbar-nav">
                     <% category.child_categories.each do |child_category| %>
                       <li>
-                        <%= link_to child_category do %>
+                        <%= link_to child_category, "data-turbolinks": false do %>
                           <%= child_category.title %>
                           <span class="badge">
                             <%= child_category.books.size %>
@@ -35,7 +36,7 @@
             </li>
           <% else %>
             <li>
-              <%= link_to  category do %>
+              <%= link_to  category, "data-turbolinks": false do %>
                 <%= category.title %>
                 <span class="badge"><%= category.books.size %></span>
               <% end %>
