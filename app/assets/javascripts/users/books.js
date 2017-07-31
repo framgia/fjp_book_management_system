@@ -4,7 +4,6 @@
 //= require propellerkit/components/datetimepicker/js/bootstrap-datetimepicker
 //= require_self
 
-
 $(document).ready(function () {
   $('#datepicker-start').datetimepicker({
     minDate: new Date()
@@ -22,15 +21,7 @@ $(document).ready(function () {
     $('#datepicker-start').data('DateTimePicker').maxDate(e.date);
   });
 
-  $(document).on('click', '.btn-toggle-reply', function () {
-    var id = $(this).parent().attr('data');
-    $(this).addClass('hide');
-    $(this).siblings().removeClass('hide');
-    $('.child-comment-field' + id).toggleClass('hide');
-    $('.btn-toggle-reply' + id).toggleClass('hide');
-  });
-
-  $('.owl-carousel').owlCarousel();
+  $('.image-carousel').owlCarousel();
 
   $(document).on('click','.book-image-others',function(){
     $(this).attr('id');
@@ -104,5 +95,36 @@ $(document).ready(function () {
     e.preventDefault();
     var id = $(this).attr('data');
     $('.reply-' + id).addClass('hidden');
+  });
+
+  $('#relate-book-slide').owlCarousel({
+    loop: false,
+    lazyLoad: true,
+    items: 7,
+    responsive : {
+      0 : {
+        items: 2,
+      },
+      421 : {
+        items: 3,
+      },
+      706 : {
+        items: 4,
+      },
+      876 : {
+        items: 5,
+      },
+      1366 : {
+        items: 7,
+      }
+    }
+  });
+
+  $('.relate-book-cont .fa-angle-left').click(function() {
+    $(this).parent().find('.owl-carousel').trigger('prev.owl.carousel');
+  });
+
+  $('.relate-book-cont .fa-angle-right').click(function() {
+    $(this).parent().find('.owl-carousel').trigger('next.owl.carousel');
   });
 });

@@ -1,16 +1,39 @@
 <div class="relate-book">
   <p class="book-title relate-title">Related Book</p>
-  <div class="relate-book-cont">
-    <div class="owl-carousel owl-theme">
-      <% book.find_related_book.each do |b| %>
-        <%= link_to book_path(b) do %>
-          <div class="item-book pmd-z-depth-2" data-url="<%= b.id %>">
-            <div class="img-container">
-            <img src="<%= b.images.first.url %>">
-            <span><%= b.title %></span>
+  <div class="relate-book-cont slide-book">
+    <i class="fa fa-angle-left" aria-hidden="true"></i>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    <div class="owl-carousel owl-theme" id="relate-book-slide">
+      <% book.related_books.each_with_index do |b, index| %>
+        <div class="book-grid <%= random_background index %>" >
+          <div class="book-item-info">
+            <p class="book-title"><%= link_to b.title, book_path(b),
+              "data-turbolinks": "false" %></p>
+            <div class="star-in-item">
+              <% (1..(load_rate b.rate).first).each do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end  %>
+              <% (1..(load_rate b.rate).second).each do %>
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <% end  %>
+              <% (1..(load_rate b.rate).last).each do %>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+              <% end  %>
+              <%= b.rate_count %>
             </div>
+            <p class="book-author">
+              <% b.authors.each_with_index do |a, index| %>
+                <% if index == b.authors.count - 1 %>
+                  <%= a.name %>
+                <% else %>
+                  <%= a.name %>,
+                <% end %>
+              <% end %>
+            </p>
+            <%= b.categories.first.title %>
           </div>
-        <% end %>
+          <img src="<%= b.images.first.url %>">
+        </div>
       <% end %>
     </div>
   </div>

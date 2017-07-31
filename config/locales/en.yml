@@ -69,7 +69,7 @@ en:
       end_date: "End Date"
       quantity: "Quantity"
       send_req: "Send request"
-      borrow: "Borrow this book?"
+      borrow: "Borrow"
       tag: "Tag:"
       series: "Series:"
       description: "Description"
@@ -79,6 +79,7 @@ en:
       publisher: "Published by:"
       public_date: "Published at:"
       weight: "Weight:"
+
   user:
     edit:
       save: "Save"

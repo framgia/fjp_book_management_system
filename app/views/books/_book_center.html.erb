@@ -3,9 +3,9 @@
   <p class="book-author">
     <% book.authors.each_with_index do |a, index| %>
       <% if index == book.authors.count - 1 %>
-        <%= a.name %>
+        <%= link_to a.name, "", "data-turbolinks": "false" %>
       <% else %>
-        <%= a.name %>,
+        <%= link_to a.name, "", "data-turbolinks": "false" %>,
       <% end %>
     <% end %>
   </p>
@@ -19,17 +19,19 @@
     <% (1..(load_rate book.rate).last).each do |s| %>
       <i class="fa fa-star-o" aria-hidden="true"></i>
     <% end  %>
-    <%= book.rate_count %> rated
+    <%= book.rate_count %>
   </div>
+
   <% if book.series %>
     <p class="book-info-row">
       <span><%= t "books.show.series" %></span> <%= book.series.title %>
     </p>
   <% end %>
+
   <div class="book-info-row">
     <span><%= t "books.show.tag" %></span>
     <% book.tags.each do |t| %>
-      <div class="tag"><%= t.title %></div>
+      <%= link_to t.title, tag_path(t), "data-turbolinks": "false", class: "tag" %>
     <% end %>
   </div>
   <p class="book-info-row"><span><%= t "books.show.isbn" %></span> <%= book.isbn %></p>
@@ -37,4 +39,10 @@
   <p class="book-info-row"><span><%= t "books.show.pages" %></span> <%= book.pages %></p>
   <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.publisher.name %></p>
   <p class="book-info-row"><span><%= t "books.show.public_date" %></span> <%= book.public_date %></p>
+
+  <div class="row book-btn-row">
+    <div class="btn-primary col-sm-4 btn-book-info pmd-z-depth-1">
+      Watch Online
+    </div>
+  </div>
 </div>

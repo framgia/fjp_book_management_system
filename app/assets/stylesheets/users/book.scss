@@ -1,8 +1,12 @@
 @import "colors";
 
 .book-show {
+  .book-btn-row {
+    height: 75px;
+  }
+
   .book-info-row {
-    margin-bottom: 10px;
+    margin-top: 10px;
 
     span {
       font-weight: bold;
@@ -10,33 +14,82 @@
   }
 
   .frame {
-    background: $reply-toggle;
-    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-    padding: 20px 10px;
+    background: transparent;
+    padding: 0 10px 20px;
+
+    .control-label {
+      color: $white;
+      font-size: 1em;
+    }
+
+    .form-group.pmd-textfield {
+      margin: 0;
+    }
+
+    .btn-send-req {
+      background: $brown-light2;
+      box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+      color: $white;
+      margin: 10px 0 0;
+      transition: .6s;
+      width: 100%;
+    }
+
+    .btn-send-req:hover {
+      background: $white;
+      color: $black;
+    }
   }
 
   .book-image {
     background: $white;
     border-radius: 2px;
     box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-    height: 350px;
+    height: 26vw;
     padding: 3px;
     width: 100%;
   }
 
+  @media screen and (max-width: 767px){
+    .book-image {
+      height: 115vw;
+    }
+  }
+
+  @media screen and (min-width: 1440px){
+    .book-image {
+      height: 21vw;
+    }
+  }
+
   .book-title {
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
   .borrow-title {
-    font-size: 2em;
-    text-align: center;
+    color: $white;
+    font-size: 30px;
+    font-weight: lighter;
+    margin: -10px 10px;
+    text-transform: uppercase;
+  }
+
+  .bolder {
+    font-weight: bold;
   }
 
   .book-author {
     color: $blog-title;
-    font-size: 1.5em;
+    font-size: 1.1em;
     font-style: italic;
+
+    a {
+      color: $blog-title;
+    }
+
+    a:hover {
+      color: $black;
+    }
   }
 
   .fa-star,
@@ -47,12 +100,17 @@
   }
 
   .tag {
-    background: $aqua;
-    border-radius: 5px;
+    background: $brown-light4;
+    border-radius: 3px;
     box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
     color: $white;
     display: inline;
-    padding: 2px 5px;
+    padding: 4px 6px;
+    transition: .4s;
+  }
+
+  .tag:hover {
+    background: $brown-light3;
   }
 
   .description {
@@ -81,80 +139,70 @@
   .tab-row {
     background: $background-book;
     border-radius: 2px;
-    margin: 0 -10px;
     padding: 20px !important;
   }
 
   .social-field {
-    background: $frame-inverse;
-    box-shadow: 0 1px 3px $shadow1, 0 2px 4px $shadow2;
-    margin: 20px;
-    padding: 20px 30px;
-  }
-
-  .cmt-parent {
     background: $white;
-    border-left: 2px solid $header;
-    box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
-    margin-bottom: .5px;
-    margin-top: 8px;
-    padding: 5px;
-    position: relative;
+    margin: 0 5px;
+    padding: 20px 5px;
 
-    .fa-angle-up,
-    .fa-angle-down {
-      font-size: 1.5em;
-    }
+    .nav-tabs {
+      background: $brown-light4;
 
-    .user-avatar {
-      background: $color-stack-approx;
-      height: 60px;
-      width: 60px;
-    }
+      a {
+        background: $comment-gray;
+        border: 0;
+        border-radius: 2px;
+        color: $white;
+        font-size: .8em;
+        margin: 10px;
+        opacity: 1;
+        padding: 8px 12px 6px;
+        transition: .4s;
+      }
 
-    .container {
-      width: 100%;
-    }
-  }
+      a:hover {
+        background: $brown-light2;
+      }
 
-  .cmt-child {
-    background: $white;
-    border-left: 2px solid $header;
-    box-shadow: 0 1px 2px $shadow1, 0 1px 3px $shadow2;
-    margin: 3px 20px 1px 50px;
-    padding: 5px;
+      .active {
+        background: transparent;
 
-    .user-avatar {
-      background: $color-stack-approx;
-      height: 40px;
-      width: 40px;
-    }
-  }
-
-  .cmt-parent,
-  .cmt-child {
-    em {
-      color: $blog-title;
+        a {
+          background: $brown-light;
+          border: 0;
+          color: $white;
+        }
+      }
     }
   }
 
   .blog-box {
     border-left: 2px solid $header;
-    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
     margin-bottom: .5px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     position: relative;
 
     .blog-title {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin: 0;
 
       a {
+        background: transparent;
         color: $blog-title;
+        transition: .7s;
+      }
+
+      a:hover {
+        background: $brown-light2;
+        color: $white;
+        padding: 0 10px;
       }
     }
 
     .blog-description {
+      font-size: .8em;
       font-style: italic;
       margin: 0;
 
@@ -169,6 +217,7 @@
       position: relative;
 
       p {
+        font-size: .9em;
         margin: 0;
       }
 
@@ -180,66 +229,8 @@
     }
   }
 
-  .show-more {
-    position: absolute;
-    right: 2%;
-    top: 10%;
-  }
-
-  .toggle-reply {
-    border-radius: 50%;
-    bottom: 6%;
-    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-    padding: 0 5px;
-    position: absolute;
-    right: 1%;
-  }
-
-  .hidden-div {
-    transform: scale(.5, .5);
-    transition: ease .25s;
-  }
-
-  .btn-toggle-reply {
-    background: transparent;
-  }
-
-  .toggle-reply:hover {
-    background: $reply-toggle;
-  }
-
-  .toggle-reply:active {
-    background: $reply-toggled;
-    box-shadow: 0 2px 4px $shadow1, 0 2px 4px $shadow2;
-  }
-
   .time-ago {
     color: $time-ago;
-  }
-
-  .comment-head {
-    position: relative;
-  }
-
-  .social-rate {
-    position: absolute;
-    right: 1%;
-    top: 1%;
-  }
-
-  .comment-content {
-    p {
-      margin-bottom: 0;
-      width: 90%;
-    }
-  }
-
-  .cmt-child {
-    position: relative;
-
-    .comment-content {
-      font-size: .8em;
-    }
   }
 
   .image-others {
@@ -253,7 +244,7 @@
       width: 60px;
     }
 
-    owl-item {
+    .owl-item {
       height: 80px;
       width: 60px;
     }
@@ -263,39 +254,170 @@
     margin-top: 20px;
   }
 
-  .book-borrow {
-    .btn-send-req {
-      background: $aqua;
-      box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
+  .book-top {
+    background: transparent;
+    padding: 0 20px 20px;
+
+    .book-borrow-col {
+      background: $brown-light3;
+      padding: 30px 30px 120px;
+      position: relative;
+
+      .end-triangle {
+        border-bottom: 90px solid $white;
+        border-left: 140px solid transparent;
+        border-right: 140px solid transparent;
+        bottom: 0;
+        margin-left: -30px;
+        position: absolute;
+        width: 100%;
+      }
+
+      @media screen and (max-width: 767px) {
+        .end-triangle {
+          border-bottom: 90px solid $white;
+          border-left: 180px solid transparent;
+          border-right: 200px solid transparent;
+        }
+      }
     }
   }
 
-  .book-top {
-    background: transparent;
-    margin-top: -13px;
-    padding: 20px;
-  }
-
   .relate-book {
-    background: $relate-book;
-    box-shadow: 0 2px 4px $shadow1, 0 3px 6px $shadow2;
-    margin: 30px;
-    padding: 5px 20px 15px;
+    background: $brown-light4;
+    color: $white;
+    margin: 5px 20px;
 
-    .owl-item {
-      height: 250px;
-      margin: 0 10px;
-      width: 150px !important;
+    .slide-book {
+      background: $white;
+      position: relative;
+
+      ul {
+        padding: 0;
+
+        li {
+          list-style-type: disc;
+        }
+      }
+
+      .owl-item {
+        height: 230px;
+
+        .book-grid {
+          background-position: center;
+          background-size: cover;
+          height: 100%;
+          position: relative;
+        }
+
+        .book-item-info {
+          background: $white;
+          height: 230px;
+          left: 0;
+          padding: 10px;
+          position: absolute;
+          top: 0;
+          transform: scale(0);
+          transition: .5s ease;
+          z-index: 10;
+
+          .book-author {
+            color: $black;
+            display: -webkit-box;
+            font-size: .8em;
+            -webkit-line-clamp: 2;
+            line-height: 1.1em;
+            margin-top: 3px;
+            max-height: 2.5em;
+            overflow: hidden;
+            position: relative;
+            text-overflow: ellipsis;
+          }
+
+          .star-in-item {
+            bottom: 5%;
+            color: $star;
+            font-size: .7em;
+            position: absolute;
+            right: 2%;
+          }
+
+          .book-title {
+            display: -webkit-box;
+            font-size: 1.2em;
+            -webkit-line-clamp: 4;
+            line-height: 1.1em;
+            margin-top: 5px;
+            max-height: 5.5em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .book-title:hover {
+            color: $blog-title;
+          }
+
+          .book-category {
+            bottom: -3%;
+            font-size: .7em;
+            left: 4%;
+            position: absolute;
+          }
+
+          a {
+            color: $black;
+          }
+
+          a:hover {
+            color: $blog-title;
+          }
+        }
+
+        .book-grid:hover {
+          .book-item-info {
+            transform: scale(1);
+          }
+
+          img {
+            transform: scale(0);
+          }
+        }
+
+        img {
+          box-shadow: -10px 4px 20px $shadow1, 2px 4px 20px $shadow2;
+          height: 90%;
+          left: 13%;
+          position: absolute;
+          top: 5%;
+          transition: .35s ease;
+          width: 75%;
+        }
+      }
+
+      .fa-angle-left,
+      .fa-angle-right {
+        color: $black;
+        font-size: 1.5em;
+        padding: 0 7px;
+        position: absolute;
+        top: 42%;
+      }
+
+      .fa-angle-left {
+        left: -2vw;
+      }
+
+      .fa-angle-right {
+        right: -2vw;
+      }
     }
   }
 
   .relate-title {
+    font-size: 1.1em;
     margin: 0;
-    padding: 0 10px;
-  }
-
-  .relate-book-cont {
-    padding-top: 10px;
+    padding: 10px;
+    text-transform: uppercase;
   }
 
   .item-book {
@@ -352,5 +474,40 @@
   .message {
     font-size: 1em;
     font-style: italic;
+  }
+
+  .btn-book-info {
+    border-radius: 2px;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .5s;
+  }
+
+  .btn-book-info:hover {
+    background: $brown-light2;
+    box-shadow: 0 4px 8px $shadow1, 0 4px 8px $shadow2;
+    margin-top: -2px;
+  }
+}
+
+.hero-block {
+  height: 45vh !important;
+  margin-bottom: 0 !important;
+  position: relative;
+
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: $brown-light4;
+  }
+
+  .text-capitalize {
+    font-size: 4em;
+    font-weight: bold;
+    padding: 0 15px;
+    text-transform: uppercase;
   }
 }

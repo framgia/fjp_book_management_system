@@ -250,7 +250,7 @@ body {
 }
 
 .navbar-fixed-top {
-  background: linear-gradient($white, $white50 60%, $white0);
+  background: $white;
   position: fixed;
   transition: background .5s ease;
 
@@ -608,5 +608,5 @@ body {
 }
 
 .btn-primary {
-  background: $black-light4;
+  background: $brown-light4;
 }

@@ -1,4 +1,14 @@
+<% provide :title, @book.title %>
+
 <div class="book-show">
+  <div class="container-fluid header-block hero-block">
+    <div class="col-sm-1 col-sm-offset-1 text-right">
+      <h2><%= link_to t(".books"), explorer_index_path %></h2>
+    </div>
+    <div class="col-sm-10">
+      <h1 class="text-capitalize"><%= @book.title %></h1>
+    </div>
+  </div>
   <div class="container">
     <div class="row book-top">
       <div class="col-sm-3">
@@ -7,39 +17,36 @@
       <div class="col-sm-6">
         <%= render "book_center", book: @book %>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 book-borrow-col">
         <%= render "book_right", book: @book %>
+        <div class="end-triangle">
+        </div>
       </div>
     </div>
-    <div class="row social-field">
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#comment">
-          <%= t "books.show.comment" %></a></li>
-        <li><a data-toggle="tab" href="#blog">
-          <%= t "books.show.blog" %>
-        </a></li>
-        <li><a data-toggle="tab" href="#description">
-          <%= t "books.show.description" %>
-        </a></li>
-      </ul>
-      <%= render "social", book: @book %>
-    </div>
+
     <div class="row">
       <%= render "related_book", book: @book %>
+    </div>
+
+    <div class="row social-field">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#comment" class="pmd-z-depth-1">
+            <%= t "books.show.comment" %></a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#blog" class="pmd-z-depth-1">
+            <%= t "books.show.blog" %></a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#description" class="pmd-z-depth-1">
+            <%= t "books.show.description" %></a>
+        </li>
+      </ul>
+      <%= render "social", book: @book %>
     </div>
   </div>
 
   <div class="modal-send-req-result">
-  </div>
-  <div class="container">
-    <div class="row" id="comments">
-      <div class="col-sm-12">
-        <h2 class="text-uppercase">
-          <%= t "books.show.comments", book: @book %>
-        </h2>
-      </div>
-      <%= render "books/comment_form", book: @book %>
-      <%= render "books/comments", book: @book %>
-    </div>
   </div>
 </div>

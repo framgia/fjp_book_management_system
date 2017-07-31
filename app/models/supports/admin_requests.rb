@@ -13,7 +13,7 @@ class Supports::AdminRequests
   end
 
   def load_book_item_info id
-    BookItem.number_books_available id
+    BookItem.available_books id
   end
 
   def search_borrow_books
