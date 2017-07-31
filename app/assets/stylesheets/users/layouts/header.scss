@@ -1,16 +1,19 @@
 @import "users/colors";
 
+body {
+  background: $white;
+  font-family: Raleway;
+}
+
 .wrapper {
-  background: $frame;
-  padding-top: 80px;
+  background: $white;
+  margin-top: 80px;
 }
 
 .navbar {
-  background-color: transparent;
-  border-bottom-color: transparent;
+  border-bottom: 0;
   border-left: 0;
   border-right: 0;
-  border-top: 3px solid $navbar-border-top;
   height: 80px;
   left: 0;
   position: absolute;
@@ -23,7 +26,6 @@
   }
 
   .container {
-    border-bottom: 1px solid $navbar-border-container;
     padding: 8px 0;
   }
 
@@ -61,7 +63,7 @@
   position: relative;
 
   img {
-    height: 65px;
+    height: 155px;
   }
 }
 
@@ -120,7 +122,7 @@
     left: 8px;
     opacity: 0;
     position: absolute;
-    top: 8px;
+    top: -42px;
   }
 }
 
@@ -157,13 +159,12 @@
   .navbar-nav > li > a {
     color: $navbar-nav-color;
     cursor: pointer;
-    font-family: "Roboto";
     font-size: 14px;
     font-weight: 500;
     height: auto;
     padding-left: 10px;
     padding-right: 10px;
-    text-transform: none;
+    text-transform: uppercase;
     width: auto;
   }
 }
@@ -249,10 +250,9 @@
 }
 
 .navbar-fixed-top {
-  background-color: $white;
-  border-top-color: $navbar-fixed-top-border-color;
-  box-shadow: 0 3px 6px $navbar-fixed-top-shadow-color;
+  background: linear-gradient($white, $white50 60%, $white0);
   position: fixed;
+  transition: background .5s ease;
 
   .navbar-brand > .logo-dark {
     opacity: 1;
@@ -263,7 +263,7 @@
   }
 
   .navbar-brand > img {
-    top: 8px;
+    top: -42px;
 
     &.logo-light {
       opacity: 0;
@@ -362,7 +362,7 @@
   }
 
   .navbar-brand > img {
-    height: 64px;
+    height: 80px;
     top: 6px;
     width: auto;
   }
@@ -498,9 +498,10 @@
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .pmd-navbar .navbar-brand {
+    height: 80px;
     overflow: hidden;
     padding-top: 12px;
-    width: 50px;
+    width: 180px;
   }
 
   .navbar .search-form {
@@ -527,7 +528,7 @@
   }
 
   .navbar.navbar-fixed-top .navbar-brand > img {
-    top: 12px;
+    top: -42px;
   }
 
   .pmd-navbar .navbar-nav > li {
@@ -604,4 +605,8 @@
       padding-bottom: 30px;
     }
   }
+}
+
+.btn-primary {
+  background: $black-light4;
 }

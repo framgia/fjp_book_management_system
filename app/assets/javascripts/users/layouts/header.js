@@ -1,4 +1,4 @@
-$( '.search-toggle' ).click(function() {
+$('.search-toggle').click(function() {
   if($(this).hasClass('active')){
     $(this).removeClass('active');
     $('.search-form').removeClass('open');
