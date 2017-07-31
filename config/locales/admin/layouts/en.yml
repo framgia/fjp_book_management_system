@@ -1,3 +1,5 @@
 en:
   sidebar:
-    users_manager: "Users Maneger"
+    users_manager: "Users Manege"
+    categories_manager: "Categories Manege"
+    requests_manager: "Requests Manege"

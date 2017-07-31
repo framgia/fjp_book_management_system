@@ -1,0 +1,27 @@
+en:
+  admin:
+    requests:
+      update:
+        success: "Update category suscess!"
+        something_wrong: "Update category fail, has something wrong!"
+      index:
+        not_exist: "Category not exit."
+        buy_book: "Buy Books"
+        donate_book: "Donate Books"
+        borrow_books: "Borrow Books"
+        all: "All"
+        reject: "Reject"
+        approved: "Approved"
+        approve: "Approve"
+        not_approved_yet: "Not Approved Yet"
+        cancel: "Cancel"
+        save: "Update approve borrow books"
+        no: "No"
+        username: "Username"
+        start_date: "Start Date"
+        end_date: "End Date"
+        book_title: "Book Title"
+        available: "Available"
+        status: "Status"
+        status_select: "Status Select"
+        number_requests: "Number requests:"

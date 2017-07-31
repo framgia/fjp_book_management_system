@@ -42,25 +42,24 @@
       <% end %>
     </li>
 
-    <li class="dropdown pmd-dropdown">
-      <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media"
-        data-sidebar="true" href="javascript:void(0);">
-        <i class="material-icons media-left pmd-sm">swap_calls</i>
-        <span class="media-body">Third Party Elements</span>
-        <div class="media-right media-bottom"><i class="dic-more-vert dic"></i></div>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a href="custom-scroll.html">Custom Scrollbar</a></li>
-        <li><a href="datetimepicker.html">Datetimepicker</a></li>
-        <li><a href="range-slider.html">Range Slider</a></li>
-        <li><a href="select2.html">Select2</a></li>
-      </ul>
-    </li>
-
     <li>
       <%= link_to admin_users_path, class: "pmd-ripple-effect active" do %>
         <i class="material-icons media-left pmd-sm">account_box</i>
         <span class="media-body"><%= t "sidebar.users_manager" %></span>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to admin_categories_path, class: "pmd-ripple-effect active" do %>
+          <i class="material-icons media-left pmd-sm">collections_bookmark</i>
+          <span class="media-body"><%= t "sidebar.categories_manager" %></span>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to admin_requests_path, class: "pmd-ripple-effect active" do %>
+          <i class="material-icons media-left pmd-sm">speaker_notes</i>
+          <span class="media-body"><%= t "sidebar.requests_manager" %></span>
       <% end %>
     </li>
   </ul>
