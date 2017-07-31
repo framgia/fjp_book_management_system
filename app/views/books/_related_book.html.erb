@@ -5,7 +5,7 @@
     <i class="fa fa-angle-right" aria-hidden="true"></i>
     <div class="owl-carousel owl-theme" id="relate-book-slide">
       <% book.related_books.each_with_index do |b, index| %>
-        <div class="book-grid <%= random_background index %>" >
+        <div class="book-grid" >
           <div class="book-item-info">
             <p class="book-title"><%= link_to b.title, book_path(b),
               "data-turbolinks": "false" %></p>

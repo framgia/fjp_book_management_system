@@ -1,0 +1,13 @@
+<% provide :title, @ebooks.first.book.title %>
+
+<div class="read-online">
+  <div class="hidden" id="ebook-link"><%= @ebooks.first.link %></div>
+  <div class="row page-info">
+    <button id="prev" class="btn-primary">Previous</button>
+    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+    <button id="next" class="btn-primary">Next</button>
+  </div>
+  <div class="row">
+    <canvas id="the-canvas" class="col-sm-10 col-sm-offset-1"></canvas>
+  </div>
+</div>

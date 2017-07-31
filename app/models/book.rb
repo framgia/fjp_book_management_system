@@ -46,4 +46,8 @@ class Book < ApplicationRecord
   def parent_comments
     comments.where(parent_id: 0).order id: :desc
   end
+
+  def pdf_ebooks
+    self.ebooks.where(format: "pdf")
+  end
 end
