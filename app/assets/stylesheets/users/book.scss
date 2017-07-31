@@ -263,6 +263,10 @@
       padding: 30px 30px 120px;
       position: relative;
 
+      .form-control {
+        color: $white;
+      }
+
       .end-triangle {
         border-bottom: 90px solid $white;
         border-left: 140px solid transparent;
