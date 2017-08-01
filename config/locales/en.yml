@@ -132,3 +132,6 @@ en:
     flash:
       danger:
         not_found_ebooks: "Ebook not found"
+  author:
+    show:
+      author: "Author"

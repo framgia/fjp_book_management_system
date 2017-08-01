@@ -14,9 +14,9 @@
       <h4><% support.load_new_book.first.authors.each_with_index do
         |a, index| %>
           <% if index == support.load_new_book.first.authors.count - 1 %>
-            <%= link_to a.name, "", "data-turbolinks":"false" %>
+            <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>
           <% else %>
-            <%= link_to a.name, "", "data-turbolinks":"false" %>,
+            <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>,
           <% end %>
         <% end %>
       </h4>

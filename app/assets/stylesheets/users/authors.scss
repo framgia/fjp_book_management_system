@@ -1,0 +1,20 @@
+@import "colors";
+
+.author-detail {
+  .book-info-container {
+    h2 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 50px;
+      margin-top: 30px;
+    }
+  }
+
+  .owl-item {
+    height: 220px !important;
+  }
+}
+

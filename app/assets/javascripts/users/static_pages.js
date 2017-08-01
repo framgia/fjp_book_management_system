@@ -1,5 +1,3 @@
-//= require bxslider/dist/jquery.bxslider.min
-
 $(document).ready(function(){
   $('#hero-slide').owlCarousel({
     margin: 0,
