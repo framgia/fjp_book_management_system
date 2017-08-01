@@ -42,3 +42,9 @@ function search(query) {
     $('#autocomplete').html('');
   }
 }
+
+$(document).ready(function(){
+  $('.announcement-icon').on('click', function() {
+    $('.announcements').toggleClass('hide');
+  });
+});

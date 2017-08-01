@@ -1,0 +1,17 @@
+<div id="announcements-modal" class="modal fade">
+  <% if announcement %>
+    <div class="modal-dialog announcements-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <i class="fa fa-remove close-icon"></i>
+          </button>
+          <h4 class="modal-title"><%= announcement.title %></h4><hr>
+        </div>
+        <div class="modal-body">
+          <%= announcement.content %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

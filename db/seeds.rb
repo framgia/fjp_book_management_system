@@ -612,3 +612,15 @@ BlogBook.create!([
   {blog_id: 5, book_id: 5},
   {blog_id: 2, book_id: 1},
 ])
+
+Announcement.create!([
+  {admin_id: 1, title: "Fbook introduced the Trending posts feature",
+    content: "Fbook has just added new feature called Trending posts.
+      When posts reach the number of views, votes, clips, comments at a certain
+      level, they will be automatically tagged by Fbook system as Trending."},
+  {admin_id: 1, title: "Fbook introduced the RSS Feed feature",
+    content: "Fbook has just added the RSS Feed feature, allowing you to
+      receive news feeds through RSS Feed Readers.The address for receiving RSS
+      feeds on Fbook is https://fbook/rss, which you can see at RESOURCES in
+      the footer at the bottom of the page."}
+])

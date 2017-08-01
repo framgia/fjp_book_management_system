@@ -1,0 +1,90 @@
+@import "users/colors";
+
+.announcements {
+  background-color: $white;
+  box-shadow: 0 2px 4px 0 $navbar-custom-background, 0 2px 10px 0
+  $navbar-custom-background !important;
+  margin-top: 1px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: fixed;
+  right: 20px;
+  width: 400px;
+}
+
+.unread-announcement {
+  background-color: $menu-item-announcement-background !important;
+}
+
+.fa-info {
+  cursor: pointer;
+  font-size: 20px !important;
+  position: relative;
+}
+
+.announcement-icon {
+  float: right !important;
+  height: 40px;
+  margin: 20px 0;
+  padding: 8px;
+  position: relative;
+  width: 40px;
+
+  .announcements {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.announcements-list {
+  color: $black;
+  list-style-type: none;
+  padding: 0;
+
+  .announcement-item {
+    display: block;
+    padding: 10px;
+  }
+
+  hr {
+    margin: 0 !important;
+  }
+
+  li {
+    cursor: pointer !important;
+    list-style-type: none;
+  }
+
+  li:hover {
+    background-color: $desert-storm-approx;
+  }
+
+  .announcement {
+    border: 1px solid $menu-item-announcement-background;
+    border-left: 0;
+    border-right: 0;
+    height: auto;
+
+    .announcement-content {
+      font-size: 15px;
+      word-wrap: break-word;
+    }
+
+    .announcement-time {
+      padding-left: 10px;
+    }
+  }
+}
+
+.announcement-index {
+  margin: 10px 0;
+  padding-top: 10px;
+}
+
+.header-announcements {
+  margin: 0 30px;
+}
+
+.close-icon {
+  font-size: 1.25em;
+}

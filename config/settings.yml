@@ -38,3 +38,5 @@ user:
       item_book_title: 40
       book_description: 550
       author_description: 250
+announcements:
+  announcements_per_load: 10

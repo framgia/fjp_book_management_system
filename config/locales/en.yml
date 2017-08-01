@@ -135,3 +135,9 @@ en:
   author:
     show:
       author: "Author"
+  announcements:
+    title: "Announcements"
+    view_all: "All announcements"
+    detail: "Announcement detail"
+    not_found: "Announcement not found"
+  error: "404 not found !"
