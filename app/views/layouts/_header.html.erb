@@ -45,6 +45,37 @@
           <% end %>
         <% end %>
       </div>
+
+      <div class="w3-hide-small announcement-icon">
+        <div class="w3-padding-large w3-hover-white"%>
+          <i class="fa fa-info"></i>
+        </div>
+        <div class="announcements hide">
+          <h2 class="text-center"><%= t "announcements.title"%></h2>
+          <ul class="announcements-list">
+            <% load_announcements.each do |announcement| %>
+              <li class="announcement"
+                id="announcement-<%= announcement.id %>">
+                <%= link_to announcement, "data-turbolinks": false,
+                  class: "announcement-item", remote: true do %>
+                  <div class="announcement-content">
+                    <%= announcement.title %>
+                  </div>
+                <% end %>
+                <div class="announcement-time">
+                  <small>
+                    <%= I18n.localize announcement.created_at, format: :short %>
+                  </small>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+          <div class="text-center">
+            <%= link_to t("announcements.view_all"), announcements_path,
+              "data-turbolinks": false %>
+          </div>
+        </div>
+      </div>
       <div class="pmd-navbar-right-icon pull-right">
         <a class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect search-toggle"
            href="javascript:void(0);">
@@ -100,3 +131,5 @@
   </div>
   <div class="pmd-sidebar-overlay"></div>
 </nav>
+
+<%= render "announcements/announcement_modal", announcement: nil %>

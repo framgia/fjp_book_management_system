@@ -1,0 +1,8 @@
+$('#announcement-<%= @announcement.id %>')
+  .replaceWith('<%= j render @announcement %>');
+var announcement_count = parseInt($('.announcement-count').html());
+if (announcement_count > 0) announcement_count--;
+$('.announcement-count').html(announcement_count);
+$('#announcements-modal')
+  .replaceWith('<%= j render "announcement_modal", announcement: @announcement %>');
+$('#announcements-modal').modal();
