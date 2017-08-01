@@ -19,13 +19,15 @@
     <p class="book-author">
       <% b.authors.each_with_index do |a, index| %>
         <% if index == b.authors.count - 1 %>
-          <%= a.name %>
+          <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>
         <% else %>
-          <%= a.name %>,
+          <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>,
         <% end %>
       <% end %>
     </p>
-    <p class="book-category"><%= b.categories.first.title %></p>
+    <p class="book-category">
+      <%= link_to b.categories.first.title, category_path(b.categories.first),
+        "data-turbolinks": "false" %></p>
   </div>
   <img src="<%= b.images.first.url.thumb %>" class="img-responsive">
 </div>
