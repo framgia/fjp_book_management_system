@@ -40,9 +40,11 @@
   <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.publisher.name %></p>
   <p class="book-info-row"><span><%= t "books.show.public_date" %></span> <%= book.public_date %></p>
 
-  <div class="row book-btn-row">
-    <div class="btn-primary col-sm-4 btn-book-info pmd-z-depth-1">
-      Watch Online
+  <% if book.pdf_ebooks.present?  %>
+    <div class="row book-btn-row">
+      <%= link_to t("books.show.watch_online"), read_online_path(id: book.id),
+        "data-turbolinks": "false",
+        class: "btn-primary col-sm-4 btn-book-info pmd-z-depth-1" %>
     </div>
-  </div>
+  <% end %>
 </div>
