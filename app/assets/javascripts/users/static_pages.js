@@ -27,6 +27,17 @@ $(document).ready(function(){
     loop: true,
     lazyLoad: true,
     items: 5,
+    responsive: {
+      0: {
+        items: 2
+      },
+      768: {
+        items: 4,
+      },
+      1440: {
+        items: 5
+      }
+    }
   });
 
 
@@ -35,6 +46,21 @@ $(document).ready(function(){
     loop: true,
     lazyLoad: true,
     items: 3,
+    responsive: {
+      0: {
+        items: 2
+      },
+      768: {
+        items: 3,
+        margin: 15
+      },
+      1024: {
+        items: 3
+      },
+      1440: {
+        items: 4
+      }
+    }
   });
 
   $('.fa-angle-left').click(function() {

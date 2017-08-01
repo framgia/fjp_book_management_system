@@ -8,7 +8,7 @@
   border-radius: 100%;
   bottom: -22px;
   color: $white;
-  font: 400 12px / 45px $font-3, $font-1;
+  font: 400 12px / 45px $font-lato, $font-sans-serif;
   height: 45px;
   position: absolute;
   right: 0;
@@ -22,13 +22,13 @@
 .tab-style-1-content {
   .box-outer {
     background-color: $white;
-    border: 2px solid $color-mercury-approx;
+    border: 2px solid $mercury-approx;
     border-radius: 3px;
     display: inline-block;
   }
 
   .box-outer::before {
-    border: 5px solid $color-ebony-clay-approx;
+    border: 5px solid $ebony-clay-approx;
     bottom: 0;
     content: "";
     height: 100%;
@@ -60,7 +60,7 @@
 
   .box {
     .frame {
-      background: $color-desert-storm-approx;
+      background: $desert-storm-approx;
       float: left;
       margin: 0;
       padding: 30px 0;
@@ -82,7 +82,7 @@
 
         a {
           background: $concrete;
-          color: $color-fuscous-gray-approx;
+          color: $fuscous-gray-approx;
           float: left;
           font-size: 14px;
           height: 34px;
@@ -111,7 +111,7 @@
           border-radius: 100%;
           bottom: -22px;
           color: $white;
-          font: 400 12px / 14px $font-0, $font-1;
+          font: 400 12px / 14px $font-open-sans, $font-sans-serif;
           height: 45px;
           padding: 7px 0 0;
           position: absolute;
@@ -152,17 +152,17 @@
       z-index: 99;
 
       span {
-        color: $color-fuscous-gray-approx;
+        color: $fuscous-gray-approx;
         display: block;
-        font: 700 12px / 12px $font-0, $font-1;
+        font: 700 12px / 12px $font-open-sans, $font-sans-serif;
         padding: 0 0 5px;
         text-transform: uppercase;
       }
 
       em {
-        color: $color-fuscous-gray-approx;
+        color: $fuscous-gray-approx;
         display: block;
-        font: normal 12px / 12px $font-0, $font-1;
+        font: normal 12px / 12px $font-open-sans, $font-sans-serif;
         padding: 0 0 20px;
       }
 
@@ -177,7 +177,7 @@
 
       .price {
         float: left;
-        font: 700 20px / 20px $font-0, $font-1;
+        font: 700 20px / 20px $font-open-sans, $font-sans-serif;
         padding: 0 0 20px;
       }
     }
@@ -212,9 +212,9 @@
 }
 
 .side-menu {
-  background-color: $color-desert-storm-approx;
+  background-color: $desert-storm-approx;
   border-radius: 3px;
-  border-right: 1px solid $color-mercury-approx;
+  border-right: 1px solid $mercury-approx;
   height: 100%;
   width: 100%;
 
@@ -223,13 +223,13 @@
   }
 
   .navbar-header {
-    border-bottom: 1px solid $color-mercury-approx;
+    border-bottom: 1px solid $mercury-approx;
     width: 100%;
   }
 
   .navbar-nav {
     li {
-      border-bottom: 1px solid $color-mercury-approx;
+      border-bottom: 1px solid $mercury-approx;
       display: block;
       width: 100%;
 
@@ -244,7 +244,7 @@
 
     .active a {
       background-color: transparent;
-      border-right: 5px solid $color-mercury-approx;
+      border-right: 5px solid $mercury-approx;
       margin-right: -1px;
     }
   }
@@ -266,18 +266,18 @@
     }
 
     > a {
-      border-bottom: 1px solid $color-mercury-approx;
+      border-bottom: 1px solid $mercury-approx;
     }
 
     .panel-body {
-      background-color: $color-concrete-approx;
+      background-color: $concrete-approx;
       padding: 0;
 
       .navbar-nav {
         width: 100%;
 
         li {
-          border-bottom: 1px solid $color-mercury-approx;
+          border-bottom: 1px solid $mercury-approx;
           padding-left: 15px;
 
           &:last-child {
@@ -293,7 +293,7 @@
           padding-left: 30px;
 
           &:last-child {
-            border-bottom: 1px solid $color-mercury-approx;
+            border-bottom: 1px solid $mercury-approx;
           }
         }
       }
@@ -320,7 +320,7 @@
 
 @media(max-width: 768px) {
   .side-menu {
-    border-bottom: 1px solid $color-mercury-approx;
+    border-bottom: 1px solid $mercury-approx;
     border-right: 0;
     height: 0;
     position: relative;
@@ -385,7 +385,7 @@
   }
 
   .navbar-toggle {
-    background-color: $color-concrete-approx;
+    background-color: $concrete-approx;
     border: 0;
     border-radius: 0;
     float: left;
@@ -394,15 +394,15 @@
   }
 
   .navbar-header {
-    background-color: $color-desert-storm-approx;
+    background-color: $desert-storm-approx;
     position: fixed;
     z-index: 3;
   }
 
   .side-menu-container > .navbar-nav {
     animation: slideout 300ms forwards;
-    background-color: $color-desert-storm-approx;
-    border-right: 1px solid $color-mercury-approx;
+    background-color: $desert-storm-approx;
+    border-right: 1px solid $mercury-approx;
     height: 100%;
     left: -300px;
     position: fixed;
