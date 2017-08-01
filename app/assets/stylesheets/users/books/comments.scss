@@ -9,7 +9,7 @@
     }
 
     button:hover {
-      background: $brown-light2;
+      background: $brown-primary;
     }
 
     .preview {
@@ -51,13 +51,13 @@
       }
 
       a:hover {
-        background: $brown-light2;
+        background: $brown-primary;
       }
     }
 
     .active {
       a {
-        background: $brown-light2;
+        background: $brown-primary;
       }
     }
   }

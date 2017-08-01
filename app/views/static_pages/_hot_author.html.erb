@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row title-heading">
+    <h2 class="row-title"><%= t "home.top_author" %></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1 book-info-container">
+      <h2><%= link_to support.load_top_author.first.name, "",
+        "data-turbolinks":"false" %></h2>
+      <p title="<%= support.load_top_author.first.description %>">
+        <%= support.load_top_author.first.description.truncate(
+          Settings.user.home.truncate.author_description) %>
+      </p>
+      <div class="slide-nav">
+        <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+      </div>
+      <div class="owl-carousel owl-theme book-of-author-slide" id="author-book-slide">
+        <% Author.first.books.each_with_index do |b, index| %>
+          <div class="book-grid" >
+            <div class="book-item-info">
+              <p class="book-title" title="<%= b.title %>">
+                <%= link_to b.title.truncate(
+                  Settings.user.home.truncate.item_book_title), book_path(b),
+                  "data-turbolinks":"false" %></p>
+              <div class="star-in-item">
+                <% (1..(load_rate b.rate).first).each do %>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                <% end  %>
+                <% (1..(load_rate b.rate).second).each do %>
+                  <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                <% end  %>
+                <% (1..(load_rate b.rate).last).each do %>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                <% end  %>
+                <%= b.rate_count %>
+              </div>
+              <p class="book-author">
+                <% b.authors.each_with_index do |a, index| %>
+                  <% if index == b.authors.count - 1 %>
+                    <%= a.name %>
+                  <% else %>
+                    <%= a.name %>,
+                  <% end %>
+                <% end %>
+              </p>
+              <p class="book-category"><%= b.categories.first.title %></p>
+            </div>
+            <img src="<%= b.images.first.url.thumb %>" class="img-responsive
+              pmd-z-depth-1">
+          </div>
+        <% end %>
+        <div class="book-shelf">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 img-container col-sm-offset-1">
+      <img src="<%= support.load_top_author.first.avatar.url %>"
+           class="img-responsive">
+    </div>
+  </div>
+</div>

@@ -24,18 +24,27 @@
       <div class="col-sm-3 home-guide-box">
         <h2><%= t "home.guide.books" %></h2>
         <p><%= t "home.guide.books_content" %></p>
+        <p><%= link_to t("home.guide.start_explore"), explorer_index_path,
+          "data-turbolinks": "false" %></p>
       </div>
       <div class="col-sm-3 home-guide-box">
-        <h2 class="heading-bottom"><%= t "home.guide.blogs" %></h2>
+        <h2 class="heading-bottom">
+          <%= t "home.guide.blogs"%></h2>
         <p class="paragraph-bottom"><%= t "home.guide.blog_content" %></p>
+        <p><%= link_to t("home.guide.start_explore"), blog_root_path,
+          "data-turbolinks": "false" %></p>
       </div>
       <div class="col-sm-3 home-guide-box">
         <h2><%= t "home.guide.borrow" %></h2>
         <p><%= t "home.guide.borrow_content" %></p>
+        <p><%= link_to t("home.guide.choose_book"), explorer_index_path,
+          "data-turbolinks": "false" %></p>
       </div>
       <div class="col-sm-3 home-guide-box">
         <h2 class="heading-bottom"><%= t "home.guide.feedback" %></h2>
         <p class="paragraph-bottom"><%= t "home.guide.feedback_content" %></p>
+        <p><%= link_to t("home.guide.feedback_link"), "",
+          "data-turbolinks": "false" %></p>
       </div>
     </div>
   </div>
@@ -43,11 +52,11 @@
 
 <div class="container-fluid recommend-book">
   <div class="container">
-    <div class="col-sm-12 text-center recommend-heading">
+    <div class="col-sm-12 text-center title-heading">
       <h2><%= t "home.recommend" %></h2>
       <p><%= t "home.recommend_details" %></p>
     </div>
-    <div class="col-sm-10 col-sm-offset-1 bookshelf">
+    <div class="col-sm-12 bookshelf">
       <div class="col-sm-10 col-sm-offset-1 slider">
         <div class="slide-nav">
           <i class="fa fa-angle-left fa-3x" aria-hidden="true"></i>
@@ -55,38 +64,14 @@
         </div>
         <div class="owl-carousel owl-theme recommend-book-slider"
              id="recommended-book-slide">
-          <% @support.load_popular_book.each_with_index do |b, index| %>
-            <div class="book-grid" >
-              <div class="book-item-info">
-                <p class="book-title" title="<%= b.title %>">
-                  <%= link_to b.title.truncate(
-                    Settings.user.home.truncate.item_book_title), book_path(b),
-                    "data-turbolinks":"false" %></p>
-                <div class="star-in-item">
-                  <% (1..(load_rate b.rate).first).each do %>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                  <% end  %>
-                  <% (1..(load_rate b.rate).second).each do %>
-                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                  <% end  %>
-                  <% (1..(load_rate b.rate).last).each do %>
-                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                  <% end  %>
-                  <%= b.rate_count %>
-                </div>
-                <p class="book-author">
-                  <% b.authors.each_with_index do |a, index| %>
-                    <% if index == b.authors.count - 1 %>
-                      <%= a.name %>
-                    <% else %>
-                      <%= a.name %>,
-                    <% end %>
-                  <% end %>
-                </p>
-                <p class="book-category"><%= b.categories.first.title %></p>
-              </div>
-              <img src="<%= b.images.first.url.thumb %>" class="img-responsive pmd-z-depth-1">
-            </div>
+          <% if @support.load_popular_book.present? %>
+            <% @support.load_popular_book.each do |book| %>
+              <%= render "book_slide_item", b: book %>
+            <% end %>
+          <% else %>
+            <% @support.load_new_book.each do |book| %>
+              <%= render "book_slide_item", b: book %>
+            <% end %>
           <% end %>
           <div class="book-shelf">
           </div>
@@ -97,97 +82,11 @@
 </div>
 
 <div class="container-fluid hot-book">
-  <div class="container">
-    <div class="row">
-      <h2 class="row-title"><%= t "home.new_book" %></h2>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 img-container col-sm-offset-1">
-        <img src="<%= @support.load_new_book.first.images.first.url %>"
-          class="img-responsive">
-      </div>
-      <div class="col-sm-6 col-sm-offset-1 book-info-container">
-        <h2><%= link_to @support.load_new_book.first.title, "",
-          "data-turbolinks":"false" %></h2>
-        <h4><% @support.load_new_book.first.authors.each_with_index do
-          |a, index| %>
-            <% if index == @support.load_new_book.first.authors.count - 1 %>
-              <%= link_to a.name, "", "data-turbolinks":"false" %>
-            <% else %>
-              <%= link_to a.name, "", "data-turbolinks":"false" %>,
-            <% end %>
-          <% end %>
-        </h4>
-        <p title="<%= @support.load_new_book.first.description %>">
-          <%= @support.load_new_book.first.description.truncate(
-            Settings.user.home.truncate.book_description) %>
-        </p>
-      </div>
-    </div>
-  </div>
+  <%= render "hot_book", support: @support %>
   <div class="bottom-diagonal">
   </div>
 </div>
 
 <div class="container-fluid hot-author">
-  <div class="container">
-    <div class="row">
-      <h2 class="row-title"><%= t "home.top_author" %></h2>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 img-container col-sm-offset-1">
-        <img src="<%= @support.load_top_author.first.avatar.url %>"
-          class="img-responsive">
-      </div>
-      <div class="col-sm-6 col-sm-offset-1 book-info-container">
-        <h2><%= link_to @support.load_top_author.first.name, "",
-          "data-turbolinks":"false" %></h2>
-        <p title="@support.load_top_author.first.description">
-          <%= @support.load_top_author.first.description.truncate(
-            Settings.user.home.truncate.author_description) %>
-        </p>
-        <div class="slide-nav">
-          <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
-          <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
-        </div>
-        <div class="owl-carousel owl-theme book-of-author-slide" id="author-book-slide">
-          <% Author.first.books.each_with_index do |b, index| %>
-            <div class="book-grid" >
-              <div class="book-item-info">
-                <p class="book-title" title="<%= b.title %>">
-                  <%= link_to b.title.truncate(
-                    Settings.user.home.truncate.item_book_title), book_path(b),
-                    "data-turbolinks":"false" %></p>
-                <div class="star-in-item">
-                  <% (1..(load_rate b.rate).first).each do %>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                  <% end  %>
-                  <% (1..(load_rate b.rate).second).each do %>
-                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                  <% end  %>
-                  <% (1..(load_rate b.rate).last).each do %>
-                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                  <% end  %>
-                  <%= b.rate_count %>
-                </div>
-                <p class="book-author">
-                  <% b.authors.each_with_index do |a, index| %>
-                    <% if index == b.authors.count - 1 %>
-                      <%= a.name %>
-                    <% else %>
-                      <%= a.name %>,
-                    <% end %>
-                  <% end %>
-                </p>
-                <p class="book-category"><%= b.categories.first.title %></p>
-              </div>
-              <img src="<%= b.images.first.url.thumb %>" class="img-responsive pmd-z-depth-1">
-            </div>
-          <% end %>
-          <div class="book-shelf">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "hot_author", support: @support %>
 </div>

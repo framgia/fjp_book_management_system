@@ -1,8 +1,6 @@
 class StaticPagesController < ApplicationController
   include ApplicationHelper
 
-  def index; end
-
   def show
     setting = Settings.user.home
     @support = Supports::Home.new new_book:
