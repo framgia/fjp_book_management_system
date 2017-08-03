@@ -131,7 +131,7 @@ en:
   read_online:
     flash:
       danger:
-        not_found_ebooks: "Ebook not found"
+        not_found_ebook: "Ebook not found"
   author:
     show:
       author: "Author"

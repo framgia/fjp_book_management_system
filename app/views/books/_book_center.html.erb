@@ -19,7 +19,11 @@
     <% (1..(load_rate book.rate).last).each do |s| %>
       <i class="fa fa-star-o" aria-hidden="true"></i>
     <% end  %>
-    (<%= book.rate_count %>)
+    <% if book.rate_count %>
+     (<%= book.rate_count %>)
+    <% else %>
+      (0)
+    <% end %>
   </div>
 
   <% if book.series %>
@@ -34,11 +38,18 @@
       <%= link_to t.title, tag_path(t), "data-turbolinks": "false", class: "tag" %>
     <% end %>
   </div>
-  <p class="book-info-row"><span><%= t "books.show.isbn" %></span> <%= book.isbn %></p>
-  <p class="book-info-row"><span><%= t "books.show.language" %></span> <%= book.language.full_name %></p>
-  <p class="book-info-row"><span><%= t "books.show.pages" %></span> <%= book.pages %></p>
-  <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.publisher.name %></p>
-  <p class="book-info-row"><span><%= t "books.show.public_date" %></span> <%= book.public_date %></p>
+  <div class="row">
+    <div class="col-sm-5">
+      <p class="book-info-row"><span><%= t "books.show.isbn" %></span> <%= book.isbn %></p>
+      <p class="book-info-row"><span><%= t "books.show.language" %></span> <%= book.language.full_name %></p>
+      <p class="book-info-row"><span><%= t "books.show.pages" %></span> <%= book.pages %></p>
+    </div>
+    <div class="col-sm-6">
+      <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.publisher.name %></p>
+      <p class="book-info-row"><span><%= t "books.show.public_date" %></span> <%= book.public_date.strftime('%d/%m/%Y') %></p>
+      <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.dimension %></p>
+    </div>
+  </div>
 
   <% if book.pdf_ebooks.present?  %>
     <div class="row book-btn-row">
