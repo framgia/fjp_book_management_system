@@ -1,3 +1,5 @@
+//= require_self
+
 $(document).on('click','#btn-edit-book-item', function(){
   var x = $(this).data('id');
   var book_item_location = $('.item-location' + x).text();

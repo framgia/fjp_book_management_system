@@ -1,5 +1,6 @@
 en:
   sidebar:
-    users_manager: "Users Manege"
-    categories_manager: "Categories Manege"
-    requests_manager: "Requests Manege"
+    users_manager: "Users Manage"
+    categories_manager: "Categories Manage"
+    requests_manager: "Requests Manage"
+    borrow_books: "Borrow books"

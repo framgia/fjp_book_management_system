@@ -2,10 +2,10 @@ en:
   admin:
     requests:
       update:
-        success: "Update category suscess!"
-        something_wrong: "Update category fail, has something wrong!"
+        success: "Update request suscess!"
+        something_wrong: "Update request fail, has something wrong!"
       index:
-        not_exist: "Category not exit."
+        not_exist: "Request not exit."
         buy_book: "Buy Books"
         donate_book: "Donate Books"
         borrow_books: "Borrow Books"

@@ -7,6 +7,10 @@ class Supports::AdminRequests
     @params[:borrow_books]
   end
 
+  def status
+    @params[:status]
+  end
+
   def request_borrow_books_search
     request_borrow_books.page(@params[:param][:page])
       .per Settings.admin.categories.index.categories_per_page

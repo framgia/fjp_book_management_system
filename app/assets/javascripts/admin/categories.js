@@ -1,3 +1,5 @@
+//= require_self
+
 $(document).on('click', '.save-category', function() {
   var categoryId = $(this).data('id');
   var classCheckbox = '.books-checked-at-category-' + categoryId;

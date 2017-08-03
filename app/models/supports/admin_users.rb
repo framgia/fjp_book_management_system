@@ -14,7 +14,7 @@ class Supports::AdminUsers
 
   def search
     search = User.ransack @params[:param][:q]
-    search.sorts = %w(id name) if search.sorts.empty?
+    search.sorts = %w(id\ DESC) if search.sorts.empty?
     search
   end
 end

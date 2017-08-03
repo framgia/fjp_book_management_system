@@ -9,7 +9,9 @@ class Admin
     end
 
     def create
-      user = User.new new_user_params
+      user = User.new user_params
+      user.password = "framgiajapan"
+      user.password_confirmation = "framgiajapan"
       if user.save
         flash[:success] = t "admin.users.create.success"
       else
@@ -18,7 +20,7 @@ class Admin
     end
 
     def update
-      if @user.update_attributes update_user_params
+      if @user.update_attributes user_params
         flash[:success] = t "admin.users.update.success"
       else
         flash[:danger] = t "admin.users.update.something_wrong"
@@ -26,11 +28,12 @@ class Admin
     end
 
     def destroy
-      if @user.destroy
+      if @user != current_user && @user.destroy
         flash[:success] = t "admin.users.destroy.success"
       else
         flash[:danger] = t "admin.users.destroy.something_wrong"
       end
+
     end
 
     private
@@ -41,13 +44,8 @@ class Admin
       flash[:danger] = t "admin.not_exist"
     end
 
-    def new_user_params
-      params.require(:user).permit :email, :password, :password_confirmation
-    end
-
-    def update_user_params
-      params.require(:user).permit :id,
-        :email, :password, :password_confirmation
+    def user_params
+      params.require(:user).permit :id, :email, :role, :staff_code, :name
     end
   end
 end

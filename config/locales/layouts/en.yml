@@ -1,6 +1,7 @@
 en:
   layouts:
     header:
+      administrator: "Administrator"
       books: "Books Explorer"
       blog: "Blog"
       account: "Account"
@@ -23,4 +24,5 @@ en:
     sidebar:
       dashboard: "Dashboard"
       logout: "Logout"
+      login: "Login"
       edit_profile: "Edit Profile"

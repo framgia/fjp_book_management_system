@@ -7,6 +7,8 @@
     <title><%= full_title yield(:title) %></title>
     <%= csrf_meta_tags %>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"
+      rel="stylesheet" type="text/css" />
     <%= stylesheet_link_tag "admin", media: "all",
       "data-turbolinks-track": "reload" %>
   </head>
@@ -22,5 +24,8 @@
     </div>
     <%= render "admin/layouts/footer" %>
     <%= javascript_include_tag "admin", "data-turbolinks-track": "reload" %>
+    <% if File.exist? Rails.root.join("app/assets/javascripts/", params[:controller] + ".js") %>
+      <%= javascript_include_tag (params[:controller]), "data-turbolinks-track": "reload" %>
+    <% end %>
   </body>
 </html>
