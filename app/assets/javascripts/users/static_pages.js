@@ -22,9 +22,10 @@ $(document).ready(function(){
 
   $('#recommended-book-slide').owlCarousel({
     margin: 20,
-    loop: true,
+    loop: false,
     lazyLoad: true,
     items: 5,
+    rewind: true,
     responsive: {
       0: {
         items: 2
@@ -38,34 +39,65 @@ $(document).ready(function(){
     }
   });
 
+  $('.author-book-slide').each(function() {
+    $(this).owlCarousel({
+      margin: 0,
+      loop: false,
+      lazyLoad: true,
+      rewind: true,
+      items: 3,
+      responsive: {
+        0: {
+          items: 2
+        },
+        768: {
+          items: 3,
+          margin: 15
+        },
+        1024: {
+          items: 4
+        },
+        1440: {
+          items: 5
+        }
+      }
+    });
+  });
 
-  $('#author-book-slide').owlCarousel({
+  $('#new-book-slide').owlCarousel({
     margin: 0,
     loop: true,
     lazyLoad: true,
-    items: 3,
-    responsive: {
-      0: {
-        items: 2
-      },
-      768: {
-        items: 3,
-        margin: 15
-      },
-      1024: {
-        items: 3
-      },
-      1440: {
-        items: 4
-      }
-    }
+    items: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
   });
 
-  $('.fa-angle-left').click(function() {
+  $('#author-slide').owlCarousel({
+    margin: 0,
+    loop: true,
+    lazyLoad: true,
+    items: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+  });
+
+  $('.slider .fa-angle-left').click(function() {
     $(this).parent().next().trigger('prev.owl.carousel');
   });
 
-  $('.fa-angle-right').click(function() {
+  $('.slider .fa-angle-right').click(function() {
+    $(this).parent().next().trigger('next.owl.carousel');
+  });
+
+  $('.author-slide .fa-angle-left').click(function() {
+    $(this).parent().next().trigger('prev.owl.carousel');
+  });
+
+  $('.author-slide .fa-angle-right').click(function() {
     $(this).parent().next().trigger('next.owl.carousel');
   });
 

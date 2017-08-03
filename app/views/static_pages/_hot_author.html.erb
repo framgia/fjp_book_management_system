@@ -2,66 +2,71 @@
   <div class="row title-heading">
     <h2 class="row-title"><%= t "home.top_author" %></h2>
   </div>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-1 book-info-container">
-      <h2><%= link_to support.load_top_author.first.name,
-        author_path(support.load_top_author.first),
-        "data-turbolinks":"false" %></h2>
-      <p title="<%= support.load_top_author.first.description %>">
-        <%= support.load_top_author.first.description.truncate(
-          Settings.user.home.truncate.author_description) %>
-      </p>
-      <div class="slide-nav">
-        <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
-      </div>
-      <div class="owl-carousel owl-theme book-of-author-slide" id="author-book-slide">
-        <% support.load_top_author.first.books.each do |b| %>
-          <div class="book-grid" >
-            <div class="book-item-info">
-              <p class="book-title" title="<%= b.title %>">
-                <%= link_to b.title.truncate(
-                  Settings.user.home.truncate.item_book_title), book_path(b),
-                  "data-turbolinks":"false" %></p>
-              <div class="star-in-item">
-                <% (1..(load_rate b.rate).first).each do %>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                <% end  %>
-                <% (1..(load_rate b.rate).second).each do %>
-                  <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <% end  %>
-                <% (1..(load_rate b.rate).last).each do %>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
-                <% end  %>
-                <%= b.rate_count %>
+
+  <div class="slide-nav author-slide">
+    <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+    <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+  </div>
+
+  <div class="owl-carousel owl-theme" id="author-slide">
+    <% support.load_top_author.each do |author| %>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-1 book-info-container">
+          <h2><%= link_to author.name, author_path(author),
+            "data-turbolinks":"false" %></h2>
+          <p title="<%= author.description %>">
+            <%= author.description.truncate(
+              Settings.user.home.truncate.author_description) %>
+          </p>
+          <div class="owl-carousel owl-theme book-of-author-slide
+            author-book-slide">
+            <% author.books.each do |b| %>
+              <div class="book-grid" >
+                <div class="book-item-info">
+                  <p class="book-title" title="<%= b.title %>">
+                    <%= link_to b.title.truncate(
+                      Settings.user.home.truncate.item_book_title), book_path(b),
+                      "data-turbolinks":"false" %></p>
+                  <div class="star-in-item">
+                    <% (1..(load_rate b.rate).first).each do %>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    <% end  %>
+                    <% (1..(load_rate b.rate).second).each do %>
+                      <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    <% end  %>
+                    <% (1..(load_rate b.rate).last).each do %>
+                      <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <% end  %>
+                    <%= b.rate_count %>
+                  </div>
+                  <p class="book-author">
+                    <% b.authors.each_with_index do |a, index| %>
+                      <% if index == b.authors.count - 1 %>
+                        <%= link_to a.name, author_path(a),
+                          "data-turbolinks": "false" %>
+                      <% else %>
+                        <%= link_to a.name, author_path(a),
+                          "data-turbolinks": "false" %>,
+                      <% end %>
+                    <% end %>
+                  </p>
+                  <p class="book-category">
+                    <%= link_to b.categories.first.title,
+                      category_path(b.categories.first),
+                      "data-turbolinks": "false" %></p>
+                </div>
+                <img src="<%= b.images.first.try(:url).try(:thumb).try(:url) %>" class="img-responsive
+                  pmd-z-depth-1">
               </div>
-              <p class="book-author">
-                <% b.authors.each_with_index do |a, index| %>
-                  <% if index == b.authors.count - 1 %>
-                    <%= link_to a.name, author_path(a),
-                      "data-turbolinks": "false" %>
-                  <% else %>
-                    <%= link_to a.name, author_path(a),
-                      "data-turbolinks": "false" %>,
-                  <% end %>
-                <% end %>
-              </p>
-              <p class="book-category">
-                <%= link_to b.categories.first.title,
-                  category_path(b.categories.first),
-                  "data-turbolinks": "false" %></p>
+            <% end %>
+            <div class="book-shelf">
             </div>
-            <img src="<%= b.images.first.url.thumb %>" class="img-responsive
-              pmd-z-depth-1">
           </div>
-        <% end %>
-        <div class="book-shelf">
+        </div>
+        <div class="col-sm-3 img-container col-sm-offset-1">
+          <img src="<%= author.avatar.try :url %>" class="img-responsive">
         </div>
       </div>
-    </div>
-    <div class="col-sm-3 img-container col-sm-offset-1">
-      <img src="<%= support.load_top_author.first.avatar.url %>"
-           class="img-responsive">
-    </div>
+    <% end %>
   </div>
 </div>
