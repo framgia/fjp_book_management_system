@@ -13,13 +13,14 @@
       <% book.blogs.each do |b| %>
         <div class="blog-box pmd-z-depth">
           <div class="blog-head">
-            <p><%= link_to b.user.email, "#" %>
-              <span class="time-ago" title="<%= b.created_at %>">
+            <p><%= b.user.email  %>
+              <span class="time-ago"
+                title="<%= I18n.localize(b.created_at, :format => :short) %>">
                 <%= time_ago_in_words b.created_at %> <%= t "books.show.ago" %>
               </span>
             </p>
             <span class="blog-title">
-              <%= link_to b.title, "" %>
+              <%= link_to b.title, blog_post_path(b), "data-turbolinks": false %>
             </span>
             <div class="blog-title-left">
               <% if b.votes %> <%= b.votes.count %>

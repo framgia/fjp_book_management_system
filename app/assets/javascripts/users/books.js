@@ -16,9 +16,12 @@ $(document).ready(function () {
 
   $('#datepicker-start').on('dp.change', function (e) {
     $('#datepicker-end').data('DateTimePicker').minDate(e.date);
+    $('#datepicker-end').data('DateTimePicker').maxDate(e.date.add(180, 'days'));
   });
   $('#datepicker-end').on('dp.change', function (e) {
     $('#datepicker-start').data('DateTimePicker').maxDate(e.date);
+    $('#datepicker-start').data('DateTimePicker').minDate(
+      e.date.subtract(180, 'days'));
   });
 
   $('.image-carousel').owlCarousel();
@@ -117,7 +120,8 @@ $(document).ready(function () {
       1366 : {
         items: 7,
       }
-    }
+    },
+    rewind: false,
   });
 
   $('.relate-book-cont .fa-angle-left').click(function() {
