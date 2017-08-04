@@ -25,6 +25,7 @@ truncate:
   book:
     title: 45
     desc: 30
+    desc_in_pop: 100
 blog:
   dashboard:
     limit: 10

@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('#author-book-slider').owlCarousel({
     margin: 0,
-    loop: true,
+    loop: false,
     lazyLoad: true,
     items: 3,
     responsive: {

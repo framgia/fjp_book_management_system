@@ -2,10 +2,17 @@
   <p class="book-title"><%= book.title %></p>
   <p class="book-author">
     <% book.authors.each_with_index do |a, index| %>
-      <% if index == book.authors.count - 1 %>
-        <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>
-      <% else %>
-        <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>,
+        <%= link_to author_path(a), "data-turbolinks": false do %>
+          <%= a.name %>
+          <% if index == book.authors.count - 1 %>
+            <% if a.description %>
+              <%= render "popup_author_info", author: a %>
+            <%  end %>
+          <% else %>
+            <% if a.description %>
+              <%= render "popup_author_info", author: a %>
+            <% end %>,
+          <% end %>
       <% end %>
     <% end %>
   </p>

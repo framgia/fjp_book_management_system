@@ -515,6 +515,29 @@
     box-shadow: 0 4px 8px $shadow-light, 0 4px 8px $shadow-normal;
     margin-top: -2px;
   }
+
+  .popover-content {
+    img {
+      border-radius: 50%;
+      display: inline;
+      height: 50px;
+      margin-bottom: 10px;
+      width: 50px;
+    }
+
+    span {
+      margin-bottom: 10px;
+      padding-left: 10px;
+    }
+  }
+
+  .fa-angle-down {
+    margin-bottom: -2px;
+  }
+
+  .popover {
+    max-width: 520px;
+  }
 }
 
 .hero-block {
