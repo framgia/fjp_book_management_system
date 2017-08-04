@@ -1,13 +1,13 @@
 <ol class="breadcrumb text-left">
   <li class="active">
-    <%= link_to t(".link1"), admin_authors_path %>
+    <%= link_to t(".link1"), admin_authors_path, "data-turbolinks": false %>
   </li>
 </ol>
-<h1 class="section-title text-center" id="services">
+<h1 class="section-title" id="services">
   <span><%= t ".page_title" %></span>
 </h1>
-<div class="main-content">
-  <div class="col-xs-10 col-xs-offset-1">
+<div class="row">
+  <div class="col-xs-12">
     <% flash.each do |key, value| %>
       <div class="flash-message <%= key %>">
         <%= value %>

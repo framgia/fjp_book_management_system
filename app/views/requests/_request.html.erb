@@ -1,0 +1,85 @@
+<div class="request-header">
+  <button type="button" class="btn btn-primary pull-right add-request"
+    data-toggle="modal" data-target="#modal-new-request">
+    <%= t ".new_request" %>
+  </button>
+  <div class="modal fade" id="modal-new-request" role="dialog">
+    <div class="modal-dialog user-modal-dialog">
+      <%= render "modal_request", request: request, support: support %>
+    </div>
+  </div>
+  <%= search_form_for support.search, remote: true, method: :get do |f|%>
+    <%= f.text_field :content_cont, class: "input-text-search",
+      placeholder: t(".input_search") %>
+    <%= f.select :status_eq, support.load_statuses,
+      {include_blank: t(".choose_status")}, {class: "form-control select-status"} %>
+    <%= f.select :request_type_eq, support.load_types,
+      {include_blank: t(".choose_type")}, {class: "form-control select-status"} %>
+    <%= f.submit t("requests.request.search"), class: "btn btn-info" %>
+  <% end %>
+</div>
+<div class="col-xs-12 text-center" id="pagination">
+  <%= paginate support.requests_search, remote: true, theme: "twitter-bootstrap-3" %>
+</div>
+<div id="requests-list-view">
+  <div class="request-table" id="requests-list">
+    <table class="table pmd-table pmd-z-depth-2 table-bordered table-hover
+      table-striped fixed" id="table-bootstrap">
+      <tbody>
+      <tr>
+        <th class="col-xs-4"><%= t ".link" %></th>
+        <th class="col-xs-4"><%= t ".content" %></th>
+        <th class="col-xs-2"><%= t ".type" %></th>
+        <th class="col-xs-1"><%= t ".status" %></th>
+        <th class="col-xs-1"><%= t ".option" %></th>
+      </tr>
+      <% support.requests_search.each do |r| %>
+        <tr>
+          <td>
+            <div class="text-content short-text"><%= r.link %></div>
+            <div class="show-more"><span><%= t ".show_more" %></span></div>
+          </td>
+          <td>
+            <div class="text-content short-text"><%= r.content %></div>
+            <div class="show-more"><span><%= t ".show_more" %></span></div>
+          </td>
+          <td class="type-request"><%= r.request_type.titleize %></td>
+          <td class="text-center">
+            <% if r.status == "approved" %>
+            <span class="badge badge-success lb-md">
+              <%= t ".approved" %>
+            </span>
+            <% elsif r.status == "pending" %>
+            <span class="badge badge-warning lb-md">
+              <%= t ".pending" %>
+            </span>
+            <% elsif r.status == "cancel" %>
+            <span class="badge lb-md text-capitalize">
+              <%= t ".cancel" %>
+            </span>
+            <% else %>
+            <span class="badge-danger lb-md">
+              <%= t ".reject" %>
+            </span>
+            <% end %>
+          </td>
+          <td>
+            <% if r.status == "pending" %>
+              <button class="btn-cancel-request btn btn-danger"
+                data-id="<%= r.id %>" value="<%= t ".cancel" %>"
+                data-confirm="<%= t ".confirm_cancel" %>">
+                <%= t ".cancel" %>
+              </button>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="text-center">
+  <%= render "modal_request_success" %>
+</div>
+<div class="hidden" id="<%= t ".show_more" %>"></div>
+<div class="hidden" id="<%= t ".show_less" %>"></div>

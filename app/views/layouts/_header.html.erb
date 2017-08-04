@@ -31,6 +31,9 @@
               class: "pmd-ripple-effect" %></li>
             <li><%= link_to t("blog.posts.index.my_blog"), blog_posts_path,
               class: "pmd-ripple-effect" %></li>
+	          <li><%= link_to t("requests.index.request_title"), requests_path,
+              "data-turbolinks":"false",
+              class: "pmd-ripple-effect" %></li>
             <li class="divider"></li>
             <li>
               <%= link_to t("layouts.sidebar.logout"), destroy_user_session_path,

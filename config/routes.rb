@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   resources :authors, only: :show
   resources :announcements, only: [:index, :show]
   resource :not_found, only: :show
+  resources :requests, only: [:index, :create, :update]
 end

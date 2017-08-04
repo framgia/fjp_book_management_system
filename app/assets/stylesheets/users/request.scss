@@ -1,0 +1,359 @@
+@import "colors";
+@import "admin/colors";
+
+.request-new {
+  padding: 50px 0 100px;
+
+  h1 {
+    display: inline;
+    font-size: 44px;
+    text-transform: uppercase;
+  }
+
+  .lb-md {
+    border-radius: 16px;
+    font-size: 1em;
+    padding: 7px 10px;
+  }
+
+  .badge-danger,
+  .btn-danger {
+    background-color: $blog-title;
+    color: $white;
+    font-weight: 600;
+  }
+
+  .inline {
+    display: inline;
+  }
+
+  .request-header {
+    padding-top: 30px;
+  }
+
+  .add-request {
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .content,
+  .link {
+    background: 11px 8px no-repeat;
+    background-size: 25px 25px;
+
+    &:focus {
+      background: 11px 8px no-repeat;
+      background-size: 30px 30px;
+      border: 3px solid $button-submit-request;
+      box-shadow: 0;
+      color: $button-submit-request;
+      outline: none;
+      padding: 10px 13px 30px 54px;
+    }
+  }
+
+  .content,
+  .content:focus {
+    background-image: url("http://rexkirby.com/kirbyandson/images/comment.svg");
+  }
+
+  .link,
+  .link:focus {
+    background-image: url("http://icon-park.com/imagefiles/link_icon_black.png");
+    padding: 22px 22px 22px 50px !important;
+  }
+
+  .feedback-input {
+    background-color: $input-request-background;
+    border-radius: 0;
+    color: $input-request-color;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 10px;
+    padding: 10px 13px 30px 54px;
+    width: 100%;
+  }
+
+  .type {
+    border-radius: 0;
+    font-size: 18px;
+    height: 40px;
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  .btn-primary {
+    background: $button-create-request !important;
+  }
+
+  .select-status {
+    display: inline;
+    width: auto;
+  }
+
+  .pagination {
+    margin: 30px 0;
+  }
+}
+
+.request-form {
+  background: $form-request-background;
+  color: $white;
+
+  .pmd-card,
+  .modal-footer {
+    background: $modal-background;
+  }
+
+  .modal-header {
+    padding: 25px 15px 0;
+  }
+
+  .modal-title {
+    font-family: $font-lato;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 50px 0;
+  }
+
+  .modal-footer {
+    text-align: center !important;
+  }
+
+  .btn-success {
+    background-color: $button-request-hover;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 20px 0;
+    text-transform: uppercase;
+  }
+
+  label {
+    font-size: 18px;
+    padding: 20px 0 0;
+    text-transform: uppercase;
+  }
+}
+
+.request-table {
+  font-size: 16px;
+  padding-top: 50px;
+
+  table {
+    table-layout: fixed;
+  }
+
+  td {
+    overflow: hidden;
+  }
+
+  th {
+    background-color: $request-table-head;
+    color: $request-table-color;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: $request-table-strip;
+  }
+
+  .col-xs-1 {
+    width: 9.8%;
+  }
+}
+
+.create-request {
+  border: $white solid 4px;
+  color: $white;
+  cursor: pointer;
+  float: left;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 15px 0 35px;
+  transition: all .3s;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    background-color: $white;
+    border-color: $button-request-hover !important;
+    color: $button-request-hover !important;
+  }
+}
+
+.success-popup {
+  .modal-sm {
+    width: 400px;
+  }
+
+  .modal-title {
+    font-family: $font-lato;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .pmd-modal-action {
+    padding: 8px 25px;
+  }
+}
+
+.message {
+  background: $white;
+  border-radius: 8px;
+  color: $success-popup-color;
+  font-weight: 300;
+  text-align: center;
+
+  .check {
+    background: $success-popup;
+    border-radius: 50%;
+    color: $white;
+    font-size: 3.8rem;
+    height: 110px;
+    margin: -20px 0 20px 35%;
+    padding-top: 10px;
+    width: 120px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    padding: 0;
+  }
+
+  p:nth-child(2) {
+    font-size: 30px;
+    margin: 40px 0 0;
+  }
+}
+
+.ok-button {
+  background: $success-popup;
+  border: 0;
+  border-radius: 6px;
+  color: $white;
+  font-size: 1.2rem;
+  height: 50px;
+  outline: none;
+  position: relative;
+  transition: background .2s ease;
+  width: 100%;
+
+  &:hover {
+    background: $button-success;
+  }
+
+  &:active {
+    background: $button-success-hover;
+  }
+}
+
+.success {
+  .sweet-alert {
+    background: $cancel-success-background;
+  }
+
+  .icon {
+    border: 4px solid $cancel-success;
+  }
+}
+
+.failure {
+  .sweet-alert {
+    background: $cancel-failure-background;
+  }
+
+  .icon {
+    border: 4px solid $cancel-failure;
+  }
+}
+
+.sweet-alert {
+  background-color: $alert-cancel-background;
+  border-radius: 5px;
+  left: 50%;
+  margin: -200px 0 0 -256px;
+  overflow: hidden;
+  padding: 17px;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  width: 400px;
+  z-index: 2000;
+
+  .icon {
+    border-radius: 50%;
+    float: none !important;
+    height: 80px;
+    margin: 20px auto;
+    position: relative;
+    width: 80px;
+  }
+
+  h2 {
+    color: $alert-title;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+  }
+
+  p {
+    color: $alert-content;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0;
+    position: relative;
+    text-align: center;
+  }
+}
+
+.cancel-success {
+  color: $cancel-success;
+  font-size: 45px;
+}
+
+.cancel-failed {
+  color: $cancel-failure;
+  font-size: 55px;
+  margin: -5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.type-request {
+  color: $button-create-request;
+  font-weight: 600;
+}
+
+.input-text-search {
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 6px 20px;
+  width: 30%;
+}
+
+.short-text {
+  height: 1.5em;
+  line-height: 1.5em;
+  overflow: hidden;
+}
+
+.full-text {
+  height: auto;
+}
+
+.show-more {
+  color: $menu-profile;
+}

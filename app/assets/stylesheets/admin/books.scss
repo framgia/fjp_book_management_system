@@ -121,8 +121,12 @@
 
 .book-table {
   .btn-danger {
-    background-color: $blog-title;
+    background-color: $button-delete;
     margin-top: 5px;
+  }
+
+  .btn-success {
+    background-color: $button-edit;
   }
 
   .button-book {
@@ -167,11 +171,76 @@
 
 .author-show {
   .btn {
-    border-radius: 8px;
-    margin-bottom: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0;
+    min-height: 40px;
+    min-width: 50px !important;
   }
 
   .btn-danger {
-    background-color: $blog-title;
+    background-color: $button-delete;
+    margin-top: 5px;
   }
+
+  i {
+    color: $white;
+    padding: 0;
+  }
+
+  th {
+    background: $ebony-clay-approx;
+    color: $white;
+    font-size: 18px;
+  }
+}
+
+.author-table {
+  font-size: 16px;
+  margin: 0;
+
+  .btn {
+    border-radius: 5px;
+    display: inline-block;
+    min-height: 40px;
+    padding: 3px 12px;
+  }
+
+  i {
+    color: $white;
+    padding: 10px 0;
+  }
+
+  .author-name a {
+    color: $author-name;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  th,
+  th a {
+    background: $ebony-clay-approx;
+    color: $white;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .more-content {
+    a {
+      display: inline;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  .more-link {
+    display: block;
+  }
+}
+
+.author-cover {
+  height: 80px;
+  width: 60px;
 }
