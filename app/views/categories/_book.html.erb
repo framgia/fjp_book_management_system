@@ -3,16 +3,13 @@
     <div class="box">
       <div class="frame">
         <div class="caption">
-          <a href="#">
+          <%= link_to book, "data-turbolinks": false do  %>
             <i class="fa fa-eye" aria-hidden="true"></i>
-          </a>
-          <a href="#" rel="nofollow" class="">
-            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-          </a>
+          <% end %>
           <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
         </div>
         <div class="img-frame">
-          <a href="#">
+          <%= link_to book, "data-turbolinks": false do  %>
             <% if book.images.first.present? %>
               <img src="<%= book.images.first.url.thumb.url %>" class="img-responsive"
                 alt="<%= book.title %>">
@@ -20,7 +17,7 @@
               <img src="<%= asset_path "default-book.png" %>" class="img-responsive"
                 alt="<%= book.title %>">
             <% end %>
-          </a>
+          <% end %>
         </div>
       </div>
       <div class="text-column">

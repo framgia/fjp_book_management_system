@@ -1,16 +1,17 @@
-<h2><%= t "announcements.title"%></h2>
-<div class="announcement-index">
+<div class="col-sm-8 col-sm-offset-2">
   <% load_announcements.each do |announcement| %>
     <span class="announcement"
       id="announcement-<%= announcement.id %>">
-      <%= link_to announcement, "data-turbolinks": false,
-        class: "announcement-item", remote: true do %>
+      <h2>
+        <%= link_to announcement, "data-turbolinks": false,
+          class: "announcement-item", remote: true do %>
         <div class="announcement-content">
           <%= announcement.title %>
         </div>
       <% end %>
+      </h2>
       <div class="announcement-time">
-        <%= I18n.localize(announcement.created_at, format: :short) %>
+        <%= time_ago_in_words announcement.created_at %> <%= t "books.show.ago" %>
       </div><hr>
     </span>
   <% end %>

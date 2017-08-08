@@ -1,5 +1,4 @@
 class AnnouncementsController < ApplicationController
-  include AnnouncementsHelper
   before_action :find_announcement, only: :show
 
   def index

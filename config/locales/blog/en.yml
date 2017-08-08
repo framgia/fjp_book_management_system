@@ -12,6 +12,7 @@ en:
         draft: "Draft"
         published: "Published"
         are_you_sure: "Are you sure?"
+        no_blog: "You have no blog entries yet"
       create:
         auto_gen: "Post created at: %{time}"
         updated_at: "Updated at"

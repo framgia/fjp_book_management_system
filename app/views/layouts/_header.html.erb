@@ -49,36 +49,118 @@
         <% end %>
       </div>
 
-      <div class="w3-hide-small announcement-icon">
-        <div class="w3-padding-large w3-hover-white"%>
-          <i class="fa fa-info"></i>
-        </div>
-        <div class="announcements hide">
-          <h2 class="text-center"><%= t "announcements.title"%></h2>
-          <ul class="announcements-list">
+      <div class="pmd-navbar-right-icon pull-right pmd-dropdown notifications">
+          <a href="javascript:void(0)" title="Notification"
+             class="dropdown-toggle pmd-ripple-effect btn-user"
+             data-toggle="dropdown" role="button" aria-expanded="true">
+            <div data-badge="3"
+              class="material-icons pmd-sm pmd-badge pmd-badge-overlap">
+              notifications_none
+            </div>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right pmd-card pmd-card-default pmd-z-depth"
+               role="menu">
+            <div class="pmd-card-title">
+              <div class="media-body media-middle">
+                <a href="notifications.html" class="pull-right">3 new notifications</a>
+                <h3 class="pmd-card-title-text">
+                  <%= t "layouts.header.notifications" %>
+                </h3>
+              </div>
+            </div>
+
+            <ul class="list-group pmd-list-avatar pmd-card-list">
+              <li class="list-group-item" style="display:none">
+                <p class="notification-blank">
+                  <span class="dic dic-notifications-none"></span>
+                  <span>You don´t have any notifications</span>
+                </p>
+              </li>
+              <li class="list-group-item unread">
+                <a href="javascript:void(0)">
+                  <div class="media-body">
+                  <span class="list-group-item-heading">
+                    <span>Prathit</span> posted a new challanegs
+                  </span>
+                    <span class="list-group-item-text">5 Minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="javascript:void(0)">
+                  <div class="media-body">
+                    <span class="list-group-item-heading"><span>Keel</span> Cloned 2 challenges.</span>
+                    <span class="list-group-item-text">15 Minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="list-group-item unread">
+                <a href="javascript:void(0)">
+                  <div class="media-body">
+                  <span class="list-group-item-heading">
+                    <span>John</span> posted new collection.
+                  </span>
+                    <span class="list-group-item-text">25 Minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="list-group-item unread">
+                <a href="javascript:void(0)">
+                  <div class="media-body">
+                  <span class="list-group-item-heading">
+                    <span>Valerii</span> Shared 5 collection.
+                  </span>
+                    <span class="list-group-item-text">30 Minutes ago</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+      </div>
+
+      <div class="pmd-navbar-right-icon pull-right pmd-dropdown notifications info-notification">
+        <a href="javascript:void(0)" title="<%= t "layouts.header.announcements" %>"
+           class="dropdown-toggle pmd-ripple-effect btn-user"
+           data-toggle="dropdown" role="button" aria-expanded="true">
+          <div class="material-icons pmd-sm">
+            info_outline
+          </div>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right pmd-card pmd-card-default pmd-z-depth"
+             role="menu">
+          <div class="pmd-card-title">
+            <div class="media-body media-middle">
+              <%= link_to t("announcements.view_all"), announcements_path,
+                "data-turbolinks": false, class: "pull-right" %>
+              <h3 class="pmd-card-title-text">
+                <%= t "layouts.header.announcements" %>
+              </h3>
+            </div>
+          </div>
+
+          <ul class="list-group pmd-list-avatar pmd-card-list">
             <% load_announcements.each do |announcement| %>
-              <li class="announcement"
+              <li class="list-group-item unread"
                 id="announcement-<%= announcement.id %>">
-                <%= link_to announcement, "data-turbolinks": false,
-                  class: "announcement-item", remote: true do %>
-                  <div class="announcement-content">
-                    <%= announcement.title %>
+                <%= link_to announcement, "data-turbolinks": false, remote: true do %>
+                  <div class="media-body">
+                    <span class="list-group-item-heading">
+                      <%= announcement.title %>
+                    </span>
+                    <span class="list-group-item-text">
+                      <%= time_ago_in_words announcement.created_at %>
+                      <%= t "books.show.ago" %>
+                    </span>
                   </div>
                 <% end %>
-                <div class="announcement-time">
-                  <small>
-                    <%= I18n.localize announcement.created_at, format: :short %>
-                  </small>
-                </div>
               </li>
             <% end %>
           </ul>
-          <div class="text-center">
-            <%= link_to t("announcements.view_all"), announcements_path,
-              "data-turbolinks": false %>
-          </div>
         </div>
       </div>
+
       <div class="pmd-navbar-right-icon pull-right">
         <a class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect search-toggle"
            href="javascript:void(0);">
@@ -117,7 +199,14 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to explorer_index_url, "data-turbolinks":"false",
+          <%= link_to explorer_index_path, "data-turbolinks":"false",
+            class: "pmd-ripple-effect" do %>
+            <%= t "layouts.header.explore" %>
+            <span class="sr-only">(current)</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to categories_path, "data-turbolinks":"false",
             class: "pmd-ripple-effect" do %>
             <%= t "layouts.header.books" %>
             <span class="sr-only">(current)</span>

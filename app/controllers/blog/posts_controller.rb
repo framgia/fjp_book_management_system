@@ -6,7 +6,8 @@ class Blog::PostsController < ApplicationController
       in: %w(draft published),
       transform: :downcase, default: "published"
 
-    @posts = Blog.where(status: params[:status]).page(params[:page])
+    @posts = current_user.blogs.where(status: params[:status])
+      .page(params[:page])
       .per Settings.blog.dashboard.limit
   end
 
@@ -25,7 +26,7 @@ class Blog::PostsController < ApplicationController
 
   def update
     if @blog.update_attributes(blog_params)
-      redirect_to blog_posts_path
+      redirect_to blog_post_path @blog
     else
       redirect_to edit_blog_post_path @blog
     end
@@ -33,7 +34,7 @@ class Blog::PostsController < ApplicationController
 
   def destroy
     if @blog.destroy
-      redirect_to blog_posts_path
+      redirect_back fallback_location: blog_root_path
     else
       redirect_to blog_root_path
     end

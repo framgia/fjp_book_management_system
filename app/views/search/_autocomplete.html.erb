@@ -6,7 +6,7 @@
       </h4>
     </a>
     <% books.each do |book| %>
-      <%= link_to book, class: "list-group-item btn-block" do %>
+      <%= link_to book, class: "list-group-item btn-block", "data-turbolinks": false do %>
         <h4 class="list-group-item-heading"><%= book.title %></h4>
         <p class="list-group-item-text">
           <%= time_ago_in_words book.created_at %>
@@ -22,11 +22,11 @@
     </a>
     <div class="col-sm-12 tags">
       <% tags.each do |tag| %>
-        <a href="#">
+        <%= link_to tag, "data-turbolinks": false do %>
           <div class="pmd-chip pmd-chip-no-icon">
             <%= tag.title %>
           </div>
-        </a>
+        <% end %>
       <% end %>
     </div>
   <% end %>

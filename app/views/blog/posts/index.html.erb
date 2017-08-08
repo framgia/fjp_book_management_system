@@ -25,6 +25,11 @@
         <div class="col-sm-12">
         </div>
         <div class="col-sm-9">
+          <% if @posts.empty? %>
+            <h2 class="text-center">
+              <%= t "blog.posts.index.no_blog" %>
+            </h2>
+          <% end %>
           <% @posts.each do |post| %>
             <div class="row blog-post">
               <div class="col-sm-1 avatar">

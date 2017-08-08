@@ -3,9 +3,8 @@ class Admin::RequestsController < AdminController
   before_action :find_request, only: [:update]
 
   def index
-    if show_option_params[:status].present?
-      session[:status] = show_option_params[:status]
-    end
+    status = show_option_params[:status]
+    session[:status] = status if status.present?
     status = session[:status]
 
     if status.blank?
