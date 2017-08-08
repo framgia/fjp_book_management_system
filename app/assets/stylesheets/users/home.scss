@@ -196,7 +196,7 @@
   }
 
   img:hover {
-   transform: scale(1.1);
+    transform: scale(1.1);
   }
 
   .book-info-container {
@@ -243,7 +243,12 @@
   }
 
   img {
+    background: $author-text;
     box-shadow: -30px 0 30px 0 $shadow-light, -20px 0 50px -10px $shadow-normal;
+  }
+
+  .author-img {
+    border-radius: 50%;
   }
 
   .book-info-container {
@@ -281,8 +286,8 @@
 
     .fa-angle-left,
     .fa-angle-right {
-      position: absolute;
       padding: 0 10px;
+      position: absolute;
     }
 
     .fa-angle-left {

@@ -55,8 +55,8 @@
                       category_path(b.categories.first),
                       "data-turbolinks": "false" %></p>
                 </div>
-                <img src="<%= b.images.first.try(:url).try(:thumb).try(:url) %>" class="img-responsive
-                  pmd-z-depth-1">
+                <img src="<%= b.images.first.try(:url).try(:thumb).try(:url) %>"
+                  class="img-responsive pmd-z-depth-1">
               </div>
             <% end %>
             <div class="book-shelf">
@@ -68,5 +68,9 @@
         </div>
       </div>
     <% end %>
+    <div class="col-sm-3 img-container col-sm-offset-1">
+      <img src="<%= support.load_top_author.first.avatar.url %>"
+        class="img-responsive author-img">
+    </div>
   </div>
 </div>
