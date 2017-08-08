@@ -50,4 +50,9 @@
 
   <div class="modal-send-req-result">
   </div>
+  <div class="modal-suggest-result">
+  </div>
 </div>
+
+<%= render "suggest_books/form",
+  book: @book, suggest_book: @suggest_book, users: @users %>

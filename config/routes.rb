@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :books, only: [:index, :show] do
     resource :comments, only: [:create]
+    resource :suggest_books, only: :create
   end
 
   resources :categories, only: [:index, :show]

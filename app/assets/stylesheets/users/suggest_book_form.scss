@@ -1,0 +1,35 @@
+@import "users/colors";
+
+.suggest-book-form {
+  .field {
+    margin-bottom: 10px;
+
+    .suggest-book-content {
+      min-height: 150px;
+    }
+  }
+
+  .actions {
+    float: right;
+
+    .suggest-book-btn-cancel {
+      margin-right: 10px;
+    }
+  }
+}
+
+.select2 {
+
+  width: 570px !important;
+
+  .suggest-book-select {
+    width: 100%;
+  }
+}
+
+.receiver-name {
+  background: $white;
+  border-radius: 8px;
+  color: $success-popup-color;
+  font-weight: 300;
+}

@@ -1,0 +1,33 @@
+<div tabindex="-1" class="modal fade" id="suggest-book-success-modal" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <div class="media-body media-middle">
+          <h3 class="pmd-card-title-text text-center h2-text">
+          <%= t "books.suggest_book.success_title" %></h3>
+        </div>
+      </div>
+      <div class="pmd-modal-media row">
+        <img class="col-sm-5 col-sm-offset-1 modal-book-img" height="350px"
+          src="<%= supports.load_book.images.first.url %>">
+        <div class="col-sm-5 modal-borrow-info">
+          <h3><%= supports.load_book.title %></h3>
+          <h4><%= t "books.suggest_book.sender" %><%= current_user.name %></h4>
+          <h4><%= t "books.suggest_book.receiver" %>
+          <% supports.load_users.each do |user| %>
+            <%= user.name %>
+            <%= t "books.suggest_book.semicolon" %>
+          <% end %>
+          <h4>
+            <%= t "books.suggest_book.message" %>
+            <%= supports.load_suggest_books.last.content %>
+          </h4>
+          <p class="message"><%= t "books.suggest_book.thanks" %></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
