@@ -41,6 +41,8 @@ $(document).ready(function(){
 
   $('.author-book-slide').each(function() {
     $(this).owlCarousel({
+      rtl: true,
+      startPosition: 1,
       margin: 0,
       loop: false,
       lazyLoad: true,
@@ -58,7 +60,8 @@ $(document).ready(function(){
           items: 4
         },
         1440: {
-          items: 5
+          items: 4,
+          margin: 15
         }
       }
     });

@@ -213,7 +213,8 @@
           <% end %>
         </li>
         <li>
-          <%= link_to blog_root_path, class: "pmd-ripple-effect" do %>
+          <%= link_to blog_root_path, "data-turbolinks": false,
+            class: "pmd-ripple-effect" do %>
             <%= t "layouts.header.blog" %>
             <span class="sr-only">(current)</span>
           <% end %>

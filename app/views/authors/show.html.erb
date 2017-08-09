@@ -19,28 +19,27 @@
         <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
       </div>
       <div class="owl-carousel owl-theme book-of-author-slide" id="author-book-slider">
-        <% @author.books.each do |b| %>
+        <% @author.books.each do |book| %>
           <div class="book-grid" >
             <div class="book-item-info">
-              <p class="book-title" title="<%= b.title %>">
-                <%= link_to b.title.truncate(
-                  Settings.user.home.truncate.item_book_title), book_path(b),
+              <p class="book-title" title="<%= book.title %>">
+                <%= link_to book.title.truncate(
+                  Settings.user.home.truncate.item_book_title), book,
                     "data-turbolinks":"false" %></p>
               <div class="star-in-item">
-                <% (1..(load_rate b.rate).first).each do %>
+                <% (1..(load_rate book.rate).first).each do %>
                   <i class="fa fa-star" aria-hidden="true"></i>
                 <% end  %>
-                <% (1..(load_rate b.rate).second).each do %>
+                <% (1..(load_rate book.rate).second).each do %>
                   <i class="fa fa-star-half-o" aria-hidden="true"></i>
                 <% end  %>
-                <% (1..(load_rate b.rate).last).each do %>
+                <% (1..(load_rate book.rate).last).each do %>
                   <i class="fa fa-star-o" aria-hidden="true"></i>
                 <% end  %>
-                <%= b.rate_count %>
               </div>
               <p class="book-author">
-                <% b.authors.each_with_index do |a, index| %>
-                  <% if index == b.authors.count - 1 %>
+                <% book.authors.each_with_index do |a, index| %>
+                  <% if index == book.authors.count - 1 %>
                     <%= a.name %>
                   <% else %>
                     <%= a.name %>,
@@ -48,11 +47,14 @@
                 <% end %>
               </p>
               <p class="book-category">
-                <%= link_to b.categories.first.title,
-                  category_path(b.categories.first),
-                  "data-turbolinks": "false" %></p>
+                <% if book.categories.present? %>
+                  <%= link_to book.categories.first.title,
+                    book.categories.first,
+                    "data-turbolinks": false %>
+                <% end %>
+              </p>
             </div>
-            <img src="<%= b.images.first.url.thumb %>" class="img-responsive
+            <img src="<%= book.images.first.url.thumb %>" class="img-responsive
               pmd-z-depth-1">
           </div>
         <% end %>

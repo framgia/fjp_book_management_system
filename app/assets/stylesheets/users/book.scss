@@ -27,7 +27,7 @@
     }
 
     .btn-send-req {
-      background: $brown-primary;
+      background: $main-color-primary;
       box-shadow: 0 2px 4px $shadow-light, 0 3px 6px $shadow-normal;
       color: $white;
       margin: 10px 0 0;
@@ -64,6 +64,7 @@
 
   .book-title {
     font-size: 2em;
+    margin-bottom: 0;
   }
 
   .borrow-title {
@@ -82,13 +83,24 @@
     color: $blog-title;
     font-size: 1.1em;
     font-style: italic;
+    margin-top: 5px;
 
     a {
       color: $blog-title;
+
+      span {
+        padding: 0 5px;
+        transition: .4s;
+      }
     }
 
     a:hover {
-      color: $black;
+      span {
+        background: $blog-title;
+        color: $white;
+        margin: -2.5px 0 0;
+        padding: 5px;
+      }
     }
   }
 
@@ -100,7 +112,7 @@
   }
 
   .tag {
-    background: $brown-lighter;
+    background: $main-color-lighter;
     border-radius: 3px;
     box-shadow: 0 2px 4px $shadow-light, 0 3px 6px $shadow-normal;
     color: $white;
@@ -110,7 +122,7 @@
   }
 
   .tag:hover {
-    background: $brown-light;
+    background: $main-color-light;
   }
 
   .description {
@@ -148,10 +160,10 @@
     padding: 20px 5px;
 
     .nav-tabs {
-      background: $brown-lighter;
+      background: $main-color-lighter;
 
       a {
-        background: $brown-light;
+        background: $main-color-light;
         border: 0;
         border-radius: 2px;
         color: $white;
@@ -163,16 +175,32 @@
       }
 
       a:hover {
-        background: $brown-primary;
+        background: $main-color-primary;
       }
 
       .active {
         background: transparent;
 
         a {
-          background: $brown-dark;
+          background: $main-color-dark;
           border: 0;
           color: $white;
+        }
+      }
+
+      .btn-new-blog {
+        float: right;
+        margin-right: 20px;
+        margin-top: 5px;
+
+        button {
+          background: $main-color-primary;
+          transition: .5s;
+
+          &:hover {
+            background: $main-color-dark;
+            box-shadow: 0 2px 4px $shadow-light, 0 3px 6px $shadow-normal;
+          }
         }
       }
     }
@@ -195,7 +223,7 @@
       }
 
       a:hover {
-        background: $brown-primary;
+        background: $main-color-primary;
         color: $white;
         padding: 0 10px;
       }
@@ -259,7 +287,7 @@
     padding: 0 20px 20px;
 
     .book-borrow-col {
-      background: $brown-light;
+      background: $main-color-light;
       padding: 30px 30px 120px;
       position: relative;
 
@@ -296,7 +324,7 @@
 
     @media screen and (min-width: 768px) and (max-width: 1023px) {
       .book-borrow-col {
-        background: $brown-light;
+        background: $main-color-light;
         padding: 10px 10px 100px;
         position: relative;
 
@@ -310,9 +338,21 @@
   }
 
   .relate-book {
-    background: $brown-lighter;
+    background: $main-color-lighter;
     color: $white;
     margin: 5px 20px;
+
+    .new-tag {
+      background: $main-color-light;
+      font-weight: bold;
+      left: 5%;
+      margin: 15px 0 0;
+      padding: 0 15px;
+      position: absolute;
+      top: 0;
+      transform: scale(1);
+      transition: .5s;
+    }
 
     .slide-book {
       background: $white;
@@ -405,7 +445,11 @@
           }
 
           img {
-            transform: scale(0);
+            transform: rotate(180deg) scale(.1);
+          }
+
+          .new-tag {
+            transform: rotate(180deg) scale(.1);
           }
         }
 
@@ -415,7 +459,7 @@
           left: 13%;
           position: absolute;
           top: 5%;
-          transition: .35s ease;
+          transition: .6s ease;
           width: 75%;
         }
       }
@@ -511,7 +555,7 @@
   }
 
   .btn-book-info:hover {
-    background: $brown-primary;
+    background: $main-color-primary;
     box-shadow: 0 4px 8px $shadow-light, 0 4px 8px $shadow-normal;
     margin-top: -2px;
   }
@@ -538,6 +582,23 @@
   .popover {
     max-width: 520px;
   }
+
+  .book-cate {
+    a {
+      color: $main-color-light;
+      font-weight: bold;
+      padding: 0 5px;
+      text-transform: uppercase;
+      transition: .4s;
+
+      &:hover {
+        background: $main-color-light;
+        color: $white;
+        margin-top: -2.5px;
+        padding: 5px;
+      }
+    }
+  }
 }
 
 .hero-block {
@@ -551,7 +612,7 @@
   }
 
   a:hover {
-    color: $brown-lighter;
+    color: $main-color-lighter;
   }
 
   .text-capitalize {

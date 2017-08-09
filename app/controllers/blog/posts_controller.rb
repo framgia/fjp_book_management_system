@@ -1,5 +1,10 @@
 class Blog::PostsController < ApplicationController
-  before_action :find_blog, only: [:show, :edit, :update, :destroy]
+  before_action only: [:edit, :update, :destroy] do
+    find_book current_user.blogs
+  end
+  before_action only: :show do
+    find_book Blog.published
+  end
 
   def index
     param! :status, String,
@@ -9,6 +14,9 @@ class Blog::PostsController < ApplicationController
     @posts = current_user.blogs.where(status: params[:status])
       .page(params[:page])
       .per Settings.blog.dashboard.limit
+  end
+
+  def show
   end
 
   def create
@@ -25,7 +33,7 @@ class Blog::PostsController < ApplicationController
   end
 
   def update
-    if @blog.update_attributes(blog_params)
+    if @blog.update_attributes blog_params
       redirect_to blog_post_path @blog
     else
       redirect_to edit_blog_post_path @blog
@@ -46,8 +54,8 @@ class Blog::PostsController < ApplicationController
       :status, book_ids: []
   end
 
-  def find_blog
-    @blog = current_user.blogs.find_by id: params[:id]
+  def find_blog blog
+    @blog = blog.find_by id: params[:id]
     redirect_to blog_root_path unless @blog
   end
 end
