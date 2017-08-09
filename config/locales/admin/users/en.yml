@@ -30,3 +30,5 @@ en:
         add_new_user: "Add new user"
         input_text_search: "Input key word"
         number_user: "Number of users: "
+        user: "User"
+        admin: "Admin"

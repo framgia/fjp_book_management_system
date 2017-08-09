@@ -1,0 +1,21 @@
+@import "colors";
+
+.alert {
+  padding: 3px !important;
+  text-align: center;
+}
+
+.pmd-card {
+  margin-bottom: 0 !important;
+}
+
+.pmd-textfield-floating-label label {
+  margin-bottom: 14px !important;
+}
+
+.borrow-book {
+  .btn {
+    min-width: 40px;
+    padding: 8px;
+  }
+}

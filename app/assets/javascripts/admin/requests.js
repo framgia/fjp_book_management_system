@@ -1,28 +1,49 @@
-var select = document.getElementsByClassName('test-status-selected');
+//= require_self
+
+$(document).on('click', '.change-status', function() {
+  var requestId = $(this).data('id');
+  var url = '/admin/requests/' + requestId;
+  var statusId = '#status-request-id-' + requestId;
+  var status = this.value
+
+  $.ajax({
+    type:'PATCH',
+    url: url,
+    data: {
+      borrow_books: {
+        status: status
+      }
+    },
+    success: function () {
+      if (status == "approved") {
+        $(statusId).empty().append("\<div class='alert alert-success' role='alert'>\
+        <a class='alert-link'>\
+        Approved\
+        </a>" );
+      } else {
+        $(statusId).empty().append("\<div class='alert alert-danger' role='alert'>\
+        <a class='alert-link'>\
+        Reject\
+        </a>" );
+      }
+    }
+  });
+});
+
+var select = document.getElementsByClassName('status-selected');
+select[0].addEventListener('change', showRequestsWithStatus, false);
 
 function showRequestsWithStatus() {
   var status = this.value;
-  $('#list-borrow-books-view').load(document.URL + '?status=' + status + ' #list-borrow-books');
-}
-
-select[0].addEventListener('change', showRequestsWithStatus, false);
-
-$(document).on('click', '#save-button', function() {
-  var url = '/admin/requests/';
-  var borrow_id;
-  $('.select-status').each(function() {
-    borrow_id = $(this).data('id');
-    if (this.value != 1) {
-      $.ajax({
-        type:'PATCH',
-        url: url + borrow_id,
-        data: {
-          borrow: {
-            status: this.value
-          }
-        }
-      });
+  var url = '/admin/requests';
+  $.ajax({
+    type:'GET',
+    url: url,
+    data: {
+      status: status
+    },
+    success: function () {
+      location.reload();
     }
   });
-  $('#list-borrow-books-view').load(document.URL + '?status=' + 'not_approved' + ' #list-borrow-books');
-});
+}

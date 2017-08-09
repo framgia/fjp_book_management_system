@@ -1,53 +1,62 @@
-<div class="row", id="">
-  <div></div>
-  <div class="col-md-12 pull-right">
+<div class="row">
+  <div class="col-md-12">
     <div class="col-md-3">
       <div class="form-group pmd-textfield pmd-textfield-floating-label">
         <label><%= t "admin.requests.index.status_select" %></label>
-        <select class="select-simple form-control pmd-select2 test-status-selected", id="status-selected">
-          <option value="all">
+        <select class="select-simple form-control pmd-select2 status-selected">
+          <option
+          <% if data.status == "all"  %> selected="selected"
+          <% end %>
+          value="all">
             <%= t "admin.requests.index.all" %>
           </option>
-          <option value="reject">
+          <option
+          <% if data.status == "reject"  %> selected="selected"
+          <% end %>
+          value="reject">
             <%= t "admin.requests.index.reject" %>
           </option>
-          <option value="approved">
+          <option
+          <% if data.status == "approved"  %> selected="selected"
+          <% end %>
+          value="approved">
             <%= t "admin.requests.index.approved" %>
           </option>
-          <option selected="selected" value="not_approved">
+          <option
+          <% if data.status == "not_approved" %> selected="selected"
+          <% end %>
+          value="not_approved">
             <%= t "admin.requests.index.not_approved_yet" %>
           </option>
-          <option value="cancel">
+          <option
+          <% if data.status == "cancel" %> selected="selected"
+          <% end %>
+          value="cancel">
             <%= t "admin.requests.index.cancel" %>
           </option>
         </select>
       </div>
     </div>
-    <div class="col-sm-2 text-right form-group">
-      <div class="col-md-1">
-        <button type="button" class="btn btn-success" id="save-button">
-          <%= t "admin.requests.index.save" %>
-        </button>
+    <div class="col-sm-12">
+      <div class="col-sm-4" id="number-categories-view">
+        <div id="number-categories">
+          <p><%= t "admin.requests.index.number_requests" %>
+            <%= data.request_borrow_books.count %>
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-8 page_info text-center"
+        id="pagination-borrow-books">
+        <%= paginate data.request_borrow_books_search, remote: true,
+          theme: "twitter-bootstrap-3" %>
       </div>
     </div>
   </div>
-  <div id="list-borrow-books-view">
-    <div class="table-responsive", id="list-borrow-books">
-      <div class="col-sm-12">
-        <div class="col-sm-6" id="number-categories-view">
-          <div id="number-categories">
-            <p><%= t "admin.requests.index.number_requests" %>
-              <%= data.request_borrow_books.count %>
-            </p>
-          </div>
-        </div>
-        <div class="col-sm-6 page_info text-center"
-          id="pagination-borrow-books">
-          <%= paginate data.request_borrow_books_search, remote: true,
-            theme: "twitter-bootstrap-3" %>
-        </div>
-      </div>
-      <table class="table">
+  <div class="col-md-12">
+    <br>
+    <div class="pmd-card pmd-z-depth pmd-card-custom-view", id="list-borrow-books">
+      <div id="list-borrow-books-view" class="table-responsive">
+      <table class="table" cellspacing="0" cellpadding="0">
         <thead>
         <tr>
           <th><%= t "admin.requests.index.no" %></th>
@@ -56,7 +65,7 @@
           <th><%= t "admin.requests.index.end_date" %></th>
           <th><%= t "admin.requests.index.book_title" %></th>
           <th><%= t "admin.requests.index.available" %></th>
-          <th><%= t "admin.requests.index.status" %></th>
+          <th class="col-xs-2"><%= t "admin.requests.index.status" %></th>
         </tr>
         </thead>
         <tbody>
@@ -67,46 +76,49 @@
             <td data-title="Start Date"><%= request.time_start %></td>
             <td data-title="End Date"><%= request.time_end %></td>
             <td data-title="Book name"><%= request.book.title %></td>
-            <td data-title="Remaining Amount">
+            <td data-title="Remaining Amount" class="text-center">
               <%= data.load_book_item_info request.book.id %></td>
             <td data-title="Status">
-              <% if request.status == "approved" %>
-                <div class="alert alert-success" role="alert">
-                  <a class="alert-link">
-                    <%= t "admin.requests.index.approved" %>
-                  </a>
-                </div>
-              <% elsif request.status == "cancel" %>
-                <div class="alert alert-warning" role="alert">
-                  <a class="alert-link">
-                    <%= t "admin.requests.index.cancel" %>
-                  </a>
-                </div>
-              <% elsif request.status == "reject" %>
-                <div class="alert alert-danger" role="alert">
-                  <a class="alert-link">
-                    <%= t "admin.requests.index.reject" %>
-                  </a>
-                </div>
-              <% else %>
-                <select class="select-simple form-control pmd-select2 select-status"
-                  data-id=<%= request.id %>>
-                  <option selected="selected" value="1">
-                    <%= t "admin.requests.index.not_approved_yet" %>
-                  </option>
-                  <option value="reject">
-                    <%= t "admin.requests.index.reject" %>
-                  </option>
-                  <option value="approved">
-                    <%= t "admin.requests.index.approve" %>
-                  </option>
-                </select>
-              <% end %>
+              <div id="status-request-id-<%= request.id.to_s %>">
+                <% if request.status == "approved" %>
+                  <div class="alert alert-success" role="alert">
+                    <a class="alert-link">
+                      <%= t "admin.requests.index.approved" %>
+                    </a>
+                  </div>
+                <% elsif request.status == "cancel" %>
+                  <div class="alert alert-warning" role="alert">
+                    <a class="alert-link">
+                      <%= t "admin.requests.index.cancel" %>
+                    </a>
+                  </div>
+                <% elsif request.status == "reject" %>
+                  <div class="alert alert-danger" role="alert">
+                    <a class="alert-link">
+                      <%= t "admin.requests.index.reject" %>
+                    </a>
+                  </div>
+                <% else %>
+                  <div class="row">
+                    <div class="col-md-12 borrow-book">
+                      <button type="button" class="btn btn-success change-status"
+                        data-id="<%= request.id %>" value="approved">
+                        <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger change-status"
+                        data-id="<%= request.id %>" value="reject">
+                        <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             </td>
           </tr>
         <% end %>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </div>

@@ -10,62 +10,61 @@
   </div>
   <div class="modal-body">
     <div class="row">
-      <div class="col-md-3">
-        <div class="text-center">
-          <img src="/assets/avata_default.jpg" class="avatar img-circle"
-            alt="avatar">
-          <h6><%= t "admin.users.index.upload_new_avata" %></h6>
-          <input type="file" class="form-control">
-        </div>
-      </div>
-      <div class="col-md-9 personal-info">
-        <form class="form-horizontal" role="form">
+      <div class="col-md-12">
+        <form class="form-horizontal" action="" id="form" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">
+              <%= t "admin.users.index.email" %></label>
+            <div class="col-lg-9">
+              <input data-validation="email required"
+                type="email" class="form-control" type="text"
+                id="text-field-mail-<%= user.id %>"
+                value= <%= user.email %>>
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">
               <%= t "admin.users.index.name" %></label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value="<%= user.name %>">
+            <div class="col-lg-9">
+              <input data-validation="required" class="form-control" type="text"
+                id= <%= "text-field-name-#{user.id}" %>
+                value="<%= user.name %>">
             </div>
             <div class="clearfix"></div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">
               <%= t "admin.users.index.staff_code" %></label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text"
-                value=<%= user.staff_code %>>
+            <div class="col-lg-9">
+              <input data-validation="required" class="form-control" type="text"
+                id= <%= "text-field-staff-code-#{user.id}" %>
+                value="<%= user.staff_code %>">
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">
-              <%= t "admin.users.index.email" %></label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text"
-                id= <%= "text-field-mail-#{user.id}" %>
-                value= <%= user.email %>>
-            </div>
+            <div class="clearfix"></div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">
               <%= t "admin.users.index.role" %></label>
-            <div class="col-md-8">
-              <input class="form-control" type="text" value=<%= user.role %>>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">
-              <%= t "admin.users.index.password" %></label>
-            <div class="col-md-8">
-              <input class="form-control" type="password"
-                id= <%= "text-field-password-#{user.id}" %>>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">
-              <%= t "admin.users.index.confirm_password" %></label>
-            <div class="col-md-8">
-              <input class="form-control" type="password"
-                id= <%= "text-field-password-confirm-#{user.id}" %>>
+            <div class="col-md-9">
+              <select class="select-simple form-control
+                pmd-select2 select-status"
+                id = role-user-id-<%= user.id %>>
+                <% if user.role == "admin" %>
+                    <option value="user">
+                      <%= t "admin.users.index.user" %>
+                    </option>
+                    <option selected="selected" value="admin">
+                      <%= t "admin.users.index.admin" %>
+                    </option>
+                <% else %>
+                    <option selected="selected" value="user">
+                      <%= t "admin.users.index.user" %>
+                    </option>
+                    <option value="admin">
+                      <%= t "admin.users.index.admin" %>
+                    </option>
+                <% end %>
+              </select>
             </div>
           </div>
         </form>
@@ -75,7 +74,7 @@
   <div class="modal-footer">
     <% if user.id.blank? %>
       <button type="button" class="btn btn-success create-user"
-        data-dismiss="modal">
+        value="Validate" data-dismiss="modal">
         <%= t "admin.users.index.create" %>
       </button>
     <% else %>
@@ -84,7 +83,7 @@
         <%= t "admin.users.index.delete" %>
       </button>
       <button type="button" class="btn btn-success save-user"
-        data-dismiss="modal" data-id="<%= user.id %>">
+        data-dismiss="modal" value="Validate" data-id="<%= user.id %>">
         <%= t "admin.users.index.save" %>
       </button>
     <% end %>
