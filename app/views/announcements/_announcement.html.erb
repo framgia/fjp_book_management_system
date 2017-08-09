@@ -1,11 +1,12 @@
-<li id="announcement-<%= announcement.id %>">
-  <%= link_to announcement, "data-turbolinks": false,
-    class: "announcement-item", remote: true do %>
-    <div class="announcement-content">
-      <%= announcement.title %>
+<li class="list-group-item unread"
+  id="announcement-<%= announcement.id %>">
+  <%= link_to announcement, "data-turbolinks": false, remote: true do %>
+    <div class="media-body">
+      <span class="list-group-item-heading">
+        <%= announcement.title %>
+      </span>
+      <span class="list-group-item-text">
+        <%= time_ago_in_words announcement.created_at %> <%= t "books.show.ago" %>
+      </span>
     </div>
   <% end %>
-  <div class="announcement-time">
-    <%= I18n.localize(announcement.created_at, format: :short) %>
-  </div>
-</li>

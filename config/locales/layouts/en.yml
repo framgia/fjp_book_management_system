@@ -3,6 +3,8 @@ en:
     header:
       administrator: "Administrator"
       books: "Books Explorer"
+      books: "Books"
+      explore: "Explore"
       blog: "Blog"
       account: "Account"
       profile: "My Profile"
@@ -14,6 +16,7 @@ en:
       searching: "Searching"
       books_suggestions: "Books Suggestions"
       tag_suggestions: "Tag Suggestions"
+      announcements: "Announcements"
     footer:
       about_us: "About us"
       blog: "Blog"

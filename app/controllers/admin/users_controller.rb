@@ -33,7 +33,6 @@ class Admin
       else
         flash[:danger] = t "admin.users.destroy.something_wrong"
       end
-
     end
 
     private

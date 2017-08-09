@@ -27,7 +27,7 @@
         </small>
         <% if user_signed_in? && current_user.id == @blog.user.id %>
           <span class="pull-right">
-            <%= link_to edit_blog_post_path(@blog) do %>
+            <%= link_to edit_blog_post_path(@blog), "data-turbolinks": false do %>
               <i class="fa fa-fw fa-pencil"></i>
               <%= t "button.edit" %>
             <% end %>
