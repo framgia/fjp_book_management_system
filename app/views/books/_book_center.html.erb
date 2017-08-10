@@ -1,9 +1,18 @@
 <div class="book-center book-part">
   <p class="book-title"><%= book.title %></p>
+
+  <div class="book-cate">
+    <% if book.categories.present? %>
+      <% book.categories.each do |cate| %>
+        <%= link_to cate.title, cate, "data-turbolinks": false %>
+      <% end %>
+    <% end %>
+  </div>
+
   <p class="book-author">
     <% book.authors.each_with_index do |a, index| %>
         <%= link_to author_path(a), "data-turbolinks": false do %>
-          <%= a.name %>
+          <span><%= a.name %></span>
           <% if index == book.authors.count - 1 %>
             <% if a.description %>
               <%= render "popup_author_info", author: a %>
@@ -40,21 +49,44 @@
   <% end %>
 
   <div class="book-info-row">
-    <span><%= t "books.show.tag" %></span>
-    <% book.tags.each do |t| %>
-      <%= link_to t.title, tag_path(t), "data-turbolinks": "false", class: "tag" %>
+    <% if book.tags.present? %>
+      <span><%= t "books.show.tag" %></span>
+      <% book.tags.each do |t| %>
+        <%= link_to t.title, tag_path(t), "data-turbolinks": "false", class: "tag" %>
+      <% end %>
     <% end %>
   </div>
   <div class="row">
     <div class="col-sm-5">
-      <p class="book-info-row"><span><%= t "books.show.isbn" %></span> <%= book.isbn %></p>
-      <p class="book-info-row"><span><%= t "books.show.language" %></span> <%= book.language.full_name %></p>
-      <p class="book-info-row"><span><%= t "books.show.pages" %></span> <%= book.pages %></p>
+      <% if book.isbn %>
+        <p class="book-info-row">
+          <span><%= t "books.show.isbn" %></span> <%= book.isbn %></p>
+      <% end %>
+      <% if book.language.full_name %>
+        <p class="book-info-row">
+          <span><%= t "books.show.language" %></span> <%= book.language.full_name %></p>
+      <% end %>
+      <% if book.pages %>
+        <p class="book-info-row">
+          <span><%= t "books.show.pages" %></span> <%= book.pages %></p>
+      <% end %>
     </div>
     <div class="col-sm-6">
-      <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.publisher.name %></p>
-      <p class="book-info-row"><span><%= t "books.show.public_date" %></span> <%= book.public_date.strftime('%d/%m/%Y') %></p>
-      <p class="book-info-row"><span><%= t "books.show.publisher" %></span> <%= book.dimension %></p>
+      <% if book.publisher.name %>
+        <p class="book-info-row">
+          <span><%= t "books.show.publisher" %></span> <%= book.publisher.name %></p>
+      <% end %>
+      <% if book.public_date %>
+        <p class="book-info-row">
+          <span>
+            <%= t "books.show.public_date" %>
+          </span>
+          <%= book.public_date.strftime('%d/%m/%Y') %></p>
+      <% end %>
+      <% if book.dimension %>
+        <p class="book-info-row"><span><%= t "books.show.publisher" %></span>
+          <%= book.dimension %></p>
+      <% end %>
     </div>
   </div>
 

@@ -5,10 +5,10 @@
   <% if user_signed_in? %>
     .CodeMirror {
       padding-left: 60px;
-      background-image: url("<%= current_user.avatar.thum40.url %>");
-      background-repeat: no-repeat;
+      background: url("<%= current_user.avatar.thum40.url %>") no-repeat;
       background-position-x: 10px;
       background-position-y: 5px;
+      background-size: 40px 40px;
     }
   <% end %>
 </style>

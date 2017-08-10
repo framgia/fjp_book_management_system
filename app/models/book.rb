@@ -38,9 +38,20 @@ class Book < ApplicationRecord
 
   def related_books
     id = self.id
-    Book.joins(:author_books).where("author_books.author_id":
+    today = Date.today
+    month_ago = today - 1.month
+    relate = Book.joins(:author_books).where("author_books.author_id":
       AuthorBook.where(book_id: id).pluck(:author_id)).distinct(:id)
       .where.not(id: id)
+    return relate if relate.present?
+    Book.where("created_at > ?", month_ago).limit Settings.user.home.new_book
+  end
+
+  def new_book?
+    today = Date.today
+    month_ago = today - 1.month
+    return true if self.created_at > month_ago
+    false
   end
 
   def parent_comments

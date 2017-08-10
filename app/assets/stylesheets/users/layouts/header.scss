@@ -608,7 +608,7 @@ body {
 }
 
 .btn-primary {
-  background: $brown-lighter;
+  background: $main-color-lighter;
 }
 
 .login-card {
@@ -617,4 +617,8 @@ body {
   .col-sm-4 {
     border-radius: 5px;
   }
+}
+
+.pmd-dropdown-menu-container {
+  min-width: 110px;
 }

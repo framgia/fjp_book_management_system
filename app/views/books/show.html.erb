@@ -43,6 +43,17 @@
           <a data-toggle="tab" href="#description" class="pmd-z-depth-1">
             <%= t "books.show.description" %></a>
         </li>
+
+        <li class="btn-new-blog">
+          <%= form_with model: Blog.new, url: blog_posts_path, local: true do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <button class="btn btn-primary pmd-btn-raised pmd-ripple-effect
+              btn-create" type="submit">
+              <i class="fa fa-fw fa-pencil"></i>
+              <%= t "blog.dashboard.index.create_post" %>
+            </button>
+          <% end %>
+        </li>
       </ul>
       <%= render "social", book: @book %>
     </div>
