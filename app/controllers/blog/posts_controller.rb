@@ -1,9 +1,9 @@
 class Blog::PostsController < ApplicationController
   before_action only: [:edit, :update, :destroy] do
-    find_book current_user.blogs
+    find_blog current_user.blogs
   end
   before_action only: :show do
-    find_book Blog.published
+    find_blog Blog.published
   end
 
   def index
