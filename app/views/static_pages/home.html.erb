@@ -64,8 +64,8 @@
         </div>
         <div class="owl-carousel owl-theme recommend-book-slider"
              id="recommended-book-slide">
-          <% if @support.load_popular_book.present? %>
-            <% @support.load_popular_book.each do |book| %>
+          <% if @support.load_top_rate_book.present? %>
+            <% @support.load_top_rate_book.each do |book| %>
               <%= render "book_slide_item", b: book %>
             <% end %>
           <% else %>
