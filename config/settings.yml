@@ -42,3 +42,6 @@ user:
       author_description: 250
 announcements:
   announcements_per_load: 10
+notifications:
+  per_page: 15
+  header_per_page: 8

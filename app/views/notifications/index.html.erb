@@ -1,0 +1,37 @@
+<% provide :title, t("notifications.index.notifications") %>
+<div class="container noti-wrapper">
+  <div class="row">
+    <% if unread_notifications_count > 0 %>
+      <div class="col-sm-12 text-center">
+        <div class="alert alert-success">
+          <strong class="fa fa-fw fa-bell-slash-o"></strong>
+          <%= t "notifications.index.dont_have_notification" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-sm-12 noti-header">
+      <h1 class="text-uppercase">
+        <%= t "notifications.index.your_notifications" %>
+      </h1>
+      <hr>
+    </div>
+    <div class="col-sm-12 noti">
+      <% @notifications.each do |notification| %>
+        <div class="list-group">
+          <%= link_to "#", class: "list-group-item", "data-turbolinks": false do %>
+            <h4 class="list-group-item-heading">
+              <%= notification.content %>
+            </h4>
+            <p class="list-group-item-text">
+              <%= time_ago_in_words notification.created_at %>
+            </p>
+          <% end %>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+    <div class="col-sm-12">
+      <%= paginate @notifications, theme: "twitter-bootstrap-3" %>
+    </div>
+  </div>
+</div>

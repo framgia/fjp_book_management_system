@@ -32,4 +32,13 @@ module ApplicationHelper
      [(t "categories.show.title"), "title"],
      [(t "categories.show.public_date"), "public_date"]]
   end
+
+  def unread_notifications_count
+    current_user.notifications.where(read: false).size
+  end
+
+  def my_notifications
+    current_user.notifications.order(id: :desc)
+      .limit Settings.notifications.header_per_page
+  end
 end
