@@ -1,0 +1,7 @@
+en:
+  notifications:
+    index:
+      notifications: "Notifications"
+      all_notifications: "All Notifications"
+      dont_have_notification: "You don´t have any new notifications"
+      your_notifications: "Your Notifications"

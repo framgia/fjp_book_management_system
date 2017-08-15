@@ -53,7 +53,10 @@
           <a href="javascript:void(0)" title="Notification"
              class="dropdown-toggle pmd-ripple-effect btn-user"
              data-toggle="dropdown" role="button" aria-expanded="true">
-            <div data-badge="3"
+            <div
+              <% if unread_notifications_count > 0 %>
+                data-badge="<%= unread_notifications_count %>"
+              <% end %>
               class="material-icons pmd-sm pmd-badge pmd-badge-overlap">
               notifications_none
             </div>
@@ -63,7 +66,8 @@
                role="menu">
             <div class="pmd-card-title">
               <div class="media-body media-middle">
-                <a href="notifications.html" class="pull-right">3 new notifications</a>
+                <%= link_to t("notifications.index.all_notifications"), notifications_path,
+                  class: "pull-right" %>
                 <h3 class="pmd-card-title-text">
                   <%= t "layouts.header.notifications" %>
                 </h3>
@@ -74,47 +78,24 @@
               <li class="list-group-item" style="display:none">
                 <p class="notification-blank">
                   <span class="dic dic-notifications-none"></span>
-                  <span>You don´t have any notifications</span>
+                  <span><%= t "notifications.index.dont_have_notification" %></span>
                 </p>
               </li>
-              <li class="list-group-item unread">
-                <a href="javascript:void(0)">
-                  <div class="media-body">
-                  <span class="list-group-item-heading">
-                    <span>Prathit</span> posted a new challanegs
-                  </span>
-                    <span class="list-group-item-text">5 Minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="list-group-item">
-                <a href="javascript:void(0)">
-                  <div class="media-body">
-                    <span class="list-group-item-heading"><span>Keel</span> Cloned 2 challenges.</span>
-                    <span class="list-group-item-text">15 Minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="list-group-item unread">
-                <a href="javascript:void(0)">
-                  <div class="media-body">
-                  <span class="list-group-item-heading">
-                    <span>John</span> posted new collection.
-                  </span>
-                    <span class="list-group-item-text">25 Minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="list-group-item unread">
-                <a href="javascript:void(0)">
-                  <div class="media-body">
-                  <span class="list-group-item-heading">
-                    <span>Valerii</span> Shared 5 collection.
-                  </span>
-                    <span class="list-group-item-text">30 Minutes ago</span>
-                  </div>
-                </a>
-              </li>
+              <% my_notifications.each do |notification| %>
+                <li class="list-group-item <%= "unread" unless notification.read? %>">
+                  <a href="javascript:void(0)">
+                    <div class="media-body">
+                      <span class="list-group-item-heading">
+                        <%= notification.content %>
+                      </span>
+                      <span class="list-group-item-text">
+                        <%= time_ago_in_words notification.created_at %>
+                        <%= t "books.show.ago" %>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              <% end %>
             </ul>
           </div>
       </div>
