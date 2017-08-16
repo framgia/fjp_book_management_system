@@ -256,7 +256,7 @@ Category.create!([
     things that you need to know as a designer, developer or mobile strategist
     for
     your websites."},
-  {title: "Android", parent_id: 3, description: "See what's new with Android -
+  {title: "Android", description: "See what's new with Android -
     from phones to watches and more. Visit the official site to
     explore and learn."},
   {title: "iOS", parent_id: 3, description: "If there is one piece of technology
@@ -266,12 +266,12 @@ Category.create!([
     and doing things they never thought possible. Whether it's setting calendar
     appointments, looking at restaurant menus, or reading movie reviews,
     the iPhone has been a big part of it all."},
-  {title: "Windown Phone", parent_id: 3, description: "Informationvine.com
+  {title: "Window Phone", parent_id: 3, description: "Informationvine.com
     connects you to the best results from across the web. Search & Find Now ·
     Find Relevant Information · Learn More · Quick & Easy Answers"},
   {title: "Web", description: "We develop cross-platform Web app for reading
     ebooks, and also publish high- quality ebooks, especially textbooks."},
-  {title: "Ruby on rails", parent_id: 6, description: "We want to teach you
+  {title: "Ruby On Rails", parent_id: 6, description: "We want to teach you
     the single most valuable skill you can learn in the 21st century.
     Read the Learn Enough Story to find out more."},
   {title: "PHP", parent_id: 6, description: "PHP Book includes 250+ functions,
@@ -296,7 +296,7 @@ Category.create!([
   {title: "Agile", description: "Discover the best Agile Project
     Management in Best Sellers. Find the top 100 most popular items in Amazon
     Books Best Sellers."},
-  {title: "Other", description: "Nothing"},
+  {title: "Other", description: "Something else"},
 ])
 
 Book.create!([

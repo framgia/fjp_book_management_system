@@ -17,6 +17,13 @@ en:
       books_suggestions: "Books Suggestions"
       tag_suggestions: "Tag Suggestions"
       announcements: "Announcements"
+      feedback: "Feedback"
+      feedback_create: "Create"
+      feedback_cancel: "Cancel"
+      feedback_done: "Successful!"
+      feedback_waiting: "Waiting."
+      feedback_close: "Close"
+      feedback_empty: "Empty message!"
     footer:
       about_us: "About us"
       blog: "Blog"

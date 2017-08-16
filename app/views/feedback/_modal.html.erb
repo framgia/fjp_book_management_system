@@ -1,0 +1,38 @@
+<div tabindex="-1" class="modal fade" id="complete-dialog" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="pmd-card-title-text"><%= t ".feedback" %></h2>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" rows="10" id="feedback-content"></textarea>
+      </div>
+      <div class="pmd-modal-action pmd-modal-bordered text-right">
+        <div class="hidden" id="waiting-mes">
+          <%= t "layouts.header.feedback_waiting" %>
+        </div>
+        <div class="hidden" id="successfull-mes">
+          <%= t "layouts.header.feedback_done" %>
+        </div>
+        <div class="hidden" id="empty-content">
+          <%= t "layouts.header.feedback_empty" %>
+        </div>
+        <button class="feedback-state">
+          <%= t "layouts.header.feedback_waiting" %>
+        </button>
+        <button class="btn pmd-btn-flat pmd-ripple-effect
+          btn-primary" id="feedback-create">
+          <%= t "layouts.header.feedback_create" %>
+        </button>
+        <button data-dismiss="modal" class="btn pmd-btn-flat pmd-ripple-effect
+          btn-primary feedback-done" type="button">
+          <%= t "layouts.header.feedback_close" %>
+        </button>
+        <button data-dismiss="modal" type="button" class="btn pmd-btn-flat
+          pmd-ripple-effect btn-default" id="feedback-cancel">
+          <%= t "layouts.header.feedback_cancel" %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

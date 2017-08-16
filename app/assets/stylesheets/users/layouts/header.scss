@@ -622,3 +622,19 @@ body {
 .pmd-dropdown-menu-container {
   min-width: 110px;
 }
+
+.feedback-done {
+  background: $success-popup !important;
+  color: $white !important;
+  display: none;
+  font-weight: bold;
+}
+
+.feedback-state {
+  background: transparent;
+  border: 0;
+  display: none;
+  font-weight: bold;
+  left: 2%;
+  position: absolute;
+}
