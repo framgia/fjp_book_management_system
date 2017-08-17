@@ -79,10 +79,11 @@
               </li>
               <% my_notifications.each do |notification| %>
                 <li class="list-group-item <%= "unread" unless notification.read? %>">
-                  <a href="javascript:void(0)">
+                  <a href="<%= notification.link_to %>" title="<%= notification.raw %>"
+                    data-turbolinks="false">
                     <div class="media-body">
                       <span class="list-group-item-heading">
-                        <%= notification.content %>
+                        <%= notification.raw %>
                       </span>
                       <span class="list-group-item-text">
                         <%= time_ago_in_words notification.created_at %>

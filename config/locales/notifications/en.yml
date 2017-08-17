@@ -4,4 +4,12 @@ en:
       notifications: "Notifications"
       all_notifications: "All Notifications"
       dont_have_notification: "You don´t have any new notifications"
+      you_have_notification: "You have %{count} new notifications"
       your_notifications: "Your Notifications"
+    job:
+      borrow:
+        success: "You send a request to borrow book "
+      feedback:
+        success: "Thank you for sending us feedback "
+      request:
+        success: "Your request is being processed"
