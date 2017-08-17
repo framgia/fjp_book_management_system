@@ -47,4 +47,48 @@ $(document).ready(function(){
   $('.announcement-icon').on('click', function() {
     $('.announcements').toggleClass('hide');
   });
+
+  $('#feedback-cancel, .feedback-done').on('click', function() {
+    $('#feedback-content').val('');
+  });
+
+  $('#feedback-button').on('click', function() {
+    $('#feedback-create').show();
+    $('.feedback-done').hide();
+    $('#feedback-cancel').show();
+    $('.feedback-state').hide();
+  });
+
+  $('#feedback-create').on('click', function() {
+    var content = $('#feedback-content').val();
+    var message_empty = $('#empty-content').text();
+    var message_success = $('#successfull-mes').text();
+    var message_waiting = $('#waiting-mes').text();
+    var state = $('.feedback-state');
+    if(content == '') {
+      state.show().text(message_empty).css('color','#f00');
+      return true;
+    }
+
+    state.show().text(message_waiting).css('color','#555');
+    $.ajax({
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader('X-CSRF-Token',
+          $('meta[name="csrf-token"]').attr('content'));
+      },
+      type: 'POST',
+      url: '/feedback',
+      data: {
+        feedback: {
+          content: content,
+        }
+      },
+      success: function(){
+        state.show().css('color','#259b24').text(message_success);
+        $('#feedback-create').hide();
+        $('#feedback-cancel').hide();
+        $('.feedback-done').show();
+      }
+    });
+  });
 });
