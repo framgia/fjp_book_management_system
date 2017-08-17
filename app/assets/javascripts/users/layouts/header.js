@@ -57,6 +57,8 @@ $(document).ready(function(){
     $('.feedback-done').hide();
     $('#feedback-cancel').show();
     $('.feedback-state').hide();
+    $('#feedback-content').val('').show();
+    $('.feedback-content').hide().text('');
   });
 
   $('#feedback-create').on('click', function() {
@@ -85,9 +87,14 @@ $(document).ready(function(){
       },
       success: function(){
         state.show().css('color','#259b24').text(message_success);
+        $('#feedback-content').hide();
+        $('.feedback-content').show().text(content);
         $('#feedback-create').hide();
         $('#feedback-cancel').hide();
         $('.feedback-done').show();
+        setTimeout(function() {
+          $('#complete-dialog').modal('hide');
+        }, 3000);
       }
     });
   });
