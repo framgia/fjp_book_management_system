@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications = Notification.page(params[:page])
+    @notifications = Notification.order(id: :desc).page(params[:page])
       .per Settings.notifications.per_page
   end
 end

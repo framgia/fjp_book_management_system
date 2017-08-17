@@ -67,7 +67,7 @@ $(document).ready(function () {
   var editors = {};
 
   var editorOptions = {
-    element: $('#cmt-0')[0],
+    element: $('#comment-0')[0],
     status: false,
     toolbar: false,
     forceSync: true,

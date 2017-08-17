@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809072957) do
+ActiveRecord::Schema.define(version: 20170817092903) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer "admin_id", null: false
@@ -162,11 +162,13 @@ ActiveRecord::Schema.define(version: 20170809072957) do
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "content"
-    t.integer "type"
     t.boolean "read", default: false
     t.string "link_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "raw"
+    t.string "target"
+    t.integer "target_id"
   end
 
   create_table "publishers", force: :cascade do |t|

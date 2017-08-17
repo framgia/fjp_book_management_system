@@ -1,11 +1,19 @@
 <% provide :title, t("notifications.index.notifications") %>
 <div class="container noti-wrapper">
   <div class="row">
-    <% if unread_notifications_count > 0 %>
+    <% if unread_notifications_count == 0 %>
       <div class="col-sm-12 text-center">
         <div class="alert alert-success">
           <strong class="fa fa-fw fa-bell-slash-o"></strong>
           <%= t "notifications.index.dont_have_notification" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="col-sm-12 text-center">
+        <div class="alert alert-info">
+          <strong class="fa fa-fw fa-bell-o"></strong>
+          <%= t "notifications.index.you_have_notification",
+            count: unread_notifications_count %>
         </div>
       </div>
     <% end %>
@@ -18,14 +26,14 @@
     <div class="col-sm-12 noti">
       <% @notifications.each do |notification| %>
         <div class="list-group">
-          <%= link_to "#", class: "list-group-item", "data-turbolinks": false do %>
+          <span class="list-group-item">
             <h4 class="list-group-item-heading">
-              <%= notification.content %>
+              <%= notification.content.html_safe %>
             </h4>
             <p class="list-group-item-text">
               <%= time_ago_in_words notification.created_at %>
             </p>
-          <% end %>
+          </span>
         </div>
         <hr>
       <% end %>
