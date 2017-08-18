@@ -18,11 +18,17 @@
       <div class="col-sm-12 comment-body">
         <%= markdown(comment.content).html_safe %>
       </div>
+      <input type="hidden" id="book-id" value="<%= book.id %>">
       <div class="col-sm-12 comment-footer">
         <div class="vote">
-          <i class="fa fa-fw fa-chevron-up pmd-ripple-effect"></i>
-          <%= comment.votes.count %>
-          <i class="fa fa-fw fa-chevron-down pmd-ripple-effect"></i>
+          <span class="vote-count-<%= comment.id %>"><%= comment.votes.size %></span>
+
+          <% if vote(comment).present? %>
+            <i class="fa fa-fw fa-thumbs-up pmd-ripple-effect" data="<%= comment.id %>"
+              vote-id="<%= vote(comment).id %>"></i>
+          <% else %>
+            <i class="fa fa-fw fa-thumbs-o-up pmd-ripple-effect" data="<%= comment.id %>"></i>
+          <% end %>
           | <i class="fa fa-fw fa-reply pmd-ripple-effect"
               data="<%= comment.id %>"></i>
           <% if current_user && comment.user.id == current_user.id %>

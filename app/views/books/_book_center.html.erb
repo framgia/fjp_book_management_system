@@ -27,13 +27,13 @@
   </p>
   <div>
     <% (1..(load_rate book.rate).first).each do |s| %>
-      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star rate" aria-hidden="true"></i>
     <% end  %>
     <% (1..(load_rate book.rate).second).each do |s| %>
-      <i class="fa fa-star-half-o" aria-hidden="true"></i>
+      <i class="fa fa-star-half-o rate" aria-hidden="true"></i>
     <% end  %>
     <% (1..(load_rate book.rate).last).each do |s| %>
-      <i class="fa fa-star-o" aria-hidden="true"></i>
+      <i class="fa fa-star-o rate" aria-hidden="true"></i>
     <% end  %>
     <% if book.rate_count %>
      (<%= book.rate_count %>)

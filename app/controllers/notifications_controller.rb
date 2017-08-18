@@ -1,7 +1,8 @@
 class NotificationsController < ApplicationController
   before_action :find_notification, only: :update
   def index
-    @notifications = Notification.order(id: :desc).page(params[:page])
+    @notifications = current_user.notifications.order(id: :desc)
+      .page(params[:page])
       .per Settings.notifications.per_page
   end
 

@@ -41,4 +41,8 @@ module ApplicationHelper
     current_user.notifications.order(id: :desc)
       .limit Settings.notifications.header_per_page
   end
+
+  def vote comment
+    comment.votes.find_by user_id: current_user.id
+  end
 end
