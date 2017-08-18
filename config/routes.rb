@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   resources :announcements, only: [:index, :show]
   resource :not_found, only: :show
   resources :requests, only: [:index, :create, :update]
-  resources :notifications, only: :index
+  resources :notifications, only: [:index, :update]
+  patch "/make_all_as_read" => "make_all_as_read#update"
   resources :feedback, only: [:index, :new, :create, :show]
 end

@@ -1,5 +1,9 @@
 class SuggestBook < ApplicationRecord
   belongs_to :book
+  belongs_to :sender, class_name: User.name, foreign_key: :sender_id
+  belongs_to :receiver, class_name: User.name, foreign_key: :receiver_id
+
+  after_create{NotificationJob.perform_now self}
 
   class << self
     def create_suggest_book suggest_books_params, book, sender_id

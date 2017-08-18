@@ -53,7 +53,7 @@
               <% if unread_notifications_count > 0 %>
                 data-badge="<%= unread_notifications_count %>"
               <% end %>
-              class="material-icons pmd-sm pmd-badge pmd-badge-overlap">
+              class="material-icons pmd-sm pmd-badge pmd-badge-overlap notifi-count">
               notifications_none
             </div>
           </a>
@@ -78,7 +78,8 @@
                 </p>
               </li>
               <% my_notifications.each do |notification| %>
-                <li class="list-group-item <%= "unread" unless notification.read? %>">
+                <li class="list-group-item notify <%= "unread" unless notification.read? %>"
+                  data="<%= notification.id %>">
                   <a href="<%= notification.link_to %>" title="<%= notification.raw %>"
                     data-turbolinks="false">
                     <div class="media-body">
