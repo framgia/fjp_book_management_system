@@ -30,6 +30,7 @@ class BooksController < ApplicationController
   def show
     @suggest_book = SuggestBook.new
     @users = current_user.load_suggest_book_to_users
+    @book_mark = current_user.book_marks.find_by book: @book
   end
 
   private

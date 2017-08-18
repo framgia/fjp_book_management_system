@@ -1,1 +1,2 @@
-$('.profile-content').html('<%= j render @type, posts: @posts %>');
+$('.profile-content').html('<%= j render params[:type], posts: @posts, books: @books,
+  borrow: @borrow %>');

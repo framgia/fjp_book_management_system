@@ -29,17 +29,26 @@
   <div class="menu-portfolio-item">
     <ul class="portfolio">
       <li class="filter active" data-trigger=".info-part">
-        <%= t "user.edit.menu_item.information" %></li>
+        <%= link_to t("user.edit.menu_item.information"),
+        user, "data-turbolinks":"false" %></li>
       <li class="filter" data-trigger=".blog-part">
-        <%= t "user.edit.menu_item.blog" %></li>
+        <%= link_to t("user.edit.menu_item.blog"),
+        user_path(user, type: "blog"), remote: true,
+        "data-turbolinks":"false" %></li>
       <li class="filter" data-trigger=".fav-book-part">
-        <%= t "user.edit.menu_item.favorite_books" %></li>
-      <li class="filter" data-trigger=".history-part" id="history-btn">
-        <%= t "user.edit.menu_item.history" %>
-      </li>
+        <%= link_to t("user.edit.menu_item.favorite_books"),
+        user_path(user, type: "book_mark"), remote: true,
+        "data-turbolinks":"false" %></li>
 
+      <li class="filter" data-trigger=".history-part" id="history-btn">
+        <%= link_to t("user.edit.menu_item.history"),
+          user_path(user, type: "borrow"), remote: true,
+          "data-turbolinks":"false" %>
+      </li>
       <li class="dropdown-item active-child" data-trigger=".borrow-part">
-        <span><%= t "user.edit.menu_item.borrow" %></span>
+        <span><%= link_to t("user.edit.menu_item.borrow"),
+          user_path(user, type: "borrow"), remote: true,
+          "data-turbolinks":"false" %></span>
       </li>
       <li class="dropdown-item" data-trigger=".donate-part">
         <span><%= t "user.edit.menu_item.purchase" %></span>

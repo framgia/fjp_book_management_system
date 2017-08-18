@@ -1,0 +1,20 @@
+<tr class="borrow-row" id="borrow-row-id-<%= request.id %>">
+  <td data-title="Name" data-id="<%= request.id %>" id="request-name">
+    <%= request.book.title %></td>
+  <td data-title="Code"><%= request.time_start %></td>
+  <td data-title="State/City"><%= request.time_end %></td>
+  <td data-title="End Date of Work">
+    <% case request.status %>
+    <% when "reject" %>
+      <span class="reject status-btn">Rejected</span>
+    <% when "cancel" %>
+      <span class="cancel status-btn">Canceled</span>
+    <% when "approved" %>
+      <span class="approve status-btn">Approved</span>
+    <% else %>
+      <span class="not-approve status-btn">Waiting</span>
+      <span class="cancel-ok status-btn">OK</span>
+      <span class="cancel-back status-btn">Back</span>
+    <% end %>
+  </td>
+</tr>

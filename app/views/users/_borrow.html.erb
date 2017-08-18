@@ -1,0 +1,22 @@
+<div class="pmd-card pmd-z-depth">
+  <div class="table-responsive">
+    <table cellspacing="0" cellpadding="0" class="table pmd-table border-table"
+      id="table-propeller">
+      <thead>
+      <tr>
+        <th>Book</th>
+        <th>Start At</th>
+        <th>Expired At</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% if borrow.present? %>
+          <% borrow.each do |request| %>
+            <%= render "borrow_row", request: request %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
