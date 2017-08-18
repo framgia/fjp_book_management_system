@@ -25,7 +25,8 @@
       <% end %>
     <% end %>
   </p>
-  <div>
+  <input type="hidden" id="is_rate" value="<%= rate(book).present? %>">
+  <div id="rate">
     <% (1..(load_rate book.rate).first).each do |s| %>
       <i class="fa fa-star rate" aria-hidden="true"></i>
     <% end  %>

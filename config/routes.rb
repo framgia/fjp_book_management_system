@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :votes, only: [:create, :destroy]
     end
     resource :suggest_books, only: :create
+    resource :rate, only: [:create]
   end
 
   resources :categories, only: [:index, :show]
