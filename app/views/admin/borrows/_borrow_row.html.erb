@@ -1,0 +1,45 @@
+<tr id="request-row-id-<%= request.id.to_s %>">
+  <td data-title="No"><%= request.id %></td>
+  <td data-title="Username"><%= request.user.name %></td>
+  <td data-title="Start Date"><%= request.time_start %></td>
+  <td data-title="End Date"><%= request.time_end %></td>
+  <td data-title="Book name"><%= request.book.title %></td>
+  <td data-title="Remaining Amount" class="text-center">
+    <%= data.load_book_item_info request.book.id %></td>
+  <td data-title="Status">
+    <div>
+      <% if request.status == "approved" %>
+          <div class="alert alert-success" role="alert">
+            <a class="alert-link">
+              <%= t "admin.requests.index.approved" %>
+            </a>
+          </div>
+      <% elsif request.status == "cancel" %>
+          <div class="alert alert-warning" role="alert">
+            <a class="alert-link">
+              <%= t "admin.requests.index.cancel" %>
+            </a>
+          </div>
+      <% elsif request.status == "rejected" %>
+          <div class="alert alert-danger" role="alert">
+            <a class="alert-link">
+              <%= t "admin.requests.index.reject" %>
+            </a>
+          </div>
+      <% else %>
+          <div class="row">
+            <div class="col-md-12 borrow-book">
+              <button type="button" class="btn btn-success change-status"
+                      data-id="<%= request.id %>" value="approved">
+                <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-danger change-status"
+                      data-id="<%= request.id %>" value="rejected">
+                <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </td>
+</tr>

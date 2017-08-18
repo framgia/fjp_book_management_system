@@ -16,6 +16,8 @@ $(document).on('click', '.save-user', function() {
   var newRole = $(idRoleTextField).val();
   var newStaffCode = $(idStaffCodeTextField).val();
   var url = '/admin/users/' + userId;
+  var currentPage = $(this).data('curent-page');
+  var newhref = location.pathname + '?page=' + currentPage;
 
   $.ajax({
     type: 'PATCH',
@@ -30,7 +32,7 @@ $(document).on('click', '.save-user', function() {
       }
     },
     success: function () {
-      location.reload();
+      window.location.href = newhref;
     }
   });
 });
@@ -39,17 +41,19 @@ $(document).on('click', '.save-user', function() {
 $(document).on('click', '.delete-user', function() {
   var userId = $(this).data('id');
   var url = '/admin/users/' + userId;
+  var currentPage = $(this).data('curent-page');
+  var newhref = location.pathname + '?page=' + currentPage;
 
   $.ajax({
     type:'DELETE',
     url: url,
     data: {
       user: {
-        id: userId,
+        id: userId
       }
     },
     success: function() {
-      location.reload();
+      window.location.href = newhref;
     }
   });
 });

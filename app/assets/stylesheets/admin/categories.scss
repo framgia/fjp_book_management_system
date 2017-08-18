@@ -1,5 +1,18 @@
 @import "colors";
 
 body .category-modal-dialog {
+  height: 600px;
   width: 1250px;
+
+  .select2-container {
+    width: 100% !important;
+  }
+}
+
+.category-description {
+  height: 100px !important;
+}
+
+.category-book {
+  height: 200px !important;
 }

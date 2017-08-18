@@ -4,13 +4,14 @@ en:
       update:
         success: "Update request suscess!"
         something_wrong: "Update request fail, has something wrong!"
+        not_enough_books: "Not enough books"
       index:
         not_exist: "Request not exit."
         buy_book: "Buy Books"
         donate_book: "Donate Books"
         borrow_books: "Borrow Books"
         all: "All"
-        reject: "Reject"
+        reject: "Rejected"
         approved: "Approved"
         approve: "Approve"
         not_approved_yet: "Not Approved Yet"

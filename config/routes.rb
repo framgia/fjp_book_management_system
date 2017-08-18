@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     root "static_pages#show", page: "dashboard"
     get "/pages/:page" => "static_pages#show"
     resources :users, except: [:show, :edit]
-    resources :requests
+    resources :borrows
     resources :authors do
       resources :books
     end

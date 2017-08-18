@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <div class="form-group pmd-textfield pmd-textfield-floating-label">
+              <label><%= t "admin.requests.index.status_select" %></label>
+              <%= form_with url: admin_borrows_path, method: :get,
+                local: true, id: "form-borrow-status" do |f| %>
+                <%= f.select :status, borrow_status_params,
+                  {selected: @data.status}, {class: "form-control",
+                  id: "status-select-box"} %>
+              <% end %>
+            </div>
+          </div>
+          <div id="borrow-book">
+            <%= render "borrow", data: @data %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

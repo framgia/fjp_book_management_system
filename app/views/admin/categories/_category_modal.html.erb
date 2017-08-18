@@ -9,29 +9,26 @@
     <% end %>
   </div>
   <div class="modal-body">
-    <div class="pmd-card pmd-z-depth pmd-card-custom-form col-xs-12">
+    <div class="pmd-card pmd-z-depth pmd-card-custom-form">
       <div class="pmd-card-body">
         <%= form_for [:admin, category] do |f| %>
           <%= f.label :title, "title", class:"label2"%>
           <%= f.text_field :title, class: "form-control",
             id: "text-field-category-title-#{category.id}"%><br>
           <%= f.label :parent_id, "Category parent id", class:"label2"%>
-          <%= f.text_field :parent_id, class: "form-control",
-            id: "text-field-category-parent-#{category.id}"%><br>
+          <%= f.collection_select :parent_id,
+            data.load_list_parent_avaible(category.id), :id, :title, {},
+            {id: "text-field-category-parent-#{category.id}"}
+          %><br>
           <%= f.label :description, "description", class:"form-label" %>
-          <%= f.text_area :description, class: "form-control",
+          <%= f.text_area :description, class: "form-control
+            category-description",
             id: "text-field-category-description-#{category.id}"%><br>
           <%= f.label :books, t(".books"), class:"form-label" %>
-          <div class="col-xs-12">
-            <% books.each do |book| %>
-              <div class="col-xs-6 col-sm-6 choose">
-                <%= check_box_tag "category[book_ids][]", book.id,
-                  category.books.include?(book),
-                  class: "books-checked-at-category-#{category.id}" %>
-                <%= label_tag :book_ids, book.title %>
-              </div>
-            <% end %>
-          </div>
+          <%= f.collection_select :book_ids, data.books, :id, :title,
+            {}, {multiple: true, size: 1, class: "chosen-select2 form-control
+            category-book", id: "category-books-#{category.id}",
+            data: {placeholder: t("admin.categories.index.choice_book")}} %>
         <% end %>
       </div>
     </div>
@@ -39,17 +36,20 @@
   <div class="modal-footer">
     <% if category.id.blank? %>
       <button type="button" class="btn btn-success create-category"
-        data-dismiss="modal">
+        data-dismiss="modal"
+        data-curent-page="<%= data.current_page %>">
         <%= t "admin.users.index.create" %>
       </button>
     <% else %>
       <button type="button" class="btn btn-danger delete-category"
-        data-dismiss="modal" data-id="<%= category.id %>">
+        data-dismiss="modal" data-id="<%= category.id %>"
+        data-curent-page="<%= data.current_page %>">
         <%= t "admin.users.index.delete" %>
       </button>
       <button type="button" class="btn btn-success save-category"
-        data-dismiss="modal" data-id="<%= category.id %>">
-        <%= t "admin.users.index.save" %>
+        data-dismiss="modal" data-id="<%= category.id %>"
+        data-curent-page="<%= data.current_page %>">
+      <%= t "admin.users.index.save" %>
       </button>
     <% end %>
   </div>

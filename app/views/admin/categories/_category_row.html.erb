@@ -1,0 +1,18 @@
+<tr>
+  <td><%= category.id %></td>
+  <td><%= link_to category.title, "#",  "data-turbolink": false,
+    data: {toggle: "modal", target: "#modal-edit-category-#{category.id}"}%>
+    <div class="modal fade"
+      id="modal-edit-category-<%= category.id %>"
+      role="dialog">
+      <div class="modal-dialog category-modal-dialog">
+        <%= render "category_modal", category: category, data: data %>
+      </div>
+    </div>
+  </td>
+  <td>
+    <% unless category.parent_id.blank? %>
+      <%= data.find_category(category.parent_id) %>
+    <% end %>
+  </td>
+</tr>

@@ -33,6 +33,14 @@ module ApplicationHelper
      [(t "categories.show.public_date"), "public_date"]]
   end
 
+  def borrow_status_params
+    [[(t "admin.categories.index.all"), "all"],
+     [(t "admin.categories.index.cancel"), "cancel"],
+     [(t "admin.categories.index.rejected"), "rejected"],
+     [(t "admin.categories.index.not_approved_yet"), "not_approved_yet"],
+     [(t "admin.categories.index.approved"), "approved"]]
+  end
+
   def unread_notifications_count
     current_user.notifications.where(read: false).size
   end

@@ -8,7 +8,7 @@
         <div class="modal fade" id="modal-new-user"
           role="dialog">
           <div class="modal-dialog user-modal-dialog">
-            <%= render "user_modal", user: new_user %>
+            <%= render "user_modal", user: new_user, data: data %>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@
                     <div class="modal fade" id="modal-edit-user-<%= user.id %>"
                       role="dialog">
                       <div class="modal-dialog user-modal-dialog">
-                        <%= render "user_modal", user: user %>
+                        <%= render "user_modal", user: user, data: data %>
                       </div>
                     </div>
                   </td>
