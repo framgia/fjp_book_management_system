@@ -4,7 +4,9 @@ class Supports::Home
   end
 
   def load_new_book
-    @home[:new_book]
+    new_book = @home[:new_book]
+    return new_book if new_book.present?
+    @home[:last_15_book]
   end
 
   def load_popular_book

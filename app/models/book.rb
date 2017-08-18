@@ -35,6 +35,7 @@ class Book < ApplicationRecord
   scope :popular_book, ->limit{Book.where(id: rate_in_month).limit limit}
   scope :rate_in_month,
     ->{Rate.where("created_at > ?", month_ago).group(:book_id).pluck :book_id}
+  scope :last_15_book, ->{Book.order(id: :desc).limit 15}
 
   def related_books
     id = self.id
