@@ -223,7 +223,7 @@ Author.create!([
     2006年1月　　　 　　　　 日本電気㈱ 中央研究所入所．
     2013年1月～16年6月　ロンドン駐在，Imperial College London客員研究員．
     2016年8月　　　　　　　　インターステラテクノロジ㈱入社．低価格民生ロケットの研究開発に従事",
-   avatar: File.open(Rails.root + "public/uploads/image/au-79.png")},
+   avatar: File.open(Rails.root + "public/uploads/image/au-79.jpg")},
   {name: "Nicholas C. Zakas"},
   {name: "Stoyan Stefanov"},
   {name: "Michael S. Mikowski"},
@@ -1979,7 +1979,7 @@ end
 
 for i in 1..100
   BookItem.create! book_id: (i%13 + 1), location: "Sequence number 2 on the left.",
-    state: "Ready", description: "New books, not damaged."
+    state: :ready, description: "New books, not damaged."
 end
 
 Blog.create!([

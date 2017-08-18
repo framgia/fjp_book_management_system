@@ -27,6 +27,8 @@ gem "mini_magick", "3.8.0"
 gem "redcarpet"
 gem "chosen-rails"
 gem "rails_param"
+gem "cocoon"
+gem "best_in_place", "~> 3.0.1"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

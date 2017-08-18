@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   has_many :rates
   has_many :borrows
   has_many :book_items, dependent: :destroy
-  has_many :author_books
+  has_many :author_books, inverse_of: :book
   has_many :book_tags
   has_many :ebooks, dependent: :destroy
   has_many :book_categories
@@ -22,7 +22,11 @@ class Book < ApplicationRecord
 
   accepts_nested_attributes_for :publisher
   accepts_nested_attributes_for :series
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :authors
+  accepts_nested_attributes_for :author_books
+  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :book_tags
 
   validates :title, presence: true
 

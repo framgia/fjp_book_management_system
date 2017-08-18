@@ -4,31 +4,21 @@ class Admin
     before_action :find_book_item, except: [:new, :create]
     before_action :load_books, only: [:new, :edit]
 
-    def new
-      @book_item = BookItem.new
-    end
-
     def create
-      if @book
-        @book_item = @book.book_items.build book_item_params
-        if @book_item.save
-          flash[:success] = t "flash.book_items.create_success"
-          redirect_to admin_book_path @book
-        else
-          render :new
-        end
+      @book_item = @book.book_items.build book_item_params
+      if @book_item.save
+        flash[:success] = t "flash.book_items.create_success"
+      else
+        flash[:danger] = t "flash.book_items.destroy_fail"
       end
     end
-
-    def edit; end
 
     def update
       @book_item.book_id = params[:book_id]
       if @book_item.update_attributes book_item_params
         flash[:success] = t "flash.book_items.update_success"
-        redirect_to admin_book_path @book
       else
-        render :edit
+        flash[:danger] = t "flash.book_items.destroy_fail"
       end
     end
 
@@ -37,7 +27,6 @@ class Admin
         book_items = @book.book_items
         if (book_items.include? @book_item) && book_items.delete(@book_item)
           flash[:success] = t "flash.book_items.delete_success"
-          redirect_to admin_book_path @book
         else
           flash[:danger] = t "flash.book_items.destroy_fail"
         end

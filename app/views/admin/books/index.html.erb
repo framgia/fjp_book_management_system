@@ -1,6 +1,7 @@
 <ol class="breadcrumb text-left">
   <li class="active">
-    <%= link_to t(".link1"), admin_books_path %><%= t "admin.link" %>
+    <%= link_to t(".link1"), admin_books_path, "data-turbolinks": false %>
+    <%= t "admin.link" %>
   </li>
 </ol>
 <h1 class="section-title title" id="services">
@@ -8,8 +9,8 @@
 </h1>
 <div class="row">
   <div class="col-xs-12">
-    <div class="search-form" id="books">
-      <%= render "book", books: @books, supports: @supports %>
+    <div class="search-form list-books" id="books">
+      <%= render "book", supports: @supports %>
     </div>
   </div>
 </div>
