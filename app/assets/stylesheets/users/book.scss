@@ -1,5 +1,11 @@
 @import "colors";
 
+.rate {
+  &:hover {
+    color: $apple-blossom-approx !important;
+  }
+}
+
 .book-show {
   .book-btn-row {
     height: 75px;

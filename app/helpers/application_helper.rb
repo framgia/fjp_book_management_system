@@ -45,4 +45,8 @@ module ApplicationHelper
   def vote comment
     comment.votes.find_by user_id: current_user.id
   end
+
+  def rate book
+    book.rates.find_by user_id: current_user.id
+  end
 end
