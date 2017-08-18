@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/pages/:page" => "static_pages#show"
 
   resources :search, only: :index
+  resources :users, only: :show
 
   namespace :admin do
     root "static_pages#show", page: "dashboard"

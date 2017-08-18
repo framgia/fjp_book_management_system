@@ -1,0 +1,18 @@
+<div id="content" class="pmd-content inner-page">
+  <div class="container-fluid full-width-container about">
+    <div class="page-content profile-edit section-custom">
+      <div class="pmd-card pmd-z-depth">
+        <div class="pmd-card-body">
+          <div class="row">
+            <%= render "devise/registrations/sidebar", user: @user %>
+            <div class="col-lg-6 custom-col-9 profile-content">
+              <%= render "devise/registrations/change_info", user: @user %>
+              <%= render "devise/registrations/change_pass", user: @user %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+      </div>
+      <% if posts.empty? %>
+        <h2 class="text-center">
+          <%= t "blog.posts.index.no_blog" %>
+        </h2>
+      <% end %>
+
+      <% posts.each do |post| %>
+        <div class="row blog-post">
+          <div class="col-sm-1 avatar">
+            <img src="<%= post.user.avatar.thum40 %>" alt="" class="img-responsive">
+          </div>
+          <div class="col-sm-11">
+            <div class="post-header">
+              <h4>
+                <%= link_to post.user.email, "#", "data-turbolinks":"false" %>
+                <small><%= time_ago_in_words post.created_at %></small>
+              </h4>
+            </div>
+            <div class="post-body">
+              <%= link_to post.title, blog_post_path(post), "data-turbolinks":"false" %>
+            </div>
+            <div class="book-info-row">
+              <% if post.books.present? %>
+                <% post.books.each do |book| %>
+                  <div class="blog-book-title">
+                    <%= link_to book.title, book_path(book),
+                      "data-turbolinks": "false",
+                      class: "blog-book-title-text" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <hr>
+          </div>
+        </div>
+      <% end %>
+      <div class="col-sm-12">
+        <%= paginate posts, theme: "twitter-bootstrap-3" %>
+      </div>
+    </div>
+  </div>
+</div>
