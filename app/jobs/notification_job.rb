@@ -7,8 +7,8 @@ class NotificationJob < ApplicationJob
     routes = Rails.application.routes.url_helpers
     obj_class = obj.class.name
     obj_id = obj.id
-    user_id = obj.user_id
-
+    user_id = obj.has_attribute?(:user_id) ? obj.user_id : obj.receiver_id
+    object = obj
     case obj_class
     when Borrow.name
       book = obj.book
@@ -42,6 +42,23 @@ class NotificationJob < ApplicationJob
         content: i18n,
         raw: i18n,
         link_to: nil,
+        target: obj_class,
+        target_id: obj_id,
+        read: false
+    when SuggestBook.name
+      i18n = I18n.t "notifications.job.suggest.has_suggest"
+      b = object.book
+      b_title = b.title
+      b_path = routes.book_path(b)
+      sender = obj.sender.name
+
+      Notification.create user_id: user_id,
+        content: "#{sender} #{i18n}
+        #{link_to b_title, b_path,
+          "data-turbolinks": false}",
+        raw: "#{sender} #{i18n}
+        #{b_title}",
+        link_to: b_path,
         target: obj_class,
         target_id: obj_id,
         read: false

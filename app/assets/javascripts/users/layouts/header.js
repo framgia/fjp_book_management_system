@@ -43,6 +43,23 @@ function search(query) {
   }
 }
 
+$('.notify.unread').hover(function(){
+  var id = $(this).attr('data');
+  var element = this;
+  $.ajax({
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'PATCH',
+    url: '/notifications/' + id,
+    success: function(data){
+      $(element).removeClass('unread');
+      $('.notifi-count').attr('data-badge', data.unread);
+    }
+  });
+});
+
 $(document).ready(function(){
   $('.announcement-icon').on('click', function() {
     $('.announcements').toggleClass('hide');
@@ -97,5 +114,7 @@ $(document).ready(function(){
         }, 3000);
       }
     });
+
+
   });
 });

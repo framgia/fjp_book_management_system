@@ -6,10 +6,19 @@ en:
       dont_have_notification: "You don´t have any new notifications"
       you_have_notification: "You have %{count} new notifications"
       your_notifications: "Your Notifications"
+      make_all_read: "Mark all as read"
     job:
       borrow:
         success: "You send a request to borrow book "
+        approved: "Your book borrow request has been approved"
+        reject: "Your book borrow request has been rejected"
+        cancel: "You have canceled your book borrow request"
       feedback:
         success: "Thank you for sending us feedback "
       request:
         success: "Your request is being processed"
+        approved: "Your request has been approved"
+        reject: "Your request has been rejected"
+        cancel: "You have canceled your request"
+      suggest:
+        has_suggest: " has suggested to you book "
