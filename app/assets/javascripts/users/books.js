@@ -5,6 +5,80 @@
 //= require propellerkit/components/datetimepicker/js/bootstrap-datetimepicker
 //= require_self
 
+$(document).on('click', '.rate', function(){
+  var point = $(this).index();
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'POST',
+    url: '/book/',
+    data: {
+      point: point
+    },
+    success: function() {
+    }
+  });
+});
+
+$(document).on('click', '.fa-thumbs-o-up', function () {
+  var comment = $(this).attr('data');
+  var book = $('#book-id').val();
+  var element = this;
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'POST',
+    url: '/books/' + book + '/comments/' + comment + '/votes',
+    success: function(e) {
+      $('.vote-count-' + comment).text(e.votes_count);
+      $(element).removeClass('fa-thumbs-o-up');
+      $(element).addClass('fa-thumbs-up');
+      $(element).attr('vote-id', e.vote_id);
+    }
+  });
+});
+
+$(document).on('click', '.fa-thumbs-up', function () {
+  var comment = $(this).attr('data');
+  var book = $('#book-id').val();
+  var vote = $(this).attr('vote-id');
+  var element = this;
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'DELETE',
+    url: '/books/' + book + '/comments/' + comment + '/votes/' + vote,
+    success: function(e) {
+      $('.vote-count-' + comment).text(e.votes_count);
+      $(element).removeClass('fa-thumbs-up');
+      $(element).addClass('fa-thumbs-o-up');
+    }
+  });
+});
+
+$(document).on('click', '.fa-chevron-down', function () {
+  var comment = $(this).attr('data');
+  var book = $('#book-id').val();
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'POST',
+    url: '/books/' + book + '/comments/' + comment + '/votes',
+    data: {type: 'down'},
+    success: function(e) {
+      $('.vote-count-' + comment).text(e.votes_count);
+    }
+  });
+});
+
 $(document).ready(function () {
   $('#datepicker-start').datetimepicker({
     minDate: new Date()

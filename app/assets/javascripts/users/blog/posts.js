@@ -8,7 +8,7 @@
 
 
 $(document).ready(function() {
-  var element = $('textarea');
+  var element = $('textarea#editor');
 
   if(element.length > 0){
     var editorOptions = {
