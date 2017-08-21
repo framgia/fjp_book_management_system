@@ -1,7 +1,10 @@
 <ol class="breadcrumb text-left">
   <li class="active">
-    <%= link_to t(".link1"), admin_authors_path %><%= t "admin.link" %>
-    <%= link_to t(".link2"), edit_admin_author_path(@author) %>
+    <%= link_to t(".link1"), admin_authors_path, "data-turbolinks": false %>
+	  <%= t "admin.link" %>
+    <%= link_to @author.name, admin_author_path(@author), "data-turbolinks": false %>
+	  <%= t "admin.link" %>
+    <%= link_to t(".link2"), edit_admin_author_path(@author), "data-turbolinks": false %>
   </li>
 </ol>
 <h1 class="section-title text-center" id="services">

@@ -1,20 +1,22 @@
 class Admin
   class BooksController < AdminController
+    include Admin::BooksHelper
     before_action :find_book, except: [:index, :new, :create]
     before_action :load_support, except: [:update, :create, :destroy]
 
     def index
-      @books = Supports::AdminBook.new book: Book.all, param: params
-      @book = Book.new
     end
 
-    def show; end
+    def show
+      @book_item = BookItem.new
+    end
 
     def new
       @book = Book.new
       @book.build_series
       @book.build_publisher
       @images = @book.images.build
+      @book.author_books.build.build_author
     end
 
     def create
@@ -55,9 +57,11 @@ class Admin
     def book_params
       params.require(:book).permit :title, :pages, :weight, :dimension, :isbn,
         :publisher_id, :language_id, :series_id, category_ids: [],
-        images_attributes: [:id, :url], author_ids: [],
+        images_attributes: [:id, :url, :url_cache, :_destroy], author_ids: [],
         publisher_attributes: [:id, :name], series_attributes: [:id, :title],
-        language_attributes: [:id, :full_name]
+        language_attributes: [:id, :full_name],
+        author_books_attributes: [:id, :author_id, :_destroy,
+        author_attributes: [:id, :name]], tag_ids: []
     end
 
     def save_images
@@ -68,11 +72,9 @@ class Admin
 
     def update_images
       book_images = @book.images
-      book_images.each(&:destroy)
-      if book_images.present?
-        params[:images]["url"].each do |image|
-          @images = book_images.create!(url: image)
-        end
+      book_images.each(&:destroy) if book_images.present?
+      params[:images]["url"].each do |image|
+        @images = book_images.create!(url: image)
       end
     end
 
@@ -85,7 +87,7 @@ class Admin
     end
 
     def load_support
-      @supports = Supports::AdminBook.new @book
+      @supports = Supports::AdminBook.new book: Book.all, param: params
     end
   end
 end

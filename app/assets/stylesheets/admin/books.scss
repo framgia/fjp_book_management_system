@@ -1,6 +1,10 @@
 @import "colors";
 @import "users/colors";
 
+h1 {
+  text-transform: uppercase;
+}
+
 .book-image {
   background: $white;
   border-radius: 2px;
@@ -39,7 +43,7 @@
   select,
   textarea {
     font-size: 16px !important;
-    margin: 0 5px;
+    margin: 0;
   }
 
   select,
@@ -94,23 +98,59 @@
     box-shadow: none;
   }
 
-  .required {
-    color: $color-cararra-approx;
-    font-weight: bold;
-  }
-
   .chosen-container {
     margin-bottom: 20px;
+    width: 100%;
 
     [type="text"],
     span {
-      margin: 5px !important;
+      margin: 6px !important;
     }
+  }
+
+  .chosen-container-multi .chosen-choices {
+    background: 0;
+    border: 1px solid $book-select-field-background;
+    border-radius: 5px;
+    box-shadow: none;
+
+    .search-choice {
+      background: none $white;
+      border: 1px solid $book-select-field-background;
+      box-shadow: 0;
+      color: $book-select-field-color;
+      line-height: 16px;
+      margin: 8px 9px 0 -5px;
+    }
+  }
+
+  .select2-container--bootstrap .select2-selection {
+    border: 1px solid $book-select-field-background;
+    border-radius: 5px;
+    margin-bottom: 25px;
+  }
+
+  .select2-container--bootstrap input {
+    padding: 0 7px !important;
+    width: 100%;
+  }
+
+  .chosen-results {
+    .highlighted {
+      background: none $book-select-field-highlight;
+      padding: 6px 12px;
+    }
+  }
+
+  .select2-container--bootstrap .select2-selection,
+  .chosen-container {
+    font-size: 16px;
   }
 
   i {
     color: $color-royal-blue-approx;
     cursor: pointer;
+    display: block;
     font-size: 16px;
   }
 }
@@ -120,9 +160,28 @@
 }
 
 .book-table {
+  font-size: 16px;
+
+  th {
+    background-color: $color-big-stone-approx;
+    color: $white;
+    font-size: 18px;
+    text-transform: uppercase;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .btn {
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 40px !important;
+  }
+
   .btn-danger {
-    background-color: $button-delete;
-    margin-top: 5px;
+    background-color: $button-delete !important;
   }
 
   .btn-success {
@@ -155,7 +214,8 @@
   }
 
   .btn {
-    border-radius: 8px;
+    border-radius: 5px;
+    color: $white;
     margin-right: 5px;
   }
 }
@@ -167,11 +227,22 @@
     font-size: 18px;
     text-transform: uppercase;
   }
+
+  .btn {
+    color: $white;
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+  .btn-danger {
+    background: $author-name;
+  }
 }
 
 .author-show {
   .btn {
-    border-radius: 5px;
+    border-radius: 2px;
+    color: $white;
     display: inline-block;
     margin: 0;
     min-height: 40px;
@@ -200,7 +271,8 @@
   margin: 0;
 
   .btn {
-    border-radius: 5px;
+    border-radius: 2px;
+    color: $white;
     display: inline-block;
     min-height: 40px;
     padding: 3px 12px;
@@ -212,7 +284,7 @@
   }
 
   .author-name a {
-    color: $author-name;
+    color: $author-name-color;
     font-size: 18px;
     font-weight: 600;
   }
@@ -242,5 +314,403 @@
 
 .author-cover {
   height: 80px;
-  width: 60px;
+  width: 80px;
+}
+
+.list-books {
+  .btn {
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  [type="text"] {
+    font-size: 16px;
+  }
+}
+
+.author-form {
+  font-size: 18px;
+
+  input {
+    font-size: 16px;
+  }
+
+  label {
+    text-transform: uppercase;
+  }
+
+  .btn {
+    color: $white;
+    font-weight: 500;
+    margin: 20px 0;
+  }
+
+  .select2-container {
+    font-size: 16px;
+    width: 100% !important;
+  }
+
+  textarea {
+    font-size: 16px;
+    min-height: 10em;
+    overflow: auto;
+  }
+}
+
+.book-items {
+  .btn {
+    color: $white;
+    display: inline !important;
+    margin: 5px 2px !important;
+    min-width: 40px;
+  }
+
+  i {
+    padding: 7px 0;
+  }
+}
+
+.books-make {
+  min-height: 1500px;
+}
+
+.modal-book-item {
+  font-size: 18px;
+  text-transform: uppercase;
+
+  .modal-footer {
+    border: 0;
+  }
+
+  .modal-dialog {
+    width: 30% !important;
+  }
+
+  input,
+  select {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    color: $white;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.author-book-fields a {
+  margin: -10px 0 10px;
+}
+
+.image-preview {
+  height: 200px;
+  width: 150px;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.image-field [type="file"] {
+  display: none;
+}
+
+.author-book-fields {
+  position: relative;
+
+  [type="text"] {
+    width: 93% !important;
+  }
+
+  .glyphicon {
+    background: $white;
+    border: 1px solid $remove-image-button-border;
+    border-radius: 3px;
+    color: $black;
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding: 9px;
+  }
+
+  .remove-tag {
+    margin: 0 5px;
+    position: absolute;
+  }
+}
+
+.add-authors {
+  margin: -15px 0 20px;
+}
+
+.nested-fields {
+  overflow: hidden;
+  position: relative;
+}
+
+.add-images {
+  margin-bottom: 50px;
+
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 0 0;
+  }
+
+  .col-xs-6,
+  .col-md-4,
+  .col-lg-3 {
+    padding: 0 10px 0 0;
+  }
+
+  .col-xs-12 {
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+  }
+
+  .add-image-button {
+    background: $black;
+    height: 200px;
+    margin: 4% 0 4% 10px;
+    opacity: .5;
+    padding: 5px;
+    width: 23%;
+
+    i {
+      color: $white;
+      font-size: 80px;
+      padding-top: 50px;
+    }
+  }
+}
+
+.remove-image {
+  float: right;
+}
+
+.js .input-file-trigger {
+  border: 1px solid $black;
+  border-radius: 5px;
+  color: $black;
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  font-weight: normal;
+  padding: 5px 0;
+  text-transform: capitalize;
+  transition: all .4s;
+}
+
+.js .input-file {
+  cursor: pointer;
+  left: 0;
+  opacity: 0;
+  padding: 14px 0;
+  position: absolute;
+  top: 0;
+}
+
+.file-return {
+  margin: 0;
+}
+
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+
+.js .file-return {
+  font-size: .9em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.sweet-alert {
+  background-color: $alert-cancel-background;
+  border-radius: 5px;
+  left: 50%;
+  margin: -200px 0 0 -256px;
+  overflow: hidden;
+  padding: 17px;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  width: 400px;
+  z-index: 2000;
+
+  .icon {
+    border-radius: 50%;
+    float: none !important;
+    height: 80px;
+    margin: 20px auto;
+    position: relative;
+    width: 80px;
+  }
+
+  h2 {
+    color: $alert-title;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+  }
+
+  p {
+    color: $alert-content;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0;
+    position: relative;
+    text-align: center;
+  }
+}
+
+.success-create-item {
+  .sweet-alert {
+    background: $cancel-success-background;
+  }
+
+  .icon {
+    border: 4px solid $cancel-success;
+  }
+}
+
+.cancel-success {
+  color: $cancel-success;
+  font-size: 45px;
+}
+
+.item-label {
+  .label {
+    font-size: 1em !important;
+  }
+}
+
+.flash-push {
+  background: $button-edit;
+  border-radius: 5px;
+  box-shadow: 2px 6px 11px $flash-shadow;
+  color: $white;
+  margin: 15px 0;
+  padding: 15px;
+}
+
+.not-ready-item select {
+  background: $button-delete;
+  color: $white;
+}
+
+.ready-item select {
+  background: $select-success;
+  color: $white;
+}
+
+.item-delete-button {
+  padding: 5px !important;
+
+  button {
+    margin: 0 !important;
+  }
+}
+
+.form-in-place {
+  [type="text"] {
+    border: 0;
+    border-bottom: solid 1px $book-select-field-background;
+    border-radius: 0;
+    box-shadow: none !important;
+    margin-top: 5px;
+    padding: 0 0 2px;
+  }
+
+  [type="button"],
+  [type="submit"] {
+    border: 0;
+    border-radius: 2px;
+    color: $white;
+    display: inline-block;
+    float: left;
+    font-size: 1em;
+    margin: 5px 5px 5px 0;
+    padding: 2px 5px;
+    width: 20%;
+  }
+
+  [type="button"] {
+    background: $cancel-failure;
+  }
+
+  [type="submit"] {
+    background: $cancel-success;
+  }
+}
+
+.avatar-preview {
+  margin-top: 10px;
+
+  img {
+    height: auto;
+    width: 50%;
+  }
+}
+
+.button-upload {
+  background: $white;
+  font-size: 24px;
+}
+
+.file-container [type="file"] {
+  cursor: pointer;
+  display: block;
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+}
+
+.file-container {
+  background: $change-image-background;
+  border-radius: 2px;
+  color: $white;
+  float: left;
+  font-size: 1em;
+  font-weight: 500;
+  overflow: hidden;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.book-item-item {
+  [type="button"],
+  [type="submit"] {
+    border: 0;
+    border-radius: 2px;
+    color: $white;
+    display: inline-block;
+    font-size: 1em;
+    margin: 5px 5px 5px 0;
+    padding: 2px 5px;
+    width: 20%;
+  }
+
+  [type="button"] {
+    background: $cancel-failure;
+  }
+
+  [type="submit"] {
+    background: $cancel-success;
+  }
+
+  [type="text"] {
+    width: 100%;
+  }
 }

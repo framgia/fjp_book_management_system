@@ -11,7 +11,7 @@
         <%= f.submit  t(".search"), class: "btn btn-info" %>
       </div>
     </div>
-    <div id="pagination">
+    <div id="pagination" class="text-center">
       <%= paginate authors.authors_search, remote: true,
         theme: "twitter-bootstrap-3" %>
     </div><br>
@@ -35,16 +35,17 @@
               <tr>
                 <td><%= author.id %></td>
                 <td>
-                  <image src="<%= author.images.first.try(:url).try(:thumb).try(:url) %>"
-                    class="author-cover"></image>
+                  <img src="<%= author.try(:avatar).try(:thumb).try(:url) %>"
+                    class="author-cover" onerror="this.src='http://i.imgur.com/ahQqfJZ.png';">
                 </td>
                 <td class="author-name">
                   <%= link_to author.name, admin_author_path(author),
                     "data-turbolinks": false%>
                 </td>
                 <td>
-                  <%= author.description.truncate(Settings.admin.author.description) %>
-                  <%= link_to t("requests.request.read_more"), admin_author_path(author),
+                  <%= truncate(author.try(:description).to_s,
+                    length: Settings.admin.author.description) %>
+                  <%= link_to t("admin.books.book.read_more"), admin_author_path(author),
                     "data-turbolinks": false %>
                 </td>
                 <td class="text-center">

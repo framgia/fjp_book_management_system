@@ -1,5 +1,5 @@
 <div class="row">
-  <%= search_form_for [:admin, books.search],
+  <%= search_form_for [:admin, supports.search],
     remote: true, method: :get do |f| %>
     <div class="input-group input-group-lg col-sm-12">
       <div class="col-sm-2">
@@ -13,7 +13,7 @@
       </div>
     </div><br>
     <div id="pagination" class="text-center">
-      <%= paginate books.books_search, remote: true,
+	    <%= paginate supports.books_search, remote: true,
         theme: "twitter-bootstrap-3" %>
     </div><br>
     <div class="pmd-card pmd-z-depth pmd-card-custom-view" >
@@ -21,23 +21,23 @@
         <table class="table table-striped table-hover book-table" id="table-bootstrap">
           <tbody>
             <tr>
-              <th>
-                <%= sort_link books.search, :id, t(".id"),
+	            <th class="col-xs-1">
+		            <%= sort_link supports.search, :id, t(".id"),
                   {}, {remote: true, method: :get} %>
-              </th>
-              <th><%= t ".cover" %></th>
-              <th>
-                <%= sort_link books.search, :title, t(".title"),
+	            </th>
+	            <th class="col-xs-1"><%= t ".cover" %></th>
+	            <th class="col-xs-5">
+		            <%= sort_link supports.search, :title, t(".title"),
                   {}, {remote: true, method: :get} %>
-              </th>
-              <th><%= t ".isbn" %></th>
-              <th><%= t ".publisher" %></th>
-              <th><%= t ".author" %></th>
-              <th><%= t ".categories" %></th>
-              <th><%= t ".option" %></th>
+	            </th>
+	            <th class="col-xs-1"><%= t ".isbn" %></th>
+	            <th class="col-xs-1"><%= t ".publisher" %></th>
+	            <th class="col-xs-1"><%= t ".author" %></th>
+	            <th class="col-xs-1"><%= t ".categories" %></th>
+	            <th class="col-xs-1"><%= t ".option" %></th>
             </tr>
-            <% if books.books_search.any? %>
-              <% books.books_search.each do |book| %>
+            <% if supports.books_search.any? %>
+		          <% supports.books_search.each do |book| %>
                 <tr>
                   <td><%= book.id %></td>
                   <td>
@@ -57,17 +57,13 @@
                   </td>
                   <td>
                     <% book.categories.each do |cate| %>
-                      <%= link_to_if cate.present?, cate.title,
-                        admin_category_path(cate) %>
+		                  <%= link_to cate.title, admin_category_path(cate) %>
+		                  <% unless cate == book.categories.last %>&#44;<% end %>
                     <% end %>
                   </td>
                   <td class="button-book">
                     <%= link_to edit_admin_book_path(book), class:"btn btn-primary" do %>
                       <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
-                    <% end %>
-                    <%= link_to admin_book_path(book), class:"btn btn-danger",
-                      method: :delete, data: {confirm: t("button.delete_warning")} do %>
-                      <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
                     <% end %>
                   </td>
                 </tr>

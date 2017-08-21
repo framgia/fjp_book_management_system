@@ -1,7 +1,8 @@
 <ol class="breadcrumb text-left">
   <li class="active">
-    <%= link_to t(".link1"), admin_books_path %><%= t "admin.link" %>
-    <%= link_to t(".link2"), new_admin_book_path(@book) %>
+    <%= link_to t(".link1"), admin_books_path, "data-turbolinks": false %>
+    <%= t "admin.link" %>
+    <%= link_to t(".link2"), new_admin_book_path(@book), "data-turbolinks": false %>
   </li>
 </ol>
 <h1 class="section-title title" id="services">
@@ -10,7 +11,8 @@
 <div class="pmd-card pmd-z-depth pmd-card-custom-form col-xs-12">
   <div class="col-xs-12">
     <div class="col-xs-4">
-      <img src="<%= @book.images.first.try :url %>" class="book-image">
+      <img src="<%= @book.images.first.try :url %>" class="book-image"
+        onerror="this.src='http://i.imgur.com/ZaB5LAm.png';">
       <div class="image-others">
         <div class="owl-carousel owl-theme">
           <% @book.images.each do |image| %>
@@ -20,27 +22,37 @@
       </div>
     </div>
     <table class="col-xs-7 col-xs-offset-1 book-info">
-      <tbody>
+      <tbody class="row">
         <tr>
-          <td class="text-uppercase"><b><%= t ".title" %></b></td>
-          <td><%= @book.title %></td>
-        </tr>
-        <tr>
-          <td class="text-uppercase"><b><%= t ".publisher" %></b></td>
-          <td><%= @book.publisher.try :name %></td>
-        </tr>
-        <tr>
-          <td class="text-uppercase"><b><%= t ".weight" %></b></td>
-          <td><%= @book.weight %></td>
-        </tr>
-        <tr>
-          <td class="text-uppercase"><b><%= t ".isbn" %></b></td>
-          <td>
-            <%= @book.isbn %>
+          <td class="text-uppercase col-xs-4"><b><%= t ".title" %></b></td>
+          <td class="form-in-place">
+            <%= best_in_place [:admin, @book], :title,
+              ok_button: t("button.save"), cancel_button: t("button.cancel"),
+              html_attrs: {class: "form-control"} %>
           </td>
         </tr>
         <tr>
-          <td class="text-uppercase"><b><%= t ".categories" %></b></td>
+          <td class="text-uppercase col-xs-4"><b><%= t ".publisher" %></b></td>
+          <td><%= @book.publisher.try :name %></td>
+        </tr>
+        <tr>
+          <td class="text-uppercase col-xs-4"><b><%= t ".weight" %></b></td>
+          <td class="form-in-place">
+            <%= best_in_place [:admin, @book], :weight,
+              ok_button: t("button.save"), cancel_button: t("button.cancel"),
+              html_attrs: {class: "form-control"} %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-uppercase col-xs-4"><b><%= t ".isbn" %></b></td>
+          <td class="form-in-place">
+            <%= best_in_place [:admin, @book], :isbn,
+              ok_button: t("button.save"), cancel_button: t("button.cancel"),
+              html_attrs: {class: "form-control"} %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-uppercase col-xs-4"><b><%= t ".categories" %></b></td>
           <td>
             <% @book.categories.each do |cate| %>
               <%= cate.try :title %>.
@@ -52,76 +64,96 @@
           <td>
             <% @book.authors.each do |author| %>
               <%= link_to_if author.present?, author.name,
-                admin_author_path(author) %>.
+                admin_author_path(author), "data-turbolinks": false %>.
             <% end %>
           </td>
         </tr>
-        <br>
         <tr>
-          <td></td>
-          <td class="col-xs-12 pull-right">
-            <%= link_to t(".edit_book"), edit_admin_book_path(@book),
-              method: :get, class: "btn btn-success btn-lg col-xs-3" %>
-            <%= link_to t(".delete_book"), admin_book_path(@book), method: :delete,
-              data: {confirm: t("button.delete_warning")},
-              class: "btn btn-danger btn-lg col-xs-3"%>
+          <td class="col-xs-4"></td>
+          <td>
+            <%= link_to t(".edit_book"), edit_admin_book_path(@book), method: :get,
+              "data-turbolinks": false, class: "btn btn-success btn-lg col-xs-3" %>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="col-xs-12">
-    <h1>LIST BOOK ITEMS</h1>
-    <div id="items-list-view">
-      <div class="table-responsive" id="items-list">
-        <table class="table table-bordered default-dg-table">
-          <tr>
-            <th><%= t ".id" %></th>
-            <th><%= t ".state" %></th>
-            <th><%= t ".location" %></th>
-            <th><%= t ".description" %></th>
-            <th><%= t ".option" %></th>
-          </tr>
-            <% @book.book_items.each do |book_item| %>
-              <tr>
-                <td><%= book_item.try :id %></td>
-                <td class="item-state<%= book_item.id %>">
-                  <%= book_item.try :state %>
-                </td>
-                <td class="item-location<%= book_item.id %>">
-                  <%= book_item.try :location %>
-                </td>
-                <td class="item-description<%= book_item.id %>">
-                  <%= book_item.try :description %>
-                </td>
-                <td>
-                  <%= link_to "#", data: {toggle: "modal",
-                    target: "#modal-edit-book-item-#{book_item.id}"},
-                    class: "btn btn-primary" do %>
-                    <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
-                  <% end %>
-                  <div class="modal fade"
-                    id="modal-edit-book-item-<%= book_item.id %>"
-                    role="dialog">
-                    <div class="modal-dialog category-modal-dialog">
-                      <%= render "modal_book_item", book: @book,
-                        book_item: book_item, supports: @supports %>
-                    </div>
-                  </div>
-                  <%= link_to admin_book_book_item_path(@book, book_item.id),
-                    class: "btn btn-danger",
-                    method: :delete, data: {confirm: t("button.delete_warning")} do %>
-                    <i class="fa fa-trash fa-lg delete-book" aria-hidden="true"></i>
-                  <% end %>
-                </td>
-              </tr>
+    <h1><%= t ".list_items" %></h1>
+    <%= search_form_for [:admin, @book, @supports.item_search], url: admin_book_path(@book), method: :get do |f| %>
+      <div class="row">
+        <div class="col-sm-12 book-table">
+          <div class="row">
+            <div class="col-sm-2">
+              <button type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#modal-new-book-item">
+                <%= t ".create_items" %>
+              </button>
+              <div class="modal fade modal-book-item" id="modal-new-book-item" role="dialog">
+                <div class="modal-dialog">
+                  <%= render "modal_book_item", book_item: @book_item, book: @book,
+                    supports: @supports %>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-10 text-right">
+              <%= f.text_field :location_or_description_cont, class: "input-text-search",
+                placeholder: t(".input_keyword") %>
+              <%= f.submit t(".search"), class: "btn btn-info" %>
+            </div>
+          </div>
+        </div><br>
+      </div><br>
+      <div class="text-center col-xs-12">
+        <%= paginate @supports.book_items_search, theme: "twitter-bootstrap-3" %>
+      </div><br><br>
+      <div id="items-list-view">
+        <div class="table-responsive book-table book-items" id="items-list">
+          <table class="table table-bordered default-dg-table">
+            <tr>
+              <th class="col-xs-2"><%= t ".state" %></th>
+              <th class="col-xs-4"><%= t ".location" %></th>
+              <th class="col-xs-4"><%= t ".description" %></th>
+              <th class="col-xs-1 text-center"><%= t ".option" %></th>
+            </tr>
+            <% if @supports.book_items_search.any? %>
+              <% @supports.book_items_search.each do |book_item| %>
+                <tr class="book-item-item">
+                  <td class="item-state<%= book_item.id %> item-label" id="state">
+                    <% if book_item.state.humanize == "Ready" %>
+                      <span class="label label-success ready-item">
+                        <%= best_in_place [:admin, @book, book_item], :state, as: :select,
+                          collection: @supports.load_book_items %>
+                      </span>
+                    <% else %>
+                      <span class="label label-danger not-ready-item">
+                        <%= best_in_place [:admin, @book, book_item], :state, as: :select,
+                          collection: @supports.load_book_items,
+                          ok_button: t("button.save"), cancel_button: t("button.cancel") %>
+                      </span>
+                    <% end %>
+                  </td>
+                  <td class="item-location<%= book_item.id %>">
+                    <%= best_in_place [:admin, @book, book_item], :location,
+                      ok_button: t("button.save"), cancel_button: t("button.cancel") %>
+                  </td>
+                  <td class="item-description<%= book_item.id %>">
+                    <%= best_in_place [:admin, @book, book_item], :description,
+                      ok_button: t("button.save"), cancel_button: t("button.cancel") %>
+                  </td>
+                  <td class="text-center item-delete-button">
+                    <%= button_tag class: "btn btn-danger btn-delete-item",
+                      id: @book.id, data: {dismiss: "modal", id: book_item.id,
+                      confirm: t("button.delete_warning")} do %>
+                      <i class="fa fa-trash fa-lg delete-book" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
-        </table>
+          </table>
+        </div>
       </div>
-    </div>
-    <div class="text-center">
-      <%= link_to t(".create_items"), new_admin_book_book_item_path(@book),
-        class:"btn btn-primary" %>
-    </div>
+    <% end %>
   </div>
 </div>

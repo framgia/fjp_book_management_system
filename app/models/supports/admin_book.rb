@@ -14,8 +14,21 @@ class Supports::AdminBook
 
   def search
     search = Book.ransack @params[:param][:q]
-    search.sorts = %w(id name) if search.sorts.empty?
+    search.sorts = %w(created_at\ desc) if search.sorts.empty?
     search
+  end
+
+  def book_items_search
+    item_search.result.page(@params[:param][:page])
+      .per Settings.search.autocomplete.limit
+  end
+
+  def item_search
+    params = @params[:param]
+    book = Book.find_by id: params[:id]
+    item_search = book.book_items.ransack params[:q]
+    item_search.sorts = %w(created_at\ desc) if item_search.sorts.empty?
+    item_search
   end
 
   def publishers
@@ -39,6 +52,14 @@ class Supports::AdminBook
   end
 
   def book_items
-    BookItem.states.keys
+    BookItem.states.keys.map{|w| [w.humanize, w]}
+  end
+
+  def load_book_items
+    BookItem.states.keys.map{|w| [w, w.humanize]}
+  end
+
+  def tags
+    Tag.all
   end
 end

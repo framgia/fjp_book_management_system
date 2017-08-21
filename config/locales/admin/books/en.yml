@@ -34,10 +34,11 @@ en:
         language: Language
         public_date: Public date
         option: Option
+        read_more: View details
       form:
         name: Name
         description: Description
-        books: "Book by "
+        books: "Book by author "
         image: Image link
         create: Create
         save: Save
@@ -49,8 +50,12 @@ en:
         choose_publisher: Choose a publisher
         choose_categories: Choose some categories
         choose_authors: Choose some authors
-        add_new: " Add new"
+        add_new: " Create new"
         choose_state: Choose a state
+        new_author: " Add new author"
+        choose_tags: Choose some tags
+        image_field: Change image
+        choose_book: Choose books
       show:
         page_title: Book information
         link1: Book manage
@@ -76,6 +81,9 @@ en:
         edit_book: Edit
         delete_book: Delete
         create_items: Create items
+        search: Search
+        input_keyword: Search by
+        list_items: LIST BOOK ITEMS
     book_items:
       edit:
         page_title: Edit book item
@@ -98,3 +106,5 @@ en:
   button:
     close: close
     save: Save
+    clear_form: Clear
+    cancel: Cancel
