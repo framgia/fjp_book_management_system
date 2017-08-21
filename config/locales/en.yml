@@ -101,6 +101,7 @@ en:
       current_password: "Current password"
       name: "Name"
       not_found: "User not found"
+      not_same: " and current password must be different."
       menu_item:
         information: "Information"
         blog: "Blog"

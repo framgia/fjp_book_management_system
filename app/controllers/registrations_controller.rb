@@ -1,8 +1,13 @@
 class RegistrationsController < Devise::RegistrationsController
   protected
   def update_resource resource, params
-    if params[:current_password].present?
-      super
+    current_password = params[:current_password]
+    if current_password.present?
+      if current_password == params[:password]
+        resource.errors.add :password, t("user.edit.not_same")
+      else
+        super
+      end
     else
       resource.update_without_password params
     end
