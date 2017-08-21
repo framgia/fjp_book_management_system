@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_book, only: [:create]
+  before_action :load_book, only: [:create, :destroy]
+  before_action :find_comment, only: :destroy
 
   def create
     comment = @book.comments.new comment_params.merge user_id: current_user.id
@@ -11,16 +12,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.destroy
+    render json: {}, status: :ok
+  end
+
   private
   def load_book
     @book = Book.find_by id: params[:book_id]
-    unless @book
-      flash[:danger] = "Not found"
-      redirect_back
-    end
+    redirect_to not_found_index_path unless @book
   end
 
   def comment_params
     params.require(:comment).permit :content, :parent_id
+  end
+
+  def find_comment
+    @comment = @book.comments.find_by id: params[:id]
   end
 end

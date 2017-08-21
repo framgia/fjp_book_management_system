@@ -1,7 +1,7 @@
 <div class="col-sm-12 comment-child">
   <hr>
   <% child_comments.each do |comment| %>
-    <div class="col-sm-12 comment pmd-z-depth">
+    <div class="col-sm-12 comment pmd-z-depth" id="cmt-<%= comment.id %>">
       <div class="row">
         <div class="col-sm-12 comment-header">
           <a href="#" class="avatar">
@@ -25,13 +25,15 @@
           <div class="vote">
             <span class="vote-count-<%= comment.id %>"><%= comment.votes.size %></span>
             <% if vote(comment).present? %>
-              <i class="fa fa-fw fa-thumbs-up pmd-ripple-effect" data="<%= comment.id %>"
-                vote-id="<%= vote(comment).id %>"></i>
+              <i class="fa fa-fw fa-thumbs-up pmd-ripple-effect text-primary" data="<%= comment.id %>"
+                 vote-id="<%= vote(comment).id %> title=<%= t "books.show.unlike" %>"></i>
             <% else %>
-              <i class="fa fa-fw fa-thumbs-o-up pmd-ripple-effect" data="<%= comment.id %>"></i>
+              <i class="fa fa-fw fa-thumbs-o-up pmd-ripple-effect" data="<%= comment.id %>"
+                 title="<%= t "books.show.like" %>"></i>
             <% end %>
             <% if current_user && comment.user.id == current_user.id %>
-              | <i class="fa fa-fw fa-trash pmd-ripple-effect"></i>
+              | <i class="fa fa-fw fa-trash btn-delete-comment pmd-ripple-effect text-danger"
+                   title="<%= t "button.delete" %>" data="<%= comment.id %>"></i>
             <% end %>
           </div>
         </div>

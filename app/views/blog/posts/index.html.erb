@@ -43,7 +43,11 @@
                   </h4>
                 </div>
                 <div class="post-body">
-                  <%= link_to post.title, blog_post_path(post) %>
+                  <% if post.published? %>
+                    <%= link_to post.title, blog_post_path(post) %>
+                  <% else %>
+                    <%= link_to post.title, edit_blog_post_path(post) %>
+                  <% end %>
                 </div>
               </div>
               <div class="col-sm-2">

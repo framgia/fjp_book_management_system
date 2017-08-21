@@ -44,7 +44,7 @@ $(document).on('click', '.fa-thumbs-o-up', function () {
     success: function(e) {
       $('.vote-count-' + comment).text(e.votes_count);
       $(element).removeClass('fa-thumbs-o-up');
-      $(element).addClass('fa-thumbs-up');
+      $(element).addClass('fa-thumbs-up text-primary');
       $(element).attr('vote-id', e.vote_id);
     }
   });
@@ -64,7 +64,7 @@ $(document).on('click', '.fa-thumbs-up', function () {
     url: '/books/' + book + '/comments/' + comment + '/votes/' + vote,
     success: function(e) {
       $('.vote-count-' + comment).text(e.votes_count);
-      $(element).removeClass('fa-thumbs-up');
+      $(element).removeClass('fa-thumbs-up text-primary');
       $(element).addClass('fa-thumbs-o-up');
     }
   });
@@ -83,6 +83,22 @@ $(document).on('click', '.fa-chevron-down', function () {
     data: {type: 'down'},
     success: function(e) {
       $('.vote-count-' + comment).text(e.votes_count);
+    }
+  });
+});
+
+$(document).on('click', '.btn-delete-comment', function () {
+  var comment = $(this).attr('data');
+  var book = $('#book-id').val();
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'DELETE',
+    url: '/books/' + book + '/comments/' + comment,
+    success: function() {
+      $('div#cmt-' + comment).remove();
     }
   });
 });

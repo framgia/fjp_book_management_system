@@ -12,6 +12,6 @@ class AnnouncementsController < ApplicationController
   def find_announcement
     @announcement = Announcement.find_by id: params[:id]
 
-    redirect_to not_found_path unless @announcement
+    redirect_to not_found_index_path unless @announcement
   end
 end

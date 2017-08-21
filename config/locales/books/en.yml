@@ -8,3 +8,6 @@ en:
       write: "Write"
       preview: "Preview"
       new_tag: "NEW"
+      like: "Like"
+      unlike: "Unlike"
+      reply: "Reply"

@@ -1,3 +1,3 @@
 class NotFoundController < ApplicationController
-  def show; end
+  def index; end
 end

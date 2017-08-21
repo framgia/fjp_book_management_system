@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   before_action only: :show do
     find_book params[:id]
   end
+  before_action :check_book, only: :show
 
   def index
     respond_to do |format|
@@ -34,5 +35,9 @@ class BooksController < ApplicationController
   private
   def book_params
     params.require(:book).permit :name
+  end
+
+  def check_book
+    redirect_to not_found_index_path unless @book
   end
 end

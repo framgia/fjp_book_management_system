@@ -10,7 +10,10 @@
 
   <div id="blog" class="tab-pane fade">
     <div class="tab-row">
-      <% book.blogs.each do |b| %>
+      <% unless book.blogs.published.present? %>
+        duc oc cho
+      <% end %>
+      <% book.blogs.published.each do |b| %>
         <div class="blog-box pmd-z-depth">
           <div class="blog-head">
             <p><%= b.user.email  %>
