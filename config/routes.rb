@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :books, only: [:index, :show] do
-    resources :comments, only: [:create] do
+    resources :comments, only: [:create, :destroy] do
       resources :votes, only: [:create, :destroy]
     end
     resource :suggest_books, only: :create
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   resources :read_online, only: :show
   resources :authors, only: :show
   resources :announcements, only: [:index, :show]
-  resource :not_found, only: :show
+  resources :not_found, only: :index
   resources :requests, only: [:index, :create, :update]
   resources :notifications, only: [:index, :update]
   patch "/make_all_as_read" => "make_all_as_read#update"

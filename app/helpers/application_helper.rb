@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def find_book id
-    @book = Book.find_by id: id
+    @book = Book.includes(:blogs, :authors, :images).find_by(id: id)
   end
 
   def markdown content
