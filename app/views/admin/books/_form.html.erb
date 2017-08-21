@@ -22,36 +22,45 @@
             <%= f.text_field :isbn, class:"form-control" %>
           </div>
         </div>
+        <%= f.label :description, class:"form-label" %>
+        <%= f.text_area :description, class:"form-control" %>
         <%= f.label :categories %><br/>
         <%= f.collection_select :category_ids, supports.categories, :id, :title,
           {}, {multiple: true, size: 1, class:"chosen-select form-control",
           data: {placeholder: t(".choose_categories")}} %>
         <%= f.label :publisher %>
-        <i id="add-publisher" class="fa fa-plus-square pull-right">
-          <%= t ".add_new" %>
-        </i>
         <%= f.select :publisher_id, supports.publishers,
           {include_blank: t(".choose_publisher")},
-          {class: "form-control", id:"hide-select1"} %>
-        <%= f.fields_for :publisher do |p| %>
-          <%= p.text_field :name, class:"form-control add-button",
-            id:"new-publisher", placeholder: t(".new_publisher") %>
-        <% end %>
+          {class: "form-control hide-select1"} %>
+        <div class="add-authors">
+          <%= link_to_add_association f, :publisher do %>
+            <i id="change-publisher" class="fa fa-plus-square hide-select1">
+              <% if book.id %>
+                <%= t ".edit_publisher" %>
+              <% else %>
+                <%= t ".add_new" %>
+              <% end %>
+            </i>
+          <% end %>
+        </div>
         <%= f.label :language %>
         <%= f.select :language_id, supports.languages,
-          {include_blank: t(".choose_language")},
-          {class: "form-control", id:"hide-select2"} %>
+          {include_blank: t(".choose_language")}, {class: "form-control"} %>
         <%= f.label :series %>
-        <i id="add-series" class="fa fa-plus-square pull-right">
-          <%= t ".add_new" %>
-        </i>
         <%= f.select :series_id, supports.series,
           {include_blank: t(".choose_series")},
-          {class:"form-control", id:"hide-select3"} %>
-        <%= f.fields_for :series do |s| %>
-          <%= s.text_field :title, class: "form-control add-button",
-            id:"new-series", placeholder: t(".new_series") %>
-        <% end %>
+          {class:"form-control hide-select2"} %>
+        <div class="add-authors">
+          <%= link_to_add_association f, :series do %>
+            <i id="change-series" class="fa fa-plus-square hide-select2">
+              <% if book.id %>
+                <%= t ".edit_series" %>
+              <% else %>
+                <%= t ".add_new" %>
+              <% end %>
+            </i>
+          <% end %>
+        </div>
         <%= f.label :authors %><br/>
         <%= f.collection_select :author_ids, supports.authors, :id, :name,
           {}, {multiple: true, size: 1, class:"form-controll pmd-select2-tags select-authors",

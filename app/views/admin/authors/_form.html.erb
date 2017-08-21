@@ -9,12 +9,11 @@
         <%= f.label :avatar, class: "form-label" %><br>
         <div class="file-container">
           <%= t "admin.books.form.image_field" %>
-          <%= f.file_field :avatar, class: "upload-image" %>
-        </div><br>
-        <br><div id="preview" class="avatar-preview"></div>
-        <div id="old-avatar" class="avatar-preview">
-          <img src="<%= author.try :avatar %>">
-        </div><br>
+          <%= f.file_field :avatar, class: "upload-image", id:"filePhoto" %>
+        </div><br><br>
+        <img id="previewHolder" class="avatar-preview">
+        <div id="error" value='<%= t "admin.books.form.error"%>' class="hidden"></div>
+        <img id="old-avatar" class="avatar-preview" src="<%= author.try :avatar %>"><br>
         <%= f.label :books, t(".books"), class:"form-label" %>
         <%= f.collection_select :book_ids, books, :id, :title,
           {}, {multiple: true, size: 1, class:"form-controll pmd-select2-tags select-books",

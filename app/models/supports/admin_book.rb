@@ -62,4 +62,8 @@ class Supports::AdminBook
   def tags
     Tag.all
   end
+
+  def find_author
+    Author.find_by id: @params[:param][:author_id]
+  end
 end

@@ -104,10 +104,10 @@
           </div>
         </div><br>
       </div><br>
-      <div class="text-center col-xs-12">
-        <%= paginate @supports.book_items_search, theme: "twitter-bootstrap-3" %>
-      </div><br><br>
       <div id="items-list-view">
+        <div class="text-center col-xs-12">
+          <%= paginate @supports.book_items_search, theme: "twitter-bootstrap-3" %>
+        </div><br><br>
         <div class="table-responsive book-table book-items" id="items-list">
           <table class="table table-bordered default-dg-table">
             <tr>
@@ -144,7 +144,8 @@
                   <td class="text-center item-delete-button">
                     <%= button_tag class: "btn btn-danger btn-delete-item",
                       id: @book.id, data: {dismiss: "modal", id: book_item.id,
-                      confirm: t("button.delete_warning")} do %>
+                      confirm: t("button.delete_warning")},
+                      value: @supports.book_items_search.current_page do %>
                       <i class="fa fa-trash fa-lg delete-book" aria-hidden="true"></i>
                     <% end %>
                   </td>

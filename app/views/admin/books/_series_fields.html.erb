@@ -1,0 +1,7 @@
+<div class="nested-fields author-book-fields form-inline">
+  <%= f.text_field :title, placeholder: t("admin.books.form.new_series"),
+    class: "form-control" %>
+  <%= link_to_remove_association f, class: "remove-tag" do %>
+    <div class="glyphicon glyphicon-remove"></div>
+  <% end %>
+</div>

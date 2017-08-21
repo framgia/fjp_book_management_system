@@ -41,4 +41,23 @@ $(document).ready(function() {
       [].forEach.call(files, readAndPreview);
     }
   });
+
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      if (/\.(jpe?g|png|gif)$/i.test(input.files[0].name)) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#previewHolder').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      } else {
+        alert($('#error').attr('value'));
+      }
+    }
+  }
+  $('#filePhoto').change(function() {
+    readURL(this);
+    $('#old-avatar').hide();
+  });
 });

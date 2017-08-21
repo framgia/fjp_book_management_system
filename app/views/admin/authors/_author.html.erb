@@ -10,7 +10,7 @@
           placeholder: t(".input_keyword") %>
         <%= f.submit  t(".search"), class: "btn btn-info" %>
       </div>
-    </div>
+    </div><br>
     <div id="pagination" class="text-center">
       <%= paginate authors.authors_search, remote: true,
         theme: "twitter-bootstrap-3" %>
