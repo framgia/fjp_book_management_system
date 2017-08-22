@@ -38,3 +38,6 @@ config/settings/*.local.yml
 config/environments/*.local.yml
 /spec/helpers/
 /spec/controllers/
+!/config/database.yml
+!/config/secrets.yml
+!/config/settings.local.yml

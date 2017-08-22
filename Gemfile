@@ -29,6 +29,8 @@ gem "chosen-rails"
 gem "rails_param"
 gem "cocoon"
 gem "best_in_place", "~> 3.0.1"
+gem "passenger"
+gem "therubyracer",  platforms: :ruby
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
