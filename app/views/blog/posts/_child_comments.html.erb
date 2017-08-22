@@ -1,0 +1,43 @@
+<div class="col-sm-12 comment-child">
+  <hr>
+  <% child_comments.each do |comment| %>
+    <div class="col-sm-12 comment pmd-z-depth" id="cmt-<%= comment.id %>">
+      <div class="row">
+        <div class="col-sm-12 comment-header">
+          <a href="#" class="avatar">
+            <img src="<%= comment.user.avatar.thum40.url %>"
+              alt="<%= comment.user.name %>">
+          </a>
+          <div class="meta">
+            <div class="author">
+              <a href="#"><%= comment.user.name %></a>
+              <small><%= comment.user.email %></small>
+              <span class="pull-right">
+              <%= time_ago_in_words comment.created_at %> <%= t "books.show.ago" %>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 comment-body">
+          <%= markdown(comment.content).html_safe %>
+        </div>
+        <div class="col-sm-12 comment-footer">
+          <div class="vote">
+            <span class="vote-count-<%= comment.id %>"><%= comment.votes.size %></span>
+            <% if vote(comment).present? %>
+              <i class="fa fa-fw fa-thumbs-up pmd-ripple-effect text-primary" data="<%= comment.id %>"
+                 vote-id="<%= vote(comment).id %> title=<%= t "books.show.unlike" %>"></i>
+            <% else %>
+              <i class="fa fa-fw fa-thumbs-o-up pmd-ripple-effect" data="<%= comment.id %>"
+                 title="<%= t "books.show.like" %>"></i>
+            <% end %>
+            <% if current_user && comment.user.id == current_user.id %>
+              | <i class="fa fa-fw fa-trash btn-delete-comment pmd-ripple-effect text-danger"
+                   title="<%= t "button.delete" %>" data="<%= comment.id %>"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

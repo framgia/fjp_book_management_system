@@ -5,7 +5,98 @@
 //= require_self
 //= require propellerkit/components/select2/js/pmd-select2
 
+var editors = {};
 
+var editorOptions = {
+  element: $('#comment-0')[0],
+  status: false,
+  toolbar: false,
+  forceSync: true,
+  spellChecker: false
+};
+
+editors['comment-0'] = new SimpleMDE(editorOptions);
+
+$('li.load-html').click(function(){
+  var id = $(this).attr('data');
+  $('#preview-' + id).html(editors['comment-' + id]
+    .options.previewRender(editors['comment-' + id].value()));
+});
+
+$('.fa-reply').click(function () {
+  var id = $(this).attr('data');
+
+  if(editors['comment-' + id] === undefined){
+    editorOptions.element = $('#comment-' + id)[0];
+    editors['comment-' + id] = new SimpleMDE(editorOptions);
+  }
+
+  setTimeout(function(){
+    $('.reply-' + id).removeClass('hidden');
+  }, 200);
+});
+
+$('.btn-cancel').click(function (e) {
+  e.preventDefault();
+  var id = $(this).attr('data');
+  $('.reply-' + id).addClass('hidden');
+});
+
+$(document).on('click', '.fa-thumbs-o-up', function () {
+  var comment = $(this).attr('data');
+  var book = $('#book-id').val();
+  var element = this;
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'POST',
+    url: '/blog/posts/' + book + '/comments/' + comment + '/votes',
+    success: function(e) {
+      $('.vote-count-' + comment).text(e.votes_count);
+      $(element).removeClass('fa-thumbs-o-up');
+      $(element).addClass('fa-thumbs-up text-primary');
+      $(element).attr('vote-id', e.vote_id);
+    }
+  });
+});
+
+$(document).on('click', '.fa-thumbs-up', function () {
+  var comment = $(this).attr('data');
+  var book = $('#book-id').val();
+  var vote = $(this).attr('vote-id');
+  var element = this;
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'DELETE',
+    url: '/blog/posts/' + book + '/comments/' + comment + '/votes/' + vote,
+    success: function(e) {
+      $('.vote-count-' + comment).text(e.votes_count);
+      $(element).removeClass('fa-thumbs-up text-primary');
+      $(element).addClass('fa-thumbs-o-up');
+    }
+  });
+});
+
+$(document).on('click', '.btn-delete-comment', function () {
+  var comment = $(this).attr('data');
+  var book = $('#book-id').val();
+  $.ajax({
+    beforeSend: function(xhr){
+      xhr.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').attr('content'));
+    },
+    type: 'DELETE',
+    url: '/blog/posts/' + book + '/comments/' + comment,
+    success: function() {
+      $('div#cmt-' + comment).remove();
+    }
+  });
+});
 
 $(document).ready(function() {
   var element = $('textarea#editor');

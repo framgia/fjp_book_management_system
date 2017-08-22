@@ -14,4 +14,8 @@ class Blog < ApplicationRecord
 
   month_ago = Date.today - 1.month
   scope :recent_blog, ->l{Blog.where("updated_at > ?", month_ago).limit l}
+
+  def parent_comments
+    comments.where(parent_id: 0).order id: :desc
+  end
 end

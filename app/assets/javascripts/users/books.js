@@ -70,23 +70,6 @@ $(document).on('click', '.fa-thumbs-up', function () {
   });
 });
 
-$(document).on('click', '.fa-chevron-down', function () {
-  var comment = $(this).attr('data');
-  var book = $('#book-id').val();
-  $.ajax({
-    beforeSend: function(xhr){
-      xhr.setRequestHeader('X-CSRF-Token',
-        $('meta[name="csrf-token"]').attr('content'));
-    },
-    type: 'POST',
-    url: '/books/' + book + '/comments/' + comment + '/votes',
-    data: {type: 'down'},
-    success: function(e) {
-      $('.vote-count-' + comment).text(e.votes_count);
-    }
-  });
-});
-
 $(document).on('click', '.btn-delete-comment', function () {
   var comment = $(this).attr('data');
   var book = $('#book-id').val();
