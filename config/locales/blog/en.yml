@@ -6,6 +6,7 @@ en:
         explore: "Explore"
         newest: "Newest"
         create_post: "Create Post"
+        hot_authors: "Hot Authors"
     posts:
       index:
         my_blog: "My Blog"

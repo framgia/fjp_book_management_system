@@ -65,10 +65,10 @@ class Book < ApplicationRecord
   end
 
   def pdf_ebooks
-    self.ebooks.where(format: "pdf")
+    self.ebooks.where format: "pdf"
   end
 
   def available_book_item
-    BookItem.where(book_id: self.id, state: "Ready")
+    BookItem.ready.where book_id: self.id
   end
 end
