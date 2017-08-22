@@ -5,9 +5,28 @@
         <div class="pmd-card-body">
           <div class="row">
             <%= render "sidebar", user: @user %>
-            <div class="col-lg-6 custom-col-8">
+
+            <div class="col-lg-8 custom-col-8 info-part">
               <%= render "change_info", user: @user %>
               <%= render "change_pass", user: @user %>
+            </div>
+
+            <div class="col-lg-8 custom-col-8 blog-part">
+            </div>
+
+            <div class="col-lg-8 custom-col-8 fav-book-part">
+            </div>
+
+            <div class="col-lg-8 custom-col-8 history-part">
+              <div class="borrow-part">
+               <%= render "borrow", borrow: @borrow %>
+              </div>
+
+              <div class="donate-part">
+              </div>
+
+              <div class="feedback-part">
+              </div>
             </div>
           </div>
         </div>

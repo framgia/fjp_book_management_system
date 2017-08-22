@@ -1,0 +1,4 @@
+en:
+  borrow:
+    destroy:
+      fail: "Something wrong!"
