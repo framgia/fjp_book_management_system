@@ -19,18 +19,16 @@
       </div>
     </div>
     <div class="row">
-      <% if user_signed_in? %>
+      <% if book.available_book_item.present? %>
         <div class="btn btn-lg text-center btn-primary col-sm-10 col-sm-offset-1
           btn-send-req" id="btn-send-req">
           <%= t "books.show.send_req" %>
         </div>
       <% else %>
-        <%= link_to new_user_session_path, "data-turbolinks": false do %>
-          <div class="btn btn-lg text-center btn-primary col-sm-10 col-sm-offset-1
-            btn-send-req unsigned">
-            <%= t(".login") %>
-          </div>
-        <% end %>
+        <div class="btn btn-lg text-center btn-primary col-sm-10 col-sm-offset-1
+          btn-send-req unsigned">
+          <%= t(".Unavailable") %>
+        </div>
       <% end %>
     </div>
     <div class="hidden current-book-id" id="<%= book.id %>"></div>
