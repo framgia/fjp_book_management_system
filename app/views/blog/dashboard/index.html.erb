@@ -9,7 +9,10 @@
     <div class="row">
       <div class="col-sm-9">
         <ul>
-          <li><a href="#"><%= t "blog.dashboard.index.newest" %></a></li>
+          <li>
+            <%= link_to t("blog.dashboard.index.newest"), blog_root_path, "data-turbolinks": false,
+              class: "hover" %>
+          </li>
           <% if user_signed_in? %>
             <li>
               <%= link_to t("blog.posts.index.my_blog"), blog_posts_path %>
@@ -58,7 +61,7 @@
               </h4>
             </div>
             <div class="post-body">
-              <%= link_to post.title, blog_post_path(post) %>
+              <%= link_to post.title, blog_post_path(post), "data-turbolinks": false %>
             </div>
           </div>
           <div class="col-sm-12">

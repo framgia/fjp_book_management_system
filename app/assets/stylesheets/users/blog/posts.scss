@@ -1,3 +1,5 @@
+@import "users/colors";
+
 .edit-blog {
   .title {
     font-size: 25px;
@@ -18,6 +20,92 @@
 
     h2 {
       margin-top: 10px;
+    }
+  }
+}
+
+.dashboard-header {
+  background-color: $bg-dashboard-header;
+  margin-top: -20px;
+
+  .btn-create {
+    margin-top: 13px;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      float: left;
+      height: 60px;
+      line-height: 65px;
+      padding-right: 30px;
+
+      a {
+        color: $white;
+        font-size: 16px;
+        font-weight: bolder;
+        text-transform: uppercase;
+        transition: .25s;
+      }
+    }
+
+    .hover {
+      border-bottom: 2px solid $white;
+    }
+
+    li:hover {
+      a {
+        border-bottom: 2px solid $white;
+      }
+    }
+  }
+}
+
+#comments {
+  .nav-tabs {
+    background: $main-color-lighter;
+
+    a {
+      background: $main-color-light;
+      border: 0;
+      border-radius: 2px;
+      color: $white;
+      font-size: .8em;
+      margin: 10px;
+      opacity: 1;
+      padding: 8px 12px 6px;
+      transition: .4s;
+    }
+
+    a:hover {
+      background: $main-color-primary;
+    }
+
+    .active {
+      background: transparent;
+
+      a {
+        background: $main-color-dark;
+        border: 0;
+        color: $white;
+      }
+    }
+
+    .btn-new-blog {
+      float: right;
+      margin-right: 20px;
+      margin-top: 5px;
+
+      button {
+        background: $main-color-primary;
+        transition: .5s;
+
+        &:hover {
+          background: $main-color-dark;
+          box-shadow: 0 2px 4px $shadow-light, 0 3px 6px $shadow-normal;
+        }
+      }
     }
   }
 }

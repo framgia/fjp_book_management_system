@@ -4,6 +4,37 @@
   <h2><%= t "blog.dashboard.index.explore" %> </h2>
   <h1 class="text-capitalize"><%= t "blog.posts.index.my_blog" %></h1>
 </div>
+
+<div class="container-fluid dashboard-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <ul>
+          <li>
+            <%= link_to t("blog.dashboard.index.newest"), blog_root_path, "data-turbolinks": false  %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to t("blog.posts.index.my_blog"), blog_posts_path, class: "hover" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <% if user_signed_in? %>
+          <%= form_with model: Blog.new, url: blog_posts_path, local: true do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <button class="btn btn-primary pmd-btn-raised pmd-ripple-effect btn-create" type="submit">
+              <i class="fa fa-fw fa-pencil"></i>
+              <%= t "blog.dashboard.index.create_post" %>
+            </button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 <div class="container">
   <div class="row">
     <div class="col-sm-9">
@@ -15,9 +46,6 @@
           <%= link_to t("blog.posts.index.draft"), blog_posts_path(status: :draft) %>
         </li>
       </ul>
-    </div>
-    <div class="col-sm-3">
-      <%= render "new_post_form" %>
     </div>
     <div class="col-sm-12">
 
@@ -44,9 +72,9 @@
                 </div>
                 <div class="post-body">
                   <% if post.published? %>
-                    <%= link_to post.title, blog_post_path(post) %>
+                    <%= link_to post.title, blog_post_path(post), "data-turbolinks": false %>
                   <% else %>
-                    <%= link_to post.title, edit_blog_post_path(post) %>
+                    <%= link_to post.title, edit_blog_post_path(post), "data-turbolinks": false %>
                   <% end %>
                 </div>
               </div>

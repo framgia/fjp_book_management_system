@@ -49,4 +49,10 @@
       </div>
     </div>
   </div>
+  <div class="row" id="comments">
+    <div class="col-sm-9">
+      <%= render "blog/posts/comment_form", blog: @blog %>
+      <%= render "blog/posts/comments", blog: @blog %>
+    </div>
+  </div>
 </div>

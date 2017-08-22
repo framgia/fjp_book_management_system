@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   private
   def find_category
     @category = Category.find_by id: params[:id]
-    redirect_to categories_path unless @category
+    redirect_to not_found_index_path unless @category
   end
 
   def load_categories

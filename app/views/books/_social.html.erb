@@ -11,7 +11,7 @@
   <div id="blog" class="tab-pane fade">
     <div class="tab-row">
       <% unless book.blogs.published.present? %>
-        duc oc cho
+        <%= t "blog.posts.index.no_blog" %>
       <% end %>
       <% book.blogs.published.each do |b| %>
         <div class="blog-box pmd-z-depth">
@@ -26,14 +26,10 @@
               <%= link_to b.title, blog_post_path(b), "data-turbolinks": false %>
             </span>
             <div class="blog-title-left">
-              <% if b.votes %> <%= b.votes.count %>
-              <% else %> 0
-              <% end %>
+              <%= b.votes.size %>
               <i class="fa fa-heart" aria-hidden="true"></i>
 
-              <% if b.comments %> <%= b.comments.count %>
-              <% else %> 0
-              <% end %>
+              <%= b.comments.size %>
               <i class="fa fa-comment" aria-hidden="true"></i>
             </div>
           </div>

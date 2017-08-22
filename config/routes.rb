@@ -38,7 +38,11 @@ Rails.application.routes.draw do
 
   namespace :blog do
     root "dashboard#index"
-    resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :create, :edit, :update, :destroy] do
+      resources :comments, only: [:create, :destroy] do
+        resources :votes, only: [:create, :destroy]
+      end
+    end
   end
 
   resources :read_online, only: :show

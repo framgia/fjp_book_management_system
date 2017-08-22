@@ -1,0 +1,44 @@
+<style>
+  .CodeMirror, .CodeMirror-scroll {
+    min-height: 30px;
+  }
+  <% if user_signed_in? %>
+    .CodeMirror {
+      padding-left: 60px;
+      background: url("<%= current_user.avatar.thum40.url %>") no-repeat;
+      background-position-x: 10px;
+      background-position-y: 5px;
+      background-size: 40px 40px;
+    }
+  <% end %>
+</style>
+
+<div class="col-sm-12 comment pmd-z-depth comment-input">
+  <%= form_with model: blog.comments.new, url: blog_post_comments_path(blog),
+    local: true do |f| %>
+    <div class="tab-content">
+      <div class="active tab-pane fade in" id="write-0">
+        <%= f.text_area :content, id: "comment-0" %>
+        <%= f.hidden_field :parent_id, value: 0%>
+      </div>
+      <div class="tab-pane fade pmd-z-depth preview" id="preview-0">
+        <p><%= t "books.show.no_content_preview" %></p>
+      </div>
+    </div>
+    <button class="btn btn-sm btn-primary pmd-ripple-effect pull-right">
+      <%= t "books.show.comment" %>
+    </button>
+  <% end %>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+      <a href="" data-target="#write-0" role="tab" data-toggle="tab" class="text-danger">
+        <%= t "books.show.write" %>
+      </a>
+    </li>
+    <li class="load-html" data="0">
+      <a data-target="#preview-0" role="tab" data-toggle="tab">
+        <%= t "books.show.preview" %>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   def create
     comment = @book.comments.new comment_params.merge user_id: current_user.id
     if comment.save
-      redirect_to @book
+      redirect_to book_path(@book, anchor: :comments)
     else
       flash[:danger] = "Loi cmnr"
     end

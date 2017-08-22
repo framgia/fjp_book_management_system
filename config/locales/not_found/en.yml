@@ -1,0 +1,5 @@
+en:
+  not_found:
+    description: "The page you are looking for was moved, removed,
+      renamed or might never existed."
+    back_to_home: "Back to homepage"

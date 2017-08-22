@@ -34,7 +34,11 @@ class Blog::PostsController < ApplicationController
 
   def update
     if @blog.update_attributes blog_params
-      redirect_to blog_post_path @blog
+      if @blog.published?
+        redirect_to blog_post_path @blog
+      else
+        redirect_to blog_posts_path(status: :draft)
+      end
     else
       redirect_to edit_blog_post_path @blog
     end
@@ -56,6 +60,6 @@ class Blog::PostsController < ApplicationController
 
   def find_blog blog
     @blog = blog.find_by id: params[:id]
-    redirect_to blog_root_path unless @blog
+    redirect_to not_found_index_path unless @blog
   end
 end
