@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20170818101831) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(version: 20170818101831) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "state", default: 0
+    t.integer "state"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

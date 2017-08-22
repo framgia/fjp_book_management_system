@@ -1,4 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
+  def edit
+    @borrow = Borrow.where(user_id: current_user.id).order(id: :desc)
+    @support = Supports::Requests.new request: current_user.requests,
+      param: params, new_request: Request.new
+  end
+
   protected
   def update_resource resource, params
     current_password = params[:current_password]
