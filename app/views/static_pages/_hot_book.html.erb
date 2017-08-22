@@ -3,6 +3,11 @@
     <h2 class="row-title"><%= t "home.new_book" %></h2>
   </div>
 
+  <div class="slide-nav book-slide">
+    <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+    <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+  </div>
+
   <div class="owl-carousel owl-theme" id="new-book-slide">
     <% support.load_new_book.each do |book| %>
       <div class="row">
@@ -13,15 +18,14 @@
           <% end %>
         </div>
         <div class="col-sm-6 col-sm-offset-1 book-info-container">
-          <h2><%= link_to book.title,
-            book_path(book),
+          <h2><%= link_to book.title, book,
             "data-turbolinks":"false" %></h2>
           <h4><% book.authors.each_with_index do
           |a, index| %>
               <% if index == book.authors.count - 1 %>
-                <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>
+                <%= link_to a.name, a, "data-turbolinks":"false" %>
               <% else %>
-                <%= link_to a.name, author_path(a), "data-turbolinks":"false" %>,
+                <%= link_to a.name, a, "data-turbolinks":"false" %>,
               <% end %>
             <% end %>
           </h4>

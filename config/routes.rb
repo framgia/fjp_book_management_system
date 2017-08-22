@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show]
-  resources :borrows, only: :create
+  resources :borrows, only: [:create, :update]
   resources :explorer, only: :index
   resources :tags, only: [:index, :show]
 
