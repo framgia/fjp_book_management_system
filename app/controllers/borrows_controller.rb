@@ -11,7 +11,19 @@ class BorrowsController < ApplicationController
     respond_to do |f|
       partial = "books/_modal_send_req_result"
       book_id = borrow_params[:book_id]
-      f.html{render partial, layout: false, locals: {book: find_book(book_id)}}
+      book = find_book book_id
+      f.html{render partial, layout: false, locals: {book: book, req: borrow}}
+    end
+  end
+
+  def update
+    request = find_request
+    update_request = request.update_attributes status: "cancel"
+    flash[:danger] = t "borrow.destroy.fail" unless update_request
+
+    respond_to do |f|
+      link = "devise/registrations/_borrow_row"
+      f.html{render link, layout: false, locals: {request: request}}
     end
   end
 
@@ -19,5 +31,9 @@ class BorrowsController < ApplicationController
   def borrow_params
     params.require(:borrow).permit :book_id, :user_id, :note,
       :time_start, :time_end
+  end
+
+  def find_request
+    Borrow.find_by id: params[:id]
   end
 end

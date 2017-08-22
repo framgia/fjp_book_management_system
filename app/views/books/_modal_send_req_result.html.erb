@@ -13,12 +13,22 @@
         <div class="col-sm-5 modal-borrow-info">
           <h3><%= book.title %></h3>
           <h4><%= t "books.show.isbn" %> <%= book.isbn %></h4>
-          <h4><%= t "books.show.language" %> <%= book.language.full_name %></h4>
-          <h4><%= t "books.show.weight" %> <%= book.weight %></h4>
-          <h4><%= t "books.show.pages" %> <%= book.pages %></h4>
-          <h4><%= t "books.show.publisher" %> <%= book.publisher.name %></h4>
-          <h4><%= t "books.show.public_date" %> <%= book.public_date %></h4>
-          <p class="message">Our admin will contact you as soon as  possible. Thank you</p>
+          <h4><%= t "books.show.modal.start_date" %> <%= req.time_start.strftime("%Y-%m-%d") %></h4>
+          <h4><%= t "books.show.modal.end_date" %> <%= req.time_end.strftime("%Y-%m-%d") %></h4>
+          <h4><%= t "books.show.modal.created_at" %> <%= req.created_at.strftime("%Y-%m-%d") %></h4>
+          <h4><%= t "books.show.modal.status" %>
+            <% case req.status %>
+            <% when "approved" %>
+              <span class="approve"><%= t "books.show.modal.approved" %></span>
+            <% when "cancel" %>
+              <span class="cancel"> <%= t "books.show.modal.cancel" %></span>
+            <% when "reject" %>
+              <span class="reject"><%= t "books.show.modal.reject" %></span>
+            <% else %>
+              <span class="not-approve"> <%= t "books.show.modal.not_approved" %></span>
+            <% end %>
+          </h4>
+          <p class="message"><%= t "books.show.modal.admin_message" %></p>
         </div>
       </div>
       <div class="modal-footer">

@@ -105,10 +105,12 @@ $(document).on('click', '.btn-delete-comment', function () {
 
 $(document).ready(function () {
   $('#datepicker-start').datetimepicker({
+    format: 'YYYY-MM-DD',
     minDate: new Date()
   });
 
   $('#datepicker-end').datetimepicker({
+    format: 'YYYY-MM-DD',
     minDate: new Date(),
     useCurrent: false
   });
@@ -117,10 +119,11 @@ $(document).ready(function () {
     $('#datepicker-end').data('DateTimePicker').minDate(e.date);
     $('#datepicker-end').data('DateTimePicker').maxDate(e.date.add(180, 'days'));
   });
+
   $('#datepicker-end').on('dp.change', function (e) {
     $('#datepicker-start').data('DateTimePicker').maxDate(e.date);
     $('#datepicker-start').data('DateTimePicker').minDate(
-      e.date.subtract(180, 'days'));
+      (e.date.subtract(180, 'days') < new Date()) ? new Date() : e.date.subtract(180, 'days'));
   });
 
   $('.image-carousel').owlCarousel();

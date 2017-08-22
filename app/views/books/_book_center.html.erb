@@ -71,7 +71,16 @@
         <p class="book-info-row">
           <span><%= t "books.show.pages" %></span> <%= book.pages %></p>
       <% end %>
+
+      <p class="book-info-row"><span><%= t "books.show.status" %></span>
+        <% if book.available_book_item.present? %>
+          <span class="approve"><%= t "books.show.available_book_item" %></span>
+        <% else %>
+          <span class="reject"><%= t "books.show.unavailable_book_item" %></span>
+        <% end %>
+      </p>
     </div>
+
     <div class="col-sm-6">
       <% if book.publisher.name %>
         <p class="book-info-row">
