@@ -106,6 +106,9 @@ en:
         blog: "Blog"
         favorite_books: "Favorite Books"
         history: "History"
+        borrow: "Borrow"
+        purchase: "Purchase"
+        donate: "Donate"
       profile:
         title: "Profile"
         info: "Personal Information"
@@ -114,6 +117,8 @@ en:
         need_current_pass: "(we need your current password to confirm your changes)"
         change_pass: "Change password"
         repeat_pass: "Repeat password"
+      history:
+        borrow: "Borrow"
   borrows:
     create:
       flash:
@@ -139,8 +144,8 @@ en:
       feedback_link: "Give us you opinion."
     recommend: "Recommend Book"
     recommend_details: "You make like those books"
-    new_book: "New Book"
-    top_author: "Top Author"
+    new_book: "New Books"
+    top_author: "Top Authors"
   read_online:
     flash:
       danger:

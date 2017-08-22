@@ -3,9 +3,8 @@ class StaticPagesController < ApplicationController
 
   def show
     setting = Settings.user.home
-    @support = Supports::Home.new new_book:
-      Book.new_book(setting.new_book),
-      popular_book: Book.popular_book(setting.popular_book),
+    @support = Supports::Home.new popular_book:
+      Book.popular_book(setting.popular_book),
       recent_blog: Blog.recent_blog(setting.recent_blog),
       top_author: Author.top_author,
       top_rate_book: Book.top_rated_book(setting.top_rate_book),

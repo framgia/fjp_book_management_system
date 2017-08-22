@@ -2,6 +2,12 @@
   <div class="row title-heading">
     <h2 class="row-title"><%= t "home.new_book" %></h2>
   </div>
+
+  <div class="slide-nav book-slide">
+    <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+    <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+  </div>
+
   <div class="owl-carousel owl-theme" id="new-book-slide">
     <% support.load_new_book.each do |book| %>
       <div class="row">

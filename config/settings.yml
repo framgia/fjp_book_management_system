@@ -45,3 +45,5 @@ announcements:
 notifications:
   per_page: 15
   header_per_page: 8
+profile:
+  borrow: 6

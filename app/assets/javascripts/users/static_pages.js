@@ -104,6 +104,14 @@ $(document).ready(function(){
     $(this).parent().next().trigger('next.owl.carousel');
   });
 
+  $('.book-slide .fa-angle-left').click(function() {
+    $(this).parent().next().trigger('prev.owl.carousel');
+  });
+
+  $('.book-slide .fa-angle-right').click(function() {
+    $(this).parent().next().trigger('next.owl.carousel');
+  });
+
   if($('.home-page')[0]) {
     $('.wrapper').css('margin-top','0');
     $('.navbar-fixed-top').css({
