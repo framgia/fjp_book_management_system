@@ -47,3 +47,5 @@ notifications:
   header_per_page: 8
 profile:
   borrow: 6
+book_mark:
+  limit: 9

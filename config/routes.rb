@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/pages/:page" => "static_pages#show"
 
   resources :search, only: :index
+  resources :users, only: :show
 
   namespace :admin do
     root "static_pages#show", page: "dashboard"
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
     end
     resource :suggest_books, only: :create
     resource :rate, only: [:create]
+    resources :book_marks, only: [:create, :destroy]
+
   end
 
   resources :categories, only: [:index, :show]

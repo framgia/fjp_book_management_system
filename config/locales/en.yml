@@ -160,3 +160,8 @@ en:
     detail: "Announcement detail"
     not_found: "Announcement not found"
   error: "404 not found !"
+  book_mark:
+    destroy_success: "Bookmark destroy success!"
+    destroy_fail: "Bookmark destroy fail!"
+    book_mark: "Bookmark"
+    unbook_mark: "Unbookmark"

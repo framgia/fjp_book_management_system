@@ -357,6 +357,10 @@
   text-transform: capitalize;
 }
 
+.portfolio a {
+  color: $white;
+}
+
 .portfolio li:hover {
   border: 0;
   color: $black;

@@ -19,6 +19,7 @@ class Book < ApplicationRecord
   has_many :blogs, through: :blog_books
   has_many :tags, through: :book_tags
   has_and_belongs_to_many :tags, join_table: :book_tags
+  has_many :book_marks
 
   accepts_nested_attributes_for :publisher
   accepts_nested_attributes_for :series

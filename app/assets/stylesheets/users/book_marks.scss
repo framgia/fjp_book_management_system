@@ -1,0 +1,13 @@
+@import "users/colors";
+
+.btn-book-mark {
+  cursor: pointer;
+
+  a {
+    color: $white;
+  }
+}
+
+.pmd-content {
+  overflow-x: hidden;
+}

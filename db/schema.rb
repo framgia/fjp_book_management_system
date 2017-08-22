@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 20170818101831) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "book_marks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "book_tags", force: :cascade do |t|
     t.integer "book_id", null: false
     t.integer "tag_id", null: false
