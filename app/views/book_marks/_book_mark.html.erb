@@ -1,5 +1,4 @@
 <%= link_to book_book_mark_path(book, book_mark), remote: true,
-  method: :delete, "data-turbolinks":"false",
-  class: "btn-primary col-sm-5 btn-book-info pmd-z-depth-1 btn-book-mark" do %>
-  <%= t "book_mark.unbook_mark" %>
+  method: :delete, "data-turbolinks": false, title: t("book_mark.unbook_mark") do %>
+    <i class="fa fa-bookmark" aria-hidden="true"></i>
 <% end %>
