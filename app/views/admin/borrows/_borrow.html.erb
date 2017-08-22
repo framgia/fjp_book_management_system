@@ -1,0 +1,39 @@
+<div class="col-sm-12">
+  <div class="col-sm-4" id="number-categories-view">
+    <div id="number-categories">
+      <p><%= t "admin.requests.index.number_requests" %>
+        <%= data.number_borrow_books  %>
+      </p>
+    </div>
+  </div>
+  <div class="col-sm-8 page_info text-center"
+    id="pagination-borrow-books">
+    <%= paginate data.request_borrow_books_search, remote: true,
+      theme: "twitter-bootstrap-3" %>
+  </div>
+</div>
+<div class="col-md-12">
+  <br>
+  <div class="pmd-card pmd-z-depth pmd-card-custom-view", id="list-borrow-books">
+    <div id="list-borrow-books-view" class="table-responsive">
+    <table class="table" cellspacing="0" cellpadding="0">
+      <thead>
+      <tr>
+        <th><%= t "admin.requests.index.no" %></th>
+        <th><%= t "admin.requests.index.username" %></th>
+        <th><%= t "admin.requests.index.start_date" %></th>
+        <th><%= t "admin.requests.index.end_date" %></th>
+        <th><%= t "admin.requests.index.book_title" %></th>
+        <th><%= t "admin.requests.index.available" %></th>
+        <th class="col-xs-2"><%= t "admin.requests.index.status" %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% data.request_borrow_books_search.each do |request| %>
+        <%= render "borrow_row", request: request, data: data %>
+      <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

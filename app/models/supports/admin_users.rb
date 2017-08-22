@@ -7,6 +7,10 @@ class Supports::AdminUsers
     @params[:users]
   end
 
+  def current_page
+    @params[:param][:page]
+  end
+
   def users_search
     search.result.page(@params[:param][:page])
       .per Settings.admin.users.index.users_per_page

@@ -5,13 +5,12 @@ class User < ApplicationRecord
   has_many :notifications
   has_many :book_marks
   has_many :books, through: :book_marks
+  has_many :requests
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable,
     :validatable, :registerable
 
   mount_uploader :avatar, AvatarUploader
-
-  has_many :requests
 
   def load_suggest_book_to_users
     User.where.not(id: self.id).order id: :asc

@@ -74,16 +74,19 @@
   <div class="modal-footer">
     <% if user.id.blank? %>
       <button type="button" class="btn btn-success create-user"
-        value="Validate" data-dismiss="modal">
+        value="Validate" data-dismiss="modal"
+        data-curent-page="<%= data.current_page %>">
         <%= t "admin.users.index.create" %>
       </button>
     <% else %>
       <button type="button" class="btn btn-danger delete-user"
-        data-dismiss="modal" data-id="<%= user.id %>">
+        data-dismiss="modal" data-id="<%= user.id %>"
+        data-curent-page="<%= data.current_page %>">
         <%= t "admin.users.index.delete" %>
       </button>
       <button type="button" class="btn btn-success save-user"
-        data-dismiss="modal" value="Validate" data-id="<%= user.id %>">
+        data-dismiss="modal" value="Validate" data-id="<%= user.id %>"
+        data-curent-page="<%= data.current_page %>">
         <%= t "admin.users.index.save" %>
       </button>
     <% end %>

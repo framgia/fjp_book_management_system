@@ -4,6 +4,7 @@ class CreateBorrows < ActiveRecord::Migration[5.1]
       t.integer :book_id, null: false
       t.integer :user_id, null: false
       t.integer :status, default: 0
+      t.integer :book_item_id, default: 0
 
       t.timestamps
     end

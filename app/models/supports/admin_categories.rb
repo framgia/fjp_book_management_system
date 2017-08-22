@@ -7,6 +7,14 @@ class Supports::AdminCategories
     @params[:categories]
   end
 
+  def current_page
+    @params[:param][:page]
+  end
+
+  def load_list_parent_avaible id
+    Category.group_categories - [Category.find_by(id: id)]
+  end
+
   def books
     @params[:books]
   end

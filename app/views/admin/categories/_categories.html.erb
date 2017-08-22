@@ -9,7 +9,7 @@
           role="dialog">
           <div class="modal-dialog user-modal-dialog">
             <%= render "category_modal", category: new_category,
-              books: data.books %>
+              data: data %>
           </div>
         </div>
       </div>
@@ -56,26 +56,7 @@
           </tr>
           <% if data.categories_search.any? %>
             <% data.categories_search.each do |category| %>
-              <tr>
-                <td><%= category.id %></td>
-                <td><%= link_to category.title , "#",
-                  data: {toggle: "modal",
-                  target: "#modal-edit-category-#{category.id}"}%>
-                  <div class="modal fade"
-                    id="modal-edit-category-<%= category.id %>"
-                    role="dialog">
-                    <div class="modal-dialog category-modal-dialog">
-                      <%= render "category_modal", category: category,
-                        books: data.books %>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <% unless category.parent_id.blank? %>
-                      <%= data.find_category(category.parent_id) %>
-                  <% end %>
-                </td>
-              </tr>
+              <%= render "category_row", category: category, data: data %>
             <% end %>
           <% end %>
           </tbody>

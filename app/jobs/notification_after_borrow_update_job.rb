@@ -18,7 +18,7 @@ class NotificationAfterBorrowUpdateJob < ApplicationJob
 
     if obj.approved?
       notify.raw = notify.content = I18n.t "notifications.job.borrow.approved"
-    elsif obj.reject?
+    elsif obj.rejected?
       notify.raw = notify.content = I18n.t "notifications.job.borrow.reject"
     else
       notify.raw = notify.content = I18n.t "notifications.job.borrow.cancel"
