@@ -15,7 +15,7 @@
           </li>
           <% if user_signed_in? %>
             <li>
-              <%= link_to t("blog.posts.index.my_blog"), blog_posts_path %>
+              <%= link_to t("blog.posts.index.my_blog"), blog_posts_path, "data-turbolinks": false %>
             </li>
           <% end %>
         </ul>
@@ -73,8 +73,20 @@
         <%= paginate @posts, theme: "twitter-bootstrap-3" %>
       </div>
     </div>
-    <div class="col-sm-3">
-      <h3>Hot Author</h3>
+    <div class="col-sm-3 hot-authors ">
+      <h1 class="text-center text-uppercase"><%= t "blog.dashboard.index.hot_authors" %></h1>
+      <hr>
+      <div class="row">
+        <% @top_blogers.each do |user| %>
+          <div class="col-sm-12">
+            <img src="<%= user.avatar.thum40 %>" alt="<%= user.name %>"
+              class="img-responsive img-avt center-block">
+            <h2 class="text-center"><%= user.name %>  ( <%= user.blogs.size %>
+              <i class="fa fa-newspaper-o"></i>)</h2>
+            <hr>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

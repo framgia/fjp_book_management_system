@@ -40,10 +40,10 @@
     <div class="col-sm-9">
       <ul class="nav nav-tabs">
         <li role="presentation" class="<%= tab_active params, "published" %>">
-          <%= link_to t("blog.posts.index.published"), blog_posts_path %>
+          <%= link_to t("blog.posts.index.published"), blog_posts_path, "data-turbolinks": false %>
         </li>
         <li class="<%= tab_active params, "draft" %>">
-          <%= link_to t("blog.posts.index.draft"), blog_posts_path(status: :draft) %>
+          <%= link_to t("blog.posts.index.draft"), blog_posts_path(status: :draft), "data-turbolinks": false %>
         </li>
       </ul>
     </div>
