@@ -43,7 +43,7 @@ class Admin
     end
 
     def category_params
-      params.require(:category).permit :title, :description,
+      params.require(:category).permit :title, :description, :image,
         :parent_id, book_ids: []
     end
   end

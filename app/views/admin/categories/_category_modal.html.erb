@@ -15,11 +15,16 @@
           <%= f.label :title, "title", class:"label2"%>
           <%= f.text_field :title, class: "form-control",
             id: "text-field-category-title-#{category.id}"%><br>
+          <%= f.label :image, "Image", class:"label2"%>
+          <%= f.file_field :image,
+            id: "text-field-category-image-#{category.id}", class: "file" %><br>
+          <img src="<%= category.image.thumb %>" alt="" class="img-responsive" height="100px"
+            width="100px">
+          <br>
           <%= f.label :parent_id, "Category parent id", class:"label2"%>
           <%= f.collection_select :parent_id,
-            data.load_list_parent_avaible(category.id), :id, :title, {},
-            {id: "text-field-category-parent-#{category.id}"}
-          %><br>
+            data.load_list_parent_avaible(category.id), :id, :title, {prompt: true},
+            {id: "text-field-category-parent-#{category.id}"} %><br>
           <%= f.label :description, "description", class:"form-label" %>
           <%= f.text_area :description, class: "form-control
             category-description",
@@ -48,7 +53,7 @@
       </button>
       <button type="button" class="btn btn-success save-category"
         data-dismiss="modal" data-id="<%= category.id %>"
-        data-curent-page="<%= data.current_page %>">
+        data-current-page="<%= data.current_page %>">
       <%= t "admin.users.index.save" %>
       </button>
     <% end %>

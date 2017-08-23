@@ -9,30 +9,19 @@ $('.category-book').select2({
 
 $(document).on('click', '.save-category', function() {
   var categoryId = $(this).data('id');
-  var currentPage = $(this).data('curent-page');
-  var idCheckbox = '#category-books-' + categoryId;
-  var idTextFieldTitle = '#text-field-category-title-' + categoryId;
-  var idSelectBoxParentId = '#text-field-category-parent-' + categoryId;
-  var idTextFieldDescription = '#text-field-category-description-' + categoryId;
-  var url = '/admin/categories/' + categoryId;
-  var title = $(idTextFieldTitle).val();
-  var parentId = $(idSelectBoxParentId).val();
-  var description = $(idTextFieldDescription).val();
-  var listBook = $(idCheckbox).val();
+  var idForm = '#edit_category_' + categoryId;
+  var currentPage = $(this).data('current-page');
+  var form = $(idForm);
+  var url = form.prop('action');
+  var form_data = new FormData(document.querySelector(idForm));
   var newhref = location.pathname + '?page=' + currentPage;
 
   $.ajax({
     type:'PATCH',
     url: url,
-    data: {
-      category: {
-        id: categoryId,
-        title: title,
-        parent_id: parentId,
-        description: description,
-        book_ids: listBook,
-      },
-    },
+    data: form_data,
+    processData: false,
+    contentType: false,
     success: function() {
       window.location.href = newhref;
     }
@@ -42,7 +31,7 @@ $(document).on('click', '.save-category', function() {
 $(document).on('click', '.delete-category', function() {
   var categoryId = $(this).data('id');
   var url = '/admin/categories/' + categoryId;
-  var currentPage = $(this).data('curent-page');
+  var currentPage = $(this).data('current-page');
   var newhref = location.pathname + '?page=' + currentPage;
 
   $.ajax({
