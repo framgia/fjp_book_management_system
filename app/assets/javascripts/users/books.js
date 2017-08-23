@@ -278,7 +278,9 @@ $(document).on('click', '.btn-send-suggest-book', function() {
       }
     },
     success: function(e) {
-      $('.modal-suggest-result').append(e);
+      $('.modal-suggest-result').html(e);
+      $('.suggest-book-select').val('').trigger('change');
+      $('.suggest-book-content').val('');
       $('.suggest-book-modal').modal('hide');
       $('#suggest-book-success-modal').modal();
     }
