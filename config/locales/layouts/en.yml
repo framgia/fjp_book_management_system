@@ -24,6 +24,7 @@ en:
       feedback_waiting: "Waiting."
       feedback_close: "Close"
       feedback_empty: "Empty message!"
+      admin: "Admin control panel"
     footer:
       about_us: "About us"
       blog: "Blog"
