@@ -26,6 +26,12 @@
           </div>
         </a>
         <ul class="dropdown-menu">
+          <% if current_user.admin? %>
+            <li><%= link_to t("layouts.header.admin"), admin_root_path,
+              "data-turbolinks":"false",
+              class: "pmd-ripple-effect" %></li>
+            <li class="divider"></li>
+          <% end %>
           <li><%= link_to t("user.edit.profile.title"), current_user,
             "data-turbolinks":"false",
             class: "pmd-ripple-effect" %></li>
