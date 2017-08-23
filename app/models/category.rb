@@ -5,6 +5,8 @@ class Category < ApplicationRecord
   has_many :books, through: :book_categories, dependent: :destroy
   has_many :child_categories, class_name: Category.name, foreign_key: :parent_id
 
+  mount_uploader :image, CategoryUploader
+
   scope :group_categories, ->{where parent_id: nil}
 
   def total_books
