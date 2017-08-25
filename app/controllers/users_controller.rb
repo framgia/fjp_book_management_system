@@ -13,6 +13,8 @@ class UsersController < ApplicationController
         .per Settings.book_mark.limit
     elsif type == "borrow"
       @borrow = Borrow.where(user_id: current_user.id).order(id: :desc)
+        .page(per_page).per Settings.profile.borrow
+    elsif type == "info"
     end
   end
 

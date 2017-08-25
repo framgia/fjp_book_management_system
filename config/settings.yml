@@ -35,7 +35,7 @@ user:
     popular_book: 10
     recent_blog: 10
     top_author: 10
-    top_rate_book: 10
+    top_rate_book: 15
     truncate:
       item_book_title: 40
       book_description: 550
@@ -46,6 +46,6 @@ notifications:
   per_page: 15
   header_per_page: 8
 profile:
-  borrow: 6
+  borrow: 9
 book_mark:
   limit: 9

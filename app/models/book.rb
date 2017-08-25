@@ -71,4 +71,8 @@ class Book < ApplicationRecord
   def available_book_item
     BookItem.ready.where book_id: self.id
   end
+
+  def requesting_book user
+    Borrow.where(user_id: user.id, book_id: self.id, status: [0, 1])
+  end
 end

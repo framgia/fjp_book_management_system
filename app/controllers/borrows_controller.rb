@@ -22,7 +22,7 @@ class BorrowsController < ApplicationController
     flash[:danger] = t "borrow.destroy.fail" unless update_request
 
     respond_to do |f|
-      link = "devise/registrations/_borrow_row"
+      link = "users/_borrow_row"
       f.html{render link, layout: false, locals: {request: request}}
     end
   end
