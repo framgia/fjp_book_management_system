@@ -1,9 +1,10 @@
 <tr class="borrow-row" id="borrow-row-id-<%= request.id %>">
   <td data-title="Name" data-id="<%= request.id %>" id="request-name">
-    <%= request.book.title %></td>
-  <td data-title="Code"><%= request.time_start %></td>
-  <td data-title="State/City"><%= request.time_end %></td>
-  <td data-title="End Date of Work">
+    <%= link_to request.book.title, request.book, "data-turbolinks": false %>
+  </td>
+  <td><%= request.time_start.strftime "%Y/%m/%d" %></td>
+  <td><%= request.time_end.strftime "%Y/%m/%d" %></td>
+  <td>
     <% case request.status %>
     <% when "reject" %>
       <span class="reject status-btn">Rejected</span>

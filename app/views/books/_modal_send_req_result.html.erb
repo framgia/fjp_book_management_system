@@ -19,16 +19,20 @@
           <h4><%= t "books.show.modal.status" %>
             <% case req.status %>
             <% when "approved" %>
-              <span class="approve"><%= t "books.show.modal.approved" %></span>
+              <span class="approve status-btn"><%= t "books.show.modal.approved" %></span>
             <% when "cancel" %>
-              <span class="cancel"> <%= t "books.show.modal.cancel" %></span>
+              <span class="cancel status-btn"> <%= t "books.show.modal.cancel" %></span>
             <% when "reject" %>
-              <span class="reject"><%= t "books.show.modal.reject" %></span>
+              <span class="reject status-btn"><%= t "books.show.modal.reject" %></span>
             <% else %>
-              <span class="not-approve"> <%= t "books.show.modal.not_approved" %></span>
+              <span class="not-approve status-btn"> <%= t "books.show.modal.not_approved" %></span>
             <% end %>
           </h4>
-          <p class="message"><%= t "books.show.modal.admin_message" %></p>
+          <p class="message">
+            <strong>
+              <%= t "books.show.modal.admin_message" %>
+            </strong>
+          </p>
         </div>
       </div>
       <div class="modal-footer">

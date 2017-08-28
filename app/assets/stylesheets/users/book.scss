@@ -102,10 +102,10 @@
 
     a:hover {
       span {
-        background: $blog-title;
-        color: $white;
+        color: $blog-title-dark;
         margin: -2.5px 0 0;
         padding: 5px;
+        text-decoration: underline;
       }
     }
   }
@@ -128,7 +128,7 @@
   }
 
   .tag:hover {
-    background: $main-color-light;
+    background: $main-color-primary;
   }
 
   .description {
@@ -169,11 +169,10 @@
       background: $main-color-lighter;
 
       a {
-        background: $main-color-light;
         border: 0;
         border-radius: 2px;
-        color: $white;
-        font-size: .8em;
+        color: $white-opacity-50;
+        font-size: 1.1em;
         margin: 10px;
         opacity: 1;
         padding: 8px 12px 6px;
@@ -181,15 +180,17 @@
       }
 
       a:hover {
-        background: $main-color-primary;
+        background: $main-color-light;
       }
 
       .active {
         background: transparent;
+        color: $white;
 
         a {
-          background: $main-color-dark;
+          background: transparent;
           border: 0;
+          border-bottom: 3px solid $main-color-dark;
           color: $white;
         }
       }
@@ -296,6 +297,7 @@
       background: $main-color-light;
       padding: 30px 30px 120px;
       position: relative;
+      transition: .5s;
 
       .form-control {
         color: $white;
@@ -451,7 +453,7 @@
           }
 
           img {
-            transform: rotate(180deg) scale(.1);
+            transform: scale(.1);
           }
 
           .new-tag {
@@ -466,7 +468,7 @@
           position: absolute;
           top: 5%;
           transition: .6s ease;
-          width: 75%;
+          width: 65%;
         }
       }
 
@@ -605,10 +607,10 @@
       transition: .4s;
 
       &:hover {
-        background: $main-color-light;
-        color: $white;
+        color: $main-color-dark;
         margin-top: -2.5px;
         padding: 5px;
+        text-decoration: underline;
       }
     }
   }
@@ -649,8 +651,19 @@
 .unsigned {
   background: $white !important;
   color: $black !important;
+  margin: 10px 0 0;
+  width: 100%;
 }
 
+.btn-create {
+  margin-top: 5px;
+}
 
-
-
+.requesting-message {
+  background: $white;
+  border-radius: 10px;
+  color: $blog-title;
+  display: none;
+  margin: 70px -15px 20px;
+  padding: 20px;
+}

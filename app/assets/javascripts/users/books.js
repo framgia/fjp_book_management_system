@@ -203,7 +203,7 @@ $(document).ready(function () {
         items: 5,
       },
       1366 : {
-        items: 7,
+        items: 6,
       }
     },
     rewind: false,
@@ -282,5 +282,15 @@ $(document).on('click', '.btn-send-suggest-book', function() {
       $('.suggest-book-modal').modal('hide');
       $('#suggest-book-success-modal').modal();
     }
+  });
+});
+
+$(document).on('click','.requesting' ,function() {
+  $('.datepicker-container').hide(400);
+  $('.requesting-message').show(400);
+  $(this).css({
+    'transition':'.5s',
+    'transform':'scale(0)',
+    'height':'0'
   });
 });
