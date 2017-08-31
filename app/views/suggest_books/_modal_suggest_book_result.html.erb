@@ -14,11 +14,13 @@
         <div class="col-sm-5 modal-borrow-info">
           <h3><%= supports.load_book.title %></h3>
           <h4><%= t "books.suggest_book.sender" %><%= current_user.name %></h4>
-          <h4><%= t "books.suggest_book.receiver" %></h4>
-          <% supports.load_users.each do |user| %>
-            <%= user.name %>
-            <%= t "books.suggest_book.semicolon" %>
-          <% end %>
+          <h4>
+            <%= t "books.suggest_book.receiver" %>
+            <% supports.load_users.each do |user| %>
+              <%= user.name %>
+              <%= t "books.suggest_book.semicolon" %>
+            <% end %>
+          </h4>
           <h4>
             <%= t "books.suggest_book.message" %>
             <%= supports.load_suggest_books.last.content %>
