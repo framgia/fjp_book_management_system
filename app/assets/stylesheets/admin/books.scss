@@ -592,15 +592,6 @@ h1 {
   }
 }
 
-.flash-push {
-  background: $button-edit;
-  border-radius: 5px;
-  box-shadow: 2px 6px 11px $flash-shadow;
-  color: $white;
-  margin: 15px 0;
-  padding: 15px;
-}
-
 .not-ready-item select {
   background: $button-delete;
   color: $white;
@@ -652,12 +643,9 @@ h1 {
 }
 
 .avatar-preview {
-  margin-top: 10px;
-
-  img {
-    height: auto;
-    width: 50%;
-  }
+  height: auto;
+  margin-bottom: 10px;
+  width: 50%;
 }
 
 .button-upload {
@@ -713,4 +701,34 @@ h1 {
   [type="text"] {
     width: 100%;
   }
+}
+
+.flash-admin {
+  .flash-push {
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 20px;
+    position: fixed;
+    right: 3%;
+    top: 11%;
+    z-index: 9999;
+  }
+
+  .success {
+    background: $flash-background-success;
+    box-shadow: $flash-success;
+    color: $flash-success;
+  }
+
+  .danger {
+    background: $flash-background-danger;
+    box-shadow: $flash-danger;
+    color: $flash-danger;
+  }
+}
+
+.hidden {
+  display: none;
 }

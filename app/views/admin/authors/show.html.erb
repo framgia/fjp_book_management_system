@@ -100,14 +100,11 @@
                 </td>
                 <td>
                   <% book.categories.each do |cate| %>
-                    <%= link_to cate.title, admin_category_path(cate) %>
+                    <%= cate.try :title %>
                     <% unless cate == book.categories.last %>&#44;<% end %>
                   <% end %>
                 </td>
-                <td>
-                  <%= link_to_if book.publisher.present?, book.publisher.name,
-                    admin_publisher_path(book.publisher) %>
-                </td>
+                <td><%= book.publisher.try :name %></td>
                 <td><%= book.isbn %></td>
                 <td><%= book.series.try :title %></td>
                 <td><%= book.language.try :full_name %></td>

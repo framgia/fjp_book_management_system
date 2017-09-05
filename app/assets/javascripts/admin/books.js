@@ -29,7 +29,6 @@ $(document).on('click', '.btn-create-item', function(){
     },
     success: function () {
       location.reload();
-      $('#items-list-view').load(document.URL + ' #items-list');
     }
   });
 });
@@ -37,7 +36,9 @@ $(document).on('click', '.btn-create-item', function(){
 $(document).on('click', '.btn-delete-item', function() {
   var book_id = $(this).attr('id');
   var book_item_id = $(this).data('id');
+  var current_page = $(this).attr('value');
   var url = '/admin/books/'+ book_id + '/book_items/' + book_item_id;
+  var new_link = location.pathname + '?page=' + current_page;
 
   $.ajaxSetup({
     headers: {
@@ -53,8 +54,9 @@ $(document).on('click', '.btn-delete-item', function() {
       }
     },
     success: function () {
-      location.reload();
-      $('#items-list-view').load(document.URL + ' #items-list');
+      if (current_page != 1) {
+        location.href = new_link;
+      } else location.reload();
     }
   });
 });
@@ -64,7 +66,9 @@ $(document).ready(function() {
   $('.best_in_place').change(function() {
     $.ajax({
       success: function() {
-        location.reload();
+        $('#items-list-view').load(document.URL + ' #items-list-view', function () {
+          $('.best_in_place').best_in_place();
+        });
       }
     });
   });
@@ -73,19 +77,15 @@ $(document).ready(function() {
     $(this).find('form')[0].reset();
   });
 
-  $('#add-publisher').on('click',function(){
-    $('#new-publisher').show();
-    $('#hide-select1').hide();
+  $('#change-publisher').on('click',function(){
+    $('.hide-select1').hide();
   });
-  $('#add-series').on('click',function(){
-    $('#new-series').show();
-    $('#hide-select3').hide();
+
+  $('#change-series').on('click',function(){
+    $('.hide-select2').hide();
   });
+
   $('.chosen-select').chosen({
-    allow_single_deselect: true,
-    no_results_text: 'No results matched'
-  });
-  $('.chosen-select2').chosen({
     allow_single_deselect: true,
     no_results_text: 'No results matched'
   });
@@ -132,4 +132,20 @@ $(document).ready(function() {
   fileInput.addEventListener('change', function() {
     the_return.innerHTML = this.value;
   });
+});
+
+$('#items-list-view').off('click', 'ul.pagination a');
+$('#items-list-view').on('click', 'ul.pagination a', function(e) {
+  e.preventDefault();
+  var url = $(this).attr('href');
+  $('#items-list-view').load(url + ' #items-list-view', function() {
+    $('.best_in_place').best_in_place();
+    window.history.pushState(url, window.title, url);
+  });
+  return false;
+});
+
+$(window).bind('popstate', function() {
+  var url = location.href;
+  $('#items-list-view').load(url);
 });

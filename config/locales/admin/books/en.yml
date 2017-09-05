@@ -50,12 +50,15 @@ en:
         choose_publisher: Choose a publisher
         choose_categories: Choose some categories
         choose_authors: Choose some authors
-        add_new: " Create new"
+        add_new: " Or create new"
         choose_state: Choose a state
         new_author: " Add new author"
         choose_tags: Choose some tags
         image_field: Change image
         choose_book: Choose books
+        edit_publisher: "Or replace with new publisher"
+        edit_series: "Or replace with new series"
+        error: "Please choose an image!"
       show:
         page_title: Book information
         link1: Book manage
@@ -95,6 +98,7 @@ en:
       create_success: Created book successfullly!
       update_success: Updated book successfully!
       destroy_success: Deleted book successfully!
+      delete_success: Deleted author's book successfully!
       destroy_fail: Failed. Something's wrong.
     book_items:
       find_fail: Book item not found!

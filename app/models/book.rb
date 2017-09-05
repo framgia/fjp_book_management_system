@@ -9,20 +9,20 @@ class Book < ApplicationRecord
   has_many :borrows
   has_many :book_items, dependent: :destroy
   has_many :author_books, inverse_of: :book
+  has_many :authors, through: :author_books, dependent: :destroy
   has_many :book_tags
+  has_many :tags, through: :book_tags
   has_many :ebooks, dependent: :destroy
   has_many :book_categories
+  has_many :categories, through: :book_categories, dependent: :destroy
   has_many :comments, as: :target
   has_many :blog_books
-  has_many :authors, through: :author_books, dependent: :destroy
-  has_many :categories, through: :book_categories, dependent: :destroy
   has_many :blogs, through: :blog_books
-  has_many :tags, through: :book_tags
-  has_and_belongs_to_many :tags, join_table: :book_tags
   has_many :book_marks
+  has_and_belongs_to_many :tags, join_table: :book_tags
 
-  accepts_nested_attributes_for :publisher
-  accepts_nested_attributes_for :series
+  accepts_nested_attributes_for :publisher, reject_if: :all_blank
+  accepts_nested_attributes_for :series, reject_if: :all_blank
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :authors
   accepts_nested_attributes_for :author_books
