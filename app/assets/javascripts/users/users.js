@@ -54,7 +54,6 @@ $(document).on('mouseenter', '.not-approve', function() {
 });
 
 $(document).on('click','.not-approve', function() {
-  alert('here');
   $(this).css({'display':'none'});
   $(this).nextAll().css({'display':'inline-block'});
 });
@@ -64,7 +63,7 @@ $(document).on('click', '.cancel-back', function() {
   $(this).prev().css({'display':'none'}).prev().css({'display':'inline'});
 });
 
-$(document).on('click', '.cancel-ok', function() {
+$(document).on('click', '.borrow-btn-group .cancel-ok', function() {
   var request_id = $(this).parent().parent().find('#request-name').attr('data-id');
   var url = '/borrows/' + request_id;
   $.ajax({
@@ -80,6 +79,28 @@ $(document).on('click', '.cancel-ok', function() {
         'background':'#f0ad4e'});
       setTimeout(function() {
         $('#borrow-row-id-' + request_id).css({'transition':'2s',
+          'background':'transparent'});
+      }, 3000);
+    }
+  });
+});
+
+$(document).on('click', '.feedback-btn-group .cancel-ok', function() {
+  var feedback_id = $(this).parent().parent().find('#feedback-name').attr('data-id');
+  var url = '/feedback/' + feedback_id;
+  $.ajax({
+    url: url,
+    type: 'PATCH',
+    beforeSend: function(feedback) {
+      feedback.setRequestHeader('X-CSRF-Token',
+        $('meta[name="csrf-token"]').prop('content'));
+    },
+    success: function(result) {
+      $('#feedback-row-id-' + feedback_id).replaceWith(result);
+      $('#feedback-row-id-' + feedback_id).css({
+        'background':'#f0ad4e'});
+      setTimeout(function() {
+        $('#feedback-row-id-' + feedback_id).css({'transition':'2s',
           'background':'transparent'});
       }, 3000);
     }

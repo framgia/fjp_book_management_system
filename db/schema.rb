@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170823063923) do
     t.integer "book_id", null: false
     t.integer "user_id", null: false
     t.integer "status", default: 0
+    t.integer "book_item_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "time_start"

@@ -69,7 +69,7 @@ $(document).ready(function(){
     $('#feedback-content').val('');
   });
 
-  $('#feedback-button').on('click', function() {
+  $('#feedback-button, .btn-feedback-home').on('click', function() {
     $('#feedback-create').show();
     $('.feedback-done').hide();
     $('#feedback-cancel').show();
@@ -114,7 +114,5 @@ $(document).ready(function(){
         }, 3000);
       }
     });
-
-
   });
 });

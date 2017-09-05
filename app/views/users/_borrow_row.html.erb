@@ -4,7 +4,7 @@
   </td>
   <td><%= request.time_start.strftime "%Y/%m/%d" %></td>
   <td><%= request.time_end.strftime "%Y/%m/%d" %></td>
-  <td>
+  <td class="borrow-btn-group">
     <% case request.status %>
     <% when "reject" %>
       <span class="reject status-btn">Rejected</span>

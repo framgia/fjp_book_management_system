@@ -1,0 +1,19 @@
+<tr class="feedback-row" id="feedback-row-id-<%= feedback.id %>">
+  <td data-title="Name" data-id="<%= feedback.id %>" id="feedback-name"
+    class="col-sm-8">
+    <%= link_to feedback.content, "feedback", "data-turbolinks": false %>
+  </td>
+  <td class="col-sm-2"><%= feedback.created_at.strftime "%Y/%m/%d" %></td>
+  <td class="col-sm-2 feedback-btn-group">
+    <% case feedback.state %>
+    <% when "read" %>
+      <span class="reject status-btn">Read</span>
+    <% when "canceled" %>
+      <span class="cancel status-btn">Canceled</span>
+    <% else %>
+      <span class="not-approve status-btn">Waiting</span>
+      <span class="cancel-ok status-btn">OK</span>
+      <span class="cancel-back status-btn">Back</span>
+    <% end %>
+  </td>
+</tr>

@@ -1,1 +1,25 @@
+<div class="pmd-card pmd-z-depth">
+  <div class="table-responsive">
+    <table cellspacing="0" cellpadding="0" class="table pmd-table border-table"
+           id="table-propeller">
+      <thead>
+      <tr>
+        <th>Content</th>
+        <th>Created At</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if feedback.present? %>
+        <% feedback.each do |feedback| %>
+          <%= render "feedback_row", feedback: feedback %>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 
+  <div id="pagination" class="text-center">
+    <%= paginate feedback, remote: true, theme: "twitter-bootstrap-3" %>
+  </div>
+</div>
