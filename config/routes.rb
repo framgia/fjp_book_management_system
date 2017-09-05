@@ -55,5 +55,5 @@ Rails.application.routes.draw do
   resources :requests, only: [:index, :create, :update]
   resources :notifications, only: [:index, :update]
   patch "/make_all_as_read" => "make_all_as_read#update"
-  resources :feedback, only: [:index, :new, :create, :show]
+  resources :feedback, only: [:index, :new, :create, :show, :update]
 end

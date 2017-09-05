@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :book_marks
   has_many :books, through: :book_marks
   has_many :requests
+  has_many :feedbacks
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable,
     :validatable, :registerable
