@@ -2040,29 +2040,8 @@ BookTag.create!([
   {book_id: 60, tag_id: 20}
 ])
 
-for i in 1..100
-  a = i%4
-  if a == 0
-    Borrow.create! book_id: i%10 +1, user_id: i%19 +1, status: "not_approved_yet",
-      time_start: Time.now - 2.days,
-      time_end: Time.now + i.days
-  elsif a == 1
-    Borrow.create! book_id: i%10 +1, user_id: i%19 +1, status: "approved",
-      time_start: Time.now - 2.days,
-      time_end: Time.now + i.days
-  elsif a == 2
-    Borrow.create! book_id: i%10 +1, user_id: i%19 +1, status: "cancel",
-      time_start: Time.now - 2.days,
-      time_end: Time.now + i.days
-  else
-    Borrow.create! book_id: i%10 +1, user_id: i%19 +1, status: "rejected",
-      time_start: Time.now - 2.days,
-      time_end: Time.now + i.days
-  end
-end
-
-for i in 1..100
-  BookItem.create! book_id: (i%13 + 1), location: "Sequence number 2 on the left.",
+Book.all.each do |book|
+  BookItem.create! book_id: book.id, location: "Sequence number 2 on the left.",
     state: :ready, description: "New books, not damaged."
 end
 

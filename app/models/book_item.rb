@@ -5,7 +5,7 @@ class BookItem < ApplicationRecord
   belongs_to :book
   has_many :borrow, dependent: :destroy
 
-  scope :available_books, ->(id){ready.where(book_id: id).size}
+  scope :available_books, ->(id){ready.where(book_id: id)}
 
   def default_values
     self.state ||= "Ready"
