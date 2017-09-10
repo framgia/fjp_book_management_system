@@ -5,6 +5,7 @@ en:
       books: "Books Explorer"
       books: "Books"
       explore: "Explore"
+      category: "Category"
       blog: "Blog"
       account: "Account"
       profile: "My Profile"
@@ -24,7 +25,7 @@ en:
       feedback_waiting: "Waiting."
       feedback_close: "Close"
       feedback_empty: "Empty message!"
-      admin: "Admin control panel"
+      admin: "Admin site"
     footer:
       about_us: "About us"
       blog: "Blog"

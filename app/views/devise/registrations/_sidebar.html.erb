@@ -66,13 +66,6 @@
           <span><%= t "user.edit.menu_item.feedback" %></span>
         </li>
       <% end %>
-
-      <%= link_to user_path(user, type: "donate"), remote: true,
-        "data-turbolinks": false do %>
-        <li class="dropdown-item disabled" data-trigger=".donate-part">
-          <span><%= t "user.edit.menu_item.purchase" %></span>
-        </li>
-      <% end %>
     </ul>
   </div>
 </div>
