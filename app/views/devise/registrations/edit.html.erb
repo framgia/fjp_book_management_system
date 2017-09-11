@@ -4,7 +4,7 @@
       <div class="pmd-card pmd-z-depth">
         <div class="pmd-card-body">
           <div class="row">
-            <%= render "sidebar", user: @user %>
+            <%= render "devise/registrations/sidebar", user: @user %>
 
             <div class="col-lg-8 custom-col-8 info-part">
               <%= render "change_info", user: @user %>
@@ -19,7 +19,7 @@
 
             <div class="col-lg-8 custom-col-8 history-part">
               <div class="borrow-part">
-               <%= render "borrow", borrow: @borrow %>
+               <%= render("users/borrow", borrow: @borrow) if @borrow %>
               </div>
 
               <div class="donate-part">

@@ -1,11 +1,13 @@
 <% books.each do |book| %>
   <div class="col-sm-12">
-    <h2><%= book.title %></h2>
+    <h2>
+      <%= link_to book.title, book, "data-turbolinks": false %>
+    </h2>
     <% if book.authors.present? %>
       <h4>
         <%= t "search.index.authors" %>:
         <% book.authors.each do |author| %>
-          <%= link_to author.name, "#" %>
+          <%= link_to author.name, author, "data-turbolinks": false %>
           <%= author != book.authors.last ? ", " : nil %>
         <% end %>
       </h4>
@@ -20,7 +22,7 @@
       <h4>
         <%= t "search.index.categories" %>:
         <% book.categories.each do |category| %>
-          <%= link_to category.title, "#" %>
+          <%= link_to category.title, category, "data-turbolinks": false %>
           <%= category != book.categories.last ? ", " : nil %>
         <% end %>
       </h4>
