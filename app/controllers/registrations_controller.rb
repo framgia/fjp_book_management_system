@@ -16,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for *args
-    edit_user_registration_path if args[0]
+    user_path(current_user) if args[0]
   end
 
   def respond_with resource, opts = {}
