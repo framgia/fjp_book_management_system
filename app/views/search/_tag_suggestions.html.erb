@@ -1,7 +1,7 @@
 <% suggest_tags.each do |tag| %>
-  <a href="#">
+  <%= link_to tag, "data-turbolinks": false do %>
     <div class="pmd-chip pmd-chip-no-icon">
       <%= tag.title %>
     </div>
-  </a>
+  <% end %>
 <% end %>
